@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/assets/styles/main.scss";
+import HeaderComponent from "@/components/Header/header";
 
 export const metadata: Metadata = {
   title:
@@ -32,7 +33,7 @@ export default function RootLayout({
     <html lang="ru">
       <body>
         <div className="root-wrapper">
-          <header></header>
+          <HeaderComponent/>
           <main>{children}</main>
           <footer>Footer</footer>
         </div>
