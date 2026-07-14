@@ -1,0 +1,12 @@
+
+@use "./global/variables";
+@use "./global/mixins";
+@use "./global/normalize";
+@use "./global/reboot";
+@use "./global/container";
+@use "./global/visually-hidden";
+@use "./global/btn";
+
+/* Любые комментарии или стили пишем только ЗДЕСЬ и ниже */
+
+@import "tailwindcss";
