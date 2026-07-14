@@ -14,7 +14,8 @@
 }
 
 :root {
-  --font-site-sans: "Inter", sans-serif;
+  --font-text: "Manrope", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
 }
 
 html {
@@ -30,7 +31,7 @@ body {
   min-height: 100vh;
   width: 100%;
   color: $tangaroa;
-  font-family: var(--font-site-sans);
+  font-family: var(--font-text);
   font-weight: 400;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
