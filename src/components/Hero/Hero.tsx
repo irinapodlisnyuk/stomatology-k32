@@ -37,8 +37,6 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-
-         
       </div>
     </section>
   );
