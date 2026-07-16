@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/assets/styles/main.scss";
-import HeaderComponent from "@/components/Header/Header";
+import HeaderComponent from "@/components/Header/header";
 
 export const metadata: Metadata = {
   title:
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "стоматология Геленджик",
     "стоматология Кабардинка",
     "лечение зубов",
-    "имплантация зубов 35 000тыс. рублей",
+    "имплантация зубов 35000рублей",
     "хороший стоматолог",
     "протезирование",
     "стоматологическая клиника",
@@ -22,7 +22,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+   icons: {
+    icon: "/icon.svg", 
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -33,7 +37,7 @@ export default function RootLayout({
     <html lang="ru">
       <body>
         <div className="root-wrapper">
-          <HeaderComponent/>
+          <HeaderComponent />
           <main>{children}</main>
           <footer>Footer</footer>
         </div>
