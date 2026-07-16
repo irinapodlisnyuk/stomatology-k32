@@ -1,6 +1,10 @@
+@use "../../assets/styles/global/variables" as v;
+@use "../../assets/styles/global/mixins" as m;
+@use "../../assets/styles/global/btn" as b;
+
 .header {
   width: 100%;
-  background-color: var(--background, #ffffff);
+  background-color: v.$white;
   border: 1px solid var(--color-border, #e2e8f0);
   position: sticky;
   top: 0;
@@ -10,13 +14,40 @@
   backdrop-filter: blur(8px);
 
   &__wrapper {
+    padding: 20px 0 15px;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 150px;
   }
 
   &__logo {
-    &-icon {
-      width: 40px;
-      height: 40px;
-      display: block;
+    display: inline-block;
+    text-decoration: none;
+
+    transition:
+      transform 0.3s cubic-bezier(0.6, 0, 0.2, 1),
+      opacity 0.3s ease;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.06) translateY(-1px);
     }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__logo-icon {
+    width: 71px;
+    height: 50px;
+    display: block;
   }
 }

@@ -7,7 +7,7 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 export default function Icon({ name, className, ...props }: IconProps) {
   return (
     <svg className={className} {...props}>
-      <use href={`/sprite.svg#${name}`} />
+      <use href={`/image/sprite.svg#${name}`} />
     </svg>
   );
 }

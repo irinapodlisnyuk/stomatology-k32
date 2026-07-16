@@ -1,23 +1,32 @@
-@use "./variables" as *; 
+@use "./variables" as *;
 @use "./mixins" as *;
 
 .btn {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 13px;
-    color: $white;
-    background-color: $bondi-blue;
-    border-radius: 10px;
-    padding: 19px 30px;
-    cursor: pointer;
-    transition: background-color $transition-500;
+  background-color: $pacific-blue;
+  border-radius: 10px;
+  padding: 19px 30px;
+  cursor: pointer;
+  transition: background-color $transition-500;
 
-    @include vp-767 {
-         font-size: 18px;
-      padding: 15px;
-    }
+  @include vp-767 {
+    font-size: 18px;
+    padding: 15px;
+  }
 
-    &:hover {
-      background-color: rgba($bondi-blue, 0.8);
-    }
+  &:hover {
+    background-color: $smoky;
+  }
+  &:active {
+    background-color: $dark-cyan;
+  }
+}
+
+.btn--appointment {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  color: $white;
 }

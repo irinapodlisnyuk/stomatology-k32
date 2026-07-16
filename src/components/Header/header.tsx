@@ -1,40 +1,64 @@
-import Icon from "@/models/Icon";
+"use client";
+import stylesNav from "./menu-nav.module.scss";
 import styles from "./header.module.scss";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const items = [
-  { key: 0, label: <Link href="/">Главная</Link> },
-  { key: 1, label: <Link href="/aboutUs"> О Клинике</Link> },
-  { key: 2, label: <Link href="/services"> Услуги</Link> },
-  // { key: 3, label: <Link href="/prices">Наши цены</Link> },
-  { key: 4, label: <Link href="/team">Наша команда</Link> },
-  { key: 5, label: <Link href="/contact">Контакты</Link> },
-  { key: 6, label: <Link href="/BookAppointment">Записаться на прием</Link> },
+interface MenuItem {
+  key: number;
+  path: string;
+  label: React.JSX.Element; // Тип для готовых компонентов <Link>
+}
+
+const items: MenuItem[] = [
+  { key: 0, path: "/", label: <Link href="/">Главная</Link> },
+  { key: 1, path: "/aboutUs", label: <Link href="/aboutUs">О Клинике</Link> },
+  { key: 2, path: "/services", label: <Link href="/services">Услуги</Link> },
+  { key: 4, path: "/team", label: <Link href="/team">Наша команда</Link> },
+  { key: 5, path: "/contact", label: <Link href="/contact">Контакты</Link> },
 ];
-
 export default function HeaderComponent() {
+  const pathname = usePathname();
+
   return (
     <header className={styles.header}>
-      <div className={styles["header__wrapper"]}>
-        <div className={styles["header__logo"]}>
-          <Link href="/" className={styles["header__logo-link"]}>
-            <Icon name="logo" className={styles["header__logo-icon"]} />
-          </Link>
-        </div>
+      <div className="container">
+        <div className={styles["header__wrapper"]}>
+          <div className={styles["header__inner"]}>
+            <Link href="/" className={styles["header__logo"]}>
+              <picture>
+                <img
+                  src="/image/logo-icon.png"
+                  alt="Логотип Клиника +32"
+                  className={styles["header__logo-icon"]}
+                />
+              </picture>
+            </Link>
 
-        <nav className={styles["header__menu"]}>
-          <ul className={styles["header__menu-list"]}>
-            {items.map((item) => (
-              <li key={item.key} className={styles["header__menu-item"]}>
-                {/* 
-                  Магия React: item.label уже содержит готовый компонент <Link> из массива.
-                  Мы просто выводим его здесь.
-                */}
-                {item.label}
-              </li>
-            ))}
-          </ul>
-        </nav>
+            <nav className={stylesNav["menu-nav"]}>
+              <ul className={stylesNav["menu-nav__list"]}>
+                {items.map((item) => {
+                  const isActive = pathname === item.path;
+
+                  return (
+                    <li
+                      key={item.key}
+                      className={`${stylesNav["menu-nav__item"]} ${isActive ? stylesNav["menu-nav__item--active"] : ""}`}
+                    >
+                      {item.label}
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
+
+          <div className={styles["header__actions"]}>
+            <Link href="/BookAppointment" className="btn btn--appointment">
+              Записаться на прием
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );
