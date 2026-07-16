@@ -1,10 +1,11 @@
+import AboutK32 from "@/components/AboutK+32/About";
 import Hero from "@/components/Hero/Hero";
-import styles from "./home.module.scss";
-
 
 export default function HomePage() {
   return (
-     < Hero/>
-
+    <>
+      <Hero />
+      <AboutK32 />
+    </>
   );
 }

@@ -53,7 +53,7 @@
     flex-direction: column;
     gap: 20px;
 
-    animation: heroSlideIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+    animation: heroSlideIn 6s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
     opacity: 0;
   }
 
@@ -92,6 +92,7 @@
     font-weight: 400;
     letter-spacing: 0.04em;
     color: rgba(v.$white, 0.75);
+    margin-bottom: 50px;
   }
 
   &__actions {
