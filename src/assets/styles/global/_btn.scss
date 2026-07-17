@@ -12,7 +12,7 @@
   background-color: $pacific-blue;
   padding: 19px 30px;
   cursor: pointer;
-  transition: background-color $transition-500;
+  transition: background-color $transition-800;
 
   @include vp-767 {
     font-size: 18px;
@@ -20,14 +20,15 @@
   }
 
   &:hover {
-    background-color: $smoky;
+    background-color: $blue-lagoon;
   }
   &:active {
     background-color: $dark-cyan;
   }
 }
 
-.btn--appointment {
+.btn--appointment,
+.btn--about {
   font-weight: 700;
   font-size: 19px;
   line-height: 19px;
@@ -36,3 +37,7 @@
   border-radius: 25px;
   color: $white;
 }
+
+// .btn--about:hover {
+//   background-color: $blue-lagoon;
+// }

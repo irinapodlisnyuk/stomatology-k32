@@ -1,7 +1,9 @@
 import Link from "next/link";
 import styles from "./About.module.scss";
 
-export default function AboutK32() {
+export default function About() {
+
+  
   return (
     <section className={styles.about}>
       <div className="container">
@@ -37,7 +39,7 @@ export default function AboutK32() {
               <img
                 src="/image/about/about.jpg"
                 alt="Прием в  Клиника +32"
-                className={styles.hero__bg}
+                className={styles["about__picture-img"]}
               />
             </picture>
           </div>

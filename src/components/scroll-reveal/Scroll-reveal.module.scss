@@ -1,0 +1,28 @@
+.reveal {
+  // Начальное состояние: элемент полностью прозрачен
+  opacity: 0;
+  
+  // 💡 Благородная плавность: 0.8 секунд с мягким замедлением в конце
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+  will-change: transform, opacity; // Подсказка для видеокарты смартфона, чтобы анимация не лагала
+
+  // 1. Вариант: Выплывание снизу вверх
+  &--fade-up {
+    transform: translateY(40px);
+  }
+
+  // 2. Вариант: Выплывание слева направо
+  &--fade-left {
+    transform: translateX(-50px);
+  }
+
+  // 3. Вариант: Выплывание справа налево
+  &--fade-right {
+    transform: translateX(50px);
+  }
+
+  &--visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

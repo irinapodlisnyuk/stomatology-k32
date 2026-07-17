@@ -4,14 +4,17 @@
 
 .header {
   width: 100%;
-  background-color: v.$white;
+  // background-color: v.$white;
+  background-color: rgba(255, 255, 255, 0.65);
   border: 1px solid var(--color-border, v.$solitude);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  // position: sticky;
+  // top: 0;
+  // z-index: 100;
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
 
-  // Эффект размытия заднего фона (как на современных сайтах Apple)
-  backdrop-filter: blur(8px);
+  transform: translateZ(0);
+  will-change: backdrop-filter;
 
   &__wrapper {
     padding: 20px 0 15px;
@@ -31,13 +34,13 @@
     text-decoration: none;
 
     transition:
-      transform 0.3s cubic-bezier(0.6, 0, 0.2, 1),
+      transform 0.5s cubic-bezier(0.6, 0, 0.2, 1),
       opacity 0.3s ease;
     opacity: 0.9;
 
     &:hover {
       opacity: 1;
-      transform: scale(1.06) translateY(-1px);
+      transform: scale(1.1) translateY(-2px);
     }
 
     &:active {
