@@ -54,7 +54,7 @@ export default function HeaderComponent() {
           </div>
 
           <div className={styles["header__actions"]}>
-            <Link href="/BookAppointment" className="btn btn--appointment">
+            <Link href="/BookAppointment" className="btn">
               Записаться на прием
             </Link>
           </div>
