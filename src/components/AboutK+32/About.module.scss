@@ -1,0 +1,55 @@
+@use "../../assets/styles/global/variables" as v;
+@use "../../assets/styles/global/mixins" as m;
+
+.about {
+  padding: 110px 0 60px 0;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 540px;
+    gap: 70px;
+    //  padding: 110px 0 60px 0;
+    max-width: 90%;
+    margin: 0 auto;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    color: v.$blue-lagoon;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+    &::before {
+      content: "\2014";
+      display: inline-block;
+      margin-right: 30px;
+      color: var(--color-primary, v.$blue-lagoon);
+      transform: scaleX(1.8);
+      transform-origin: left center;
+    }
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 58px;
+    color: v.$pacific-blue;
+  }
+
+  &__text {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin-bottom: 50px;
+  }
+}
