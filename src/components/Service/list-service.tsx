@@ -84,7 +84,7 @@ export const ServicesList = () => {
     <ul className={styles["services__list"]}>
       {shuffledServices.map(({ id, title, imgName, altText }) => (
         <li key={id} className={styles["services__item"]}>
-          <div className={styles["services__item-image"]}>
+          {/* <div className={styles["services__item-image"]}> */}
             <picture className={styles["services__picture"]}>
               <source
                 srcSet={`/image/services/${imgName}.webp 1x, /image/services/${imgName}@2x.webp 2x`}
@@ -100,8 +100,8 @@ export const ServicesList = () => {
                 className={styles["services__picture-img"]}
               />
             </picture>
-            <span className={styles["services__item-title"]}>{title}</span>
-          </div>
+            <span className={styles["services__item-text"]}>{title}</span>
+          {/* </div> */}
         </li>
       ))}
     </ul>
