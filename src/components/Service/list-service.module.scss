@@ -7,7 +7,8 @@
     max-width: 90%;
     margin: 0 auto;
     gap: 20px;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__item {
@@ -15,43 +16,43 @@
     height: 355px;
     position: relative;
     box-shadow: 0 2px 10px rgba(v.$black, 0.4);
-
     overflow: hidden;
     cursor: pointer;
 
-     /* 1. Псевдоэлемент для карточки */
+    // ПРЕМИАЛЬНАЯ АНИМАЦИЯ 
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    animation: elegantFadeUp 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    // Поочередная задержка вылета карточек
+    animation-delay: calc(0.8s + (var(--index) * 180ms));
+
     &::after {
       content: "";
       position: absolute;
-      inset: 0; 
-      background-color: rgba(v.$black, 0); 
+      inset: 0;
+      background-color: rgba(v.$black, 0);
       z-index: 1;
       transition: background-color 0.4s ease;
     }
 
-    /* 2. Псевдоэлемент для внутренней рамки */
     &::before {
       content: "";
       position: absolute;
-      inset: 20px; 
+      inset: 20px;
       border: 1px solid rgba(v.$white, 0);
-      z-index: 2; 
+      z-index: 2;
       transition: border-color 0.4s ease;
     }
 
     &:hover {
       &::after {
-        background-color: rgba(v.$black, 0.4); 
+        background-color: rgba(v.$black, 0.4);
       }
 
       &::before {
-        border-color: rgba(v.$white, 0.3); 
+        border-color: rgba(v.$white, 0.3);
       }
 
-      .services__picture-img {
-        transform: scale(1.1);
-      }
-    
       .services__picture-img {
         transform: scale(1.1);
       }
@@ -68,8 +69,8 @@
       text-shadow: 0 2px 10px rgba(v.$black, 0.4);
       color: v.$white;
       text-align: center;
-
       z-index: 3;
+      width: 85%;
     }
   }
 
@@ -84,5 +85,13 @@
       object-fit: cover;
       transition: transform v.$transition-800;
     }
+  }
+}
+
+// Ключевые кадры для вылета карточек
+@keyframes elegantFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

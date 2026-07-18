@@ -28,7 +28,8 @@
 }
 
 .btn--appointment,
-.btn--about {
+.btn--about,
+.btn--services{
   font-weight: 700;
   font-size: 19px;
   line-height: 19px;
@@ -38,6 +39,12 @@
   color: $white;
 }
 
-// .btn--about:hover {
-//   background-color: $blue-lagoon;
-// }
+.btn--about,
+.btn--services{
+  transition: transform $transition-800;
+}
+
+.btn--about:hover,
+.btn--services:hover {
+  transform: translateY(-10px);
+}

@@ -1,5 +1,6 @@
 @use "../../assets/styles/global/variables" as v;
 @use "../../assets/styles/global/mixins" as m;
+
 .services {
   &__wrapper {
     padding: 100px 0 150px;
@@ -41,5 +42,25 @@
       text-align: center;
       color: v.$dim-gray;
     }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// КЛАСС ДЛЯ  АНИМАЦИИ ТЕКСТА И КНОПКИ
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  animation: elegantFadeUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes elegantFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
