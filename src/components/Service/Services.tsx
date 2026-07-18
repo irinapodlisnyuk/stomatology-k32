@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Services.module.scss";
+import { ServicesList } from "./list-service";
 
 export default function Services() {
   return (
@@ -7,7 +8,7 @@ export default function Services() {
       <div className="container">
         <div className={styles.services__wrapper}>
           <div className={styles["services__header"]}>
-            <h2 className={styles.services__title}>
+            <h2 className={styles["services__header-title"]}>
               Комплексные стоматологические услуги
             </h2>
             <p className={styles["services__subtitle"]}>
@@ -23,7 +24,9 @@ export default function Services() {
             </p>
           </div>
 
-          <ul className={styles["services__list"]}>
+          <ServicesList/>
+
+          {/* <ul className={styles["services__list"]}>
             <li className={styles["services__item"]}>
               <div className={styles["services__item-image"]}>
                 <picture className={styles["services__picture"]}>
@@ -115,7 +118,7 @@ export default function Services() {
                 </span>
               </div>
             </li>
-          </ul>
+          </ul> */}
 
           <div className={styles["services__actions"]}>
             <Link href="/services" className="btn btn--services">

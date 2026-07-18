@@ -1,0 +1,24 @@
+.services {
+  &__wrapper {
+    padding: 100px 0 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+    &-title {
+      font-family: "Poppins";
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 30px;
+
+      color: #004f6e;
+    }
+  }
+}
