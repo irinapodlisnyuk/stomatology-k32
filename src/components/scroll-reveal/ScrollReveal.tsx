@@ -14,7 +14,7 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
           if (elementRef.current) observer.unobserve(elementRef.current);
         }
       },
-      { threshold: 1.0 } // Срабатывает, как только край блока зашел на экран
+      { threshold: 0.2 } // Срабатывает, как только край блока зашел на экран
     );
 
     if (elementRef.current) observer.observe(elementRef.current);
