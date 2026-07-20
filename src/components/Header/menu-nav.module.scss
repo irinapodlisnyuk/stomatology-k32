@@ -14,15 +14,23 @@
     line-height: 20px;
     align-items: center;
     color: v.$black;
-    transition:  color v.$transition-500;
+    transition: color v.$transition-500;
     position: relative;
 
+      @include m.vp-1023 {
+        display: none;
+      }
+
+      @include m.vp-767 {
+        display: none;
+      }
+
+
     &:hover {
-         color: v.$pacific-blue;
+      color: v.$pacific-blue;
     }
 
-      &--active {
-
+    &--active {
       a {
         color: var(--color-primary, #0d9488) !important;
         font-weight: 600;

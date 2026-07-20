@@ -1,13 +1,15 @@
 "use client";
 import stylesNav from "./menu-nav.module.scss";
 import styles from "./Header.module.scss";
+import stylesBurger from "./Burger.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 interface MenuItem {
   key: number;
   path: string;
-  label: React.JSX.Element; // Тип для готовых компонентов <Link>
+  label: React.JSX.Element;
 }
 
 const items: MenuItem[] = [
@@ -20,8 +22,10 @@ const items: MenuItem[] = [
 export default function HeaderComponent() {
   const pathname = usePathname();
 
+    const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className={styles.header}>
+     <header className={`${styles.header} ${isOpen ? styles["header--open"] : ""}`}>
       <div className="container">
         <div className={styles["header__wrapper"]}>
           <div className={styles["header__inner"]}>
@@ -57,6 +61,18 @@ export default function HeaderComponent() {
             <Link href="/BookAppointment" className="btn">
               Записаться на прием
             </Link>
+          </div>
+          <div
+            className={styles["header__actions-burger"]}
+          >
+            <button
+          onClick={() => setIsOpen(!isOpen)}
+              className={`${styles["header__actions-btn"]} ${stylesBurger["burger"]} ${isOpen ? stylesBurger["burger--open"] : ""}`}
+              type="button"
+              aria-label="Открыть меню"
+            >
+              <span className={stylesBurger["burger__menu"]}></span>
+            </button>
           </div>
         </div>
       </div>
