@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./Services.module.scss";
-import { ServicesList } from "./list-service";
+import { ServicesList } from "./List-service";
 
 export default function Services() {
   return (

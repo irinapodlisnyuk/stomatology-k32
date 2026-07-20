@@ -1,6 +1,6 @@
 "use client";
 import stylesNav from "./menu-nav.module.scss";
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

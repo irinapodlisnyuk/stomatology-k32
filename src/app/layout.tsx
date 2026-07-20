@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/assets/styles/main.scss";
-import HeaderComponent from "@/components/Header/header";
+import HeaderComponent from "@/components/Header/Header";
 
 export const metadata: Metadata = {
   title:
