@@ -22,10 +22,12 @@ const items: MenuItem[] = [
 export default function HeaderComponent() {
   const pathname = usePathname();
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-     <header className={`${styles.header} ${isOpen ? styles["header--open"] : ""}`}>
+    <header
+      className={`${styles.header} ${isOpen ? styles["header--open"] : ""}`}
+    >
       <div className="container">
         <div className={styles["header__wrapper"]}>
           <div className={styles["header__inner"]}>
@@ -39,7 +41,9 @@ export default function HeaderComponent() {
               </picture>
             </Link>
 
-            <nav className={stylesNav["menu-nav"]}>
+            <nav
+              className={`${stylesNav["menu-nav"]} ${isOpen ? stylesNav["menu-nav--open"] : ""}`}
+            >
               <ul className={stylesNav["menu-nav__list"]}>
                 {items.map((item) => {
                   const isActive = pathname === item.path;
@@ -62,11 +66,9 @@ export default function HeaderComponent() {
               Записаться на прием
             </Link>
           </div>
-          <div
-            className={styles["header__actions-burger"]}
-          >
+          <div className={styles["header__actions-burger"]}>
             <button
-          onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(!isOpen)}
               className={`${styles["header__actions-btn"]} ${stylesBurger["burger"]} ${isOpen ? stylesBurger["burger--open"] : ""}`}
               type="button"
               aria-label="Открыть меню"

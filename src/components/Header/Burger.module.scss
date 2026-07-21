@@ -17,14 +17,14 @@
       background-color: transparent !important;
 
       &::after {
-        background-color: v.$blue-lagoon; 
+        background-color:  v.$white; 
         top: 0;
         transform: translate(-50%, 0) rotate(45deg);
         transition: background-color ease-in 0.3s, top ease-in 0.3s, transform ease-in 0.3s 0.3s;
       }
 
       &::before {
-        background-color: v.$blue-lagoon;
+        background-color:  v.$white;
         top: 0;
         transform: translate(-50%, 0) rotate(-45deg);
         transition: background-color ease-in 0.3s, top ease-in 0.3s, transform ease-in 0.3s 0.3s;
@@ -50,7 +50,7 @@
       position: absolute;
       top: -8px;
       transform: translate(-50%, 0);
-      width: 24px; 
+      width: 32px; 
     }
 
     &::before {
@@ -63,64 +63,4 @@
     }
   }
 }
-
-// .burger {
-//   align-items: center;
-//   display: flex;
-//   height: 40px;
-//   justify-content: center;
-//   width: 40px;
-//   cursor: pointer;
-
-//   .header--open & {
-//     &__menu {
-//       background-color: transparent;
-
-//       &::after {
-//         background-color: v.$white;
-//         top: 0;
-//         transform: translate(-50%, 0) rotate(45deg);
-//         transition: background-color ease-in 0.3s, top ease-in 0.3s, transform ease-in 0.3s 0.3s;
-//       }
-
-//       &::before {
-//         background-color: v.$white;
-//         top: 0;
-//         transform: translate(-50%, 0) rotate(-45deg);
-//         transition: background-color ease-in 0.3s, top ease-in 0.3s, transform ease-in 0.3s 0.3s;
-//       }
-//     }
-//   }
-
-//   &__menu {
-//     background-color: v.$blue-lagoon;
-//     border-radius: 10px;
-//     height: 2px;
-//     position: relative;
-//     width: 24px;
-//     transition: background-color 0s 0.3s;
-
-//     &::before,
-//     &::after {
-//       background-color: v.$blue-lagoon;
-//       border-radius: 10px;
-//       content: "";
-//       height: 2px;
-//       left: 50%;
-//       position: absolute;
-//       top: -8px;
-//       transform: translate(-50%, 0);
-//       width: 32px;
-//     }
-
-//     &::before {
-//       transition: background-color ease-in 0.3s, top ease-in 0.3s 0.3s, transform ease-in 0.3s;
-//     }
-
-//     &::after {
-//       transition: background-color ease-in 0.3s, top ease-in 0.3s 0.3s, transform ease-in 0.3s;
-//       top: 8px;
-//     }
-//   }
-// }
 

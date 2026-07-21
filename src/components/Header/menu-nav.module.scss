@@ -3,28 +3,71 @@
 
 .menu-nav {
   display: flex;
+  position: relative;
+  z-index: 5;
+
+  @include m.vp-1023 {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding: 50px 0;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1;
+
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      background-color 0.3s ease;
+
+    &--open {
+      background-color: rgba(13 137 148 / 46%);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+
+  @include m.vp-767 {
+    padding: 40px 0;
+  }
+
   &__list {
     display: flex;
     gap: 30px;
+
+    @include m.vp-1023 {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    align-items: center;
     color: v.$black;
     transition: color v.$transition-500;
-    position: relative;
 
-      @include m.vp-1023 {
-        display: none;
+    @include m.vp-1023 {
+      .header--open & {
+        color: v.$white;
+
+        a {
+          color: v.$white !important;
+        }
       }
-
-      @include m.vp-767 {
-        display: none;
-      }
-
+    }
 
     &:hover {
       color: v.$pacific-blue;
