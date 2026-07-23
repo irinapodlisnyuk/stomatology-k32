@@ -17,17 +17,32 @@
       background-color: transparent !important;
 
       &::after {
-        background-color:  v.$white; 
+        background-color: v.$white;
         top: 0;
         transform: translate(-50%, 0) rotate(45deg);
-        transition: background-color ease-in 0.3s, top ease-in 0.3s, transform ease-in 0.3s 0.3s;
+        transition:
+          background-color ease-in 0.3s,
+          top ease-in 0.3s,
+          transform ease-in 0.3s 0.3s;
+          
+        @include m.vp-767 {
+          width: 25px;
+        }
       }
 
       &::before {
-        background-color:  v.$white;
+        background-color: v.$white;
+
         top: 0;
         transform: translate(-50%, 0) rotate(-45deg);
-        transition: background-color ease-in 0.3s, top ease-in 0.3s, transform ease-in 0.3s 0.3s;
+        transition:
+          background-color ease-in 0.3s,
+          top ease-in 0.3s,
+          transform ease-in 0.3s 0.3s;
+
+        @include m.vp-767 {
+          width: 25px;
+        }
       }
     }
   }
@@ -50,17 +65,22 @@
       position: absolute;
       top: -8px;
       transform: translate(-50%, 0);
-      width: 32px; 
+      width: 32px;
     }
 
     &::before {
-      transition: background-color ease-in 0.3s, top ease-in 0.3s 0.3s, transform ease-in 0.3s;
+      transition:
+        background-color ease-in 0.3s,
+        top ease-in 0.3s 0.3s,
+        transform ease-in 0.3s;
     }
 
     &::after {
-      transition: background-color ease-in 0.3s, top ease-in 0.3s 0.3s, transform ease-in 0.3s;
+      transition:
+        background-color ease-in 0.3s,
+        top ease-in 0.3s 0.3s,
+        transform ease-in 0.3s;
       top: 8px;
     }
   }
 }
-
