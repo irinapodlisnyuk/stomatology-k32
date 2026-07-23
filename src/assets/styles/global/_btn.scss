@@ -18,10 +18,10 @@
     padding: 15px 25px;
   }
 
-  // @include vp-767 {
-  //   font-size: 18px;
-  //   padding: 15px;
-  // }
+  @include vp-767 {
+    font-size: 14px;
+    padding: 15px;
+  }
 
   &:hover {
     background-color: $blue-lagoon;
@@ -34,9 +34,9 @@
 .btn--appointment,
 .btn--about,
 .btn--services {
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 19px;
+  // font-weight: 700;
+  // font-size: 19px;
+  // line-height: 19px;
   display: flex;
   align-items: center;
   border-radius: 25px;

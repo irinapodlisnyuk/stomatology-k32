@@ -8,6 +8,7 @@
   -webkit-backdrop-filter: blur(1px);
   backdrop-filter: blur(1px);
   transform: translateZ(0);
+  z-index: 50;
 
   @include m.vp-1023 {
     border-bottom: 1px solid var(--color-border, v.$white);
@@ -26,7 +27,7 @@
 
     @include m.vp-1023 {
       gap: 10px;
-      padding: 10px;
+      padding: 10px 0;
     }
   }
 
@@ -80,7 +81,7 @@
 
     &-burger {
       display: none;
-      z-index: 10;
+      z-index: 110;
       @include m.vp-1023 {
         display: flex;
       }
@@ -89,6 +90,8 @@
   &--open {
     z-index: 100;
     position: fixed;
+    right: 0;
+    width: 100%;
     top: 0;
     left: 0;
     background: linear-gradient(to top, v.$blue-lagoon, rgba(13 137 148 / 46%));

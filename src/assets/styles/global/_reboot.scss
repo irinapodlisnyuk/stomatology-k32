@@ -24,7 +24,9 @@ html {
   box-sizing: border-box;
   height: 100%;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: $blue-lagoon rgba($bahama-blue, 0.15);
 }
 
 body {
@@ -37,6 +39,32 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Чуть тоньше стандартного для более аккуратного вида */
+  height: 8px; /* Для горизонтального скролла */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(
+    $bahama-blue,
+    0.08
+  ); /* Светлая подложка на основе вашего цвета */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $blue-lagoon; /* Основной цвет ползунка */
+  border-radius: 10px;
+  border: 1px solid transparent; /* Легкий внутренний отступ */
+  background-clip: padding-box;
+
+  &:hover {
+    background: $bahama-blue; /* Потемнение при наведении мыши */
+  }
 }
 
 .root-wrapper {
@@ -61,6 +89,7 @@ svg {
 a {
   text-decoration: none;
   color: inherit;
+  transition: opacity 0.2s ease;
 
   &:hover {
     opacity: 0.8;
