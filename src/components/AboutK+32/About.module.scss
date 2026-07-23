@@ -90,6 +90,10 @@
         transition:
           box-shadow 0.4s ease,
           transform 2.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+        @include m.vp-767 {
+          transform: translateX(0) scale(1.010) translateY(-5px);
+        }
       }
     }
   }

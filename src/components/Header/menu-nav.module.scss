@@ -21,16 +21,24 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
+    //transform: translateY(-100%);
     transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease,
-      background-color 0.3s ease;
+      transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 0.4s ease,
+      visibility 0.4s ease;
 
     &--open {
       background-color: v.$blue-lagoon;
       opacity: 1;
       visibility: visible;
       pointer-events: all;
+
+      .menu-nav__item {
+        animation: fadeLeftToRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+      
+      }
     }
   }
 
@@ -102,10 +110,21 @@
           color: var(--color-primary, v.$turquoise-blue) !important;
         }
 
-           &::after {
-            background-color: var(--color-primary,  v.$turquoise-blue);
-           }
+        &::after {
+          background-color: var(--color-primary, v.$turquoise-blue);
+        }
       }
     }
+  }
+}
+/* АНИМАЦИЯ: появление и движение слева направо */
+@keyframes fadeLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
