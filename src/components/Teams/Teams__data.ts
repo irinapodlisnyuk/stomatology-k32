@@ -8,6 +8,13 @@ export interface TeamsItem {
 
 export const TEAMS_DATA: TeamsItem[] = [
   {
+    id: "therapy2",
+    name: "Павел Андреевич",
+    title: "Врач стоматолог-терапевт",
+    imgName: "Podlisnyuk",
+    altText: "Врач стоматолог-терапевт Подлиснюк П.А",
+  },
+  {
     id: "surgery",
     name: "Богдан Юрьевич",
     title: "Врач стоматолог-хирург\nВрач стоматолог-ортопед",
@@ -20,13 +27,6 @@ export const TEAMS_DATA: TeamsItem[] = [
     title: "Врач стоматолог-терапевт",
     imgName: "Lazaridi",
     altText: "Врач стоматолог-терапевт Лазарида А.А",
-  },
-  {
-    id: "therapy2",
-    name: "Павел Андреевич",
-    title: "Врач стоматолог-терапевт",
-    imgName: "Podlisnyuk",
-    altText: "Врач стоматолог-терапевт Подлиснюк П.А",
   },
 
   // {
