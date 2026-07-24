@@ -2,7 +2,7 @@
 @use "../../assets/styles/global/mixins" as m;
 
 .services {
-  padding: 100px 0 150px;
+  padding: 100px 0 80px;
 
   @include m.vp-1023 {
     padding: 60px 0;

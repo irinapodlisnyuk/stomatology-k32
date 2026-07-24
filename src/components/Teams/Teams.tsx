@@ -10,14 +10,17 @@ export default function Teams() {
         <div className={styles.teams__wrapper}>
           <div className={styles["teams__header"]}>
             <h2 className={styles["teams__header-title"]}>
-              Познакомьтесь с нашей командой
+              Познакомьтесь с Нашей Командой
             </h2>
 
-            <p className={styles["teams__header-text"]}></p>
+            <p className={styles["teams__header-subtitle"]}>
+              Квалифицированные специалисты, заботящиеся о&nbsp;здоровье вашей
+              полости рта.
+            </p>
           </div>
 
-           <ul className={styles["teams__list"]}>
-            {teams.map(({ id, title, imgName, altText }, index) => (
+          <ul className={styles["teams__list"]}>
+            {teams.map(({ id, name, title, imgName, altText }, index) => (
               <li
                 key={id}
                 className={styles["teams__item"]}
@@ -36,10 +39,13 @@ export default function Teams() {
                     src={`/image/teams/${imgName}.jpg`}
                     alt={altText}
                     className={styles["teams__picture-img"]}
-                    loading="lazy" 
+                    loading="lazy"
                   />
                 </picture>
+                <div className={styles["teams__item-info"]}>
+                 <span className={styles["teams__item-name"]}>{name}</span>
                 <span className={styles["teams__item-text"]}>{title}</span>
+                </div>
               </li>
             ))}
           </ul>

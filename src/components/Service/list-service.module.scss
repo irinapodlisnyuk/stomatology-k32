@@ -25,7 +25,7 @@
   }
 
   &__item {
-   max-width: 265px;
+    width: 265px;
     height: 355px;
     position: relative;
     box-shadow: 0 2px 10px rgba(v.$black, 0.4);
@@ -39,12 +39,12 @@
     animation-delay: calc(0.8s + (var(--index) * 180ms));
 
     @include m.vp-1023 {
-      max-width: 100%;
+      width: 100%;
       min-height: 355px;
     }
 
     @include m.vp-767 {
-      max-width: 100%;
+      width: 100%;
       max-height: 250px;
       font-size: 14px;
       margin: 0;

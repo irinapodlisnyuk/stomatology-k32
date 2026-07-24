@@ -1,28 +1,39 @@
 export interface TeamsItem {
   id: string;
+  name: string;
   title: string;
   imgName: string;
   altText: string;
 }
 
- export const TEAMS_DATA: TeamsItem[] = [
-  {
-    id: "therapy",
-    title: "Врач стоматолог-терапевт",
-    imgName: "preventive-care",
-    altText: "Врач стоматолог-терапевт в клинике К+32",
-  },
-  {
-    id: "therapy",
-    title: "Врач стоматолог-терапевт",
-    imgName: "therapy",
-    altText: "Ортопедическая стоматология в клинике К+32",
-  },
+export const TEAMS_DATA: TeamsItem[] = [
   {
     id: "surgery",
-    title: "Врач стоматолог-хирург",
-    imgName: "surgery",
+    name: "Богдан Юрьевич",
+    title: "Врач стоматолог-хирург\nВрач стоматолог-ортопед",
+    imgName: "Bitukov",
     altText: "Врач стоматолог-хирург в клинике К+32",
   },
-  
+  {
+    id: "therapy1",
+    name: "Афина Александровна",
+    title: "Врач стоматолог-терапевт",
+    imgName: "Lazaridi",
+    altText: "Врач стоматолог-терапевт Лазарида А.А",
+  },
+  {
+    id: "therapy2",
+    name: "Павел Андреевич",
+    title: "Врач стоматолог-терапевт",
+    imgName: "Podlisnyuk",
+    altText: "Врач стоматолог-терапевт Подлиснюк П.А",
+  },
+
+  // {
+  // id: "orthodontics",
+  // name: "Элина Ивановна",
+  //   title: "Врач стоматолог-ортодонт",
+  //   imgName: "Kornienko",
+  //   altText: "Врач стоматолог-ортодонт Корниенко Э.И.",
+  // },
 ];
