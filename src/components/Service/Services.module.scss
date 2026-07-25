@@ -103,6 +103,15 @@
   }
 }
 
+.services__loader-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px; 
+  font-size: 16px;
+  color: #a0a0a0;
+}
+
 // КЛАСС ДЛЯ  АНИМАЦИИ ТЕКСТА И КНОПКИ
 .animate-fade-up {
   opacity: 0;

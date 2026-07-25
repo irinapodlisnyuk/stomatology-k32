@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styles from "./List-service.module.scss";
 import { SERVICES_DATA, ServiceItem } from "./Service_data";
 
@@ -13,12 +12,13 @@ const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
   return shuffled;
 };
 
-const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
-
 export const ServicesList = () => {
+
+ const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
+
   return (
     <ul className={styles["services__list"]}>
-      {shuffledServices.map(({ id, title, imgName, altText }, index) => (
+      {shuffledServices .map(({ id, title, imgName, altText }, index) => (
         <li
           key={id}
           className={styles["services__item"]}

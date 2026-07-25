@@ -1,7 +1,11 @@
 
 import styles from './LoaderPage.module.scss'
 
-export default function LoaderPage() {
+interface LoaderPageProps {
+  local?: boolean;
+}
+
+export default function LoaderPage({ local = false }: LoaderPageProps) {
   return (
     <div className={styles["loader-wrapper"]}>
       <div className={styles["loader-page"]}>
