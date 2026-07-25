@@ -85,6 +85,11 @@
       align-items: center;
       color: v.$black;
 
+      @include m.vp-1023 {
+          font-size: 22px;
+      line-height: 26px;
+      }
+
       @include m.vp-767 {
         font-size: 22px;
         line-height: 24px;

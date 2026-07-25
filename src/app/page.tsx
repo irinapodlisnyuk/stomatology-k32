@@ -4,6 +4,7 @@ import Hero from "@/components/Hero/Hero";
 import Services from "@/components/Service/Services";
 import Teams from "@/components/Teams/Teams";
 import Questions from "@/components/Questions/Questions";
+import Contact from "@/components/Contact/Contact";
 
 export default function HomePage() {
   return (
@@ -19,7 +20,9 @@ export default function HomePage() {
 
       <Teams />
 
-      <Questions/>
+      <Questions />
+
+      <Contact />
     </>
   );
 }

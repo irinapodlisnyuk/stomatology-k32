@@ -33,17 +33,20 @@
 
 .btn--appointment,
 .btn--about,
-.btn--services {
+.btn--services,
+.btn--contact {
   border-radius: 25px;
   color: $white;
 }
 
 .btn--about,
-.btn--services {
+.btn--services,
+.btn--contact {
   transition: transform $transition-800;
 }
 
 .btn--about:hover,
-.btn--services:hover {
+.btn--services:hover,
+.btn--contact:hover {
   transform: translateY(-10px);
 }
