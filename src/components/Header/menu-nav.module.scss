@@ -75,13 +75,6 @@
 
     @include m.vp-1023 {
       color: v.$white;
-      // .header--open & {
-      //   color: v.$white;
-
-      //   a {
-      //     color: v.$white !important;
-      //   }
-      // }
     }
 
     &:hover {

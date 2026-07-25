@@ -19,6 +19,8 @@ export default function Contact() {
               allowFullScreen={true}
               loading="lazy"
               title="Стоматологическая клиника К+32 в Кабардинке на карте"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
 

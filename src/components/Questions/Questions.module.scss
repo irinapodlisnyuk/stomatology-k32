@@ -18,7 +18,8 @@
       font-weight: 600;
       font-size: 48px;
       line-height: 58px;
-      color: v.$pacific-blue;
+      // color: v.$pacific-blue;
+      color: v.$bahama-blue;
 
       @include m.vp-1023 {
         text-align: center;
@@ -63,7 +64,7 @@
 
     &-header {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       background: none;
       border: none;
       width: 100%;
@@ -73,8 +74,18 @@
       padding: 24px;
       min-height: 110px;
 
+      &:hover {
+        .questions__item-title {
+          color: v.$shuttle-grey;
+        }
+        .questions__item-icon {
+          color: v.$bondi-blue;
+        }
+      }
+
       @include m.vp-767 {
         padding: 10px;
+        min-height: auto;
       }
     }
 
@@ -84,23 +95,25 @@
       line-height: 30px;
       align-items: center;
       color: v.$black;
+      transition: color v.$transition-500;
 
       @include m.vp-1023 {
-          font-size: 22px;
-      line-height: 26px;
+        font-size: 22px;
+        line-height: 26px;
       }
 
       @include m.vp-767 {
-        font-size: 22px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 22px;
       }
     }
 
     &-icon {
-      margin-top: 6px;
       color: v.$bahama-blue;
+      flex-shrink: 0;
       width: 20px;
       height: 16px;
+      transition: transform v.$transition-out-5, color v.$transition-500;
     }
 
     &-body {
@@ -108,6 +121,7 @@
       grid-template-rows: 0fr;
       transition: grid-template-rows v.$transition-out-5;
       overflow: hidden;
+      will-change: grid-template-rows;
     }
 
     &--open {
@@ -132,11 +146,9 @@
       min-height: 0;
       padding: 0;
       opacity: 0;
-      transition: padding v.$transition-out-5;
-
-      @include m.vp-767 {
-       // padding: 16px 16px 20px 16px;
-      }
+      transition:
+        padding v.$transition-out-5,
+        opacity v.$transition-out-5;
     }
 
     &-text {
@@ -144,7 +156,7 @@
       font-style: normal;
       font-weight: 400;
       font-size: 20px;
-      line-height: 24px;
+      line-height: 26px;
       align-items: center;
       color: v.$night-rider;
 
