@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styles from "./Questions.module.scss";
 import { QUESTIONS_DATA } from "./questions_data";
+import Icon from "@/models/Icon";
 
 export default function Questions() {
 
@@ -15,7 +16,7 @@ export default function Questions() {
     <section className={styles.questions}>
       <div className="container">
         <div className={styles.questions__wrapper}>
-          <h2 className={styles["questions__title"]}>
+          <h2 className={styles["questions__wrapper-title"]}>
             Часто задаваемые вопросы
           </h2>
 
@@ -35,7 +36,7 @@ export default function Questions() {
                     aria-expanded={isOpen}
                   >
                     <span className={styles["questions__item-title"]}>{title}</span>
-                    <span className={styles["questions__item-icon"]}></span>
+                    <Icon className={styles["questions__item-icon"]} name={"open-icon"}></Icon>
                   </button>
                   
                   <div className={styles["questions__item-body"]}>
