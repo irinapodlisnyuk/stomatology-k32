@@ -3,30 +3,31 @@
 
 .services {
   &__list {
-    display: flex;
-    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 285px));
+    max-width: 1200px;
     margin: 0 auto;
     gap: 20px;
-    flex-wrap: wrap;
     justify-content: center;
 
-    @include m.vp-1023 {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+     @include m.vp-1023 {
+      max-width: 100%;
+      padding: 0 20px;
+      grid-template-columns: repeat(2, 1fr); 
       margin: 0;
     }
 
     @include m.vp-767 {
-      display: flex;
-      justify-content: center;
-      max-width: 100%;
+      grid-template-columns: 1fr;
+      padding: 0 15px;
+      gap: 15px;
     }
   }
 
-  &__item {
-    width: 265px;
-    height: 355px;
+    &__item {
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 3 / 4;
     position: relative;
     box-shadow: 0 2px 10px rgba(v.$black, 0.4);
     overflow: hidden;
@@ -35,19 +36,16 @@
     opacity: 0;
     transform: translateY(60px) scale(0.92);
     animation: elegantFadeUp 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    // Поочередная задержка вылета карточек
     animation-delay: calc(0.8s + (var(--index) * 180ms));
 
     @include m.vp-1023 {
-      width: 100%;
-      min-height: 355px;
+      aspect-ratio: 4 / 3; 
+      min-height: auto;
     }
 
     @include m.vp-767 {
-      width: 100%;
-      max-height: 250px;
-      font-size: 14px;
-      margin: 0;
+      aspect-ratio: 16 / 9; 
+      max-height: none;
     }
 
     &::after {
@@ -78,13 +76,13 @@
       }
 
       .services__picture-img {
-        transform: scale(1.1);
+        transform: scale(1.05); 
       }
     }
 
     &-text {
       position: absolute;
-      bottom: 40px;
+      bottom: 30px; 
       left: 50%;
       transform: translateX(-50%);
       font-size: 22px;
@@ -95,6 +93,16 @@
       text-align: center;
       z-index: 3;
       width: 85%;
+
+      @include m.vp-1023 {
+        font-size: 20px;
+        bottom: 25px;
+      }
+
+      @include m.vp-767 {
+        font-size: 16px;
+        bottom: 20px;
+      }
     }
   }
 
@@ -112,7 +120,6 @@
   }
 }
 
-// Ключевые кадры для вылета карточек
 @keyframes elegantFadeUp {
   to {
     opacity: 1;

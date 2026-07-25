@@ -20,34 +20,37 @@ export default function Teams() {
           </div>
 
           <ul className={styles["teams__list"]}>
-            {teams.map(({ id, name, title, imgName, altText }, index) => (
-              <li
-                key={id}
-                className={styles["teams__item"]}
-                style={{ "--index": index } as React.CSSProperties}
-              >
-                <picture className={styles["teams__picture"]}>
-                  <source
-                    srcSet={`/image/teams/${imgName}.webp 1x, /image/teams/${imgName}@2x.webp 2x`}
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet={`/image/teams/${imgName}.jpg 1x, /image/teams/${imgName}@2x.jpg 2x`}
-                    type="image/jpeg"
-                  />
-                  <img
-                    src={`/image/teams/${imgName}.jpg`}
-                    alt={altText}
-                    className={styles["teams__picture-img"]}
-                    loading="lazy"
-                  />
-                </picture>
-                <div className={styles["teams__item-info"]}>
-                 <span className={styles["teams__item-name"]}>{name}</span>
-                <span className={styles["teams__item-text"]}>{title}</span>
-                </div>
-              </li>
-            ))}
+            {teams.map(
+              ({ id, name, surname, title, imgName, altText }, index) => (
+                <li
+                  key={id}
+                  className={styles["teams__item"]}
+                  style={{ "--index": index } as React.CSSProperties}
+                >
+                  <picture className={styles["teams__picture"]}>
+                    <source
+                      srcSet={`/image/teams/${imgName}.webp 1x, /image/teams/${imgName}@2x.webp 2x`}
+                      type="image/webp"
+                    />
+                    <source
+                      srcSet={`/image/teams/${imgName}.jpg 1x, /image/teams/${imgName}@2x.jpg 2x`}
+                      type="image/jpeg"
+                    />
+                    <img
+                      src={`/image/teams/${imgName}.jpg`}
+                      alt={altText}
+                      className={styles["teams__picture-img"]}
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div className={styles["teams__item-info"]}>
+                    <span className={styles["teams__item-name"]}>{name}</span>
+                    <span className={styles["teams__item-surname"]}>{surname}</span>
+                    <span className={styles["teams__item-text"]}>{title}</span>
+                  </div>
+                </li>
+              ),
+            )}
           </ul>
         </div>
       </div>

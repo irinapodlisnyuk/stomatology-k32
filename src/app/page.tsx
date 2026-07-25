@@ -3,6 +3,7 @@ import About from "@/components/AboutK+32/About";
 import Hero from "@/components/Hero/Hero";
 import Services from "@/components/Service/Services";
 import Teams from "@/components/Teams/Teams";
+import Questions from "@/components/Questions/Questions";
 
 export default function HomePage() {
   return (
@@ -15,10 +16,10 @@ export default function HomePage() {
       <ScrollReveal>
         <Services />
       </ScrollReveal>
-      
-      <ScrollReveal>
-        <Teams />
-      </ScrollReveal>
+
+      <Teams />
+
+      <Questions/>
     </>
   );
 }
