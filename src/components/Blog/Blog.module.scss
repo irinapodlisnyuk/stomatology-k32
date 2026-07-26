@@ -1,2 +1,215 @@
 @use "../../assets/styles/global/variables" as v;
 @use "../../assets/styles/global/mixins" as m;
+
+.blog {
+  padding: 80px 0;
+  overflow: hidden;
+
+  @include m.vp-1023 {
+    padding: 60px 0;
+  }
+
+  @include m.vp-767 {
+    padding: 40px 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    @include m.vp-767 {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 30px;
+      display: flex;
+      align-items: center;
+      color: v.$blue-lagoon;
+      text-shadow: 0 2px 6px rgba(v.$black, 0.3);
+
+      @include m.vp-767 {
+        font-size: 20px;
+        line-height: 22px;
+      }
+    }
+
+    &-subtitle {
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 58px;
+      color: v.$pacific-blue;
+
+      @include m.vp-1023 {
+        font-size: 36px;
+        line-height: 1.2;
+      }
+
+      @include m.vp-767 {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__nav {
+    gap: 750px;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    margin-bottom: 15px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    z-index: 5;
+  }
+
+  &__btn {
+    width: 44px;
+    height: 44px;
+    background: v.$blue-lagoon;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(0deg);
+    transition:
+      background-color v.$transition-500,
+      transform v.$transition-500;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: v.$bahama-blue;
+      transform: rotate(360deg);
+    }
+    &-icon {
+      color: v.$white;
+      width: 26px;
+      height: 30px;
+
+      &--next {
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  &__slider-container {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    position: absolute;
+    width: 33.333%;
+    background-color: v.$white;
+    border: 1px solid v.$whisper;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(v.$black, 0.04);
+    cursor: pointer;
+
+    // Плавный переход для движения по рельсам
+    transition:
+      transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity v.$transition-500,
+      box-shadow v.$transition-500;
+    will-change: transform, opacity;
+    z-index: 1;
+
+    &--center {
+      box-shadow: 0 20px 40px rgba(v.$black, 0.12);
+      z-index: 10;
+    }
+
+    @include m.vp-1023 {
+      //width: calc(50% - 15px);
+      width: 50%;
+    }
+
+    @media (max-width: 767px) {
+      //width: 75%;
+      width: 100%;
+    }
+
+    // &-link {
+    //   &--disabled {
+    //     pointer-events: none;
+    //     cursor: pointer;
+    //   }
+    // }
+  }
+  &__picture {
+    display: block;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+
+    &-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+
+      @include m.vp-767 {
+        height: 180px;
+      }
+    }
+  }
+
+  &__item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    background-color: v.$bahama-blue;
+  }
+
+  &__item-name {
+    display: block;
+    font-size: 14px;
+    color: v.$white;
+    font-weight: 500;
+  }
+
+  &__item-text {
+    width: 90%;
+    font-size: 18px;
+    line-height: 1.4;
+    color: v.$white;
+    margin: 0;
+    text-align: center;
+
+    @include m.vp-767 {
+      font-size: 15px;
+    }
+  }
+}
