@@ -40,9 +40,11 @@
     max-width: 1200px;
     margin: 0 auto;
     align-items: flex-start;
+    align-items: stretch;
 
     @include m.vp-1023 {
       flex-direction: column;
+      height: 100%;
       gap: 0;
     }
   }
@@ -64,7 +66,7 @@
 
     &-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       background: none;
       border: none;
       width: 100%;
@@ -83,6 +85,10 @@
         }
       }
 
+      @include m.vp-1023 {
+        min-height: auto;
+      }
+
       @include m.vp-767 {
         padding: 10px;
         min-height: auto;
@@ -92,8 +98,8 @@
     &-title {
       font-weight: 500;
       font-size: 25px;
-      line-height: 30px;
-      align-items: center;
+      line-height: 28px;
+      // align-items: center;
       color: v.$black;
       transition: color v.$transition-500;
 
@@ -111,9 +117,16 @@
     &-icon {
       color: v.$bahama-blue;
       flex-shrink: 0;
-      width: 20px;
+      width: 11px;
       height: 16px;
-      transition: transform v.$transition-out-5, color v.$transition-500;
+      transition:
+        transform v.$transition-out-5,
+        color v.$transition-500;
+
+      @include m.vp-767 {
+        width: 11px;
+        height: 10px;
+      }
     }
 
     &-body {

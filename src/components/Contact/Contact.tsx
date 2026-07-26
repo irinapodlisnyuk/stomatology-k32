@@ -28,7 +28,7 @@ export default function Contact() {
             <div className={styles.contact__header}>
               <h2 className={styles["contact__header-title"]}>Наши Контакты</h2>
               <p className={styles["contact__header-subtitle"]}>
-                Запланируйте свой визит сегодня!
+                Запланируйте свой визит сегодня
               </p>
             </div>
             <ul className={styles.contact__list}>

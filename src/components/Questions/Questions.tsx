@@ -67,7 +67,7 @@ export default function Questions() {
   );
 
   const shuffledQuestions = useMemo(() => {
-    return shuffleArray(QUESTIONS_DATA).slice(0, 6);
+    return shuffleArray(QUESTIONS_DATA).slice(0, 4);
   }, []);
 
   const leftColumnQuestions = useMemo(() => {
