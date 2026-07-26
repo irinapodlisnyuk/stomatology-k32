@@ -20,7 +20,7 @@
     margin: 0 auto;
     min-height: 370px;
 
-    @include m.vp-767 {
+    @include m.vp-1023 {
       display: flex;
       flex-direction: column-reverse;
       gap: 15px;
@@ -30,6 +30,7 @@
 
   &__container {
     border-radius: 5px;
+    min-height: 100%;
     cursor: pointer;
 
     opacity: 1;
@@ -48,6 +49,10 @@
     &-map {
       border-radius: 5px;
     }
+
+      @include m.vp-1023 {
+        min-height: 250px;
+      }
   }
 
   &__info {
@@ -82,11 +87,8 @@
     flex-direction: column;
     gap: 20px;
     @include m.vp-1023 {
-      gap: 15px;
-    }
-
-    @include m.vp-767 {
       align-items: center;
+      gap: 15px;
     }
 
     &-title {
@@ -160,7 +162,7 @@
   &__actions {
     display: flex;
 
-    @include m.vp-767 {
+    @include m.vp-1023 {
       justify-content: center;
     }
   }
