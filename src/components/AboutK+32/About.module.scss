@@ -92,7 +92,7 @@
           transform 2.4s cubic-bezier(0.25, 1, 0.5, 1);
 
         @include m.vp-767 {
-          transform: translateX(0) scale(1.010) translateY(-5px);
+          transform: translateX(0) scale(1.01) translateY(-5px);
         }
       }
     }
@@ -100,8 +100,8 @@
 
   &__title {
     font-weight: 500;
-    font-size: 28px;
-    line-height: 38px;
+    font-size: 26px;
+    line-height: 30px;
     display: flex;
     align-items: center;
     color: v.$blue-lagoon;
@@ -130,7 +130,7 @@
 
   &__subtitle {
     font-weight: 600;
-    font-size: 48px;
+    font-size: 38px;
     line-height: 58px;
     color: v.$pacific-blue;
 
@@ -146,7 +146,7 @@
   }
 
   &__text {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
     letter-spacing: 0.04em;
     line-height: 1.5;

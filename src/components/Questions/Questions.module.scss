@@ -16,9 +16,8 @@
 
     &-title {
       font-weight: 600;
-      font-size: 48px;
+      font-size: 36px;
       line-height: 58px;
-      // color: v.$pacific-blue;
       color: v.$bahama-blue;
 
       @include m.vp-1023 {
@@ -97,9 +96,8 @@
 
     &-title {
       font-weight: 500;
-      font-size: 25px;
+      font-size: 24px;
       line-height: 28px;
-      // align-items: center;
       color: v.$black;
       transition: color v.$transition-500;
 
@@ -168,7 +166,7 @@
       margin-bottom: 12px;
       font-style: normal;
       font-weight: 400;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 26px;
       align-items: center;
       color: v.$night-rider;

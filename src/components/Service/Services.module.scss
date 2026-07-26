@@ -46,8 +46,8 @@
 
     &-title {
       font-weight: 500;
-      font-size: 28px;
-      line-height: 38px;
+      font-size: 26px;
+      line-height: 30px;
       color: v.$blue-lagoon;
 
       @include m.vp-767 {
@@ -59,7 +59,7 @@
 
     &-subtitle {
       font-weight: 600;
-      font-size: 48px;
+      font-size: 38px;
       line-height: 58px;
       color: v.$pacific-blue;
       text-align: center;
@@ -77,7 +77,7 @@
 
     &-text {
       font-family: "Open Sans";
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 400;
       letter-spacing: 0.04em;
       line-height: 1.5;

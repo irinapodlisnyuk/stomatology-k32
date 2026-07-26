@@ -2,7 +2,6 @@ import Link from "next/link";
 import styles from "./hero.module.scss";
 
 export default function Hero() {
-
   return (
     <section className={styles.hero}>
       <div className="container">
@@ -12,20 +11,23 @@ export default function Hero() {
             type="image/webp"
           />
           <source
-            srcSet="/image/hero/hero-bg.jpg 1x, /image/hero-bg@2x.jpg 2x"
+            srcSet="/image/hero/hero-bg.jpg 1x, /image/hero/hero-bg@2x.jpg 2x"
             type="image/jpg"
           />
           <img
             src="/image/hero/hero-bg.jpg"
             alt="Современная стоматология Клиника +32"
             className={styles.hero__bg}
+            fetchPriority="high"
+            loading="eager"
           />
         </picture>
 
         <div className={styles.hero__wrapper}>
           <h2 className={styles.hero__title}>Добро пожаловать в&nbsp;К+32</h2>
           <p className={styles["hero__subtitle"]}>
-            Заботимся о&nbsp;здоровье и&nbsp;красоте ваших зубов на&nbsp;каждом этапе.
+            Заботимся о&nbsp;здоровье и&nbsp;красоте ваших зубов на&nbsp;каждом
+            этапе.
           </p>
           <p className={styles.hero__text}>
             Мы&nbsp;знаем, что поход к&nbsp;стоматологу часто вызывает волнение.

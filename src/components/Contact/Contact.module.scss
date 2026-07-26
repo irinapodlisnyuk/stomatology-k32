@@ -57,18 +57,17 @@
     flex-direction: column;
     gap: 20px;
     @include m.vp-1023 {
-     
       gap: 15px;
     }
 
-     @include m.vp-767 {
-       align-items: center;
-     }
+    @include m.vp-767 {
+      align-items: center;
+    }
 
     &-title {
       font-weight: 500;
-      font-size: 24px;
-      line-height: 28px;
+      font-size: 26px;
+      line-height: 30px;
       display: flex;
       color: v.$blue-lagoon;
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -87,7 +86,6 @@
       color: v.$bondi-blue;
 
       @include m.vp-1023 {
-        
         font-size: 26px;
         line-height: 1.2;
       }
@@ -123,7 +121,7 @@
       line-height: 24px;
       transition: color v.$transition-500;
 
-        @include m.vp-767 {
+      @include m.vp-767 {
         font-size: 14px;
         line-height: 16px;
       }
@@ -137,7 +135,6 @@
   &__actions {
     display: flex;
 
-    
     @include m.vp-767 {
       justify-content: center;
     }
