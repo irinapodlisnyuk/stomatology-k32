@@ -10,9 +10,9 @@ export default function About() {
         <div className={styles.about__wrapper}>
           <div className={styles["about__wrapper-info"]}>
             <h2 className={styles.about__title}>О&nbsp;стоматологии К+32</h2>
-            <p className={styles["about__subtitle"]}>
+            <h3 className={styles["about__subtitle"]}>
               Мы&nbsp;Заботимся о&nbsp;Здоровье Ваших Зубов
-            </p>
+            </h3>
             <p className={styles.about__text}>
               Наша стоматологическая клиника объединяет передовые технологии,
               многолетний опыт врачей и&nbsp;искреннюю заботу о&nbsp;каждом

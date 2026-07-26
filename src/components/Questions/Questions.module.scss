@@ -52,6 +52,29 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+
+    transition:
+      transform 0.8s ease,
+      opacity 0.8s ease;
+    transition-behavior: allow-discrete;
+    opacity: 1;
+    transform: translateX(0);
+
+    // Стили для левой колонки перед вставкой в DOM
+    &:first-child {
+      @starting-style {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+    }
+
+    // Стили для правой колонки перед вставкой в DOM
+    &:last-child {
+      @starting-style {
+        opacity: 0;
+        transform: translateX(100px); // Вылетает справа
+      }
+    }
     @include m.vp-1023 {
       width: 100%;
     }
@@ -141,6 +164,9 @@
       }
       .questions__item-icon {
         transform: rotate(90deg);
+      }
+      .questions__item-title {
+        color: v.$blue-lagoon;
       }
       .questions__item-content {
         border-top: 1px solid v.$whisper;

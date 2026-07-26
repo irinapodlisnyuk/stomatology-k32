@@ -24,12 +24,12 @@ export default function Services() {
             >
               Cтоматологические услуги
             </h2>
-            <p
+            <h3
               className={`${styles["services__header-subtitle"]} ${styles["animate-fade-up"]}`}
               style={{ animationDelay: "0.35s" }} // Через 150мс
             >
               Забота о&nbsp;каждом аспекте вашей улыбки
-            </p>
+            </h3>
             <p
               className={`${styles["services__header-text"]} ${styles["animate-fade-up"]}`}
               style={{ animationDelay: "0.5s" }} // Через 150мс после подзаголовка

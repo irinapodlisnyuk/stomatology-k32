@@ -25,10 +25,10 @@ export default function Hero() {
 
         <div className={styles.hero__wrapper}>
           <h2 className={styles.hero__title}>Добро пожаловать в&nbsp;К+32</h2>
-          <p className={styles["hero__subtitle"]}>
+          <h3 className={styles["hero__subtitle"]}>
             Заботимся о&nbsp;здоровье и&nbsp;красоте ваших зубов на&nbsp;каждом
             этапе.
-          </p>
+          </h3>
           <p className={styles.hero__text}>
             Мы&nbsp;знаем, что поход к&nbsp;стоматологу часто вызывает волнение.
             Поэтому в К+32 делаем упор на&nbsp;комфорт. Цифровая диагностика,

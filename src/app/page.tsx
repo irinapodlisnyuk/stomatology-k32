@@ -6,6 +6,7 @@ import Teams from "@/components/Teams/Teams";
 import Questions from "@/components/Questions/Questions";
 import Contact from "@/components/Contact/Contact";
 import { Metadata } from "next";
+import Blog from "@/components/Blog/Blog";
 
 export const metadata: Metadata = {
   title:
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
-   other: {
+  other: {
     rel: "preload",
     as: "image",
     href: "/image/hero/hero-bg@2x.webp",
@@ -52,9 +53,15 @@ export default function HomePage() {
 
       <Teams />
 
-      <Questions />
+      <ScrollReveal>
+        <Questions />
+      </ScrollReveal>
 
-      <Contact />
+      <ScrollReveal>
+        <Contact />
+      </ScrollReveal>
+
+      <Blog />
     </>
   );
 }
