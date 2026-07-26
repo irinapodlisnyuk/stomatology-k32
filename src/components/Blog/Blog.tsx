@@ -24,9 +24,9 @@ export default function Blog() {
         <div className={styles.blog__wrapper}>
           <div className={styles["blog__header"]}>
             <h2 className={styles["blog__header-title"]}>Блог</h2>
-            <h3 className={styles["blog__header-subtitle"]}>
+            <p className={styles["blog__header-subtitle"]}>
               Советы и Рекомендации
-            </h3>
+            </p>
           </div>
 
           <div className={styles["blog__slider-container"]}>
@@ -47,13 +47,6 @@ export default function Blog() {
 
                   // Множитель сдвига для абсолютного позиционирования карточек (в % от их ширины)
                   const translateX = diff * 85;
-
-                  // const handleItemClick = (e: React.MouseEvent) => {
-                  //   if (!isCenter) {
-                  //     e.preventDefault();
-                  //     setActiveIndex(index);
-                  //   }
-                  // };
 
                   return (
                     <li

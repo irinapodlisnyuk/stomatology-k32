@@ -60,8 +60,9 @@ export default function HomePage() {
       <ScrollReveal>
         <Contact />
       </ScrollReveal>
-
-      <Blog />
+      <ScrollReveal>
+        <Blog />
+      </ScrollReveal>
     </>
   );
 }
