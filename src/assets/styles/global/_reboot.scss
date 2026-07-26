@@ -1,9 +1,8 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
-@import url("https://googleapis.com");
 
-/* 2. Подключаем локальный  */
+/* 1. Подключаем локальный  */
 
 *,
 *::after,
@@ -13,11 +12,11 @@
   box-sizing: border-box;
 }
 
-:root {
-  --font-text: "Manrope", sans-serif;
-  --font-heading: "Montserrat", sans-serif;
-  --font-poppins: "Poppins", sans-serif;
-}
+// :root {
+//   --font-text: "Manrope", sans-serif;
+//   --font-heading: "Montserrat", sans-serif;
+//   --font-poppins: "Poppins", sans-serif;
+// }
 
 html {
   width: 100%;
@@ -57,13 +56,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $blue-lagoon; /* Основной цвет ползунка */
+  background: $blue-lagoon;
   border-radius: 10px;
-  border: 1px solid transparent; /* Легкий внутренний отступ */
+  border: 1px solid transparent;
   background-clip: padding-box;
 
   &:hover {
-    background: $bahama-blue; /* Потемнение при наведении мыши */
+    background: $bahama-blue; 
   }
 }
 

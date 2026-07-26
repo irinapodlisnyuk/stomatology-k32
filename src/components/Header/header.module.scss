@@ -68,6 +68,8 @@
     width: 71px;
     height: 50px;
     display: block;
+       object-fit: contain;
+    object-position: center;
 
     @include m.vp-767 {
       width: 60px;
