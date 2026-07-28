@@ -5,20 +5,8 @@ import stylesBurger from "./Burger.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { navigationItems, MenuItem } from "@/components/Data/navigation";
 
-interface MenuItem {
-  key: number;
-  path: string;
-  label: React.JSX.Element;
-}
-
-const items: MenuItem[] = [
-  { key: 0, path: "/", label: <Link href="/">Главная</Link> },
-  { key: 1, path: "/aboutUs", label: <Link href="/aboutUs">О Клинике</Link> },
-  { key: 2, path: "/services", label: <Link href="/services">Услуги</Link> },
-  { key: 4, path: "/team", label: <Link href="/team">Наша команда</Link> },
-  { key: 5, path: "/contact", label: <Link href="/contact">Контакты</Link> },
-];
 export default function HeaderComponent() {
   const pathname = usePathname();
 
@@ -44,8 +32,8 @@ export default function HeaderComponent() {
             <nav
               className={`${stylesNav["menu-nav"]} ${isOpen ? stylesNav["menu-nav--open"] : ""}`}
             >
-              <ul className={stylesNav["menu-nav__list"]}>
-                {items.map((item) => {
+             <ul className={stylesNav["menu-nav__list"]}>
+                {navigationItems.map((item: MenuItem) => {
                   const isActive = pathname === item.path;
 
                   return (
@@ -53,7 +41,10 @@ export default function HeaderComponent() {
                       key={item.key}
                       className={`${stylesNav["menu-nav__item"]} ${isActive ? stylesNav["menu-nav__item--active"] : ""}`}
                     >
-                      {item.label}
+                      {/* 3. Теперь оборачиваем текстовый label в компонент Link */}
+                      <Link href={item.path}>
+                        {item.label}
+                      </Link>
                     </li>
                   );
                 })}
