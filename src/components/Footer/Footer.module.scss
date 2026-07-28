@@ -1,0 +1,28 @@
+@use "../../assets/styles/global/variables" as v;
+@use "../../assets/styles/global/mixins" as m;
+
+
+.footer {
+    
+   background-position: center;
+    background-repeat: no-repeat;
+    
+    background-size: cover; 
+     min-height: 300px; 
+
+    // 1. По умолчанию для самых маленьких экранов (мобильные)
+    background-image: url('/image/footer/cabinet-mobile.jpg');
+
+    @media (min-width: 768px) {
+        background-image: url('/image/footer/cabinet-tablet.jpg');
+    }
+
+    @media (min-width: 1200px) {
+        background-image: url('/image/footer/cabinet.jpg');
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        background-image: url('/image/footer/cabinet@2x.jpg');
+    }
+
+}
