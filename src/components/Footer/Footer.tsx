@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container">
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
-            <Link href="/" className={styles["footer__logo"]}>
+            <Link className={styles["footer__logo"]} href="/" scroll={true}>
               <picture>
                 <img
                   src="/image/logo-icon.png"
@@ -18,7 +18,11 @@ export default function Footer() {
                 />
               </picture>
             </Link>
-            <p className={styles["footer__right-text"]}></p>
+            <p className={styles["footer__right-text"]}>
+              &laquo;Ваша улыбка&nbsp;&mdash; наш главный приоритет.
+              Профессиональная забота о&nbsp;зубах: от&nbsp;профилактики
+              до&nbsp;сложного протезирования.&raquo;
+            </p>
           </div>
 
           <div className={styles["footer__center"]}>
@@ -26,6 +30,10 @@ export default function Footer() {
             <ul className={styles["footer__menu-list"]}>
               {navigationItems.map((item: MenuItem) => (
                 <li key={item.key} className={styles["footer__menu-item"]}>
+                    <Icon
+                  className={styles["footer__menu-icon"]}
+                  name={"arrow"}
+                />
                   <Link href={item.path}>{item.label}</Link>
                 </li>
               ))}
@@ -43,7 +51,7 @@ export default function Footer() {
                   name={"location"}
                 />
                 <span className={styles["footer__left-text"]}>
-                  г.Геленджик, с.Кабардинка, улица Мира, дом 15.
+                  г.Геленджик, с.Кабардинка, улица Мира, дом&nbsp;15.
                 </span>
               </li>
               <li className={styles["footer__left-item"]}>
@@ -75,7 +83,6 @@ export default function Footer() {
                   </span>
                 </a>
               </li>
-
               <li className={styles["footer__left-item"]}>
                 <a
                   href="https://instagram.com"
@@ -87,13 +94,41 @@ export default function Footer() {
                     className={styles["footer__left-icon"]}
                     name={"instagram"}
                   />
-                     <span className={styles["footer__left-text"]}>
-                    Instagram
-                  </span>
+                  <span className={styles["footer__left-text"]}>Instagram</span>
                 </a>
               </li>
             </ul>
           </div>
+
+          <div className={styles["footer__police"]}>
+            <h3 className={styles["footer__police-title"]}>
+              Правовая информация
+            </h3>
+            <ul className={styles["footer__police-list"]}>
+              <li className={styles["footer__police-item"]}>
+                <Link
+                  href="/police"
+                  className={styles["footer__police-item-link"]}
+                >
+                  Политика конфиденциальности
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className={styles.footer__inner}>
+        <div className={styles["footer__inner-info"]}>
+          <p className={styles["footer__inner-text"]}>
+            Copyright © “Клиника К+32” 2026 Все права защищены
+          </p>
+          <span className={styles["footer__inner-pocile"]}>
+            {" "}
+            * На&nbsp;сайте есть ссылки на&nbsp;социальные сети: Инстаграм,
+            принадлежащие Meta Platforms Inc., деятельность которой запрещена
+            на&nbsp;территории&nbsp;РФ в части реализации данных социальных
+            сетей на&nbsp;основании осуществления ею экстремистской деятельности
+          </span>
         </div>
       </div>
     </section>
