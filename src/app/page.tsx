@@ -50,13 +50,10 @@ export default function HomePage() {
       <ScrollReveal>
         <Services />
       </ScrollReveal>
-
       <Teams />
-
       <ScrollReveal>
         <Questions />
       </ScrollReveal>
-
       <ScrollReveal>
         <Contact />
       </ScrollReveal>
