@@ -9,16 +9,54 @@
   padding: 60px 0 0;
   color: v.$white;
 
-  // Адаптивный фон (ваша нарезка)
-  background-image: url("/image/footer/cabinet-mobile.jpg");
+ // 1. МОБИЛЬНЫЕ 
+  background-image: url("/image/footer/cabinet-mobile.jpg"); 
+  background-image: image-set(
+    url("/image/footer/cabinet-mobile.webp") type("image/webp"),
+    url("/image/footer/cabinet-mobile.jpg") type("image/jpeg")
+  );
+
+  // Ретин для мобильных
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: image-set(
+      url("/image/footer/cabinet-mobile@2x.webp") type("image/webp"),
+      url("/image/footer/cabinet-mobile@2x.jpg") type("image/jpeg")
+    );
+  }
+
+  // 2. ПЛАНШЕТЫ (от 768px)
   @media (min-width: 768px) {
     background-image: url("/image/footer/cabinet-tablet.jpg");
+    background-image: image-set(
+      url("/image/footer/cabinet-tablet.webp") type("image/webp"),
+      url("/image/footer/cabinet-tablet.jpg") type("image/jpeg")
+    );
+
+    // Ретина для планшетов
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: image-set(
+        url("/image/footer/cabinet-tablet@2x.webp") type("image/webp"),
+        url("/image/footer/cabinet-tablet@2x.jpg") type("image/jpeg")
+      );
+    }
   }
+
+
+  // 3. ДЕСКТОП (от 1200px)
   @media (min-width: 1200px) {
-    background-image: url("/image/footer/cabinet.jpg");
-  }
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url("/image/footer/cabinet@2x.jpg");
+    background-image: url("/image/footer/cabinet.jpg"); // Фоллбек
+    background-image: image-set(
+      url("/image/footer/cabinet.webp") type("image/webp"),
+      url("/image/footer/cabinet.jpg") type("image/jpeg")
+    );
+
+    // Ретина для десктопа
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: image-set(
+        url("/image/footer/cabinet@2x.webp") type("image/webp"),
+        url("/image/footer/cabinet@2x.jpg") type("image/jpeg")
+      );
+    }
   }
 
   @include m.vp-1023 {
@@ -29,7 +67,6 @@
     padding: 40px 0 0;
     background-position: right 9% center;
   }
-
   &::before {
     content: "";
     position: absolute;
