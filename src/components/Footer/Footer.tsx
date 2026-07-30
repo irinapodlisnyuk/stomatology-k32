@@ -120,7 +120,7 @@ export default function Footer() {
       <div className={styles.footer__inner}>
         <div className={styles["footer__inner-info"]}>
           <p className={styles["footer__inner-text"]}>
-            Copyright © “Клиника К+32” 2026 Все права защищены
+            Copyright © “Клиника+32” 2026 Все права защищены
           </p>
           <span className={styles["footer__inner-pocile"]}>
             {" "}
