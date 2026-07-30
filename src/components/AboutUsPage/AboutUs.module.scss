@@ -1,32 +1,32 @@
-@use "../../assets/styles/global/variables" as v;
-@use "../../assets/styles/global/mixins" as m;
+// @use "../../assets/styles/global/variables" as v;
+// @use "../../assets/styles/global/mixins" as m;
 
-.aboutPage {
-  padding: 40px 0 80px 0; 
-  min-height: 60vh;
+// .aboutPage {
+//   padding: 40px 0 80px 0; 
+//   min-height: 60vh;
 
-  &__breadcrumbs {
-    font-size: 14px;
-    color: rgba(v.$black, 0.5);
-    margin-bottom: 24px;
-  }
+//   &__breadcrumbs {
+//     font-size: 14px;
+//     color: rgba(v.$black, 0.5);
+//     margin-bottom: 24px;
+//   }
 
-  &__title {
-    font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 700;
-    color: v.$black;
-    margin-bottom: 32px;
+//   &__title {
+//     font-family: var(--font-heading);
+//     font-size: 42px;
+//     font-weight: 700;
+//     color: v.$black;
+//     margin-bottom: 32px;
 
-    @include m.vp-767 {
-      font-size: 28px;
-    }
-  }
+//     @include m.vp-767 {
+//       font-size: 28px;
+//     }
+//   }
 
-  &__text {
-    font-size: 16px;
-    line-height: 1.6;
-    max-width: 800px;
-    color: rgba(v.$black, 0.8);
-  }
-}
+//   &__text {
+//     font-size: 16px;
+//     line-height: 1.6;
+//     max-width: 800px;
+//     color: rgba(v.$black, 0.8);
+//   }
+// }

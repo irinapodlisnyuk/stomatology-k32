@@ -3,63 +3,259 @@
 
 .licenses {
   padding: 80px 0;
-  background-color: #f9f9f9;
+  background-color: v.$whiteSmoke;
+  overflow: hidden;
 
-  __title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    text-align: center;
-    color: #1a1a1a;
+  @include m.vp-1023 {
+    padding: 50px 0;
   }
 
-  __subtitle {
-    font-size: 16px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  __grid {
+  &__wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr minmax(320px, 650px);
+    gap: 40px;
+    align-items: start;
+    width: 90%;
+    margin: 0 auto;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include m.vp-1023 {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  &__wrapper-left {
+    display: flex;
+    padding: 80px 0 0;
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
 
-    @media (max-width: 991px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 575px) {
-      grid-template-columns: 1fr;
+    @include m.vp-1023 {
+      padding: 0;
+      gap: 15px;
     }
   }
 
-  __card {
+  &__title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: v.$night-rider;
+    margin: 0;
+
+    @include m.vp-767 {
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: v.$smoky;
+    font-weight: 500;
+    margin: 0;
+
+    @include m.vp-1023 {
+      text-align: center;
+    }
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: v.$smoky;
+    margin: 0;
+
+    @include m.vp-1023 {
+      text-align: center;
+    }
+  }
+
+  &__dots {
     display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 8px;
+    margin-top: 10px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    background-color: v.$whisper;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+    padding: 0;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      background-color: v.$pacific-blue;
+    }
+
+    &--active {
+      background-color: v.$pacific-blue;
+      transform: scale(1.1);
     }
   }
 
-  __imgWrapper {
+  /* ДЕСКТОПНЫЙ */
+  &__desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    justify-self: center;
+    width: 100%;
+
+    @include m.vp-1023 {
+      width: 85%;
+    }
+
+      @include m.vp-767 {
+        display: none;
+      }
+  }
+
+  &__bookScene {
     position: relative;
-    padding-top: 140%; // Пропорции вертикального документа А4
-    background: #eee;
+    width: 100%;
     overflow: hidden;
-    border-bottom: 1px solid #eee;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(v.$black, 0.05);
+    background: v.$white;
+    transition:  box-shadow v.$transition-500;
+
+   &:hover {
+     box-shadow: 0 4px 25px rgba(v.$black, 0.15);
+   }
+
+    @include m.vp-1023 {
+      width: 80%;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    background: v.$white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid v.$whiteSmoke;
+    cursor: pointer;
+    position: relative;
+
+    animation: scannerAppearLeft 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    @include m.vp-1023 {
+      width: 100%;
+    }
+
+    // Вертикальная светящаяся линия сканера
+    &::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      bottom: 45px;
+      width: 2px;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        v.$bahama-blue,
+        transparent
+      );
+      box-shadow:
+        0 0 12px v.$bondi-blue,
+        0 0 4px v.$bondi-blue;
+      z-index: 10;
+      pointer-events: none;
+
+      animation: scannerLineLeft 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: v.$rock-blue;
+    margin-top: 4px;
+    user-select: none;
+
+    @media (max-width: 767px) {
+      display: none; 
+    }
+  }
+
+  &__current {
+    color: v.$bahama-blue; 
+    font-size: 14px; 
+  }
+
+  &__divider {
+    color: v.$rock-blue;
+    font-weight: 400;
+  }
+
+  &__total {
+    font-weight: 500;
+  }
+
+  /* МОБИЛЬНАЯ СЕТКА (Нативный горизонтальный скролл) */
+  &__mobile {
+    display: none;
+
+      @include m.vp-767 {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      width: 100%;
+      padding: 10px 4px 20px 4px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin-right: -15px;
+
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+      &::-webkit-scrollbar-track {
+        background: v.$whiteSmoke;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #00a896;
+        border-radius: 10px;
+      }
+    }
+
+    &-card {
+      flex: 0 0 325px;
+      scroll-snap-align: start;
+      background: v.$white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(v.$black, 0.05);
+      border: 1px solid v.$whiteSmoke;
+    }
+  }
+
+  /* ОБЩИЕ СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ */
+  &__imgWrapper {
+    position: relative;
+    padding-top: 140%;
+    background: v.$whiteSmoke;
+    overflow: hidden;
 
     img {
       position: absolute;
@@ -68,15 +264,39 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      padding: 12px;
+      background: v.$white;
     }
   }
+}
 
-  __cardTitle {
-    padding: 15px;
-    font-size: 14px;
-    color: #333;
-    line-height: 1.4;
-    text-align: center;
-    font-weight: 500;
+@keyframes scannerAppearLeft {
+  0% {
+    // В начале документ полностью скрыт обрезкой слева
+    clip-path: inset(0 0 0 100%);
+    opacity: 0.8;
+  }
+  100% {
+    // В конце документ полностью раскрывается
+    clip-path: inset(0 0 0 0%);
+    opacity: 1;
+  }
+}
+
+@keyframes scannerLineLeft {
+  0% {
+    // Старт лазерной линии от правого края паспарту
+    right: 1px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    right: calc(100% - 15px);
+    opacity: 0;
   }
 }
