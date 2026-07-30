@@ -1,0 +1,209 @@
+@use "../../../assets/styles/global/variables" as v;
+@use "../../../assets/styles/global/mixins" as m;
+
+.questions {
+  padding: 80px 0;
+
+  @include m.vp-767 {
+    padding: 60px 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+
+    &-title {
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 58px;
+      color: v.$bahama-blue;
+
+      @include m.vp-1023 {
+        text-align: center;
+        font-size: 36px;
+        line-height: 1.2;
+      }
+
+      @include m.vp-767 {
+        font-size: 28px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+    align-items: stretch;
+
+    @include m.vp-1023 {
+      flex-direction: column;
+      height: 100%;
+      gap: 0;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    transition:
+      transform 0.8s ease,
+      opacity 0.8s ease;
+    transition-behavior: allow-discrete;
+    opacity: 1;
+    transform: translateX(0);
+
+    // Стили для левой колонки перед вставкой в DOM
+    &:first-child {
+      @starting-style {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+    }
+
+    // Стили для правой колонки перед вставкой в DOM
+    &:last-child {
+      @starting-style {
+        opacity: 0;
+        transform: translateX(100px); // Вылетает справа
+      }
+    }
+    @include m.vp-1023 {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid v.$whisper;
+    width: 100%;
+
+    &-header {
+      display: flex;
+      align-items: flex-start;
+      background: none;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+      gap: 20px;
+      padding: 24px;
+      min-height: 110px;
+
+      &:hover {
+        .questions__item-title {
+          color: v.$shuttle-grey;
+        }
+        .questions__item-icon {
+          color: v.$bondi-blue;
+        }
+      }
+
+      @include m.vp-1023 {
+        min-height: auto;
+      }
+
+      @include m.vp-767 {
+        padding: 10px;
+        min-height: auto;
+      }
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      color: v.$black;
+      transition: color v.$transition-500;
+
+      @include m.vp-1023 {
+        font-size: 22px;
+        line-height: 26px;
+      }
+
+      @include m.vp-767 {
+        font-size: 18px;
+        line-height: 22px;
+      }
+    }
+
+    &-icon {
+      color: v.$bahama-blue;
+      flex-shrink: 0;
+      width: 11px;
+      height: 16px;
+      transition:
+        transform v.$transition-out-5,
+        color v.$transition-500;
+
+      @include m.vp-767 {
+        width: 11px;
+        height: 10px;
+      }
+    }
+
+    &-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows v.$transition-out-5;
+      overflow: hidden;
+      will-change: grid-template-rows;
+    }
+
+    &--open {
+      .questions__item-body {
+        grid-template-rows: 1fr;
+      }
+      .questions__item-icon {
+        transform: rotate(90deg);
+      }
+      .questions__item-title {
+        color: v.$blue-lagoon;
+      }
+      .questions__item-content {
+        border-top: 1px solid v.$whisper;
+        padding: 20px 35px 24px 35px;
+        opacity: 1;
+
+        @include m.vp-767 {
+          padding: 16px 16px 20px 16px;
+        }
+      }
+    }
+
+    &-content {
+      min-height: 0;
+      padding: 0;
+      opacity: 0;
+      transition:
+        padding v.$transition-out-5,
+        opacity v.$transition-out-5;
+    }
+
+    &-text {
+      margin-bottom: 12px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 26px;
+      align-items: center;
+      color: v.$night-rider;
+
+      @include m.vp-767 {
+        font-size: 14px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
