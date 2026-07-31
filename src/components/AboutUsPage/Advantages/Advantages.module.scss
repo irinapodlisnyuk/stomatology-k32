@@ -1,2 +1,11 @@
 @use "../../../assets/styles/global/variables" as v;
 @use "../../../assets/styles/global/mixins" as m;
+
+.advantages {
+    padding: 80px 0;
+
+    &__wrapper {
+        display: flex;
+        gap: 25px;
+    }
+}
