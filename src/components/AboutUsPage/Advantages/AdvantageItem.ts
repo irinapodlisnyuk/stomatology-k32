@@ -1,33 +1,37 @@
 export interface AdvantageItem {
   id: number;
-  value: string;
   icon: string;
+  number?: string;
   text: string;
+  hasBorder?: boolean;
 }
 
 export const advantagesList: AdvantageItem[] = [
-  { 
-    id: 1, 
-    value: "6 лет", 
-    text: "Многолетний искренний опыт служения пациентам." ,
-    icon: "years"
+  {
+    id: 1,
+    text: "Многолетний искренний опыт служения пациентам.",
+    icon: "years",
+    number: "6+",
+    hasBorder: false,
   },
-  { 
-    id: 2, 
-    value: "2000+", 
-    text: "Счастливых пациентов получили здоровые и красивые улыбки"  ,
-    icon: "patients"
+  {
+    id: 2,
+    text: "Счастливых пациентов получили здоровые и красивые улыбки",
+    icon: "patients",
+    number:" 2000+",
+    hasBorder: true,
   },
-  { 
-    id: 3, 
-    value: "98.9%", 
-    text: "Приживаемости имплантов благодаря цифровым протоколам"  ,
-    icon: "implants"
+  {
+    id: 3,
+    text: "приживаемости имплантов благодаря цифровым протоколам",
+    icon: "implants",
+    number: "98.9%",
+    hasBorder: true,
   },
-  { 
-    id: 4, 
-    value: "24/7", 
-    text: "Непрерывный многоступенчатый контроль стерильности оборудования"  ,
-    icon: "time"
+  {
+    id: 4,
+    text: "Непрерывный многоступенчатый контроль стерильности инструментов и оборудования",
+    icon: "time",
+    hasBorder: false,
   },
 ];

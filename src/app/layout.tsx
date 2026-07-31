@@ -2,6 +2,7 @@ import { Poppins, Manrope, Montserrat } from "next/font/google";
 import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/HomePage/Header/Header";
 import Footer from "@/components/HomePage/Footer/Footer";
+import ScrollToTop from "@/ScrollToTop/ScrollToTop";
 
 
 const poppins = Poppins({
@@ -42,6 +43,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
+       < ScrollToTop />
       </body>
     </html>
   );
