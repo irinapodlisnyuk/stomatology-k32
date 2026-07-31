@@ -107,10 +107,10 @@
     margin-top: 10px;
     display: none;
 
-    @media (max-width: 768px) {
-      display: flex;
-      margin: -30px 0 0;
-    }
+    //  @include m.vp-767{
+    //   display: flex;
+    //   margin: -30px 0 0;
+    // }
   }
 
   &__dot {
@@ -273,17 +273,6 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
 
-      // &::-webkit-scrollbar {
-      //   height: 4px;
-      // }
-      // &::-webkit-scrollbar-track {
-      //   background: v.$whiteSmoke;
-      //   border-radius: 10px;
-      // }
-      // &::-webkit-scrollbar-thumb {
-      //   background: #00a896;
-      //   border-radius: 10px;
-      // }
     }
 
     @starting-style {

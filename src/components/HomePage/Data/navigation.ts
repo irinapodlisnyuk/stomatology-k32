@@ -6,7 +6,7 @@ export interface MenuItem {
 
 export const navigationItems: MenuItem[] = [
   { key: 0, path: "/", label: "Главная" },
-  { key: 1, path: "/aboutUs", label: "О Клинике" },
+  { key: 1, path: "/aboutUs", label: "О нас" },
   { key: 2, path: "/services", label: "Услуги" },
   { key: 4, path: "/team", label: "Наша команда" },
   { key: 5, path: "/contact", label: "Контакты" },

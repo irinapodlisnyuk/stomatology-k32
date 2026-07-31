@@ -93,6 +93,18 @@
     width: 60%;
     margin: 0 auto;
     gap: 20px 40px;
+
+    @include m.vp-1023 {
+      width: 100%;
+      gap: 20px;
+      margin: 0;
+    }
+
+    @include m.vp-767 {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
   }
 
   &__card {
@@ -106,8 +118,8 @@
     opacity: 1;
     transform: translate(0, 0);
     transition:
-      transform 2.0s cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 2.5s ease;
+      transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 1.8s ease;
 
     &:hover {
       .advantages__card-icon {
@@ -116,9 +128,12 @@
       }
     }
 
-    @media (min-width: 768px) {
+    @include m.vp-767 {
       // 1. Левая верхняя карточка — вылетает СЛЕВА
       &:nth-child(1) {
+        border: 1px solid v.$whisper;
+        border-radius: 25px;
+        box-shadow: 0 4px 45px rgba(v.$black, 0.4);
         @starting-style {
           opacity: 0;
           transform: translateX(-70px);
@@ -133,7 +148,7 @@
       }
 
       &:nth-child(3) {
-        transition-delay: 0.3s;
+        transition-delay: 0.4s;
         @starting-style {
           opacity: 0;
           transform: translateY(60px);
@@ -141,7 +156,10 @@
       }
 
       &:nth-child(4) {
-        transition-delay: 0.3s;
+        border: 1px solid v.$whisper;
+        border-radius: 25px;
+        box-shadow: 0 4px 45px rgba(v.$black, 0.4);
+        transition-delay: 0.4s;
         @starting-style {
           opacity: 0;
           transform: translateY(60px);
@@ -173,6 +191,11 @@
       font-size: 26px;
       line-height: 30px;
       color: v.$pacific-blue;
+
+      @include m.vp-1023 {
+        font-size: 22px;
+        line-height: 24px;
+      }
     }
 
     &-text {
@@ -181,6 +204,11 @@
       font-size: 18px;
       line-height: 22px;
       color: v.$dim-gray1;
+
+      @include m.vp-1023 {
+        font-size: 16px;
+        line-height: 18px;
+      }
     }
   }
 }

@@ -23,7 +23,7 @@ export const advantagesList: AdvantageItem[] = [
   },
   {
     id: 3,
-    text: "приживаемости имплантов благодаря цифровым протоколам",
+    text: "Приживаемости имплантов благодаря цифровым протоколам",
     icon: "implants",
     number: "98.9%",
     hasBorder: true,

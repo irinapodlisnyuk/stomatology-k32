@@ -9,7 +9,6 @@ export default function Advantages() {
     <section className={styles.advantages}>
       <div className="container">
         <div className={styles.advantages__wrapper}>
-          {/* <div className={styles["advantages__wrapper-left"]}> */}
           <div className={styles["advantages__wrapper-header"]}>
             <h2 className={styles.advantages__title}>Почему выбирают нас?</h2>
             <p className={styles.advantages__subtitle}>
