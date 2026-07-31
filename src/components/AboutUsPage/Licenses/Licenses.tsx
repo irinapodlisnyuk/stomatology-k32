@@ -28,10 +28,10 @@ export default function Licenses() {
     nextSlide();
   };
 
-//   const handleDotClick = (index: number): void => {
-//     setIsAutoPlaying(false); // Останавливаем таймер
-//     setCurrentIndex(index);
-//   };
+  const handleDotClick = (index: number): void => {
+    setIsAutoPlaying(false); // Останавливаем таймер
+    setCurrentIndex(index);
+  };
 
   const path = "/image/license";
   const activeItem = licenseList[currentIndex];
@@ -140,6 +140,21 @@ export default function Licenses() {
               </div>
             ))}
           </div>
+
+              <div className={styles.licenses__dots}>
+              {licenseList.map((_, index) => (
+                <button
+                  key={index}
+                  className={`${styles.licenses__dot} ${
+                    index === currentIndex
+                      ? styles["licenses__dot--active"]
+                      : ""
+                  }`}
+                  onClick={() => handleDotClick(index)}
+                  aria-label={`Перейти к странице ${index + 1}`}
+                />
+              ))}
+            </div>
         </div>
       </div>
     </section>
