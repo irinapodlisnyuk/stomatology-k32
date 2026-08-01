@@ -62,22 +62,47 @@ export default function Photogallery() {
                         }
                       }}
                     >
-                      <picture className={styles["gallery__picture"]}>
-                        <source
-                          srcSet={`/image/gallery/${imgName}.webp 1x, /image/gallery/${imgName}@2x.webp 2x`}
-                          type="image/webp"
-                        />
-                        <source
-                          srcSet={`/image/gallery/${imgName}.jpg 1x, /image/gallery/${imgName}@2x.jpg 2x`}
-                          type="image/jpeg"
-                        />
-                        <img
-                          src={`/image/gallery/${imgName}.jpg`}
-                          alt={altText}
-                          className={styles["gallery__picture-img"]}
-                          loading="lazy"
-                        />
-                      </picture>
+                     <picture className={styles["gallery__picture"]}>
+                    <source
+                      media="(max-width: 767px)"
+                      srcSet={`/image/gallery/${imgName}-mob.webp 1x, /image/gallery/${imgName}-mob@2x.webp 2x`}
+                      type="image/webp"
+                    />
+                    <source
+                      media="(max-width: 767px)"
+                      srcSet={`/image/gallery/${imgName}-mob.jpg 1x, /image/gallery/${imgName}-mob@2x.jpg 2x`}
+                      type="image/jpeg"
+                    />
+
+                    <source
+                      media="(max-width: 1023px)"
+                      srcSet={`/image/gallery/${imgName}-tab.webp 1x, /image/gallery/${imgName}-tab@2x.webp 2x`}
+                      type="image/webp"
+                    />
+                    <source
+                      media="(max-width: 1023px)"
+                      srcSet={`/image/gallery/${imgName}-tab.jpg 1x, /image/gallery/${imgName}-tab@2x.jpg 2x`}
+                      type="image/jpeg"
+                    />
+
+                    <source
+                      srcSet={`/image/gallery/${imgName}.webp 1x, /image/gallery/${imgName}@2x.webp 2x`}
+                      type="image/webp"
+                    />
+                    <source
+                      srcSet={`/image/gallery/${imgName}.jpg 1x, /image/gallery/${imgName}@2x.jpg 2x`}
+                      type="image/jpeg"
+                    />
+
+                    <img
+                      src={`/image/gallery/${imgName}.jpg`}
+                      alt={altText}
+                      className={styles["gallery__picture-img"]}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+
                     </Link>
                   </li>
                 );
