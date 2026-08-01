@@ -4,14 +4,14 @@
 .advantages {
   padding: 80px 0;
   background-color: v.$white;
-  overflow: hidden;
+  overflow: hidden; // Защита от бокового скролла при разлете карточек
 
   @include m.vp-1023 {
-    padding: 60px 0 60px 0;
+    padding: 60px 0;
   }
 
   @include m.vp-767 {
-    padding: 40px 0 40px 0;
+    padding: 40px 0;
   }
 
   &__wrapper {
@@ -128,22 +128,18 @@
       }
     }
 
-    @include m.vp-767 {
-      // 1. Левая верхняя карточка — вылетает СЛЕВА
+    @media (min-width: 768px) {
       &:nth-child(1) {
-        border: 1px solid v.$whisper;
-        border-radius: 25px;
-        box-shadow: 0 4px 45px rgba(v.$black, 0.4);
         @starting-style {
           opacity: 0;
-          transform: translateX(-70px);
+          transform: translateX(-100px);
         }
       }
 
       &:nth-child(2) {
         @starting-style {
           opacity: 0;
-          transform: translateX(70px);
+          transform: translateX(100px);
         }
       }
 
@@ -151,25 +147,42 @@
         transition-delay: 0.4s;
         @starting-style {
           opacity: 0;
-          transform: translateY(60px);
+          transform: translateY(80px);
         }
       }
 
       &:nth-child(4) {
-        border: 1px solid v.$whisper;
-        border-radius: 25px;
-        box-shadow: 0 4px 45px rgba(v.$black, 0.4);
         transition-delay: 0.4s;
         @starting-style {
           opacity: 0;
-          transform: translateY(60px);
+          transform: translateY(80px);
         }
       }
     }
+
     @include m.vp-767 {
+      &:nth-child(1) {
+        border: 1px solid v.$whisper;
+        border-radius: 25px;
+        box-shadow: 0 4px 45px rgba(v.$black, 0.4);
+        transition-delay: 0s;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(4) {
+        border: 1px solid v.$whisper;
+        border-radius: 25px;
+        box-shadow: 0 4px 45px rgba(v.$black, 0.4);
+        transition-delay: 0.6s;
+      }
+
       @starting-style {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(40px); // На телефонах все плавно идут снизу вверх
       }
     }
 
@@ -199,7 +212,6 @@
     }
 
     &-text {
-      color: v.$night-rider;
       text-align: center;
       font-size: 18px;
       line-height: 22px;

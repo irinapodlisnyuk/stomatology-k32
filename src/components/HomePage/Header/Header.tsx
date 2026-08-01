@@ -5,7 +5,10 @@ import stylesBurger from "./Burger.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { navigationItems, MenuItem } from "@/components/HomePage/Data/navigation";
+import {
+  navigationItems,
+  MenuItem,
+} from "@/components/HomePage/Data/navigation";
 
 export default function HeaderComponent() {
   const pathname = usePathname();
@@ -32,7 +35,7 @@ export default function HeaderComponent() {
             <nav
               className={`${stylesNav["menu-nav"]} ${isOpen ? stylesNav["menu-nav--open"] : ""}`}
             >
-             <ul className={stylesNav["menu-nav__list"]}>
+              <ul className={stylesNav["menu-nav__list"]}>
                 {navigationItems.map((item: MenuItem) => {
                   const isActive = pathname === item.path;
 
@@ -41,8 +44,7 @@ export default function HeaderComponent() {
                       key={item.key}
                       className={`${stylesNav["menu-nav__item"]} ${isActive ? stylesNav["menu-nav__item--active"] : ""}`}
                     >
-                      {/* 3. Теперь оборачиваем текстовый label в компонент Link */}
-                      <Link href={item.path}>
+                      <Link href={item.path} onClick={() => setIsOpen(false)}>
                         {item.label}
                       </Link>
                     </li>
@@ -53,7 +55,7 @@ export default function HeaderComponent() {
           </div>
 
           <div className={styles["header__actions"]}>
-            <Link href="/BookAppointment" className="btn">
+            <Link className="btn" href="/BookAppointment"  onClick={() => setIsOpen(false)}>
               Записаться на прием
             </Link>
           </div>
