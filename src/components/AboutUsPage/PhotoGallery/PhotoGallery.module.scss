@@ -84,6 +84,7 @@
     justify-content: center;
 
     @include m.vp-1023 {
+      max-width: 920px;
       height: 380px;
     }
 
@@ -157,8 +158,8 @@
     }
 
     @include m.vp-1023 {
-      width: 380px;
-      margin-left: -190px;
+      width: 320px;
+      margin-left: -150px;
       margin-top: -142px;
     }
 
