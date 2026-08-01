@@ -2,12 +2,12 @@
 @use "../../../assets/styles/global/mixins" as m;
 
 .call-back {
-  padding: 80px;
+  padding: 80px 0;
   @include m.vp-1023 {
-    padding: 50px;
+    padding: 50px 0;
   }
   @include m.vp-767 {
-    padding: 40px;
+    padding: 40px 0;
   }
 
   &__wrapper {
@@ -17,12 +17,26 @@
     grid-template-columns: repeat(2, 1fr);
     margin: 0 auto;
     justify-content: space-between;
+
+    @include m.vp-1023 {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+     @include m.vp-767 {
+        margin: 0;
+        width: 100%;
+      }
   }
 
   &__header {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include m.vp-1023 {
+      align-items: center;
+    }
   }
 
   &__title {
@@ -33,49 +47,80 @@
     color: v.$blue-lagoon;
     text-shadow: 0 2px 6px rgba(v.$black, 0.3);
 
-    @include m.vp-767 {
+    @include m.vp-1023 {
       font-size: 20px;
       line-height: 22px;
       margin-right: 20px;
+    }
+
+    @include m.vp-767 {
+      text-align: center;
+      font-size: 16px;
     }
   }
 
   &__subtitle {
     font-weight: 700;
+    width: 100%;
     max-width: 450px;
     font-size: 38px;
     line-height: 40px;
     color: v.$bondi-blue;
 
     @include m.vp-1023 {
+      max-width: 100%;
+      text-align: center;
       font-size: 26px;
       line-height: 1.2;
     }
 
     @include m.vp-767 {
       text-align: center;
-      font-size: 24px;
+      font-size: 20px;
+      max-width: 100%;
     }
   }
 
   &__text {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     color: v.$smoky;
     transition: color v.$transition-500;
     margin: 0 0 30px;
 
-    @include m.vp-767 {
+    @include m.vp-1023 {
       font-size: 14px;
       line-height: 16px;
+    }
+
+    @include m.vp-767 {
+      margin: 0 0 10px;
+      text-align: center;
     }
   }
 
   &__contact {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
+
+    @media (max-width: 1200px) {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    @include m.vp-1023 {
+      flex-direction: row;
+      gap: 15px;
+    }
+
+    @include m.vp-767 {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
     &-link {
       display: flex;
@@ -102,6 +147,11 @@
       color: v.$white;
       fill: v.$bondi-blue;
       transition: color v.$transition-500;
+
+      @include m.vp-1023 {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     &-text {
@@ -110,17 +160,148 @@
       line-height: 26px;
       color: v.$black;
       transition: color v.$transition-500;
+
+      @include m.vp-1023 {
+        font-size: 18px;
+      }
+
+      @include m.vp-767 {
+        text-align: center;
+      }
     }
   }
 
   &__inner {
-    padding: 30px 0px 30px 30px;
+    padding: 30px;
     background-image: linear-gradient(180deg, #00a8cc 0%, #004f6e 100%);
     transition: background v.$transition-500;
     box-shadow: 0 2px 10px rgba(v.$black, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: v.$white;
+
+    @include m.vp-1023 {
+      padding: 20px;
+    }
 
     &:hover {
       background-image: linear-gradient(180deg, #004f6e 0%, #00a8cc 100%);
+    }
+
+    &-title {
+      font-size: 22px;
+
+      @include m.vp-767 {
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 15px;
+
+    @include m.vp-767 {
+      justify-content: space-evenly;
+      gap: 5px;
+    }
+
+    &-icon {
+      width: 35px;
+      height: 35px;
+    }
+
+    &-text {
+      font-size: 24px;
+
+      @include m.vp-1023 {
+        font-style: 20px;
+      }
+
+      @include m.vp-767 {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 20px;
+
+    @include m.vp-1023 {
+      gap: 15px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 28px;
+
+    @include m.vp-1023 {
+      padding-left: 20px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border: 2px solid v.$white;
+      border-radius: 50%;
+      background: radial-gradient(v.$white 30%, transparent 35%);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &-text {
+      font-size: 22px;
+
+      @include m.vp-1023 {
+        font-size: 18px;
+      }
+
+      @include m.vp-1023 {
+        font-size: 16px;
+      }
+    }
+
+    &-icon {
+      width: 40px;
+      height: 40px;
+      transition: transform v.$transition-500;
+
+      @include m.vp-1023 {
+        width: 25px;
+        height: 25px;
+      }
+
+      &:hover {
+        color: v.$night-rider;
+      }
+    }
+  }
+
+  &__bottom-link {
+    &:hover {
+      .call-back__bottom-icon {
+        transform: translateY(-5px);
+      }
     }
   }
 }

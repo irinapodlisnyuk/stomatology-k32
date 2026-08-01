@@ -24,7 +24,10 @@ export default function CallBack() {
                   href="mailto:clinic.k32@gmail.com"
                   className={styles["call-back__contact-link"]}
                 >
-                  <Icon className={styles["call-back__contact-icon"]} name={"email"} />
+                  <Icon
+                    className={styles["call-back__contact-icon"]}
+                    name={"email"}
+                  />
                   <span className={styles["call-back__contact-text"]}>
                     clinic.k32@gmail.com
                   </span>
@@ -36,7 +39,10 @@ export default function CallBack() {
                   href="tel:+78619913215"
                   className={styles["call-back__contact-link"]}
                 >
-                  <Icon className={styles["call-back__contact-icon"]} name={"phone"} />
+                  <Icon
+                    className={styles["call-back__contact-icon"]}
+                    name={"phone"}
+                  />
                   <span className={styles["call-back__contact-text"]}>
                     +7 (861) 991-32-15
                   </span>
@@ -54,24 +60,40 @@ export default function CallBack() {
             </div>
             <ul className={styles["call-back__list"]}>
               <li className={styles["call-back__item"]}>
-                <span className={styles["call-back__item text"]}>
+                <span className={styles["call-back__item-text"]}>
                   С&nbsp;понедельника по&nbsp;пятницу: с&nbsp;9:00
                   до&nbsp;19:00.
                 </span>
               </li>
 
               <li className={styles["call-back__item"]}>
-                <span className={styles["call-back__item text"]}>
-                 Суббота: Закрыто
+                <span className={styles["call-back__item-text"]}>
+                  Суббота: Закрыто
                 </span>
               </li>
 
-                 <li className={styles["call-back__item"]}>
-                <span className={styles["call-back__item text"]}>
-                 Воскресенье: Закрыто
+              <li className={styles["call-back__item"]}>
+                <span className={styles["call-back__item-text"]}>
+                  Воскресенье: Закрыто
                 </span>
               </li>
             </ul>
+            <div className={styles["call-back__bottom"]}>
+              <span className={styles["call-back__bottom-text"]}>
+                Подписывайтесь на нас
+              </span>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles["call-back__bottom-link"]}
+              >
+                <Icon
+                  className={styles["call-back__bottom-icon"]}
+                  name={"instagram"}
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
