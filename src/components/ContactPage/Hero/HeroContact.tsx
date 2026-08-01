@@ -51,10 +51,10 @@ export default function HeroContact() {
 
         <div className={styles.hero__wrapper}>
           <h2 className={styles.hero__title}>
-            О стоматологической клинике&nbsp;К+32
+           Связаться с нами
           </h2>
           <p className={styles["hero__subtitle"]}>
-            Ваш партнер в&nbsp;области здоровья зубов
+            Давайте общаться легко и непринужденно
           </p>
         </div>
       </div>
