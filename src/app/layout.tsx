@@ -35,6 +35,7 @@ export default function RootLayout({
     <html
       lang="ru"
       className={`${poppins.variable} ${manrope.variable} ${montserrat.variable}`}
+      data-scroll-behavior="smooth"
     >
       <body>
         
