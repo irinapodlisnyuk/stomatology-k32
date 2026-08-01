@@ -1,4 +1,5 @@
 import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
+import Teams from "../HomePage/Teams/Teams";
 import Advantages from "./Advantages/Advantages";
 import HeroAbout from "./Hero/HeroAbout";
 import Licenses from "./Licenses/Licenses";
@@ -14,6 +15,9 @@ export default function AboutUs() {
 
       <ScrollReveal>
         <Advantages />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Teams />
       </ScrollReveal>
 
       <ScrollReveal>
