@@ -1,0 +1,41 @@
+.custom__contact,
+.custom__textarea {
+  display: flex;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px;
+  color: var(--text-primary);
+  border: 1px solid var(--border, $pacific-blue);
+  outline: none;
+  cursor: pointer;
+  transition: border-color $transition-500;
+
+  &::placeholder {
+    color: rgba($dim-gray, 0.6);
+    transition: color $transition-500;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--primary, $turquoise-blue);
+
+    &::placeholder {
+      color: rgba($dim-gray, 0.2);
+    }
+  }
+}
+
+.form-post__textarea-wrapper {
+  position: relative;
+  width: 100%;
+
+  .form-post__textarea-counter {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: rgba($bondi-blue, 0.6);
+    pointer-events: none;
+  }
+}

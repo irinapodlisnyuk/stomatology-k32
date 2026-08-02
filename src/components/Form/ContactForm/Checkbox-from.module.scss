@@ -1,0 +1,88 @@
+.checkbox-from__wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center; 
+  cursor: pointer;
+  position: relative;
+
+}
+
+.custom__checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+
+}
+
+.custom__checkbox-label {
+  font-size: 12px;
+  font-weight: 200;
+  color: $dim-gray; 
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-left: 26px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px; 
+    border-radius: 4px;
+    border: 2px solid $bondi-blue;
+    background-color: #fff;
+    transition: all 0.2s ease;
+  }
+
+  &:hover::before {
+    border-color: $turquoise-blue;
+  }
+}
+
+.custom__checkbox-icon {
+  color: $bondi-blue;
+  position: absolute;
+  left: 3px; 
+  top: 50%;
+  transform: translateY(-50%) scale(0); 
+  width: 12px;
+  height: 12px;
+  transition: transform 0.15s ease;
+  pointer-events: none;
+}
+
+.custom__checkbox:checked + .custom__checkbox-label {
+  &::before {
+    border-color: $pacific-blue; 
+    background-color: transparent; 
+  }
+  
+  .custom__checkbox-icon {
+    transform: translateY(-50%) scale(1); 
+    color: $pacific-blue; 
+  }
+}
+
+.custom__checkbox:focus-visible + .custom__checkbox-label {
+  &::before {
+    outline: 2px solid $turquoise-blue;
+    outline-offset: 2px;
+  }
+}
+
+:global(.error-message__contact) {
+  .custom__checkbox-label::before {
+    border-color: $persian-red !important;
+  }
+}
