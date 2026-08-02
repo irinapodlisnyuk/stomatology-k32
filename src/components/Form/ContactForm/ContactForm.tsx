@@ -1,4 +1,6 @@
-import { FC, useState } from "react";
+"use client";
+
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -6,23 +8,33 @@ import z from "zod";
 import { FormField } from "../FormField";
 import { Button } from "../Button";
 import { queryClient } from "@/api/queryClient";
-import { ModalOpen } from "@/components/ModalOpen/ModalOpen";
 import emailjs from "@emailjs/browser";
-import { useTranslation } from "react-i18next";
 import styles from "./ContactForm.module.scss";
 import stylesInput from "./Custom__contact.module.scss";
 import stylesError from "@/components/Form/FormField/FormField.module.scss";
 import stylesCheckbox from "./Checkbox-from.module.scss";
-import Icon from "@/components/types/Icon";
+import Icon from "@/models/Icon";
+
+interface ContactFormProps {
+  onSuccess?: () => void;
+  onError?: () => void;
+}
+
+const phoneRegex =
+  /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 
 // Схема валидации Zod,
 const ContactSchema = z.object({
   name: z.string().min(3, "Введите не менее 3 символов"),
   email: z.string().min(1, "Введите Email").email("Некорректный формат Email"),
+  phone: z
+    .string()
+    .min(11, "Введите номер телефона")
+    .regex(phoneRegex, "Некорректный формат номера"),
   message: z
     .string()
     .min(10, "Сообщение должно быть не менее 10 символов")
-    .max(1000, "Максимум 1000 символов"),
+    .max(500, "Максимум 500 символов"),
   acceptTerms: z.boolean().refine((val) => val === true, {
     message: "Необходимо согласиться с условиями",
   }),
@@ -40,6 +52,7 @@ const sendMessageApi = async (data: ContactFormValues) => {
     "template_2okk6mi", //ID
     {
       name: data.name,
+      phone: data.phone,
       email: data.email,
       message: data.message,
     },
@@ -47,10 +60,7 @@ const sendMessageApi = async (data: ContactFormValues) => {
   );
 };
 
-export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-  const { t } = useTranslation();
-
+export const ContactForm: FC<ContactFormProps> = ({ onSuccess, onError }) => {
   const {
     register,
     handleSubmit,
@@ -62,6 +72,7 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       message: "",
       acceptTerms: false,
     },
@@ -76,8 +87,11 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
       mutationFn: (data: ContactFormValues) => sendMessageApi(data),
       onSuccess() {
         reset();
-        setIsSuccessModalOpen(true);
         if (onSuccess) onSuccess();
+      },
+      onError(error) {
+        console.error("Ошибка отправки формы:", error);
+        if (onError) onError();
       },
     },
     queryClient,
@@ -86,22 +100,23 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
   return (
     <>
       <form
+        id="dentist-contact-form"
         className={styles["contact-form"]}
         onSubmit={handleSubmit((data) => contactMutation.mutate(data))}
       >
         {/* Поле Имя */}
         <FormField
-          className={
+          className={`${styles["contact-form__full-width"]} ${
             errors.name || contactMutation.isError
-              ? `${stylesError["error-message__contact"]}`
+              ? stylesError["error-message__contact"]
               : ""
-          }
+          }`}
           errorMessage={errors.name?.message}
         >
           <input
             type="text"
             className={stylesInput["custom__contact"]}
-            placeholder={t("input__name")}
+            placeholder="Ваше Имя"
             {...register("name")}
           />
         </FormField>
@@ -118,29 +133,45 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
           <input
             type="email"
             className={stylesInput["custom__contact"]}
-            placeholder={t("input__email")}
+            placeholder="Адрес электронной почты"
             {...register("email")}
           />
         </FormField>
 
         <FormField
           className={
-            errors.message || contactMutation.isError
+            errors.phone || contactMutation.isError
               ? `${stylesError["error-message__contact"]}`
               : ""
           }
+          errorMessage={errors.phone?.message}
+        >
+          <input
+            type="tel"
+            className={stylesInput["custom__contact"]}
+            placeholder="Номер телефона"
+            {...register("phone")}
+          />
+        </FormField>
+
+        <FormField
+          className={`${styles["contact-form__full-width"]} ${
+            errors.message || contactMutation.isError
+              ? stylesError["error-message__contact"]
+              : ""
+          }`}
           errorMessage={errors.message?.message}
         >
           <div className={stylesInput["form-post__textarea-wrapper"]}>
             <textarea
               {...register("message")}
-              placeholder={t("input__message")}
+              placeholder="Ваше сообщение"
               rows={8}
-              maxLength={1000}
+              maxLength={500}
               className={stylesInput["custom__textarea"]}
             />
             <div className={stylesInput["form-post__textarea-counter"]}>
-              {messageValue.length} / 1000
+              {messageValue.length} / 500
             </div>
           </div>
         </FormField>
@@ -157,14 +188,12 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
               id="acceptTerms"
               className={stylesCheckbox["custom__checkbox"]}
               {...register("acceptTerms")}
-
             />
             <label
               htmlFor="acceptTerms"
               className={stylesCheckbox["custom__checkbox-label"]}
             >
-              {t("custom__checkbox_text") ||
-                "Я согласен на обработку персональных данных"}
+              Я согласен на обработку персональных данных
               <Icon
                 name="icon-check"
                 className={stylesCheckbox["custom__checkbox-icon"]}
@@ -173,22 +202,16 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess }) => {
             </label>
           </div>
         </FormField>
-
-        {/* Кнопка отправки */}
-        <Button
-          type="submit"
-          isLoading={contactMutation.isPending}
-          className={`${styles["contact-form__btn"]} ${styles.btn}`}
-        >
-          {t("btn_form")}
-        </Button>
       </form>
 
-      <ModalOpen
-        isOpen={isSuccessModalOpen}
-        onClose={() => setIsSuccessModalOpen(false)}
-        text={t("modal_text")}
-      />
+      <Button
+        form="dentist-contact-form"
+        type="submit"
+        isLoading={contactMutation.isPending}
+        className={`${styles["contact-form__btn"]} ${styles.btn}`}
+      >
+        Отправить сообщение
+      </Button>
     </>
   );
 };

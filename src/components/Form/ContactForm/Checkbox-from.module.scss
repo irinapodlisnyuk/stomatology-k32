@@ -1,3 +1,7 @@
+@use "../../../assets/styles/global/variables" as v;
+@use "../../../assets/styles/global/mixins" as m;
+
+
 .checkbox-from__wrapper {
   display: flex;
   gap: 10px;
@@ -22,7 +26,7 @@
 .custom__checkbox-label {
   font-size: 12px;
   font-weight: 200;
-  color: $dim-gray; 
+  color: v.$dim-gray; 
   cursor: pointer;
   user-select: none;
   position: relative;
@@ -40,18 +44,18 @@
     width: 18px;
     height: 18px; 
     border-radius: 4px;
-    border: 2px solid $bondi-blue;
-    background-color: #fff;
+    border: 2px solid v.$bondi-blue;
+    background-color: v.$white;
     transition: all 0.2s ease;
   }
 
   &:hover::before {
-    border-color: $turquoise-blue;
+    border-color: v.$pacific-blue;
   }
 }
 
 .custom__checkbox-icon {
-  color: $bondi-blue;
+  color: v.$bondi-blue;
   position: absolute;
   left: 3px; 
   top: 50%;
@@ -64,25 +68,25 @@
 
 .custom__checkbox:checked + .custom__checkbox-label {
   &::before {
-    border-color: $pacific-blue; 
+    border-color: v.$pacific-blue; 
     background-color: transparent; 
   }
   
   .custom__checkbox-icon {
     transform: translateY(-50%) scale(1); 
-    color: $pacific-blue; 
+    color: v.$pacific-blue; 
   }
 }
 
 .custom__checkbox:focus-visible + .custom__checkbox-label {
   &::before {
-    outline: 2px solid $turquoise-blue;
+    outline: 2px solid v.$turquoise-blue;
     outline-offset: 2px;
   }
 }
 
 :global(.error-message__contact) {
   .custom__checkbox-label::before {
-    border-color: $persian-red !important;
+    border-color: v.$persian-red !important;
   }
 }

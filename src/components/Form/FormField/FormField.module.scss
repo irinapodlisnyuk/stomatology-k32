@@ -1,3 +1,6 @@
+@use "../../../assets/styles/global/variables" as v;
+
+
 .form-field {
   display: flex;
   flex-direction: column;
@@ -6,16 +9,16 @@
   gap: 5px;
 
   &__error-text {
-    color: var(--error, $persian-red);
+    color: var(--error, v.$persian-red);
     font-size: 10px;
   }
 
   &.error-message__contact {
-    color: $persian-red;
+    color: v.$persian-red;
 
     input,
     textarea {
-      border: 1px solid  $persian-red !important;
+      border: 1px solid  v.$persian-red !important;
     }
   }
 }

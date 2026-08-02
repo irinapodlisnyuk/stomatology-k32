@@ -1,30 +1,33 @@
-import { FC, HTMLAttributes } from "react";
+import { FC, ButtonHTMLAttributes } from "react";
 import { LoaderForm } from "../LoaderForm";
 import './Form__btn.scss';
 
-interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+// 💡 ИСПРАВЛЕНО: Заменили HTMLAttributes на ButtonHTMLAttributes
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   isDisabled?: boolean;
   kind?: "primary" | "secondary";
-  type?: "submit" | "reset" | "button";
 }
 
 export const Button: FC<IButtonProps> = ({
   isLoading,
-  isDisabled = isLoading,
+  isDisabled, 
   children,
   className,
   kind = "primary",
-  type,
+  type = "button", 
   ...props
 }) => {
+
+  const isButtonDisabled = isLoading || isDisabled;
+
   return (
     <button
-      disabled={isDisabled}
+      disabled={isButtonDisabled}
       type={type}
-      className="form__btn"
+      className={`form__btn ${className || ""}`}
       data-kind={kind}
-      {...props}
+      {...props} 
     >
       {isLoading ? <LoaderForm /> : children}
     </button>

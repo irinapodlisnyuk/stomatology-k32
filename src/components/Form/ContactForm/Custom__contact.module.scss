@@ -1,3 +1,6 @@
+@use "../../../assets/styles/global/variables" as v;
+@use "../../../assets/styles/global/mixins" as m;
+
 .custom__contact,
 .custom__textarea {
   display: flex;
@@ -6,22 +9,22 @@
   font-size: 14px;
   padding: 10px;
   color: var(--text-primary);
-  border: 1px solid var(--border, $pacific-blue);
+  border: 1px solid var(--border, v.$pacific-blue);
   outline: none;
   cursor: pointer;
-  transition: border-color $transition-500;
+  transition: border-color v.$transition-500;
 
   &::placeholder {
-    color: rgba($dim-gray, 0.6);
-    transition: color $transition-500;
+    color: rgba(v.$dim-gray, 0.6);
+    transition: color v.$transition-500;
   }
 
   &:hover,
   &:focus {
-    border: 1px solid var(--primary, $turquoise-blue);
+    border: 1px solid var(--primary, v.$turquoise-blue);
 
     &::placeholder {
-      color: rgba($dim-gray, 0.2);
+      color: rgba(v.$dim-gray, 0.2);
     }
   }
 }
@@ -35,7 +38,7 @@
     bottom: 5px;
     right: 10px;
     font-size: 12px;
-    color: rgba($bondi-blue, 0.6);
+    color: rgba(v.$bondi-blue, 0.6);
     pointer-events: none;
   }
 }
