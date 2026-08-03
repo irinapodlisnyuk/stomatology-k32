@@ -9,7 +9,7 @@
   {
     id: "therapy",
     title: "терапия",
-    imgName: "preventive-care",
+    imgName: "preventivecare",
     altText: "Терапевтическое лечение зубов в клинике К+32",
   },
   {
@@ -43,9 +43,9 @@
     altText: "Ортодонтическая стоматология в клинике К+32",
   },
   {
-    id: "planmeca-3D",
+    id: "planmeca",
     title: "3D",
-    imgName: "planmeca-3D",
+    imgName: "planmeca",
     altText: "ТРЕХМЕРНЫЙ ТОМОГРАФ PLANMECA PROMAX 3D CLASSIC в клинике К+32",
   },
   {
@@ -57,7 +57,7 @@
   {
     id: "professional hygiene",
     title: "профессиональная гигиена",
-    imgName: "professional-hygiene",
+    imgName: "professionalHygiene",
     altText: "Профессиональная гигиена в клинике К+32",
   },
 ];

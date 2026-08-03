@@ -2,27 +2,31 @@
 import { useEffect, useState } from "react";
 import styles from "./PhotoGallery.module.scss";
 import { Gallery_DATA } from "./PhotoGallery_data";
+import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
 
 export default function Photogallery() {
   const gallery = Gallery_DATA;
   const [activeIndex, setActiveIndex] = useState(0);
 
-   useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % gallery.length);
     }, 4000);
 
- 
     return () => clearInterval(interval);
-  }, [activeIndex, gallery.length]); 
+  }, [activeIndex, gallery.length]);
 
   return (
     <section className={styles.gallery}>
       <div className="container">
         <div className={styles.gallery__wrapper}>
           <div className={styles["gallery__wrapper-header"]}>
-            <h2 className={styles.gallery__title}>Экскурсия по&nbsp;нашей клинике</h2>
-            <p className={styles.gallery__subtitle}>Современные условия для исключительного ухода</p>
+            <h2 className={styles.gallery__title}>
+              Экскурсия по&nbsp;нашей клинике
+            </h2>
+            <p className={styles.gallery__subtitle}>
+              Современные условия для исключительного ухода
+            </p>
           </div>
 
           <div className={styles["gallery__slider-container"]}>
@@ -46,6 +50,7 @@ export default function Photogallery() {
                     style={{ "--offset": diff } as React.CSSProperties}
                   >
                     <div className={styles["gallery__item-link"]}>
+                    
                       <picture className={styles["gallery__picture"]}>
                         <source
                           srcSet={`/image/gallery/${imgName}.webp 1x, /image/gallery/${imgName}@2x.webp 2x`}
@@ -70,9 +75,9 @@ export default function Photogallery() {
                 );
               })}
             </ul>
-            </div>
           </div>
         </div>
+      </div>
     </section>
   );
 }

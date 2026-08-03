@@ -1,5 +1,6 @@
 "use client";
 
+import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
 import styles from "./List-service.module.scss";
 import { SERVICES_DATA, ServiceItem } from "./Service_data";
 
@@ -13,18 +14,23 @@ const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
 };
 
 export const ServicesList = () => {
-
- const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
+  const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
 
   return (
     <ul className={styles["services__list"]}>
-      {shuffledServices .map(({ id, title, imgName, altText }, index) => (
+      {shuffledServices.map(({ id, title, imgName, altText }, index) => (
         <li
           key={id}
           className={styles["services__item"]}
           style={{ "--index": index } as React.CSSProperties}
         >
-          <picture className={styles["services__picture"]}>
+          <ResponsivePicture
+            folder="/image/services"
+            baseName={imgName}
+            alt={altText}
+            className={styles["services__picture-img"]}
+          />
+          {/* <picture className={styles["services__picture"]}>
             <source
               srcSet={`/image/services/${imgName}.webp 1x, /image/services/${imgName}@2x.webp 2x`}
               type="image/webp"
@@ -38,7 +44,7 @@ export const ServicesList = () => {
               alt={altText}
               className={styles["services__picture-img"]}
             />
-          </picture>
+          </picture> */}
           <span className={styles["services__item-text"]}>{title}</span>
         </li>
       ))}

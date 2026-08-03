@@ -1,3 +1,4 @@
+import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
 import styles from "./Teams.module.scss";
 import { TEAMS_DATA } from "./Teams__data";
 
@@ -27,47 +28,12 @@ export default function Teams() {
                   className={styles["teams__item"]}
                   style={{ "--index": index } as React.CSSProperties}
                 >
-               <picture className={styles["teams__picture"]}>
-                    <source
-                      media="(max-width: 767px)"
-                      srcSet={`/image/teams/${imgName}-mobile.webp 1x, /image/teams/${imgName}-mobile@2x.webp 2x`}
-                      type="image/webp"
-                    />
-                    <source
-                      media="(max-width: 767px)"
-                      srcSet={`/image/teams/${imgName}-mobile.jpg 1x, /image/teams/${imgName}-mobile@2x.jpg 2x`}
-                      type="image/jpeg"
-                    />
-
-                    <source
-                      media="(max-width: 1023px)"
-                      srcSet={`/image/teams/${imgName}-tablet.webp 1x, /image/teams/${imgName}-tablet@2x.webp 2x`}
-                      type="image/webp"
-                    />
-                    <source
-                      media="(max-width: 1023px)"
-                      srcSet={`/image/teams/${imgName}-tablet.jpg 1x, /image/teams/${imgName}-tablet@2x.jpg 2x`}
-                      type="image/jpeg"
-                    />
-
-                    <source
-                      srcSet={`/image/teams/${imgName}.webp 1x, /image/teams/${imgName}@2x.webp 2x`}
-                      type="image/webp"
-                    />
-                    <source
-                      srcSet={`/image/teams/${imgName}.jpg 1x, /image/teams/${imgName}@2x.jpg 2x`}
-                      type="image/jpeg"
-                    />
-
-                    <img
-                      src={`/image/teams/${imgName}.jpg`}
-                      alt={altText}
-                      className={styles["teams__picture-img"]}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
-
+                  <ResponsivePicture
+                    folder="/image/teams"
+                    baseName={imgName}
+                    alt="Прием в Клинике +32"
+                    className={styles["teams__picture-img"]}
+                  />
                   <div className={styles["teams__item-info"]}>
                     <span className={styles["teams__item-name"]}>{name}</span>
                     <span className={styles["teams__item-surname"]}>

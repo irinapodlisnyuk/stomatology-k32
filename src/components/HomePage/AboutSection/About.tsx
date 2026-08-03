@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./About.module.scss";
+import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
 
 export default function About() {
   return (
@@ -25,49 +26,12 @@ export default function About() {
             </div>
           </div>
           <div className={styles["about__wrapper-image"]}>
-            <picture className={styles.about__picture}>
-              {/* 1. МОБИЛЬНЫЕ (до 768px включительно) */}
-              <source
-                media="(max-width: 768px)"
-                srcSet="/image/about/about-mobile.webp 1x, /image/about/about-mobile@2x.webp 2x"
-                type="image/webp"
-              />
-              <source
-                media="(max-width: 768px)"
-                srcSet="/image/about/about-mobile.jpg 1x, /image/about/about-mobile@2x.jpg 2x"
-                type="image/jpg"
-              />
-
-              {/* 2. ПЛАНШЕТЫ (от 769px до 1024px включительно) */}
-              <source
-                media="(max-width: 1024px)"
-                srcSet="/image/about/about-tablet.webp 1x, /image/about/about-tablet@2x.webp 2x"
-                type="image/webp"
-              />
-              <source
-                media="(max-width: 1024px)"
-                srcSet="/image/about/about-tablet.jpg 1x, /image/about/about-tablet@2x.jpg 2x"
-                type="image/jpg"
-              />
-
-              {/* 3. ДЕСКТОП (все, что больше 1024px) */}
-              <source
-                srcSet="/image/about/about.webp 1x, /image/about/about@2x.webp 2x"
-                type="image/webp"
-              />
-              <source
-                srcSet="/image/about/about.jpg 1x, /image/about/about@2x.jpg 2x"
-                type="image/jpg"
-              />
-
-              {/* Базовый тег (фоллбек) */}
-              <img
-                src="/image/about/about.jpg"
-                alt="Прием в Клиника +32"
-                className={styles["about__picture-img"]}
-                loading="lazy"
-              />
-            </picture>
+            <ResponsivePicture
+              folder="/image/about"
+              baseName="about"
+              alt="Прием в Клинике +32"
+              className={styles["about__picture-img"]}
+            />
           </div>
         </div>
       </div>
