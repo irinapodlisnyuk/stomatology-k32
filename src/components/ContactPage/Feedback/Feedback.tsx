@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./Feedback.module.scss";
 import { ContactForm } from "@/components/Form/ContactForm";
 import { ModalOpen } from "@/components/ModalOpen/ModalOpen";
+import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
 
 export default function Feedback() {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -29,49 +30,13 @@ export default function Feedback() {
       <div className="container">
         <div className={styles["feedback__wrapper"]}>
           <div className={styles["feedback__inner"]}>
-            <picture className={styles.feedback__picture}>
-              {/* 1. МОБИЛЬНЫЕ (до 768px включительно) */}
-              <source
-                media="(max-width: 768px)"
-                srcSet="/image/feedback/feedback-mob.webp 1x, /image/feedback/feedback-mob@2x.webp 2x"
-                type="image/webp"
-              />
-              <source
-                media="(max-width: 768px)"
-                srcSet="/image/feedback/feedback-mob.jpg 1x, /image/feedback/feedback-mob@2x.jpg 2x"
-                type="image/jpg"
-              />
 
-              {/* 2. ПЛАНШЕТЫ (от 769px до 1024px включительно) */}
-              <source
-                media="(max-width: 1024px)"
-                srcSet="/image/feedback/feedback-tab.webp 1x, /image/feedback/feedback-tab@2x.webp 2x"
-                type="image/webp"
+            <ResponsivePicture
+                folder="/image/feedback"
+                baseName="feedback"
+                alt="Прием в Клинике +32"
+                   className={styles["feedback__picture-img"]}
               />
-              <source
-                media="(max-width: 1024px)"
-                srcSet="/image/feedback/feedback-tab.jpg 1x, /image/feedback/feedback-tab@2x.jpg 2x"
-                type="image/jpg"
-              />
-
-              {/* 3. ДЕСКТОП (все, что больше 1024px) */}
-              <source
-                srcSet="/image/feedback/feedback.webp 1x, /image/feedback/feedback@2x.webp 2x"
-                type="image/webp"
-              />
-              <source
-                srcSet="/image/feedback/feedback.jpg 1x, /image/feedback/feedback@2x.jpg 2x"
-                type="image/jpg"
-              />
-
-              {/* Базовый тег (фоллбек) */}
-              <img
-                src="/image/feedback/feedback.jpg"
-                alt="Прием в Клиника +32"
-                className={styles["feedback__picture-img"]}
-                loading="lazy"
-              />
-            </picture>
           </div>
           <div className={styles["feedback__header"]}>
             <h2 className={styles["feedback__title"]}>Форма обратной связи</h2>

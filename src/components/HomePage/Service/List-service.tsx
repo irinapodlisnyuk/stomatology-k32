@@ -30,21 +30,6 @@ export const ServicesList = () => {
             alt={altText}
             className={styles["services__picture-img"]}
           />
-          {/* <picture className={styles["services__picture"]}>
-            <source
-              srcSet={`/image/services/${imgName}.webp 1x, /image/services/${imgName}@2x.webp 2x`}
-              type="image/webp"
-            />
-            <source
-              srcSet={`/image/services/${imgName}.jpg 1x, /image/services/${imgName}@2x.jpg 2x`}
-              type="image/jpeg"
-            />
-            <img
-              src={`/image/services/${imgName}.jpg`}
-              alt={altText}
-              className={styles["services__picture-img"]}
-            />
-          </picture> */}
           <span className={styles["services__item-text"]}>{title}</span>
         </li>
       ))}
