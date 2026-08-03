@@ -18,6 +18,9 @@ export default function CallBack() {
               вопросы по&nbsp;лечению, сориентируем по&nbsp;стоимости услуг
               и&nbsp;подберем комфортное время для приёма у&nbsp;специалиста.
             </p>
+             <p className={styles["callback__text"]}>
+              Наши специалисты принимают по&nbsp;предварительной записи.
+            </p>
             <div className={styles["callback__contact"]}>
               <div className={styles["callback__contact-email"]}>
                 <a

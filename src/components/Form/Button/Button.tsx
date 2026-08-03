@@ -2,7 +2,6 @@ import { FC, ButtonHTMLAttributes } from "react";
 import { LoaderForm } from "../LoaderForm";
 import './Form__btn.scss';
 
-// 💡 ИСПРАВЛЕНО: Заменили HTMLAttributes на ButtonHTMLAttributes
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   isDisabled?: boolean;

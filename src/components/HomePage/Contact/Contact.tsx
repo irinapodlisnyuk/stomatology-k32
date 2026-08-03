@@ -68,7 +68,7 @@ export default function Contact() {
             </ul>
 
             <div className={styles["contact__actions"]}>
-              <Link href="/appointment" className="btn btn--contact">
+              <Link href="/contact" className="btn btn--contact">
                 Свяжитесь с нами
               </Link>
             </div>

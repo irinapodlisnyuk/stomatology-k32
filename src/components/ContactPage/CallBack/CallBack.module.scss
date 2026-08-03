@@ -87,7 +87,7 @@
     line-height: 24px;
     color: v.$smoky;
     transition: color v.$transition-500;
-    margin: 0 0 30px;
+   // margin: 0 0 30px;
 
     @include m.vp-1023 {
       font-size: 14px;
