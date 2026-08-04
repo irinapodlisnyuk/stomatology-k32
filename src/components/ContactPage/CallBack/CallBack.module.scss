@@ -87,7 +87,7 @@
     line-height: 24px;
     color: v.$smoky;
     transition: color v.$transition-500;
-   // margin: 0 0 30px;
+   
 
     @include m.vp-1023 {
       font-size: 14px;
@@ -97,6 +97,10 @@
     @include m.vp-767 {
       margin: 0 0 10px;
       text-align: center;
+    }
+
+    &-info {
+      color: v.$bahama-blue;
     }
   }
 

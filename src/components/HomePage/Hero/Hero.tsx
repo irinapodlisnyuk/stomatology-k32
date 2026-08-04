@@ -1,7 +1,9 @@
-import Link from "next/link";
+"use client";
 import styles from "./hero.module.scss";
+import { useModals } from "@/components/context/ModalContext";
 
 export default function Hero() {
+  const { openAppointment } = useModals();
   return (
     <section className={styles.hero}>
       <div className="container">
@@ -60,9 +62,9 @@ export default function Hero() {
           </p>
 
           <div className={styles["hero__actions"]}>
-            <Link href="/BookAppointment" className="btn btn--appointment">
+            <button className="btn btn--appointment" onClick={openAppointment}>
               Записаться на прием
-            </Link>
+            </button>
           </div>
         </div>
       </div>

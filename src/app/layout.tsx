@@ -3,7 +3,8 @@ import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/HomePage/Header/Header";
 import Footer from "@/components/HomePage/Footer/Footer";
 import ScrollToTop from "@/ScrollToTop/ScrollToTop";
-
+import { ModalProvider } from "@/components/context/ModalContext";
+import AppointmentModal from "@/components/Modals/AppointmentModal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,13 +39,15 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        
-        <div className="root-wrapper">
-          <HeaderComponent />
-          <main>{children}</main>
-          <Footer />
-        </div>
-       < ScrollToTop />
+        <ModalProvider>
+          <div className="root-wrapper">
+            <HeaderComponent />
+            <main>{children}</main>
+            <Footer />
+          </div>
+          <AppointmentModal /> 
+        </ModalProvider>
+          <ScrollToTop />
       </body>
     </html>
   );

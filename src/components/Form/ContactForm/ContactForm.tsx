@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -21,6 +21,7 @@ interface ContactFormProps {
 }
 
 export const ContactForm: FC<ContactFormProps> = ({ onSuccess, onError }) => {
+  const [formId] = useState(() => `form-${Math.floor(Math.random() * 10000)}`);
   const {
     register,
     handleSubmit,
@@ -62,7 +63,7 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess, onError }) => {
   return (
     <>
       <form
-        id="dentist-contact-form"
+        id={formId}
         className={styles["contact-form"]}
         onSubmit={handleSubmit((data) => contactMutation.mutate(data))}
       >
@@ -150,12 +151,12 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess, onError }) => {
           <div className={stylesCheckbox["checkbox-from__wrapper"]}>
             <input
               type="checkbox"
-              id="acceptTerms"
+               id={`acceptTerms-${formId}`}
               className={stylesCheckbox["custom__checkbox"]}
               {...register("acceptTerms")}
             />
             <label
-              htmlFor="acceptTerms"
+               htmlFor={`acceptTerms-${formId}`} 
               className={stylesCheckbox["custom__checkbox-label"]}
             >
               Я согласен на обработку персональных данных
@@ -170,7 +171,7 @@ export const ContactForm: FC<ContactFormProps> = ({ onSuccess, onError }) => {
       </form>
 
       <Button
-        form="dentist-contact-form"
+        form={formId}
         type="submit"
         isLoading={contactMutation.isPending}
         className={styles["contact-form__btn"]}

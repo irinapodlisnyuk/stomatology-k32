@@ -9,9 +9,11 @@ import {
   navigationItems,
   MenuItem,
 } from "@/components/HomePage/Data/navigation";
+import { useModals } from "@/components/context/ModalContext";
 
 export default function HeaderComponent() {
   const pathname = usePathname();
+  const { openAppointment } = useModals();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -55,9 +57,9 @@ export default function HeaderComponent() {
           </div>
 
           <div className={styles["header__actions"]}>
-            <Link className="btn" href="/BookAppointment"  onClick={() => setIsOpen(false)}>
+            <button className="btn" onClick={openAppointment}>
               Записаться на прием
-            </Link>
+            </button>
           </div>
           <div className={styles["header__actions-burger"]}>
             <button
