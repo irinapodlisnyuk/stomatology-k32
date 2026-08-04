@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useRef, useState } from 'react';
 
 export default function ScrollReveal({ children }: { children: React.ReactNode }) {
@@ -10,11 +9,11 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsRendered(true); // Вставляем блок в разметку только при скролле!
+          setIsRendered(true);
           if (elementRef.current) observer.unobserve(elementRef.current);
         }
       },
-      { threshold: 0.2 } // Срабатывает, как только край блока зашел на экран
+      { threshold: 0.2 }
     );
 
     if (elementRef.current) observer.observe(elementRef.current);
@@ -23,7 +22,6 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
 
   return (
     <div ref={elementRef} style={{ minHeight: '400px' }}>
-      {/* 💡 Если доскроллили — рендерим блок. В этот момент сработает ваш @starting-style! */}
       {isRendered ? children : null}
     </div>
   );

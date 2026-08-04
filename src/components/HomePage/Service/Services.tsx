@@ -1,17 +1,20 @@
 "use client"
 import Link from "next/link";
 import styles from "./Services.module.scss";
-
 import dynamic from "next/dynamic";
+import LoaderPage from "@/components/LoaderPage/LoaderPage"; 
 
 const ServicesList = dynamic(
   () => import("./List-service").then((mod) => mod.ServicesList),
   { 
     ssr: false,
-  //  loading: () => <div><LoaderPage/></div> 
+    loading: () => (
+      <div className={styles.services__loaderBox}>
+        <LoaderPage local={true} />
+      </div>
+    )
   }
 );
-
 export default function Services() {
   return (
     <section className={styles.services}>

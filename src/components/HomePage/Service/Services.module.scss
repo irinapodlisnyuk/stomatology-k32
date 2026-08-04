@@ -101,16 +101,18 @@
     display: flex;
     justify-content: center;
   }
+
+   &__loaderBox {
+    position: relative;
+    width: 100%;
+    height: 300px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.services__loader-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px; 
-  font-size: 16px;
-  color: #a0a0a0;
-}
+
 
 // КЛАСС ДЛЯ  АНИМАЦИИ ТЕКСТА И КНОПКИ
 .animate-fade-up {
@@ -125,4 +127,6 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
+
 }
