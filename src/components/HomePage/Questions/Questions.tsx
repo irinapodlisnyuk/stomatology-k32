@@ -2,8 +2,8 @@
 import { useMemo, useState, useSyncExternalStore } from "react";
 import styles from "./Questions.module.scss";
 import { QUESTIONS_DATA, QuestionsItem } from "./questions_data";
-import Icon from "@/models/Icon";
-import LoaderPage from "../LoaderPage/LoaderPage";
+import Icon from "@/components/models/Icon";
+import LoaderPage from "../../LoaderPage/LoaderPage";
 
 const shuffleArray = (array: QuestionsItem[]): QuestionsItem[] => {
   const shuffled = [...array];

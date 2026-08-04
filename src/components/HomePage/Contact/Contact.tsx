@@ -1,5 +1,5 @@
 "use client";
-import Icon from "@/models/Icon";
+import Icon from "@/components/models/Icon";
 import styles from "./Contact.module.scss";
 import Link from "next/link";
 

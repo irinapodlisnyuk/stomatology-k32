@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./Feedback.module.scss";
 import { ContactForm } from "@/components/Form/ContactForm";
 import { ModalOpen } from "@/components/ModalOpen/ModalOpen";
-import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
+import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 
 export default function Feedback() {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);

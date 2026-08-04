@@ -1,6 +1,6 @@
 "use client";
 
-import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
+import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./List-service.module.scss";
 import { SERVICES_DATA, ServiceItem } from "./Service_data";
 

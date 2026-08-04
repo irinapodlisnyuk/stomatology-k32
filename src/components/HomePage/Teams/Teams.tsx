@@ -1,4 +1,4 @@
-import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
+import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./Teams.module.scss";
 import { TEAMS_DATA } from "./Teams__data";
 

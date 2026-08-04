@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./About.module.scss";
-import ResponsivePicture from "@/ResponsivePicture/ResponsivePicture";
+import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 
 export default function About() {
   return (

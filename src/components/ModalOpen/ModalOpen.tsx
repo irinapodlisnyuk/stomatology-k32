@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Icon from "../../models/Icon";
+import Icon from "../models/Icon";
 import styles from "./ModalOpen.module.scss";
 
 interface ModalOpenProps {

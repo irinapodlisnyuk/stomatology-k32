@@ -1,5 +1,5 @@
 "use client"
-import Icon from "@/models/Icon";
+import Icon from "@/components/models/Icon";
 import { advantagesList } from "./AdvantageItem";
 import AnimatedNumber from "./AnimatedNumber";
 import styles from "./Advantages.module.scss";

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./Blog.module.scss";
 import { BLOG_DATA } from "./Blog_data";
-import Icon from "@/models/Icon";
+import Icon from "@/components/models/Icon";
 import Link from "next/link";
 
 export default function Blog() {
