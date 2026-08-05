@@ -1,34 +1,36 @@
-// import { BLOG_DATA } from "@/components/HomePage/Blog/Blog_data";
-// import { notFound } from "next/navigation";
-// import styles from "./SinglePost.module.scss"; // Создайте стили для страницы статьи
+import { BLOG_DATA } from "@/data/Blog_data";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import PostContentWrapper from "@/components/PostPage/PostPage"; 
 
-// export default function PostPage({ params }: { params: { slug: string } }) {
-//   // Ищем статью в базе данных по слюгу из URL адреса
-//   const post = BLOG_DATA.find((p) => p.slug === params.slug || p.id === params.slug);
+interface Props {
+  params: Promise<{ slug: string }>;
+}
 
-//   // Если статья не найдена — отдаем стандартную 404 страницу Next.js
-//   if (!post) {
-//     notFound();
-//   }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = BLOG_DATA.find((p) => p.slug === slug || p.id === slug);
+  if (!post) return {};
 
-//   return (
-//     <article className={styles.post}>
-//       <div className="container">
-//         <header className={styles.post__header}>
-//           <span className={styles.post__category}>{post.name}</span>
-//           <h1 className={styles.post__title}>{post.title}</h1>
-//           <time className={styles.post__date}>{post.date}</time>
-//         </header>
+  return {
+    title: `${post.title} | Блог`,
+    description: post.textPreview || `Читать статью ${post.title}`,
+  };
+}
 
-//         <div className={styles.post__imageWrapper}>
-//           <img src={`/image/blog/${post.imgName}.jpg`} alt={post.altText} />
-//         </div>
+export async function generateStaticParams() {
+  return BLOG_DATA.map((post) => ({ slug: post.slug || post.id }));
+}
 
-//         {/* Вывод полноценного текста статьи */}
-//         <div className={styles.post__content}>
-//           <p>{post.fullText}</p>
-//         </div>
-//       </div>
-//     </article>
-//   );
-// }
+//  Это главный серверный компонент страницы Next.js, он принимает только params
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
+  const post = BLOG_DATA.find((p) => p.slug === slug || p.id === slug);
+
+  if (!post) {
+    notFound();
+  }
+
+
+  return <PostContentWrapper post={post} allPosts={BLOG_DATA} />;
+}

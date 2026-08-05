@@ -1,14 +1,23 @@
 import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
-import {Blog }from "@/components/HomePage/Blog/Blog";
-import HeroBlog from "./Hero/HeroBlog";
+import { Blog } from "@/components/HomePage/Blog/Blog";
+import Hero from "@/components/Hero/Hero"; 
+import styles from "./Hero/hero.module.scss";
 
 export default function BlogPage() {
   return (
     <>
-      <HeroBlog />
+      <Hero
+        title="Блог"
+        subtitle="Будьте в курсе последних новостей K+32."
+        imageFolder="/image/heroBlog"
+        imageName="blog"
+        altText="Блог стоматологической клиники К+32"
+        isStyle={true} 
+        className={styles.hero}
+      />
 
       <ScrollReveal>
-         <Blog isFullPage={true} />
+        <Blog isFullPage={true} />
       </ScrollReveal>
     </>
   );
