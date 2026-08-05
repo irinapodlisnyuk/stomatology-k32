@@ -5,6 +5,7 @@ import styles from "./Blog.module.scss";
 import { BLOG_DATA } from "./Blog_data";
 import Icon from "@/components/models/Icon";
 import Link from "next/link";
+import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 
 export default function Blog() {
   const blog = BLOG_DATA;
@@ -52,7 +53,7 @@ export default function Blog() {
                     <li
                       key={id}
                       className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
-                       onClick={() => !isCenter && setActiveIndex(index)} 
+                      onClick={() => !isCenter && setActiveIndex(index)}
                       style={{
                         // Сдвигаем карточки строго линейно по рельсам
                         transform: isCenter
@@ -65,13 +66,19 @@ export default function Blog() {
                       <Link
                         href={`/blog/${slug || id}`}
                         className={styles["blog__item-link"]}
-                          onClick={(e) => {
+                        onClick={(e) => {
                           if (!isCenter) {
                             e.preventDefault();
                           }
                         }}
                       >
-                        <picture className={styles["blog__picture"]}>
+                        <ResponsivePicture
+                          folder="/image/blog"
+                          baseName={imgName}
+                          alt={altText}
+                          className={styles["blog__picture-img"]}
+                        />
+                        {/* <picture className={styles["blog__picture"]}>
                           <source
                             srcSet={`/image/blog/${imgName}.webp 1x, /image/blog/${imgName}@2x.webp 2x`}
                             type="image/webp"
@@ -86,7 +93,7 @@ export default function Blog() {
                             className={styles["blog__picture-img"]}
                             loading="lazy"
                           />
-                        </picture>
+                        </picture> */}
                         <div className={styles["blog__item-content"]}>
                           <span className={styles["blog__item-name"]}>
                             {name}

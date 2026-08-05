@@ -9,11 +9,11 @@ export interface BlogItem {
 
 export const BLOG_DATA: BlogItem[] = [
   {
-    id: "Check-Ups",
-    slug: "check-ups",
+    id: "CheckUps",
+    slug: "checkups",
     name: "БЛОГ",
     title: "Важность Регулярных Стоматологических Осмотров",
-    imgName: "Check-Ups",
+    imgName: "checkUps",
     altText: "Важность регулярных стоматологических осмотров",
   },
   {
@@ -53,7 +53,7 @@ export const BLOG_DATA: BlogItem[] = [
     slug: "after-extraction",
     name: "БЛОГ",
     title: "Что Можно и Нельзя Делать После Удаления Зуба: Памятка Пациенту",
-    imgName: "after-extraction",
+    imgName: "extraction",
     altText: "Рекомендации врача после хирургического удаления зуба",
   },
   {
@@ -61,7 +61,7 @@ export const BLOG_DATA: BlogItem[] = [
     slug: "after-implantation",
     name: "БЛОГ",
     title: "Реабилитация После Имплантации: Как Ускорить Заживление",
-    imgName: "after-implantation",
+    imgName: "implantation",
     altText: "Уход за полостью рта после установки зубного импланта",
   },
   {
@@ -69,7 +69,7 @@ export const BLOG_DATA: BlogItem[] = [
     slug: "after-whitening",
     name: "БЛОГ",
     title: "Белая Диета После Отбеливания Зубов: Что Включить в Рацион",
-    imgName: "after-whitening",
+    imgName: "whitening",
     altText: "Продукты для сохранения результата после отбеливания зубов",
   },
   {
@@ -77,7 +77,7 @@ export const BLOG_DATA: BlogItem[] = [
     slug: "after-prosthetics",
     name: "БЛОГ",
     title: "Как Привыкнуть к Новым Зубным Протезам и Коронкам: Советы Эксперта",
-    imgName: "after-prosthetics",
+    imgName: "prosthetics",
     altText: "Уход за ортопедическими конструкциями и коронками",
   },
 ];
