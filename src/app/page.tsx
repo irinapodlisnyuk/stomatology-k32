@@ -6,7 +6,7 @@ import Teams from "@/components/HomePage/Teams/Teams";
 import Questions from "@/components/HomePage/Questions/Questions";
 import Contact from "@/components/HomePage/Contact/Contact";
 import { Metadata } from "next";
-import Blog from "@/components/HomePage/Blog/Blog";
+import {Blog} from "@/components/HomePage/Blog/Blog";
 
 export const metadata: Metadata = {
   title:

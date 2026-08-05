@@ -1,15 +1,15 @@
-@use "../../../assets/styles/global/variables" as v;
-@use "../../../assets/styles/global/mixins" as m;
+@use "../../../assets/styles/global/variables" as *;
+@use "../../../assets/styles/global/mixins" as *;
 
 .blog {
   padding: 80px 0;
   overflow: hidden;
 
-  @include m.vp-1023 {
+  @include vp-1023 {
     padding: 40px;
   }
 
-  @include m.vp-767 {
+  @include vp-767 {
     padding: 25px 0;
   }
 
@@ -25,7 +25,7 @@
     align-items: center;
     gap: 20px;
 
-    @include m.vp-767 {
+    @include vp-767 {
       flex-direction: column;
       align-items: center;
       text-align: center;
@@ -37,10 +37,10 @@
       line-height: 30px;
       display: flex;
       align-items: center;
-      color: v.$blue-lagoon;
-      text-shadow: 0 2px 6px rgba(v.$black, 0.3);
+      color: $blue-lagoon;
+      text-shadow: 0 2px 6px rgba($black, 0.3);
 
-      @include m.vp-767 {
+      @include vp-767 {
         font-size: 20px;
         line-height: 22px;
       }
@@ -50,15 +50,15 @@
       font-weight: 600;
       font-size: 38px;
       line-height: 58px;
-      color: v.$pacific-blue;
-      text-shadow: 0 2px 6px rgba(v.$black, 0.3);
+      color: $pacific-blue;
+      text-shadow: 0 2px 6px rgba($black, 0.3);
 
-      @include m.vp-1023 {
+      @include vp-1023 {
         font-size: 36px;
         line-height: 1.2;
       }
 
-      @include m.vp-767 {
+      @include vp-767 {
         font-size: 24px;
       }
     }
@@ -76,7 +76,7 @@
     justify-content: space-between;
     z-index: 5;
 
-    @include m.vp-767 {
+    @include vp-767 {
       display: none;
     }
   }
@@ -84,7 +84,7 @@
   &__btn {
     width: 44px;
     height: 44px;
-    background: v.$blue-lagoon;
+    background: $blue-lagoon;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -92,17 +92,17 @@
     justify-content: center;
     transform: rotate(0deg);
     transition:
-      background-color v.$transition-500,
-      transform v.$transition-500;
+      background-color $transition-500,
+      transform $transition-500;
 
     &:hover,
     &:active,
     &:focus {
-      background-color: v.$bahama-blue;
+      background-color: $bahama-blue;
       transform: rotate(360deg);
     }
     &-icon {
-      color: v.$white;
+      color: $white;
       width: 26px;
       height: 30px;
 
@@ -110,6 +110,14 @@
         transform: scaleX(-1);
       }
     }
+  }
+
+  &__grid-container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding: 0;
   }
 
   &__slider-container {
@@ -133,7 +141,7 @@
       transform: translateX(60%) scale(1) translateY(0);
     }
 
-    @include m.vp-767 {
+    @include vp-767 {
       height: 350px;
     }
   }
@@ -149,7 +157,7 @@
     padding: 0;
     list-style: none;
 
-    @include m.vp-767 {
+    @include vp-767 {
       justify-content: flex-start;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -163,38 +171,56 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    &--grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 100%;
+      height: auto;
+      perspective: none;
+      transform-style: flat;
+
+      @include vp-1023 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      @include vp-767 {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 
   &__item {
     position: absolute;
     width: 36%;
-  //  height: 100%;
-    background-color: v.$white;
-    border: 1px solid v.$whisper;
+    background-color: $white;
+    border: 1px solid $whisper;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(v.$black, 0.04);
+    box-shadow: 0 4px 20px rgba($black, 0.04);
     cursor: pointer;
 
     // Плавный переход для движения по рельсам
     transition:
       transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-      opacity v.$transition-500,
-      box-shadow v.$transition-500;
+      opacity $transition-500,
+      box-shadow $transition-500;
     will-change: transform, opacity;
     z-index: 1;
 
     &--center {
-      box-shadow: 0 20px 40px rgba(v.$black, 0.12);
+      box-shadow: 0 20px 40px rgba($black, 0.12);
       z-index: 10;
     }
 
-    @include m.vp-1023 {
-    //  width: 33.33%;
-    width: 40%;
+    @include vp-1023 {
+      width: 40%;
     }
 
-    @include m.vp-767 {
+    @include vp-767 {
       position: relative;
       left: auto;
       width: 80%;
@@ -206,7 +232,31 @@
       display: flex;
       flex-direction: column;
     }
+
+    &--card {
+      border-radius: 0px;
+      border: none;
+      position: relative;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 100%;
+      padding: 20px;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      cursor: pointer;
+      transform: none !important;
+      background-color: $white;
+
+      box-shadow: -2px 2px 14px 8px rgba($black, 0.15);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
   }
+
   &__picture {
     display: block;
     width: 100%;
@@ -218,7 +268,7 @@
       height: 270px;
       object-fit: cover;
 
-      @include m.vp-767 {
+      @include vp-767 {
         height: 180px;
       }
     }
@@ -231,25 +281,32 @@
     height: 100%;
     gap: 15px;
     padding: 30px;
-    background-color: v.$bahama-blue;
+    background-color: $bahama-blue;
 
-    @include m.vp-1023 {
+    @include vp-1023 {
       padding: 20px;
       gap: 10px;
     }
 
-    @include m.vp-1023 {
+    @include vp-1023 {
       height: 100%;
+    }
+
+    &--color {
+      background-color: $white;
+      padding: 20px;
+
+      gap: 20px;
     }
   }
 
   &__item-name {
     display: block;
     font-size: 14px;
-    color: v.$white;
+    color: $white;
     font-weight: 500;
 
-    @include m.vp-1023 {
+    @include vp-1023 {
       gap: 10px;
     }
   }
@@ -258,7 +315,7 @@
     width: 90%;
     font-size: 28px;
     line-height: 1.4;
-    color: v.$white;
+    color: $white;
     margin: 0;
     text-align: center;
     display: -webkit-box;
@@ -266,12 +323,29 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 
-    @include m.vp-1023 {
+    @include vp-1023 {
       font-size: 18px;
     }
 
-    @include m.vp-767 {
+    @include vp-767 {
       font-size: 15px;
     }
+
+    &--color {
+      color: $black;
+      display: block;
+      width: 100%;
+      font-size: 18px;
+
+    }
+  }
+
+  &__item-btn {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $blue-lagoon;
+    transition: color 0.3s ease;
   }
 }
