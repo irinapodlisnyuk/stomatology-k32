@@ -8,7 +8,7 @@ import { useState } from "react";
 import {
   navigationItems,
   MenuItem,
-} from "@/components/HomePage/Data/navigation";
+} from "@/data/navigation";
 import { useModals } from "@/components/context/ModalContext";
 
 export default function HeaderComponent() {

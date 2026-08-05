@@ -2,7 +2,7 @@
 
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./List-service.module.scss";
-import { SERVICES_DATA, ServiceItem } from "./Service_data";
+import { SERVICES_DATA, ServiceItem } from "@/data/Service_data";
 
 const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
   const shuffled = [...array];

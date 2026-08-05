@@ -2,13 +2,13 @@
 
 import { FC, useState } from "react";
 import styles from "./Blog.module.scss";
-import { BLOG_DATA } from "./Blog_data";
+import { BLOG_DATA } from "@/data/Blog_data";
 import Icon from "@/components/models/Icon";
 import Link from "next/link";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 
 interface BlogProps {
-  isFullPage?: boolean; // 💡 Флаг: true — для отдельной страницы, false — для главной (слайдер)
+  isFullPage?: boolean; // Флаг: true — для отдельной страницы, false — для главной (слайдер)
 }
 
 export const Blog: FC<BlogProps> = ({ isFullPage = false }) => {
@@ -44,7 +44,6 @@ export const Blog: FC<BlogProps> = ({ isFullPage = false }) => {
             )}
           </div>
 
-          {/* 💡 Меняем обертку: если это страница блога, убираем стили контейнера слайдера */}
           <div
             className={
               isFullPage
@@ -59,7 +58,10 @@ export const Blog: FC<BlogProps> = ({ isFullPage = false }) => {
             `}
             >
               {blog.map(
-                ({ id, slug, name, title, imgName, altText }, index) => {
+                (
+                  { id, slug, name, title, imgName, altText, textPreview},
+                  index,
+                ) => {
                   const isCenter = index === activeIndex;
 
                   // 💡 ВАЖНО: Если это страница блога, отключаем все JS-расчеты слайдера
@@ -108,7 +110,10 @@ export const Blog: FC<BlogProps> = ({ isFullPage = false }) => {
                           folder="/image/blog"
                           baseName={imgName}
                           alt={altText}
-                          className={styles["blog__picture-img"]}
+                          className={`
+                        ${styles["blog__picture-img"]} 
+                        ${isFullPage ? styles["blog__picture-img--rotate"] : ""}
+                      `}
                         />
                         <div
                           className={`
@@ -134,8 +139,12 @@ export const Blog: FC<BlogProps> = ({ isFullPage = false }) => {
                           >
                             {title}
                           </h3>
+                          {isFullPage && (
+                            <p className={styles["blog__item-preview"]}>
+                                  {textPreview}
+                            </p>
+                          )}
 
-                          {/* 💡 Кнопка «Читать», которая появится только в полноценной ленте */}
                           {isFullPage && (
                             <span className="btn btn--blog">Читать далее</span>
                           )}

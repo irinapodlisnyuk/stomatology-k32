@@ -1,6 +1,6 @@
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./Teams.module.scss";
-import { TEAMS_DATA } from "./Teams__data";
+import { TEAMS_DATA } from "@/data/Teams__data";
 
 export default function Teams() {
   const teams = TEAMS_DATA;
@@ -31,7 +31,7 @@ export default function Teams() {
                   <ResponsivePicture
                     folder="/image/teams"
                     baseName={imgName}
-                    alt="Прием в Клинике +32"
+                    alt={altText}
                     className={styles["teams__picture-img"]}
                   />
                   <div className={styles["teams__item-info"]}>

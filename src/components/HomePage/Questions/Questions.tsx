@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import styles from "./Questions.module.scss";
-import { QUESTIONS_DATA, QuestionsItem } from "./questions_data";
+import { QUESTIONS_DATA, QuestionsItem } from "@/data/Questions_data";
 import Icon from "@/components/models/Icon";
 import LoaderPage from "../../LoaderPage/LoaderPage";
 

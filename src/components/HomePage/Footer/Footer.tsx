@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import Icon from "@/components/models/Icon";
-import { navigationItems, MenuItem } from "@/components/HomePage/Data/navigation";
+import { navigationItems, MenuItem } from "@/data/navigation";
 
 export default function Footer() {
   return (

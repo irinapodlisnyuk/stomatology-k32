@@ -12,12 +12,6 @@
   box-sizing: border-box;
 }
 
-// :root {
-//   --font-text: "Manrope", sans-serif;
-//   --font-heading: "Montserrat", sans-serif;
-//   --font-poppins: "Poppins", sans-serif;
-// }
-
 html {
   width: 100%;
   box-sizing: border-box;
@@ -88,11 +82,6 @@ svg {
 a {
   text-decoration: none;
   color: inherit;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 ul,
