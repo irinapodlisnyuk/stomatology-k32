@@ -35,7 +35,6 @@ export default function Post({ post, relatedPosts }: PostProps) {
           </div>
 
           <aside className={asideStyles.post__inner}>
-            {/* Блок онлайн-записи с локальными классами */}
             <div className={asideStyles.post__appointment}>
               <h3 className={asideStyles["post__appointment-title"]}>
                 Онлайн-запись на прием
