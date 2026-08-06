@@ -20,7 +20,7 @@ export default function About() {
             </p>
 
             <div className={styles["about__actions"]}>
-              <Link href="/aboutUs" className="btn btn--about">
+              <Link href="/about-us" className="btn btn--about">
                 Узнать больше
               </Link>
             </div>
