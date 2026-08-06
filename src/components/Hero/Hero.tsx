@@ -10,7 +10,7 @@ interface HeroProps {
   imageName?: string;
   altText?: string;
   showButton?: boolean;
-  pageType?: "home" | "blog" | "about" | "contacts" | "post"; 
+  pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call"; 
 }
 
 export default function Hero({
