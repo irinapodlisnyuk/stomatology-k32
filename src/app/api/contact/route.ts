@@ -11,7 +11,6 @@ interface AppointmentRequestBody {
 
 export async function POST(request: Request) {
   try {
-    // Явно типизируем входящий JSON
     const { name, email, phone, message } =
       (await request.json()) as AppointmentRequestBody;
 
