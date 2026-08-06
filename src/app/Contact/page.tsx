@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactsRoute() {
+export default function ContactRoute() {
   return (
    < ContactPage />
   );
