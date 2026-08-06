@@ -268,7 +268,7 @@
       font-size: 14px;
       line-height: 1.5;
       color: $smoky;
-      margin: 10px 0 0 0;
+    //  margin: 10px 0 0 0;
 
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -338,7 +338,7 @@
     &--color {
       background-color: $white;
       padding: 20px;
-      gap: 20px;
+      gap: 10px;
     }
   }
 
