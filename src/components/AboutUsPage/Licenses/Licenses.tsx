@@ -96,21 +96,6 @@ export default function Licenses() {
               </span>
             </div>
 
-            {/* Точки-индикаторы страниц */}
-            {/* <div className={styles.licenses__dots}>
-              {licenseList.map((_, index) => (
-                <button
-                  key={index}
-                  className={`${styles.licenses__dot} ${
-                    index === currentIndex
-                      ? styles["licenses__dot--active"]
-                      : ""
-                  }`}
-                  onClick={() => handleDotClick(index)}
-                  aria-label={`Перейти к странице ${index + 1}`}
-                />
-              ))}
-            </div> */}
           </div>
 
           {/* 2. МОБИЛЬНАЯ ВЕРСИЯ */}

@@ -5,7 +5,7 @@ import Advantages from "./Advantages/Advantages";
 import Licenses from "./Licenses/Licenses";
 import Photogallery from "./PhotoGallery/PhotoGallery";
 
-export default function AboutUs() {
+export default function AboutPage() {
   return (
     <>
       <Hero

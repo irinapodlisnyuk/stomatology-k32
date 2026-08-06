@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import AboutUs from "@/components/AboutUsPage/AboutUs";
+import AboutPage from "@/components/AboutUsPage/AboutPage";
 
 export const metadata: Metadata = {
   title: "О клинике «Клиника +32» в Кабардинке | Наша история и стандарты",
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   keywords: ["о клинике +32", "стоматология кабардинка о нас", "лицензия стоматологии геленджик"],
 };
 
-export default function AboutUsPage() {
+export default function AboutRoute() {
   return (
-   < AboutUs />
+   <  AboutPage />
   );
 }

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./PhotoGallery.module.scss";
 import { Gallery_DATA } from "./PhotoGallery_data";
-import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
+
 
 export default function Photogallery() {
   const gallery = Gallery_DATA;
