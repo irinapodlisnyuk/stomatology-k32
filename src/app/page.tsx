@@ -31,12 +31,6 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
-  other: {
-    rel: "preload",
-    as: "image",
-    href: "/image/hero/hero-bg@2x.webp",
-    fetchpriority: "high",
-  },
 };
 
 export default function HomePage() {
@@ -47,6 +41,7 @@ export default function HomePage() {
         subtitle="Заботимся о&nbsp;здоровье и&nbsp;красоте ваших зубов на&nbsp;каждом этапе."
         text="Мы&nbsp;знаем, что поход к&nbsp;стоматологу часто вызывает волнение. Поэтому в К+32 делаем упор на&nbsp;комфорт..."
         showButton={true}
+        pageType="home"
       />
 
       <ScrollReveal>

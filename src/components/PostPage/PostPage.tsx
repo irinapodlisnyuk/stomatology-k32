@@ -1,8 +1,6 @@
 import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
-import Hero from "@/components/Hero/Hero"; 
+import Hero from "@/components/Hero/Hero";
 import Post from "./Post/Post";
-import RelatedPosts from "./RelatedPosts/RelatedPosts";
-import { title } from "process";
 
 
 export interface BlogPost {
@@ -16,38 +14,29 @@ export interface BlogPost {
   fullText: string;
 }
 
-
 interface PostContentWrapperProps {
-  post: BlogPost;       
-  allPosts: BlogPost[]; 
+  post: BlogPost;
+  allPosts: BlogPost[];
 }
 
 export default function PostPage({ post, allPosts }: PostContentWrapperProps) {
-  
   // Фильтруем статьи, исключая текущую по id
-  const relatedPosts = allPosts
-    .filter((p) => p.id !== post.id)
-    .slice(0, 3);
+  const relatedPosts = allPosts.filter((p) => p.id !== post.id).slice(0, 3);
 
   return (
     <>
       <Hero
         title={post.title}
-        imageFolder="/image/heroBlog"
-        imageName="blog"
+        subtitle=""
+        imageFolder="/image/post"
+        imageName="post"
         altText="Блог стоматологической клиники К+32"
-        isStyle={true} 
+        pageType="post"
       />
-
+  
       <ScrollReveal>
-        <Post post={post} />
+        <Post post={post} relatedPosts={relatedPosts} />
       </ScrollReveal>
-
-      {relatedPosts.length > 0 && (
-        <ScrollReveal>
-          <RelatedPosts posts={relatedPosts} />
-        </ScrollReveal>
-      )}
     </>
   );
 }

@@ -13,12 +13,11 @@ export default function ResponsivePicture({
   alt,
   className,
 }: ResponsivePictureProps) {
-  // Очищаем путь от лишних слешей на стыках для надежности
   const cleanFolder = folder.endsWith("/") ? folder.slice(0, -1) : folder;
 
   return (
-    <picture>
-      {/* 1. МОБИЛЬНЫЕ (до 768px включительно) */}
+    <picture className={className}>
+      {/* 1. МОБИЛЬНЫЕ (до 767px) */}
       <source
         media="(max-width: 767px)"
         srcSet={`${cleanFolder}/${baseName}-mob.webp 1x, ${cleanFolder}/${baseName}-mob@2x.webp 2x`}
@@ -30,7 +29,7 @@ export default function ResponsivePicture({
         type="image/jpeg"
       />
 
-      {/* 2. ПЛАНШЕТЫ (от 769px до 1024px включительно) */}
+      {/* 2. ПЛАНШЕТЫ (до 1023px) */}
       <source
         media="(max-width: 1023px)"
         srcSet={`${cleanFolder}/${baseName}-tab.webp 1x, ${cleanFolder}/${baseName}-tab@2x.webp 2x`}
@@ -42,7 +41,7 @@ export default function ResponsivePicture({
         type="image/jpeg"
       />
 
-      {/* 3. ДЕСКТОП (все, что больше 1024px) */}
+      {/* 💡 3. ДЕСКТОП (Инструкция для больших экранов с поддержкой @2x) */}
       <source
         srcSet={`${cleanFolder}/${baseName}.webp 1x, ${cleanFolder}/${baseName}@2x.webp 2x`}
         type="image/webp"
@@ -52,15 +51,13 @@ export default function ResponsivePicture({
         type="image/jpeg"
       />
 
-      {/* Базовый тег (фоллбек для старых браузеров) */}
+      {/* Базовый тег-фоллбек */}
       <img
         src={`${cleanFolder}/${baseName}.jpg`}
         alt={alt}
         className={className}
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
-        
       />
     </picture>
   );

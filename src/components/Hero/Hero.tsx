@@ -10,8 +10,7 @@ interface HeroProps {
   imageName?: string;
   altText?: string;
   showButton?: boolean;
-  isStyle?: boolean;
-  className?: string; // Пропс для переопределения стилей
+  pageType?: "home" | "blog" | "about" | "contacts" | "post"; 
 }
 
 export default function Hero({
@@ -22,17 +21,17 @@ export default function Hero({
   imageName = "hero",
   altText = "Современная стоматология Клиника +32",
   showButton = false,
-  isStyle = false,
-  className = "", // По умолчанию пустая строка
+  pageType = "home", 
 }: HeroProps) {
   const { openAppointment } = useModals();
 
-  const mobSuffix = isStyle ? "-mob" : "-mobile";
-  const tabSuffix = isStyle ? "-tab" : "-tablet";
+  const mobSuffix = "-mob";
+  const tabSuffix = "-tab";
+
+  const modifierClass = pageType !== "home" ? styles[`hero--${pageType}`] : "";
 
   return (
-    // 💡 ВАЖНО: Объединяем локальный класс стилей со внешним className через шаблонную строку
-    <section className={`${styles.hero} ${className}`}>
+    <section className={`${styles.hero} ${modifierClass}`}>
       <div className="container">
         <picture className={styles.hero__picture}>
           {/* 1. Мобильные устройства (до 767px) */}
@@ -72,7 +71,6 @@ export default function Hero({
           <img
             src={`${imageFolder}/${imageName}.jpg`}
             alt={altText.replace(/&nbsp;/g, " ")}
-
             className={`${styles.hero__img || ""} ${styles.hero__bg || ""}`}
             fetchPriority="high"
             loading="eager"
@@ -80,27 +78,13 @@ export default function Hero({
         </picture>
 
         <div className={styles.hero__wrapper}>
-          <h2
-            className={styles.hero__title}
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
-          <p
-            className={styles.hero__subtitle}
-            dangerouslySetInnerHTML={{ __html: subtitle }}
-          />
-          {text && (
-            <p
-              className={styles.hero__text}
-              dangerouslySetInnerHTML={{ __html: text }}
-            />
-          )}
+          <h2 className={styles.hero__title} dangerouslySetInnerHTML={{ __html: title }} />
+          <p className={styles.hero__subtitle} dangerouslySetInnerHTML={{ __html: subtitle }} />
+          {text && <p className={styles.hero__text} dangerouslySetInnerHTML={{ __html: text }} />}
 
           {showButton && (
             <div className={styles.hero__actions}>
-              <button
-                className="btn btn--appointment"
-                onClick={openAppointment}
-              >
+              <button className="btn btn--appointment" onClick={openAppointment}>
                 Записаться на прием
               </button>
             </div>
