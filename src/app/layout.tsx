@@ -5,6 +5,7 @@ import Footer from "@/components/HomePage/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { ModalProvider } from "@/components/context/ModalContext";
 import AppointmentModal from "@/components/Modals/AppointmentModal";
+import CookieBanner from "@/components/CookieBanner/CookieBanner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -45,9 +46,10 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
           </div>
-          <AppointmentModal /> 
+          <AppointmentModal />
         </ModalProvider>
-          <ScrollToTop />
+        <ScrollToTop />
+        <CookieBanner />
       </body>
     </html>
   );
