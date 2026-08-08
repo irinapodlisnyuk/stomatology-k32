@@ -55,7 +55,6 @@
 
 .btn--blog {
   margin-top: auto;
-
   padding: 10px 20px;
   font-size: 14px;
   align-self: flex-start;
@@ -65,4 +64,64 @@
 .btn--post {
   background-color: transparent;
   border: 1px solid $white;
+}
+
+.btn--cookie {
+  font-weight: 500;
+  border-radius: 8px;
+  font-size: 14px;
+  justify-content: center;
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: $bahama-blue;
+  }
+
+  @include vp-767 {
+    width: 100%;
+  }
+
+  &-param {
+    background-color: $smoky;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 8px;
+
+    @include vp-767 {
+      padding: 10px;
+    }
+  }
+  &-save {
+    background-color: $smoky;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 8px;
+
+    @include vp-767 {
+      padding: 10px;
+      font-size: 10px;
+    }
+  }
+}
+
+.btn--options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 8px;
+  font-size: 14px;
+  justify-content: center;
+  padding: 10px 20px;
+
+  @include vp-767 {
+    padding: 10px;
+    font-size: 10px;
+  }
+
+  &:hover {
+    background-color: $bahama-blue;
+  }
 }

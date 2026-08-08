@@ -4,52 +4,105 @@
 .cookie {
   position: fixed;
   bottom: 20px;
-  left: 50%;
+  left: 35%;
   transform: translateX(-50%);
   width: calc(100% - 40px);
-  max-width: 900px;
-  background-color: rgba($white, 0.95);
-  backdrop-filter: blur(10px); 
-  border: 1px solid $whisper;
-  border-radius: 12px;
-  padding: 20px 30px;
-  box-shadow: 0 10px 40px rgba($black, 0.08);
-  z-index: 1000; 
-
+  max-width: 750px;
+  background-color: rgb(45, 57, 75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(45, 57, 75);
+  border-radius: 3px;
+  padding: 15px 20px;
+  box-shadow: 0 10px 40px rgba($black, 0.1);
+  z-index: 1000;
+  flex-direction: column;
 
   animation: cookieSlideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 
+  &--settings-open {
+    background-color: $white;
+    padding: 15px 7px 15px 20px;
+    border: 1px solid $bondi-blue;
+    overflow: hidden;
+  }
+
   @include vp-1023 {
-    padding: 15px 20px;
+    padding: 10px 15px;
+    left: 50%;
     bottom: 15px;
+  }
+
+  @include vp-767 {
+    padding: 10px;
   }
 
   &__container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 30px;
 
     @include vp-767 {
       flex-direction: column;
-      text-align: center;
+      align-items: flex-start;
       gap: 15px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    &-icon {
+      width: 40px;
+      height: 40px;
+
+      @include vp-767 {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &-title {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      align-items: center;
+      color: $white;
+
+      @include vp-1023 {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+      }
     }
   }
 
   &__text {
     font-size: 14px;
     line-height: 1.5;
-    color: $dim-gray1;
+    color: $white;
     margin: 0;
+    text-align: justify;
+    hyphens: auto;
+    text-justify: inter-word;
 
     @include vp-767 {
+      font-weight: 500;
       font-size: 13px;
+      line-height: 1.2;
     }
   }
 
   &__link {
-    color: $blue-lagoon;
+    color: $bondi-blue;
     text-decoration: underline;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -59,30 +112,177 @@
     }
   }
 
-  // Стилизация внутренней кнопки, если нет глобальной
-  :global(.btn--cookie) {
-    padding: 12px 28px;
-    font-size: 14px;
-    font-weight: 600;
-    color: $white;
-    background-color: $blue-lagoon;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-
-    &:hover {
-      background-color: $bahama-blue;
-      transform: translateY(-1px);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
     @include vp-767 {
-      width: 100%; 
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__settings {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: $white;
+    height: 70vh;
+    max-height: 550px;
+    overflow-y: auto;
+
+    @include vp-767 {
+      padding: 10px;
+      max-height: 65vh;
+    }
+
+    /* для Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba($bondi-blue, 0.4) transparent; /* Цвет ползунка и фона прокрутки */
+
+    /* Стилизация для Webkit-браузеров (Chrome, Safari, Edge, Opera) */
+    &::-webkit-scrollbar {
+      width: 6px; /* Ширина вертикального скролла */
+    }
+
+    /* Фон самой дорожки, по которой двигается ползунок */
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Сам бегунок (ползунок) прокрутки */
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($bondi-blue, 0.3);
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+
+      /* Эффект при наведении на ползунок */
+      &:hover {
+        background-color: rgba($bondi-blue, 0.6);
+      }
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.5;
+      text-align: center;
+      margin: 0;
+
+      @include vp-767 {
+        font-size: 18px;
+      }
+    }
+
+    &-text {
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: justify;
+      hyphens: auto;
+      text-justify: inter-word;
+
+      @include vp-767 {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-text {
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: justify;
+      hyphens: auto;
+      text-justify: inter-word;
+
+      @include vp-767 {
+        font-size: 12px;
+      }
+    }
+
+    &-button {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    &-icon {
+      width: 15px;
+      height: 10px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    border: 1px solid $whisper;
+    box-shadow: rgba(30, 36, 39, 0.15) 0px 4px 10px;
+    padding: 15px;
+
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+    }
+
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:hover {
+        .cookie__top-title,
+        .cookie__top-icon {
+          color: rgba($blue-lagoon, 0.8);
+        }
+      }
+    }
+
+    &-icon {
+      width: 10px;
+      height: 15px;
+      color: $blue-lagoon;
+      transition: color $transition-500;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
+      color: $blue-lagoon;
+      transition: color $transition-500;
+
+      @include vp-767 {
+        font-size: 12px;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  &__accordion {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition:
+      grid-template-rows 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+    opacity: 0;
+
+    &--open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 12px;
+    }
+
+    &-inner {
+      overflow: hidden;
     }
   }
 }
