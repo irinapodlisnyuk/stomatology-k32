@@ -3,15 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./CookieBanner.module.scss";
 import Icon from "../models/Icon";
 import CookieOption from "./CookieOption";
+import { activateAdvertising, activateAnalytics } from "@/utils/cookieManager";
+import { initAppConsent } from "@/utils/cookieManager";
 
 export default function CookieBanner() {
   const bannerRef = useRef<HTMLDivElement>(null);
-
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const animationFrame = requestAnimationFrame(() => {
       setIsMounted(true);
+      initAppConsent(); // Проверяет localStorage и пишет логи при первом заходе на сайт
     });
 
     return () => cancelAnimationFrame(animationFrame);
@@ -67,6 +69,9 @@ export default function CookieBanner() {
       localStorage.setItem("cookieAdvertisingAccepted", "true");
       setAnalytics(true);
       setAdvertising(true);
+
+      activateAnalytics();
+      activateAdvertising();
     } catch {
       console.warn("localStorage недоступен");
     }
@@ -78,6 +83,9 @@ export default function CookieBanner() {
       localStorage.setItem("cookieConsentAccepted", "true");
       localStorage.setItem("cookieAnalyticsAccepted", analytics.toString());
       localStorage.setItem("cookieAdvertisingAccepted", advertising.toString());
+
+      activateAnalytics();
+      activateAdvertising();
     } catch {
       console.warn("localStorage недоступен");
     }
@@ -92,7 +100,7 @@ export default function CookieBanner() {
       ref={bannerRef}
     >
       {!showSettings ? (
-        /* Главное окно (Темное по умолчанию) */
+        /* Главное окно */
         <div className={styles.cookie__container}>
           <div className={styles.cookie__wrapper}>
             <div className={styles.cookie__header}>
