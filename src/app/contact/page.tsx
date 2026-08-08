@@ -15,6 +15,22 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+ 
+  other: {
+  
+    "link:rel:preload:0": "",
+    "link:href:0": "/image/call/call-mob.webp",
+    "link:as:0": "image",
+    "link:media:0": "(max-width: 767px)",
+    "link:type:0": "image/webp",
+
+  
+    "link:rel:preload:1": "",
+    "link:href:1": "/image/call/call.webp",
+    "link:as:1": "image",
+    "link:media:1": "(min-width: 768px)",
+    "link:type:1": "image/webp",
+  }
 };
 
 export default function ContactRoute() {

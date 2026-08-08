@@ -33,6 +33,7 @@ export default function Teams() {
                     baseName={imgName}
                     alt={altText}
                     className={styles["teams__picture-img"]}
+                     sizes="(max-width: 767px) 442px, (max-width: 1199px) 350px, 300px"
                   />
                   <div className={styles["teams__item-info"]}>
                     <span className={styles["teams__item-name"]}>{name}</span>

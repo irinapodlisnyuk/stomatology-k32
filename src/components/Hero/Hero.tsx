@@ -10,7 +10,7 @@ interface HeroProps {
   imageName?: string;
   altText?: string;
   showButton?: boolean;
-  pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call"; 
+  pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call";
 }
 
 export default function Hero({
@@ -21,7 +21,7 @@ export default function Hero({
   imageName = "hero",
   altText = "Современная стоматология Клиника +32",
   showButton = false,
-  pageType = "home", 
+  pageType = "home",
 }: HeroProps) {
   const { openAppointment } = useModals();
 
@@ -30,6 +30,11 @@ export default function Hero({
 
   const modifierClass = pageType !== "home" ? styles[`hero--${pageType}`] : "";
 
+  const imageSizes =
+    pageType === "call"
+      ? "(max-width: 767px) 515px, (max-width: 1199px) 768px, 100vw"
+      : "(max-width: 767px) 100vw, (max-width: 1199px) 100vw, 100vw";
+
   return (
     <section className={`${styles.hero} ${modifierClass}`}>
       <div className="container">
@@ -37,35 +42,43 @@ export default function Hero({
           {/* 1. Мобильные устройства (до 767px) */}
           <source
             media="(max-width: 767px)"
-            srcSet={`${imageFolder}/${imageName}${mobSuffix}.webp 1x, ${imageFolder}/${imageName}${mobSuffix}@2x.webp 2x`}
+            srcSet={`${imageFolder}/${imageName}${mobSuffix}.webp 768w, ${imageFolder}/${imageName}${mobSuffix}@2x.webp 1536w`}
+            sizes={imageSizes}
             type="image/webp"
           />
           <source
             media="(max-width: 767px)"
-            srcSet={`${imageFolder}/${imageName}${mobSuffix}.jpg 1x, ${imageFolder}/${imageName}${mobSuffix}@2x.jpg 2x`}
-            type="image/jpg"
+            srcSet={`${imageFolder}/${imageName}${mobSuffix}.jpg 768w, ${imageFolder}/${imageName}${mobSuffix}@2x.jpg 1536w`}
+            sizes={imageSizes}
+            type="image/jpeg"
           />
 
           {/* 2. Планшеты (до 1199px) */}
           <source
             media="(max-width: 1199px)"
-            srcSet={`${imageFolder}/${imageName}${tabSuffix}.webp 1x, ${imageFolder}/${imageName}${tabSuffix}@2x.webp 2x`}
+            srcSet={`${imageFolder}/${imageName}${tabSuffix}.webp 1024w, ${imageFolder}/${imageName}${tabSuffix}@2x.webp 2048w`}
+            sizes={imageSizes}
             type="image/webp"
           />
           <source
             media="(max-width: 1199px)"
-            srcSet={`${imageFolder}/${imageName}${tabSuffix}.jpg 1x, ${imageFolder}/${imageName}${tabSuffix}@2x.jpg 2x`}
-            type="image/jpg"
+            srcSet={`${imageFolder}/${imageName}${tabSuffix}.jpg 1024w, ${imageFolder}/${imageName}${tabSuffix}@2x.jpg 2048w`}
+            sizes={imageSizes}
+            type="image/jpeg"
           />
 
           {/* 3. Десктоп (от 1200px) */}
           <source
-            srcSet={`${imageFolder}/${imageName}.webp 1x, ${imageFolder}/${imageName}@2x.webp 2x`}
+            media="(min-width: 1200px)"
+            srcSet={`${imageFolder}/${imageName}.webp 1440w, ${imageFolder}/${imageName}@2x.webp 2880w`}
+            sizes={imageSizes}
             type="image/webp"
           />
           <source
-            srcSet={`${imageFolder}/${imageName}.jpg 1x, ${imageFolder}/${imageName}@2x.jpg 2x`}
-            type="image/jpg"
+            media="(min-width: 1200px)"
+            srcSet={`${imageFolder}/${imageName}.jpg 1440w, ${imageFolder}/${imageName}@2x.jpg 2880w`}
+            sizes={imageSizes}
+            type="image/jpeg"
           />
 
           <img
@@ -74,17 +87,32 @@ export default function Hero({
             className={`${styles.hero__img || ""} ${styles.hero__bg || ""}`}
             fetchPriority="high"
             loading="eager"
+            decoding="sync"
           />
         </picture>
 
         <div className={styles.hero__wrapper}>
-          <h2 className={styles.hero__title} dangerouslySetInnerHTML={{ __html: title }} />
-          <p className={styles.hero__subtitle} dangerouslySetInnerHTML={{ __html: subtitle }} />
-          {text && <p className={styles.hero__text} dangerouslySetInnerHTML={{ __html: text }} />}
+          <h2
+            className={styles.hero__title}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+          <p
+            className={styles.hero__subtitle}
+            dangerouslySetInnerHTML={{ __html: subtitle }}
+          />
+          {text && (
+            <p
+              className={styles.hero__text}
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
+          )}
 
           {showButton && (
             <div className={styles.hero__actions}>
-              <button className="btn btn--appointment" onClick={openAppointment}>
+              <button
+                className="btn btn--appointment"
+                onClick={openAppointment}
+              >
                 Записаться на прием
               </button>
             </div>

@@ -30,13 +30,13 @@ export default function Feedback() {
       <div className="container">
         <div className={styles["feedback__wrapper"]}>
           <div className={styles["feedback__inner"]}>
-
             <ResponsivePicture
-                folder="/image/feedback"
-                baseName="feedback"
-                alt="Прием в Клинике +32"
-                   className={styles["feedback__picture-img"]}
-              />
+              folder="/image/feedback"
+              baseName="feedback"
+              alt="Прием в Клинике +32"
+              className={styles["feedback__picture-img"]}
+               sizes="(max-width: 767px) 465px, (max-width: 1023px) 768px, 535px"
+            />
           </div>
           <div className={styles["feedback__header"]}>
             <h2 className={styles["feedback__title"]}>Форма обратной связи</h2>

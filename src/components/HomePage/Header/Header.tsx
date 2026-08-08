@@ -27,7 +27,7 @@ export default function HeaderComponent() {
             <Link href="/" className={styles["header__logo"]}>
               <picture>
                 <img
-                  src="/image/logo-icon.png"
+                  src="/image/logo.png"
                   alt="Логотип Клиника +32"
                   className={styles["header__logo-icon"]}
                 />

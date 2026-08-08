@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./Footer.module.scss";
 import Icon from "@/components/Icon/Icon";
 import { navigationItems, MenuItem } from "@/data/navigation";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -10,13 +11,13 @@ export default function Footer() {
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
             <Link className={styles["footer__logo"]} href="/" scroll={true}>
-              <picture>
-                <img
-                  src="/image/logo-icon.png"
-                  alt="Логотип Клиника +32"
-                  className={styles["footer__logo-icon"]}
-                />
-              </picture>
+              <Image
+                src="/image/logo-icon.png"
+                alt="Логотип Клиника +32"
+                className={styles["footer__logo-icon"]}
+                width={100}
+                height={67}
+              />
             </Link>
             <p className={styles["footer__right-text"]}>
               &laquo;Ваша улыбка&nbsp;&mdash; наш главный приоритет.
@@ -30,10 +31,10 @@ export default function Footer() {
             <ul className={styles["footer__menu-list"]}>
               {navigationItems.map((item: MenuItem) => (
                 <li key={item.key} className={styles["footer__menu-item"]}>
-                    <Icon
-                  className={styles["footer__menu-icon"]}
-                  name={"arrow"}
-                />
+                  <Icon
+                    className={styles["footer__menu-icon"]}
+                    name={"arrow"}
+                  />
                   <Link href={item.path}>{item.label}</Link>
                 </li>
               ))}
@@ -107,7 +108,7 @@ export default function Footer() {
             <ul className={styles["footer__police-list"]}>
               <li className={styles["footer__police-item"]}>
                 <Link
-                  href="/police"
+                  href="/privacy-policy"
                   className={styles["footer__police-item-link"]}
                 >
                   Политика конфиденциальности
