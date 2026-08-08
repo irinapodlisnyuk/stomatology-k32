@@ -2,7 +2,7 @@
 
 import { useModals } from "@/components/context/ModalContext";
 import { ContactForm } from "../Form/ContactForm/ContactForm";
-import Icon from "@/components/models/Icon";
+import Icon from "@/components/Icon/Icon";
 import styles from "./AppointmentModal.module.scss";
 import { useEffect, useState } from "react";
 import { ModalOpen } from "../ModalOpen/ModalOpen";

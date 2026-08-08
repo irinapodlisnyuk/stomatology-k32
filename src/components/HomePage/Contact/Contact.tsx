@@ -1,5 +1,5 @@
 "use client";
-import Icon from "@/components/models/Icon";
+import Icon from "@/components/Icon/Icon";
 import styles from "./Contact.module.scss";
 import Link from "next/link";
 import LoaderPage from "@/components/LoaderPage/LoaderPage";

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import styles from "./CookieBanner.module.scss";
-import Icon from "../models/Icon";
+import Icon from "../Icon/Icon";
 import CookieOption from "./CookieOption";
 import { activateAdvertising, activateAnalytics } from "@/utils/cookieManager";
 import { initAppConsent } from "@/utils/cookieManager";

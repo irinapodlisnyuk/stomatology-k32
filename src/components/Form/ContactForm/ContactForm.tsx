@@ -11,7 +11,7 @@ import styles from "./ContactForm.module.scss";
 import stylesInput from "./Custom__contact.module.scss";
 import stylesError from "@/components/Form/FormField/FormField.module.scss";
 import stylesCheckbox from "./Checkbox-from.module.scss";
-import Icon from "@/components/models/Icon";
+import Icon from "@/components/Icon/Icon";
 import { ContactFormValues, ContactSchema } from "@/app/schema/ContactSchema";
 import { sendMessageApi } from "@/app/api/messageApi/sendMessageApi";
 

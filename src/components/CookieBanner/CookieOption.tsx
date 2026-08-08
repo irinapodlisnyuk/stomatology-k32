@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "@/components/models/Icon";
+import Icon from "@/components/Icon/Icon";
 import styles from "./CookieBanner.module.scss";
 import stylesInput from "./Custom__checkbox.module.scss";
 

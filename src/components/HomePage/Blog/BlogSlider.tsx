@@ -3,7 +3,7 @@
 import { FC,  useState } from "react";
 import Link from "next/link";
 import styles from "./Blog.module.scss";
-import Icon from "@/components/models/Icon";
+import Icon from "@/components/Icon/Icon";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import { BlogItem } from "@/data/Blog_data";
 

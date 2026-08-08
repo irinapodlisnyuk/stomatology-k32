@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Icon from '@/components/models/Icon';
+import Icon from '@/components/Icon/Icon';
 import styles from './ScrollToTop.module.scss';
 
 export default function ScrollToTop() {

@@ -1,4 +1,4 @@
-import Icon from "@/components/models/Icon";
+import Icon from "@/components/Icon/Icon";
 import styles from "./CallBack.module.scss";
 
 export default function CallBack() {
