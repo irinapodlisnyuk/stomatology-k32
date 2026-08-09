@@ -24,39 +24,42 @@ export default function ResponsivePicture({
       {/* 1. МОБИЛЬНЫЕ (до 767px) */}
       <source
         media="(max-width: 767px)"
-        srcSet={`${cleanFolder}/${baseName}-mob.webp 1x, ${cleanFolder}/${baseName}-mob@2x.webp 2x`}
+       
+        srcSet={`${cleanFolder}/${baseName}-mob.webp 768w, ${cleanFolder}/${baseName}-mob@2x.webp 1536w`}
         sizes={sizes}
         type="image/webp"
       />
       <source
         media="(max-width: 767px)"
-        srcSet={`${cleanFolder}/${baseName}-mob.jpg 1x, ${cleanFolder}/${baseName}-mob@2x.jpg 2x`}
+        srcSet={`${cleanFolder}/${baseName}-mob.jpg 768w, ${cleanFolder}/${baseName}-mob@2x.jpg 1536w`}
         sizes={sizes}
         type="image/jpeg"
       />
 
-      {/* 2. ПЛАНШЕТЫ (до 1023px) */}
+      {/* 2. ПЛАНШЕТЫ (от 768px до 1023px) */}
       <source
         media="(max-width: 1023px)"
-        srcSet={`${cleanFolder}/${baseName}-tab.webp 1x, ${cleanFolder}/${baseName}-tab@2x.webp 2x`}
+        srcSet={`${cleanFolder}/${baseName}-tab.webp 1024w, ${cleanFolder}/${baseName}-tab@2x.webp 2048w`}
         sizes={sizes}
         type="image/webp"
       />
       <source
         media="(max-width: 1023px)"
-        srcSet={`${cleanFolder}/${baseName}-tab.jpg 1x, ${cleanFolder}/${baseName}-tab@2x.jpg 2x`}
+        srcSet={`${cleanFolder}/${baseName}-tab.jpg 1024w, ${cleanFolder}/${baseName}-tab@2x.jpg 2048w`}
         sizes={sizes}
         type="image/jpeg"
       />
 
-      {/* 💡 3. ДЕСКТОП (Инструкция для больших экранов с поддержкой @2x) */}
+      {/* 3. ДЕСКТОП (от 1024px и выше) */}
       <source
-        srcSet={`${cleanFolder}/${baseName}.webp 1x, ${cleanFolder}/${baseName}@2x.webp 2x`}
+        media="(min-width: 1024px)"  
+        srcSet={`${cleanFolder}/${baseName}.webp 1440w, ${cleanFolder}/${baseName}@2x.webp 2880w`}
         sizes={sizes}
         type="image/webp"
       />
       <source
-        srcSet={`${cleanFolder}/${baseName}.jpg 1x, ${cleanFolder}/${baseName}@2x.jpg 2x`}
+        media="(min-width: 1024px)"
+        srcSet={`${cleanFolder}/${baseName}.jpg 1440w, ${cleanFolder}/${baseName}@2x.jpg 2880w`}
         sizes={sizes}
         type="image/jpeg"
       />

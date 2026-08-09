@@ -287,27 +287,33 @@
       }
     }
 
+    &-link {
+      cursor: pointer;
+      transition: transform v.$transition-500;
+      &:hover {
+        transform: translateY(-5px);
+
+        .callback__bottom-icon {
+           background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+      }
+    }
+
     &-icon {
       width: 40px;
       height: 40px;
-      transition: transform v.$transition-500;
+      transition: color v.$transition-500;
+      border-radius: 12px;
 
       @include m.vp-1023 {
         width: 25px;
         height: 25px;
       }
-
-      &:hover {
-        color: v.$night-rider;
-      }
     }
   }
 
-  &__bottom-link {
-    &:hover {
-      .call-back__bottom-icon {
-        transform: translateY(-5px);
-      }
-    }
+  &__disclaimer {
+    font-size: 12px;
+    color: v.$night-rider;
   }
 }
