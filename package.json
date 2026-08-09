@@ -34,5 +34,13 @@
     "sass": "^1.101.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "chrome >= 100",
+    "safari >= 15",
+    "firefox >= 100",
+    "edge >= 100",
+    "ios >= 15",
+    "not ie <= 11"
+  ]
 }
