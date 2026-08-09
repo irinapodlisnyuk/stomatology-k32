@@ -8,6 +8,7 @@ import Contact from "@/components/HomePage/Contact/Contact";
 import { Metadata } from "next";
 import { Blog } from "@/components/HomePage/Blog/Blog";
 
+
 export const metadata: Metadata = {
   title:
     "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",

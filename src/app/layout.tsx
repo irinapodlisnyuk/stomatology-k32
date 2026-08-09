@@ -1,12 +1,19 @@
 import { Poppins, Manrope, Montserrat } from "next/font/google";
+import dynamic from "next/dynamic"; 
 import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/HomePage/Header/Header";
 import Footer from "@/components/HomePage/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { ModalProvider } from "@/components/context/ModalContext";
-import AppointmentModal from "@/components/Modals/AppointmentModal";
-import CookieBanner from "@/components/CookieBanner/CookieBanner";
 
+
+const CookieBanner = dynamic(() => import("@/components/CookieBanner/CookieBanner"), {
+  ssr: false, 
+});
+
+const AppointmentModal = dynamic(() => import("@/components/Modals/AppointmentModal"), {
+  ssr: false,
+});
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
