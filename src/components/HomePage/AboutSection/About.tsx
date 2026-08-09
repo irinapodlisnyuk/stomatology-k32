@@ -31,7 +31,7 @@ export default function About() {
               baseName="about"
               alt="Прием в Клинике +32"
               className={styles["about__picture-img"]}
-              sizes="(max-width: 767px) 558px, (max-width: 1023px) 768px, 100vw"
+              sizes="(max-width: 767px) 360px, (max-width: 1199px) 768px, 781px"
             />
           </div>
         </div>
