@@ -1,7 +1,11 @@
-'use client';
-import React, { useEffect, useRef, useState } from 'react';
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function ScrollReveal({ children }: { children: React.ReactNode }) {
+export default function ScrollReveal({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isRendered, setIsRendered] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -9,11 +13,30 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsRendered(true);
+          const idleCallback = window.requestIdleCallback
+            ? window.requestIdleCallback(() => {
+                setIsRendered(true);
+              })
+            : window.setTimeout(() => {
+                setIsRendered(true);
+              }, 50);
+
           if (elementRef.current) observer.unobserve(elementRef.current);
+
+          return () => {
+            if (window.cancelIdleCallback && typeof idleCallback === "number") {
+              window.cancelIdleCallback(idleCallback);
+            } else {
+              clearTimeout(idleCallback);
+            }
+          };
         }
       },
-      { threshold: 0.2 }
+      {
+        root: null,
+        threshold: 0.18,
+        rootMargin: "0px 0px 250px 0px",
+      },
     );
 
     if (elementRef.current) observer.observe(elementRef.current);
@@ -21,7 +44,14 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
   }, []);
 
   return (
-    <div ref={elementRef} style={{ minHeight: '400px' }}>
+    <div
+      ref={elementRef}
+      style={{
+        contentVisibility: isRendered ? "visible" : "auto",
+        containIntrinsicSize: "400px",
+        minHeight: isRendered ? "auto" : "400px",
+      }}
+    >
       {isRendered ? children : null}
     </div>
   );

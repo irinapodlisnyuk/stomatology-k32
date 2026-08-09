@@ -1,23 +1,43 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Icon from '@/components/Icon/Icon';
 import styles from './ScrollToTop.module.scss';
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const observerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 400) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+    // 1. Создаем невидимый элемент-маркер в самом верху тела документа
+    const target = document.createElement('div');
+    target.style.position = 'absolute';
+    target.style.top = '400px'; // Точка, после которой должна появиться кнопка
+    target.style.left = '0';
+    target.style.width = '1fr';
+    target.style.height = '1px';
+    target.style.pointerEvents = 'none';
+    document.body.appendChild(target);
+    observerRef.current = target;
+
+    // 2. Инициализируем наблюдатель
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Если маркер ушел выше экрана (isIntersecting === false), показываем кнопку
+        setIsVisible(!entry.isIntersecting);
+      },
+      { root: null, threshold: 0 }
+    );
+
+    observer.observe(target);
+
+    // Очищаем маркер и наблюдатель при размонтировании
+    return () => {
+      observer.disconnect();
+      if (target && document.body.contains(target)) {
+        document.body.removeChild(target);
       }
     };
-
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
