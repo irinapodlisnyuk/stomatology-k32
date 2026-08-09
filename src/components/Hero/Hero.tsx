@@ -30,11 +30,10 @@ export default function Hero({
 
   const modifierClass = pageType !== "home" ? styles[`hero--${pageType}`] : "";
 
-  const imageSizes =
-    pageType === "call"
-      ? "(max-width: 767px) 515px, (max-width: 1199px) 768px, 100vw"
-      : "(max-width: 767px) 100vw, (max-width: 1199px) 100vw, 100vw";
-
+const imageSizes =
+  pageType === "call"
+    ? "(max-width: 767px) 360px, (max-width: 1199px) 768px, 100vw"
+    : "(max-width: 767px) 360px, (max-width: 1199px) 100vw, 100vw";
   return (
     <section className={`${styles.hero} ${modifierClass}`}>
       <div className="container">
