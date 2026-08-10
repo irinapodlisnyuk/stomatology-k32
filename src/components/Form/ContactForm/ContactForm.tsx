@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useId} from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -21,7 +21,7 @@ interface ContactFormProps {
 }
 
 export const ContactForm: FC<ContactFormProps> = ({ onSuccess, onError }) => {
-  const [formId] = useState(() => `form-${Math.floor(Math.random() * 10000)}`);
+ const formId = useId(); 
   const {
     register,
     handleSubmit,
