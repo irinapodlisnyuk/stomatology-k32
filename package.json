@@ -6,7 +6,8 @@
     "dev": "start http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "clean": "next clean"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
