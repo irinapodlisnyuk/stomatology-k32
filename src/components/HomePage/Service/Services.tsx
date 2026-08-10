@@ -4,10 +4,11 @@ import styles from "./Services.module.scss";
 import dynamic from "next/dynamic";
 import LoaderPage from "@/components/LoaderPage/LoaderPage"; 
 
+// Включаем SSR (ssr: true), чтобы поисковые роботы видели текст услуг клиники!
 const ServicesList = dynamic(
   () => import("./List-service").then((mod) => mod.ServicesList),
   { 
-    ssr: false,
+    ssr: true, // ИСПРАВЛЕНИЕ: Теперь услуги индексируются поисковиками
     loading: () => (
       <div className={styles.services__loaderBox}>
         <LoaderPage local={true} />
@@ -15,6 +16,7 @@ const ServicesList = dynamic(
     )
   }
 );
+
 export default function Services() {
   return (
     <section className={styles.services}>
@@ -29,13 +31,13 @@ export default function Services() {
             </h2>
             <h3
               className={`${styles["services__header-subtitle"]} ${styles["animate-fade-up"]}`}
-              style={{ animationDelay: "0.35s" }} // Через 150мс
+              style={{ animationDelay: "0.35s" }}
             >
               Забота о&nbsp;каждом аспекте вашей улыбки
             </h3>
             <p
               className={`${styles["services__header-text"]} ${styles["animate-fade-up"]}`}
-              style={{ animationDelay: "0.5s" }} // Через 150мс после подзаголовка
+              style={{ animationDelay: "0.5s" }}
             >
               Здоровье зубов определяет качество жизни, поэтому мы&nbsp;создали
               пространство, где лечение проходит абсолютно безболезненно

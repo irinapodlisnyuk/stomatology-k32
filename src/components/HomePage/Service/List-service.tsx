@@ -4,6 +4,7 @@ import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture"
 import styles from "./List-service.module.scss";
 import { SERVICES_DATA, ServiceItem } from "@/data/Service_data";
 
+
 const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -14,7 +15,12 @@ const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
 };
 
 export const ServicesList = () => {
-  const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
+ // const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
+
+    const isServer = typeof window === "undefined";
+  const shuffledServices = isServer 
+    ? SERVICES_DATA.slice(0, 4) 
+    : shuffleArray(SERVICES_DATA).slice(0, 4);
 
   return (
     <ul className={styles["services__list"]}>
