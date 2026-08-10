@@ -9,7 +9,6 @@ import Contact from "@/components/HomePage/Contact/Contact";
 import { Blog } from "@/components/HomePage/Blog/Blog";
 import { Metadata } from "next";
 
-
 export const metadata: Metadata = {
   title:
     "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
@@ -23,7 +22,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
 };
-
 
 interface CustomPreloadOptions extends ReactDOM.PreloadOptions {
   media?: string;
@@ -52,23 +50,26 @@ export default function HomePage() {
         showButton={true}
         pageType="home"
       />
-
-      <ScrollReveal>
-        <About />
-      </ScrollReveal>
-      <ScrollReveal>
-        <Services />
-      </ScrollReveal>
-      <Teams />
-      <ScrollReveal>
-        <Questions />
-      </ScrollReveal>
-      <ScrollReveal>
-        <Contact />
-      </ScrollReveal>
-      <ScrollReveal>
-        <Blog />
-      </ScrollReveal>
+      <div
+        style={{ contentVisibility: "auto", containIntrinsicSize: "0 2000px" }}
+      >
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Services />
+        </ScrollReveal>
+        <Teams />
+        <ScrollReveal>
+          <Questions />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Contact />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Blog />
+        </ScrollReveal>
+      </div>
     </>
   );
 }

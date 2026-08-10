@@ -81,7 +81,7 @@ export default function Hero({
           />
 
           <img
-            src={`${imageFolder}/${imageName}.jpg`}
+            src={`${imageFolder}/${imageName}.webp`}
             alt={altText.replace(/&nbsp;/g, " ")}
             className={`${styles.hero__img || ""} ${styles.hero__bg || ""}`}
             fetchPriority="high"
