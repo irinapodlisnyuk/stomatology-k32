@@ -1,45 +1,33 @@
+import ReactDOM from "react-dom";
+import Hero from "@/components/Hero/Hero";
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
-import Hero from "@/components/Hero/Hero";
 import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
 import Questions from "@/components/HomePage/Questions/Questions";
 import Contact from "@/components/HomePage/Contact/Contact";
-import { Metadata } from "next";
 import { Blog } from "@/components/HomePage/Blog/Blog";
 
 
-export const metadata: Metadata = {
-  title:
-    "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
-  description:
-    "Профессиональное лечение зубов, имплантация и протезирование без боли. Прием ведут врачи со стажем от 10 лет.",
-  keywords: [
-    "стоматология Геленджик",
-    "стоматология Кабардинка",
-    "лечение зубов",
-  ],
-  robots: { index: true, follow: true },
-  icons: { icon: "/icon.svg" },
-
-  other: {
-    "link:rel:preload:0": "",
-    "link:href:0": "/image/hero/hero-mob.webp",
-    "link:as:0": "image",
-    "link:media:0": "(max-width: 767px)",
-    "link:type:0": "image/webp",
-    "link:fetchpriority:0": "high", 
-
-    "link:rel:preload:1": "",
-    "link:href:1": "/image/hero/hero@2x.webp",
-    "link:as:1": "image",
-    "link:media:1": "(min-width: 768px)",
-    "link:type:1": "image/webp",
-    "link:fetchpriority:1": "high",
-  },
-};
+interface CustomPreloadOptions extends ReactDOM.PreloadOptions {
+  media?: string;
+  fetchPriority?: "high" | "low" | "auto";
+}
 
 export default function HomePage() {
+  // Вызываем предзагрузку со строгой типизацией через наш кастомный интерфейс
+  ReactDOM.preload("/image/hero/hero-mob.webp", {
+    as: "image",
+    media: "(max-width: 767px)",
+    fetchPriority: "high",
+  } as CustomPreloadOptions);
+
+  ReactDOM.preload("/image/hero/hero.webp", {
+    as: "image",
+    media: "(min-width: 768px)",
+    fetchPriority: "high",
+  } as CustomPreloadOptions);
+
   return (
     <>
       <Hero
