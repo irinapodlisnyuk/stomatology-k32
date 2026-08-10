@@ -44,8 +44,6 @@ export default function Hero({
             srcSet={`${imageFolder}/${imageName}${mobSuffix}.webp 768w, ${imageFolder}/${imageName}${mobSuffix}@2x.webp 1536w`}
             sizes={imageSizes}
             type="image/webp"
-            // @ts-expect-error fetchpriority валиден для браузера, но дополняется в типы React
-            fetchpriority="high"
           />
           <source
             media="(max-width: 767px)"
@@ -74,8 +72,6 @@ export default function Hero({
             srcSet={`${imageFolder}/${imageName}.webp 1440w, ${imageFolder}/${imageName}@2x.webp 2880w`}
             sizes={imageSizes}
             type="image/webp"
-            // @ts-expect-error fetchpriority валиден для браузера
-            fetchpriority="high"
           />
           <source
             media="(min-width: 1200px)"

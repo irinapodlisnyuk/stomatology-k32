@@ -1,6 +1,6 @@
 "use client";
 
-import { FC,  useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./Blog.module.scss";
 import Icon from "@/components/Icon/Icon";
@@ -13,14 +13,25 @@ interface BlogSliderProps {
 
 export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handlePrev = () => setActiveIndex((p) => (p > 0 ? p - 1 : posts.length - 1));
-  const handleNext = () => setActiveIndex((p) => (p < posts.length - 1 ? p + 1 : 0));
+  // Железное определение мобилки/тачскрина через брейкпоинт CSS (767px из вашего миксина)
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
+
+  const handlePrev = () =>
+    setActiveIndex((p) => (p > 0 ? p - 1 : posts.length - 1));
+  const handleNext = () =>
+    setActiveIndex((p) => (p < posts.length - 1 ? p + 1 : 0));
 
   return (
     <div className={styles["blog__slider-container"]}>
-
-
       <ul className={styles["blog__list"]}>
         {posts.map(({ id, slug, name, title, imgName, altText }, index) => {
           const isCenter = index === activeIndex;
@@ -33,27 +44,47 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
           const isVisible = diff >= -1 && diff <= 1;
           const translateX = diff * 85;
 
-          const inlineStyle = {
-            transform: isCenter
-              ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
-              : `translateX(${translateX}%) scale(0.85)`,
-            opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
-            pointerEvents: isVisible ? "auto" : "none",
-          } as React.CSSProperties;
+          // Формируем инлайн-стили ТОЛЬКО для десктопа. 
+          // На мобилках отдаем управление чистому SCSS файлу.
+          const inlineStyle = !isMobile
+            ? ({
+                transform: isCenter
+                  ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
+                  : `translateX(${translateX}%) scale(0.85)`,
+                opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
+                pointerEvents: isVisible ? "auto" : "none",
+              } as React.CSSProperties)
+            : undefined; 
 
           return (
             <li
               key={id}
               style={inlineStyle}
-              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
-              onClick={() => !isCenter && setActiveIndex(index)}
+              className={`${styles["blog__item"]} ${!isMobile && isCenter ? styles["blog__item--center"] : ""}`}
+             
+              onClick={() => {
+                if (!isMobile && !isCenter) {
+                  setActiveIndex(index);
+                }
+              }}
             >
               <Link
                 href={`/blog/${slug || id}`}
                 className={styles["blog__item-link"]}
-                onClick={(e) => !isCenter && e.preventDefault()}
+                onClick={(e) => {
+                  if (isMobile) return;
+
+                  if (!isCenter) {
+                    e.preventDefault();
+                  }
+                }}
               >
-                <ResponsivePicture folder="/image/blog" baseName={imgName} alt={altText} className={styles["blog__picture-img"]} />
+                <ResponsivePicture
+                  folder="/image/blog"
+                  baseName={imgName}
+                  alt={altText}
+                  className={styles["blog__picture-img"]}
+                />
                 <div className={styles["blog__item-content"]}>
                   <span className={styles["blog__item-name"]}>{name}</span>
                   <h3 className={styles["blog__item-text"]}>{title}</h3>
@@ -65,11 +96,22 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
       </ul>
 
       <div className={styles["blog__nav"]}>
-        <button className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`} onClick={handlePrev} aria-label="Назад">
+        <button
+          className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`}
+          onClick={handlePrev}
+          aria-label="Назад"
+        >
           <Icon className={styles["blog__btn-icon"]} name={"arrow"} />
         </button>
-        <button className={`${styles["blog__btn"]} ${styles["blog__btn--next"]}`} onClick={handleNext} aria-label="Вперед">
-          <Icon className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`} name={"arrow"} />
+        <button
+          className={`${styles["blog__btn"]} ${styles["blog__btn--next"]}`}
+          onClick={handleNext}
+          aria-label="Вперед"
+        >
+          <Icon
+            className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`}
+            name={"arrow"}
+          />
         </button>
       </div>
     </div>
