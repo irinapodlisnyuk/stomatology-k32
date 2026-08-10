@@ -37,11 +37,11 @@ export default function Hero({
             src={`${imageFolder}/${imageName}.webp`}
             alt={altText.replace(/&nbsp;/g, " ")}
             className={`${styles.hero__img || ""} ${styles.hero__bg || ""}`}
-            fill 
+            fill
             style={{ objectFit: "cover" }}
-          
             priority={true}
-            loading="eager" 
+            loading="eager"
+            fetchPriority="high"
           />
         </div>
 
