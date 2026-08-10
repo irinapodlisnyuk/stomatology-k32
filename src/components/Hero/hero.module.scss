@@ -70,8 +70,10 @@
       padding: 0 20px;
       text-align: center;
       align-items: center;
-      animation: heroSlideInMobile 2.5s cubic-bezier(0.25, 1, 0.5, 1) 0.3s
-        forwards;
+      
+
+      animation: none !important;
+      opacity: 1 !important; 
     }
   }
 
@@ -184,6 +186,10 @@
       @include m.vp-1023 {
         gap: 35px;
         padding: 0 20px;
+        
+  
+        animation: none !important;
+        opacity: 1 !important;
       }
 
       @include m.vp-767 {
@@ -223,11 +229,9 @@
     }
   }
 
-  //  для Страницы "О нас"
   &--about {
   }
 
-  //  для Контактов
   &--contacts {
     .hero__wrapper {
       width: 90%;
@@ -245,6 +249,9 @@
         gap: 35px;
         padding: 0 20px;
         justify-content: space-evenly;
+        
+        animation: none !important;
+        opacity: 1 !important;
       }
 
       @include m.vp-767 {
@@ -256,8 +263,7 @@
   }
 }
 
-// 3.  АНИМАЦИИ
-
+// 3. АНИМАЦИИ
 @keyframes heroSlideIn {
   0% {
     opacity: 0;
