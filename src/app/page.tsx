@@ -7,6 +7,22 @@ import Teams from "@/components/HomePage/Teams/Teams";
 import Questions from "@/components/HomePage/Questions/Questions";
 import Contact from "@/components/HomePage/Contact/Contact";
 import { Blog } from "@/components/HomePage/Blog/Blog";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title:
+    "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
+  description:
+    "Профессиональное лечение зубов, имплантация и протезирование без боли. Прием ведут врачи со стажем от 10 лет.",
+  keywords: [
+    "стоматология Геленджик",
+    "стоматология Кабардинка",
+    "лечение зубов",
+  ],
+  robots: { index: true, follow: true },
+  icons: { icon: "/icon.svg" },
+};
 
 
 interface CustomPreloadOptions extends ReactDOM.PreloadOptions {
@@ -15,7 +31,6 @@ interface CustomPreloadOptions extends ReactDOM.PreloadOptions {
 }
 
 export default function HomePage() {
-  // Вызываем предзагрузку со строгой типизацией через наш кастомный интерфейс
   ReactDOM.preload("/image/hero/hero-mob.webp", {
     as: "image",
     media: "(max-width: 767px)",
