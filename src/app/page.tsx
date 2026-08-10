@@ -3,10 +3,6 @@ import Hero from "@/components/Hero/Hero";
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
-// import Teams from "@/components/HomePage/Teams/Teams";
-// import Questions from "@/components/HomePage/Questions/Questions";
-// import Contact from "@/components/HomePage/Contact/Contact";
-// import { Blog } from "@/components/HomePage/Blog/Blog";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 

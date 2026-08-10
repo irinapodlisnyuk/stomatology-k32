@@ -19,11 +19,7 @@ const nextConfig: NextConfig = {
     },
   },
 
-  turbopack: {
-    resolveAlias: {
-      "next/dist/compiled/next-polyfill-module": "./empty.js",
-    },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
   },
 };
-
-export default nextConfig;
