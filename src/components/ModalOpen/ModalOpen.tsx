@@ -8,7 +8,7 @@ interface ModalOpenProps {
   text?: string;         
 }
 
-export const ModalOpen: FC<ModalOpenProps> = ({ 
+export  const ModalOpen: FC<ModalOpenProps> = ({ 
   isOpen, 
   onClose, 
   text = "Ваше сообщение отправлено." 

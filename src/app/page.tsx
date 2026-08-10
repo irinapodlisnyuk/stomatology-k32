@@ -45,15 +45,17 @@ export default function HomePage() {
         showButton={true}
         pageType="home"
       />
+
+      <ScrollReveal>
+        <About />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Services />
+      </ScrollReveal>
+
       <div
-        style={{ contentVisibility: "auto", containIntrinsicSize: "0 2000px" }}
+        style={{ contentVisibility: "auto", containIntrinsicSize: "0 1500px" }}
       >
-        <ScrollReveal>
-          <About />
-        </ScrollReveal>
-        <ScrollReveal>
-          <Services />
-        </ScrollReveal>
         <Teams />
         <ScrollReveal>
           <Questions />

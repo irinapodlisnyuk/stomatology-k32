@@ -4,18 +4,12 @@ import HeaderComponent from "@/components/HomePage/Header/Header";
 import Footer from "@/components/HomePage/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { ModalProvider } from "@/components/context/ModalContext";
-import dynamic from "next/dynamic";
-
-
-const AppointmentModal = dynamic(() => import("@/components/Modals/AppointmentModal"));
-const CookieBanner = dynamic(() => import("@/components/CookieBanner/CookieBanner"));
-
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins", // Имя CSS-переменной
-  display: "swap", // Текст виден сразу, предотвращает блокировку отрисовки
+  variable: "--font-poppins", 
+  display: "swap",
 });
 
 const manrope = Manrope({
@@ -50,10 +44,8 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
           </div>
-          <AppointmentModal />
         </ModalProvider>
         <ScrollToTop />
-        <CookieBanner />
       </body>
     </html>
   );
