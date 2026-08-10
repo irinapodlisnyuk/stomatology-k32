@@ -18,8 +18,6 @@ const nextConfig: NextConfig = {
       fullUrl: false,
     },
   },
-
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
 };
+
+export default nextConfig;
