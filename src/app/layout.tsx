@@ -8,7 +8,7 @@ import { ModalProvider } from "@/components/context/ModalContext";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins", 
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -38,13 +38,13 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        <ModalProvider>
-          <div className="root-wrapper">
+        <div className="root-wrapper">
+          <ModalProvider>
             <HeaderComponent />
             <main>{children}</main>
-            <Footer />
-          </div>
-        </ModalProvider>
+          </ModalProvider>
+          <Footer />
+        </div>
         <ScrollToTop />
       </body>
     </html>

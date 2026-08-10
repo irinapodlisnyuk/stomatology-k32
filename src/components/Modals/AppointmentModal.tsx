@@ -3,12 +3,13 @@
 import { useModals } from "@/components/context/ModalContext";
 import { ContactForm } from "../Form/ContactForm/ContactForm";
 import Icon from "@/components/Icon/Icon";
-import styles from "./AppointmentModal.module.scss";
 import { useEffect, useState } from "react";
+import styles from "./AppointmentModal.module.scss"; 
 
 export default function AppointmentModal() {
   const { triggerSuccess, closeAppointment } = useModals();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
 
   // Блокируем скролл страницы, пока открыта форма
   useEffect(() => {
