@@ -1,10 +1,14 @@
 import { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
   allowedDevOrigins: ["192.168.0.138"],
   transpilePackages: ["@typescript-eslint"],
+
+ 
+  experimental: {
+    inlineCss: true,
+  },
 
   sassOptions: {
     silenceDeprecations: ["import", "legacy-js-api"],

@@ -3,11 +3,17 @@ import Hero from "@/components/Hero/Hero";
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
-import Teams from "@/components/HomePage/Teams/Teams";
-import Questions from "@/components/HomePage/Questions/Questions";
-import Contact from "@/components/HomePage/Contact/Contact";
-import { Blog } from "@/components/HomePage/Blog/Blog";
+// import Teams from "@/components/HomePage/Teams/Teams";
+// import Questions from "@/components/HomePage/Questions/Questions";
+// import Contact from "@/components/HomePage/Contact/Contact";
+// import { Blog } from "@/components/HomePage/Blog/Blog";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
+
+const Teams = dynamic(() => import("@/components/HomePage/Teams/Teams"), { ssr: true });
+const Questions = dynamic(() => import("@/components/HomePage/Questions/Questions"), { ssr: true });
+const Contact = dynamic(() => import("@/components/HomePage/Contact/Contact"), { ssr: true });
+const Blog = dynamic(() => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog), { ssr: true });
 
 export const metadata: Metadata = {
   title:
