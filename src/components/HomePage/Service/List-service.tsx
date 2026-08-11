@@ -35,6 +35,7 @@ export const ServicesList = () => {
             baseName={imgName}
             alt={altText}
             className={styles["services__picture-img"]}
+            sizes="(max-width: 767px) 360px, (max-width: 1199px) 340px, 280px"
           />
           <span className={styles["services__item-text"]}>{title}</span>
         </li>
