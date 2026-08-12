@@ -54,7 +54,7 @@ export default function Services() {
             className={`${styles["services__actions"]} ${styles["animate-fade-up"]}`}
             style={{ animationDelay: "2.0s" }}
           >
-            <Link href="/services" className="btn btn--services">
+            <Link href="/service" className="btn btn--services">
               Изучите все услуги
             </Link>
           </div>

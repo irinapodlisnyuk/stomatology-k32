@@ -13,7 +13,7 @@ interface HeroProps {
   altText?: string;
   showButton?: boolean;
   isHero?: boolean;
-  pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call";
+  pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call" | "service";
 }
 
 export default function Hero({

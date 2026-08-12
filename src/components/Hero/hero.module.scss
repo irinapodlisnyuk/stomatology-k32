@@ -70,10 +70,9 @@
       padding: 0 20px;
       text-align: center;
       align-items: center;
-      
 
       animation: none !important;
-      opacity: 1 !important; 
+      opacity: 1 !important;
     }
   }
 
@@ -85,6 +84,8 @@
     align-items: center;
     color: v.$white;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    user-select: none;
+    -webkit-user-select: none;
 
     &::before {
       content: "\2014";
@@ -112,6 +113,8 @@
     font-weight: 700;
     line-height: 1.2;
     color: rgba(v.$white, 0.75);
+    user-select: none;
+    -webkit-user-select: none;
 
     @include m.vp-1023 {
       text-shadow: 0 2px 10px rgba(v.$black, 0.4);
@@ -128,6 +131,9 @@
     letter-spacing: 0.04em;
     color: rgba(v.$white, 0.75);
     margin-bottom: 50px;
+
+    user-select: none;
+    -webkit-user-select: none;
 
     @include m.vp-1023 {
       margin: 0 0 25px;
@@ -150,7 +156,8 @@
   &--blog,
   &--about,
   &--post,
-  &--call {
+  &--call,
+  &--service {
     min-height: 370px;
     padding: 60px 0;
 
@@ -186,8 +193,7 @@
       @include m.vp-1023 {
         gap: 35px;
         padding: 0 20px;
-        
-  
+
         animation: none !important;
         opacity: 1 !important;
       }
@@ -249,7 +255,7 @@
         gap: 35px;
         padding: 0 20px;
         justify-content: space-evenly;
-        
+
         animation: none !important;
         opacity: 1 !important;
       }
