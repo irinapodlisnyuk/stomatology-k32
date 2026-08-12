@@ -1,4 +1,5 @@
-import ServicePage from "@/components/ServicePage/ServicePage";
+import Hero from "@/components/Hero/Hero";
+import ServicesAll from "@/components/ServicePage/ServicesAll/ServicesAll";
 import { Metadata } from "next";
 
 
@@ -22,7 +23,19 @@ export const metadata: Metadata = {
 
 
 export default function ServiceRoute() {
+
   return (
-    <ServicePage/>
+    <>
+      <Hero
+        title="Наши услуги"
+        subtitle="Комплексный уход за&nbsp;вашей прекрасной улыбкой"
+        imageFolder="/image/servicePage"
+        imageName="service"
+        altText="Стоматологические услуги К+32"
+        pageType="call" // Используем тип "call", чтобы автоматически применились наши оптимизированные sizes="360px" для первого экрана!
+      />
+
+      <ServicesAll />
+    </>
   );
 }

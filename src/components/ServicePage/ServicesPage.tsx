@@ -1,7 +1,7 @@
 import Hero from "../Hero/Hero";
 import  ServicesAll  from "./ServicesAll/ServicesAll";
 
-export default function ServicePage() {
+export default function ServicesPage() {
   return (
     <>
       <Hero

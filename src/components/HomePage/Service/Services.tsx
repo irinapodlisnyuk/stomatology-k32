@@ -1,20 +1,8 @@
 import Link from "next/link";
 import styles from "./Services.module.scss";
-import dynamic from "next/dynamic";
-import LoaderPage from "@/components/LoaderPage/LoaderPage"; 
+import { ServicesList } from "./List-service";
 
-// Включаем SSR (ssr: true), чтобы поисковые роботы видели текст услуг клиники!
-const ServicesList = dynamic(
-  () => import("./List-service").then((mod) => mod.ServicesList),
-  { 
-    ssr: true, 
-    loading: () => (
-      <div className={styles.services__loaderBox}>
-        <LoaderPage local={true} />
-      </div>
-    )
-  }
-);
+
 
 export default function Services() {
   return (
@@ -53,7 +41,7 @@ export default function Services() {
             className={`${styles["services__actions"]} ${styles["animate-fade-up"]}`}
             style={{ animationDelay: "2.0s" }}
           >
-            <Link href="/service" className="btn btn--services">
+            <Link href="/services" className="btn btn--services">
               Изучите все услуги
             </Link>
           </div>

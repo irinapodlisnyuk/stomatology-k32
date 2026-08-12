@@ -1,5 +1,6 @@
-import { ServicesList } from "@/components/HomePage/Service/List-service";
-import styles from "./ServicesAll.module.scss";
+
+import { ServicesList } from "@/components/HomePage/Service/List-service"; // Проверьте ваш точный путь к файлу List-service
+import styles from "./ServicesAll.module.scss"; // Или ваш путь к файлу стилей этой секции
 
 export default function ServicesAll() {
   return (

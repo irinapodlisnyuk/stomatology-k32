@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero/Hero";
 import { PRICES_SERVICE } from "@/data/Price_data";
-import { SERVICES_DATA } from "@/data/Service_data";
+import { SERVICES_DATA } from "@/data/Services_data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import styles from "./ServicePage.module.scss";
@@ -15,12 +15,12 @@ export const dynamicParams = true;
 // ГЕНЕРАЦИЯ МЕТАДАННЫХ
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
-  if (!service) return {};
+  const services = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
+  if (!services) return {};
 
   return {
-    title: `${service.title} в Кабардинке | Стоматология «Клиника +32»`,
-    description: `Профессиональное выполнение услуги «${service.title}» в стоматологической клинике «Клиника +32». Современное оборудование, опытные врачи, доступные цены и безболезненное лечение. Запишитесь на прием!`,
+    title: `${services.title} в Кабардинке | Стоматология «Клиника +32»`,
+    description: `Профессиональное выполнение услуги «${services.title}» в стоматологической клинике «Клиника +32». Современное оборудование, опытные врачи, доступные цены и безболезненное лечение. Запишитесь на прием!`,
   };
 }
 
@@ -37,29 +37,29 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   
   // Находим данные о самой услуге (проверяем и по slug, и по текстовому id)
-  const service = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
-  if (!service) {
+  const services = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
+  if (!services) {
     notFound();
   }
 
   // МАТЧИНГ ЦЕН: Берем массив цен по slug
-  const currentServicePrices = PRICES_SERVICE[service.slug || ""] || [];
+  const currentServicePrices = PRICES_SERVICE[services.slug || ""] || [];
 
   return (
     <>
       <Hero
-        title={service.title}
+        title={services.title}
         subtitle="Стоматология экспертного уровня в Кабардинке"
         imageFolder="/image/services"
-        imageName={service.imgName}
-        altText={service.altText}
-        pageType="post"
+        imageName={services.imgName}
+        altText={services.altText}
+        pageType="service"
       />
 
       <div className="container">
         <div className={styles.serviceLayout}>
           <article className={styles.serviceContent}>
-            <div dangerouslySetInnerHTML={{ __html: service.fullText || "<p>Описание услуги временно наполняется...</p>" }} /> 
+            <div dangerouslySetInnerHTML={{ __html: services.fullText || "<p>Описание услуги временно наполняется...</p>" }} /> 
           </article>
 
           {/* ВЫВОД ПРАЙСА ИЗ ОТДЕЛЬНОГО МАССИВА */}
