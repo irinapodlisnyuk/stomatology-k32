@@ -44,7 +44,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
           const isVisible = diff >= -1 && diff <= 1;
           const translateX = diff * 85;
 
-          // Формируем инлайн-стили ТОЛЬКО для десктопа. 
+          // Формируем инлайн-стили ТОЛЬКО для десктопа.
           // На мобилках отдаем управление чистому SCSS файлу.
           const inlineStyle = !isMobile
             ? ({
@@ -54,14 +54,13 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
                 opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
                 pointerEvents: isVisible ? "auto" : "none",
               } as React.CSSProperties)
-            : undefined; 
+            : undefined;
 
           return (
             <li
               key={id}
               style={inlineStyle}
               className={`${styles["blog__item"]} ${!isMobile && isCenter ? styles["blog__item--center"] : ""}`}
-             
               onClick={() => {
                 if (!isMobile && !isCenter) {
                   setActiveIndex(index);
@@ -84,6 +83,8 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
                   baseName={imgName}
                   alt={altText}
                   className={styles["blog__picture-img"]}
+                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 40px), 380px"
+                  //preset="services"
                 />
                 <div className={styles["blog__item-content"]}>
                   <span className={styles["blog__item-name"]}>{name}</span>

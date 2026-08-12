@@ -4,7 +4,6 @@ import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture"
 import styles from "./List-service.module.scss";
 import { SERVICES_DATA, ServiceItem } from "@/data/Service_data";
 
-
 const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -15,11 +14,11 @@ const shuffleArray = (array: ServiceItem[]): ServiceItem[] => {
 };
 
 export const ServicesList = () => {
- // const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
+  // const shuffledServices = shuffleArray(SERVICES_DATA).slice(0, 4);
 
-    const isServer = typeof window === "undefined";
-  const shuffledServices = isServer 
-    ? SERVICES_DATA.slice(0, 4) 
+  const isServer = typeof window === "undefined";
+  const shuffledServices = isServer
+    ? SERVICES_DATA.slice(0, 4)
     : shuffleArray(SERVICES_DATA).slice(0, 4);
 
   return (
@@ -35,7 +34,7 @@ export const ServicesList = () => {
             baseName={imgName}
             alt={altText}
             className={styles["services__picture-img"]}
-            sizes="(max-width: 767px) 360px, (max-width: 1199px) 340px, 280px"
+            sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 285px"
           />
           <span className={styles["services__item-text"]}>{title}</span>
         </li>

@@ -2,6 +2,7 @@
 import styles from "./hero.module.scss";
 import { useModals } from "@/components/context/ModalContext";
 import Image from "next/image";
+import ResponsivePicture from "../ResponsivePicture/ResponsivePicture";
 
 interface HeroProps {
   title?: string;
@@ -11,6 +12,7 @@ interface HeroProps {
   imageName?: string;
   altText?: string;
   showButton?: boolean;
+  isHero?: boolean;
   pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call";
 }
 
@@ -23,6 +25,7 @@ export default function Hero({
   altText = "Современная стоматология Клиника +32",
   showButton = false,
   pageType = "home",
+  isHero = true,
 }: HeroProps) {
   const { openAppointment } = useModals();
 
@@ -31,17 +34,15 @@ export default function Hero({
   return (
     <section className={`${styles.hero} ${modifierClass}`}>
       <div className="container">
-        {/* ИДЕАЛЬНОЕ РЕШЕНИЕ ДЛЯ LCP И NEXT.JS 16 */}
         <div className={styles.hero__picture}>
-          <Image
-            src={`${imageFolder}/${imageName}.webp`}
+          <ResponsivePicture
+            folder={imageFolder}
+            baseName={imageName}
             alt={altText.replace(/&nbsp;/g, " ")}
             className={`${styles.hero__img || ""} ${styles.hero__bg || ""}`}
-            fill
-            style={{ objectFit: "cover" }}
+            sizes="100vw" 
             priority={true}
-            loading="eager"
-            fetchPriority="high"
+            isHero={isHero}
           />
         </div>
 

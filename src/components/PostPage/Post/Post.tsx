@@ -27,6 +27,7 @@ export default function Post({ post, relatedPosts }: PostProps) {
               baseName={post.imgName}
               alt={post.altText || post.title}
               className={styles.post__img}
+              sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 60vw, 740px"
             />
             <div
               className={styles.post__content}
@@ -64,9 +65,12 @@ export default function Post({ post, relatedPosts }: PostProps) {
                           baseName={imgName}
                           alt={altText || title}
                           className={asideStyles.card__img}
+                          sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 30vw, 260px"
                         />
 
-                        <h4 className={asideStyles["card__post-title"]}>{title}</h4>
+                        <h4 className={asideStyles["card__post-title"]}>
+                          {title}
+                        </h4>
                       </Link>
                     </article>
                   ))}

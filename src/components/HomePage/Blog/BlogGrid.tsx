@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./Blog.module.scss";
-import {  BlogItem } from "@/data/Blog_data";
+import { BlogItem } from "@/data/Blog_data";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import { FC, useEffect, useRef, useState } from "react";
 
@@ -21,10 +21,13 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setTimeout(() => setVisibleCount((prev) => prev + CARDS_PER_PAGE), 200);
+          setTimeout(
+            () => setVisibleCount((prev) => prev + CARDS_PER_PAGE),
+            200,
+          );
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (observerRef.current) observer.observe(observerRef.current);
@@ -34,23 +37,38 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
   return (
     <div className={styles["blog__grid-container"]}>
       <ul className={`${styles["blog__list"]} ${styles["blog__list--grid"]}`}>
-        {displayedPosts.map(({ id, slug, title, imgName, altText, textPreview }) => (
-          <li key={id} className={`${styles["blog__item"]} ${styles["blog__item--card"]}`}>
-            <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
-              <ResponsivePicture
-                folder="/image/blog"
-                baseName={imgName}
-                alt={altText}
-                className={`${styles["blog__picture-img"]} ${styles["blog__picture-img--rotate"]}`}
-              />
-              <div className={`${styles["blog__item-content"]} ${styles["blog__item-content--color"]}`}>
-                <h3 className={`${styles["blog__item-text"]} ${styles["blog__item-text--color"]}`}>{title}</h3>
-                <p className={styles["blog__item-preview"]}>{textPreview}</p>
-                <span className="btn btn--blog">Читать далее</span>
-              </div>
-            </Link>
-          </li>
-        ))}
+        {displayedPosts.map(
+          ({ id, slug, title, imgName, altText, textPreview }) => (
+            <li
+              key={id}
+              className={`${styles["blog__item"]} ${styles["blog__item--card"]}`}
+            >
+              <Link
+                href={`/blog/${slug || id}`}
+                className={styles["blog__item-link"]}
+              >
+                <ResponsivePicture
+                  folder="/image/blog"
+                  baseName={imgName}
+                  alt={altText}
+                  className={`${styles["blog__picture-img"]} ${styles["blog__picture-img--rotate"]}`}
+                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 380px"
+                />
+                <div
+                  className={`${styles["blog__item-content"]} ${styles["blog__item-content--color"]}`}
+                >
+                  <h3
+                    className={`${styles["blog__item-text"]} ${styles["blog__item-text--color"]}`}
+                  >
+                    {title}
+                  </h3>
+                  <p className={styles["blog__item-preview"]}>{textPreview}</p>
+                  <span className="btn btn--blog">Читать далее</span>
+                </div>
+              </Link>
+            </li>
+          ),
+        )}
       </ul>
 
       {visibleCount < posts.length && (
@@ -61,4 +79,3 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
     </div>
   );
 };
-

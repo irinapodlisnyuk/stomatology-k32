@@ -35,7 +35,8 @@ export default function Feedback() {
               baseName="feedback"
               alt="Прием в Клинике +32"
               className={styles["feedback__picture-img"]}
-               sizes="(max-width: 767px) 360px, (max-width: 1023px) 768px, 535px"
+              isHero={true}
+              sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 1200px, 1200px"
             />
           </div>
           <div className={styles["feedback__header"]}>

@@ -32,6 +32,7 @@ export default function PostPage({ post, allPosts }: PostContentWrapperProps) {
         imageName="post"
         altText="Блог стоматологической клиники К+32"
         pageType="post"
+        isHero={true}
       />
   
       <ScrollReveal>

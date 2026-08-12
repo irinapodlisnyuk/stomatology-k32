@@ -57,7 +57,7 @@
   {
     id: "professional hygiene",
     title: "профессиональная гигиена",
-    imgName: "professionalHygiene",
+    imgName: "hygiene",
     altText: "Профессиональная гигиена в клинике К+32",
   },
 ];
