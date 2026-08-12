@@ -4,23 +4,14 @@ import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
+import HomeClientContent from "./HomeClientContent"; // Импортируем безопасный контейнер
 
+// Компонент Teams стабилен, его оставляем со сборкой на сервере
 const Teams = dynamic(() => import("@/components/HomePage/Teams/Teams"), {
   ssr: true,
 });
-const Questions = dynamic(
-  () => import("@/components/HomePage/Questions/Questions"),
-  { ssr: true },
-);
-const Contact = dynamic(() => import("@/components/HomePage/Contact/Contact"), {
-  ssr: true,
-});
-const Blog = dynamic(
-  () => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog),
-  { ssr: true },
-);
 
-// 1. Стандартные SEO-метаданные
+// Стандартные SEO-метаданные для поиска
 export const metadata: Metadata = {
   title:
     "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
@@ -57,15 +48,9 @@ export default function HomePage() {
         style={{ contentVisibility: "auto", containIntrinsicSize: "0 1500px" }}
       >
         <Teams />
-        <ScrollReveal>
-          <Questions />
-        </ScrollReveal>
-        <ScrollReveal>
-          <Contact />
-        </ScrollReveal>
-        <ScrollReveal>
-          <Blog />
-        </ScrollReveal>
+        
+
+        <HomeClientContent />
       </div>
     </>
   );

@@ -31,6 +31,5 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-
   return <PostContentWrapper post={post} allPosts={BLOG_DATA} />;
 }

@@ -1,4 +1,3 @@
-"use client"
 import Link from "next/link";
 import styles from "./Services.module.scss";
 import dynamic from "next/dynamic";
@@ -8,7 +7,7 @@ import LoaderPage from "@/components/LoaderPage/LoaderPage";
 const ServicesList = dynamic(
   () => import("./List-service").then((mod) => mod.ServicesList),
   { 
-    ssr: true, // ИСПРАВЛЕНИЕ: Теперь услуги индексируются поисковиками
+    ssr: true, 
     loading: () => (
       <div className={styles.services__loaderBox}>
         <LoaderPage local={true} />
