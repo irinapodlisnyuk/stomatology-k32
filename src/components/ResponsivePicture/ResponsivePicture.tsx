@@ -25,11 +25,11 @@ export default function ResponsivePicture({
    const mob = isHero ? 768 : 360;
   const mob2x = isHero ? 1536 : 720;
   
-  const tab = isHero ? 1200 : 680;
-  const tab2x = isHero ? 2400 : 1360;
+  const tab = isHero ? 1200 : 500;
+  const tab2x = isHero ? 2400 : 800;
   
-  const desk = isHero ? 1920 : 800;
-  const desk2x = isHero ? 3840 : 1600;
+  const desk = isHero ? 1920 : 600;
+  const desk2x = isHero ? 3840 : 1000;
 
   return (
     <picture className={className}>

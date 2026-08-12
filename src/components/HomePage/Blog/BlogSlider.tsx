@@ -83,8 +83,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
                   baseName={imgName}
                   alt={altText}
                   className={styles["blog__picture-img"]}
-                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 40px), 380px"
-                  //preset="services"
+                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 40px), 500px"
                 />
                 <div className={styles["blog__item-content"]}>
                   <span className={styles["blog__item-name"]}>{name}</span>

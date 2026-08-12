@@ -37,21 +37,29 @@ export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
               baseName={imgName}
               alt={altText}
               className={styles["services__picture-img"]}
-              sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 285px"
+              sizes={
+                isFullPage
+                  ? "(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(100vw - 40px), 500px"
+                  : "(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 285px"
+              }
             />
-            <span className={styles["services__item-text"]}>{title}</span>
+            <span
+              className={`${styles["services__item-text"]}  ${isFullPage ? styles["services__item-text--color"] : ""}`}
+            >
+              {title}
+            </span>
           </>
         );
 
         return (
           <li
             key={id}
-            className={styles["services__item"]}
+            className={`${styles["services__item"]} ${isFullPage ? styles["services__item--static"] : ""}`}
             style={{ "--index": index } as React.CSSProperties}
           >
             {isFullPage ? (
               <Link
-                href={`/services/${slug || id}`}
+                href={`/service/${slug || id}`}
                 className={styles["services__item-link"]}
               >
                 {CardContent}

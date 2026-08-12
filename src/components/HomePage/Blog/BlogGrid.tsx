@@ -52,7 +52,7 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
                   baseName={imgName}
                   alt={altText}
                   className={`${styles["blog__picture-img"]} ${styles["blog__picture-img--rotate"]}`}
-                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 380px"
+                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 500px"
                 />
                 <div
                   className={`${styles["blog__item-content"]} ${styles["blog__item-content--color"]}`}
