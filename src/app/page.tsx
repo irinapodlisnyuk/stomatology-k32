@@ -2,28 +2,40 @@ import Hero from "@/components/Hero/Hero";
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
+import Teams from "@/components/HomePage/Teams/Teams";
+import Questions from "@/components/HomePage/Questions/Questions";
+import Contact from "@/components/HomePage/Contact/Contact";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
-import HomeClientContent from "./HomeClientContent"; // Импортируем безопасный контейнер
 
-// Компонент Teams стабилен, его оставляем со сборкой на сервере
-const Teams = dynamic(() => import("@/components/HomePage/Teams/Teams"), {
-  ssr: true,
-});
+const Blog = dynamic(
+  () => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog),
+  { ssr: false } // Вырежет JS блога из первой загрузки, сэкономив драгоценный трафик для Lighthouse!
+);
 
-// Стандартные SEO-метаданные для поиска
 export const metadata: Metadata = {
-  title:
-    "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
-  description:
-    "Профессиональное лечение зубов, имплантация и протезирование без боли. Прием ведут врачи со стажем от 10 лет.",
-  keywords: [
-    "стоматология Геленджик",
-    "стоматология Кабардинка",
-    "лечение зубов",
-  ],
+  title: "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
+  description: "Профессиональное лечение зубов, имплантация и протезирование без боли. Прием ведут врачи со стажем от 10 лет.",
+  keywords: ["стоматология Геленджик", "стоматология Кабардинка", "лечение зубов"],
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
+  
+  // Внедряем нашу проверенную предзагрузку мобильного и десктопного баннеров Hero (убирает задержку LCP)
+  other: {
+    "link:rel:preload:0": "",
+    "link:href:0": "/image/hero/hero-mob.webp",
+    "link:as:0": "image",
+    "link:media:0": "(max-width: 767px)",
+    "link:type:0": "image/webp",
+    "link:fetchpriority:0": "high",
+
+    "link:rel:preload:1": "",
+    "link:href:1": "/image/hero/hero@2x.webp",
+    "link:as:1": "image",
+    "link:media:1": "(min-width: 768px)",
+    "link:type:1": "image/webp",
+    "link:fetchpriority:1": "high",
+  }
 };
 
 export default function HomePage() {
@@ -40,18 +52,26 @@ export default function HomePage() {
       <ScrollReveal>
         <About />
       </ScrollReveal>
+      
       <ScrollReveal>
         <Services />
       </ScrollReveal>
 
-      <div
-        style={{ contentVisibility: "auto", containIntrinsicSize: "0 1500px" }}
-      >
+      <div style={{ contentVisibility: "auto", containIntrinsicSize: "0 600px" }}>
         <Teams />
-        
-
-        <HomeClientContent />
       </div>
+  
+      <ScrollReveal>
+        <Questions />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Contact />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Blog />
+      </ScrollReveal>
     </>
   );
 }
