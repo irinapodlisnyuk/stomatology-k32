@@ -21,65 +21,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
 
   return (
     <div className={styles["blog__slider-container"]}>
-      <ul className={styles["blog__list"]}>
-        {posts.map(({ id, slug, name, title, imgName, altText }, index) => {
-          const isCenter = index === activeIndex;
-
-          let diff = index - activeIndex;
-          const half = posts.length / 2;
-          if (diff <= -half) diff += posts.length;
-          if (diff > half) diff -= posts.length;
-
-          const isVisible = diff >= -1 && diff <= 1;
-          const translateX = diff * 85;
-
-          // Динамический расчет стилей работает реактивно на любых устройствах
-          const inlineStyle = {
-            transform: isCenter
-              ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
-              : `translateX(${translateX}%) scale(0.85)`,
-            opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
-            pointerEvents: isVisible ? "auto" : "none",
-          } as React.CSSProperties;
-
-          return (
-            <li
-              key={id}
-              style={inlineStyle}
-              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
-              onClick={() => {
-                if (!isCenter) {
-                  setActiveIndex(index);
-                }
-              }}
-            >
-              <Link
-                href={`/blog/${slug || id}`}
-                className={styles["blog__item-link"]}
-                onClick={(e) => {
-                  if (!isCenter) {
-                    e.preventDefault();
-                  }
-                }}
-              >
-                <ResponsivePicture
-                  folder="/image/blog"
-                  baseName={imgName}
-                  alt={altText}
-                  className={styles["blog__picture-img"]}
-                  sizes="(max-width: 767px) 360px, (max-width: 1023px) 500px, 400px"
-                />
-                <div className={styles["blog__item-content"]}>
-                  <span className={styles["blog__item-name"]}>{name}</span>
-                  <h3 className={styles["blog__item-text"]}>{title}</h3>
-                </div>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div className={styles["blog__nav"]}>
+      <div className={styles["blog__nav"]} style={{ zIndex: 10, position: "relative" }}>
         <button
           className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`}
           onClick={handlePrev}
@@ -98,6 +40,70 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
           />
         </button>
       </div>
+
+      <ul className={styles["blog__list"]}>
+        {posts.map(({ id, slug, name, title, imgName, altText }, index) => {
+          const isCenter = index === activeIndex;
+
+          let diff = index - activeIndex;
+          const half = posts.length / 2;
+          if (diff <= -half) diff += posts.length;
+          if (diff > half) diff -= posts.length;
+
+          const isVisible = diff >= -1 && diff <= 1;
+          const translateX = diff * 85;
+
+  
+          const inlineStyle = {
+            transform: isCenter
+              ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
+              : `translateX(${translateX}%) scale(0.85)`,
+            opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
+            pointerEvents: isVisible ? "auto" : "none",
+            zIndex: isCenter ? 5 : 2, 
+          } as React.CSSProperties;
+
+       
+          const CardInner = (
+            <>
+              <ResponsivePicture
+                folder="/image/blog"
+                baseName={imgName}
+                alt={altText}
+                className={styles["blog__picture-img"]}
+                sizes="(max-width: 767px) 360px, (max-width: 1023px) 500px, 400px"
+              />
+              <div className={styles["blog__item-content"]}>
+                <span className={styles["blog__item-name"]}>{name}</span>
+                <h3 className={styles["blog__item-text"]}>{title}</h3>
+              </div>
+            </>
+          );
+
+          return (
+            <li
+              key={id}
+              style={inlineStyle}
+              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
+              onClick={() => {
+                if (!isCenter) {
+                  setActiveIndex(index);
+                }
+              }}
+            >
+            {isCenter ? (
+                <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
+                  {CardInner}
+                </Link>
+              ) : (
+                <div className={styles["blog__item-link"]} style={{ cursor: "pointer" }}>
+                  {CardInner}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
