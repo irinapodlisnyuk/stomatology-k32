@@ -7,17 +7,23 @@ import { useEffect, useState } from "react";
 import styles from "./AppointmentModal.module.scss"; 
 
 export default function AppointmentModal() {
-  const { triggerSuccess, closeAppointment } = useModals();
+
+  const { isAppointmentOpen, triggerSuccess, closeAppointment } = useModals();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-
-  // Блокируем скролл страницы, пока открыта форма
+  
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (isAppointmentOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    
+
     return () => {
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [isAppointmentOpen]);
 
   const handleFormError = () => {
     setErrorMessage("Не удалось отправить заявку. Пожалуйста, проверьте интернет.");
@@ -25,9 +31,10 @@ export default function AppointmentModal() {
 
   const handleFormSuccess = () => {
     setErrorMessage(null);
-   
     triggerSuccess("Ваше сообщение успешно отправлено! Администратор К+32 свяжется с вами.");
   };
+
+if (!isAppointmentOpen) return null;
 
   return (
     <div className={styles.appointment} onClick={closeAppointment}>
@@ -43,7 +50,7 @@ export default function AppointmentModal() {
         <div className={styles.appointment__header}>
           <h3 className={styles["appointment__header-title"]}>Запись на прием</h3>
           <p className={styles["appointment__header-subtitle"]}>
-            Оставьте Ваши контактные данные. Наш administrator клиники К+32 свяжется с Вами.
+            Оставьте Ваши контактные данные. Наш администратор клиники К+32 свяжется с Вами.
           </p>
         </div>
 

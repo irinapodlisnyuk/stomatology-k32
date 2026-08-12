@@ -5,17 +5,14 @@ import Link from "next/link";
 import LoaderPage from "@/components/LoaderPage/LoaderPage";
 import dynamic from "next/dynamic";
 
-const LazyMap = dynamic(
-  () => import("./MapComponent"),
-  {
-    ssr: false, // Отключаем рендеринг на сервере, чтобы тяжелые скрипты карт не портили SEO и скорость
-    loading: () => (
-      <div className={styles.contact__mapLoader}>
-        <LoaderPage local={true} />
-      </div>
-    ),
-  }
-);
+const LazyMap = dynamic(() => import("./MapComponent"), {
+  ssr: false,
+  loading: () => (
+    <div className={styles.contact__mapLoader}>
+      <LoaderPage local={true} />
+    </div>
+  ),
+});
 
 export default function Contact() {
   return (
@@ -23,7 +20,6 @@ export default function Contact() {
       <div className="container">
         <div className={styles.contact__wrapper}>
           <div className={styles.contact__container}>
-            {/* Вызов ленивой карты теперь сработает безотказно */}
             <LazyMap />
           </div>
 
@@ -71,8 +67,7 @@ export default function Contact() {
             </ul>
 
             <div className={styles["contact__actions"]}>
-              {/* ⚡ Проверьте путь: /contact или /contacts (если папка во множественном числе) */}
-              <Link href="/contacts" className="btn btn--contact">
+              <Link href="/contact" className="btn btn--contact">
                 Свяжитесь с нами
               </Link>
             </div>
