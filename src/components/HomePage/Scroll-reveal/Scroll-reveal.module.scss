@@ -1,27 +1,30 @@
 .reveal {
 
   opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+  will-change: transform, opacity;
+
+ 
   
-  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
-  will-change: transform, opacity; 
-
-  // 1. Вариант: Выплывание снизу вверх
+  // 1.  Выплывание снизу вверх (по умолчанию)
   &--fade-up {
-    transform: translateY(40px);
+    transform: translateY(50px);
   }
 
-  // 2. Вариант: Выплывание слева направо
+  // 2. Выплывание слева направо
   &--fade-left {
-    transform: translateX(-50px);
+    transform: translateX(-60px);
   }
 
-  // 3. Вариант: Выплывание справа налево
+  // 3. Выплывание справа налево
   &--fade-right {
-    transform: translateX(50px);
+    transform: translateX(60px);
   }
+
+
 
   &--visible {
-    opacity: 1;
-    transform: translate(0, 0);
+    opacity: 1 !important;
+    transform: translate(0, 0) !important; 
   }
 }

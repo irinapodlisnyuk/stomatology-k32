@@ -7,9 +7,21 @@ export default function ScrollReveal({
   children: React.ReactNode;
 }) {
   const [isRendered, setIsRendered] = useState(false);
+  const [isMounted, setIsMounted] = useState(false); 
   const elementRef = useRef<HTMLDivElement>(null);
 
+  // 1. ИСПРАВЛЕНО ДЛЯ ЛИНТЕРА: Асинхронно фиксируем монтирование на клиенте
   useEffect(() => {
+    const rafId = requestAnimationFrame(() => {
+      setIsMounted(true);
+    });
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  // 2. Основной эффект для отслеживания скролла
+  useEffect(() => {
+    if (!isMounted) return; 
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -41,18 +53,18 @@ export default function ScrollReveal({
 
     if (elementRef.current) observer.observe(elementRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [isMounted]); 
 
   return (
     <div
       ref={elementRef}
       style={{
-        contentVisibility: isRendered ? "visible" : "auto",
+        contentVisibility: !isMounted || isRendered ? "visible" : "auto",
         containIntrinsicSize: "400px",
         minHeight: isRendered ? "auto" : "400px",
       }}
     >
-      {isRendered ? children : null}
+      {!isMounted || isRendered ? children : <div style={{ height: "400px" }} />}
     </div>
   );
 }
