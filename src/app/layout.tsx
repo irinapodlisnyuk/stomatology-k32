@@ -38,14 +38,14 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        <div className="root-wrapper">
-          <ModalProvider>
+        <ModalProvider>
+          <div className="root-wrapper">
             <HeaderComponent />
             <main>{children}</main>
-          </ModalProvider>
-          <Footer />
-        </div>
-        <ScrollToTop />
+            <Footer /> 
+          </div>
+          <ScrollToTop /> 
+        </ModalProvider>
       </body>
     </html>
   );

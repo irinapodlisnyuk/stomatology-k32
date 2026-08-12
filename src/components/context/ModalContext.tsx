@@ -2,16 +2,21 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import dynamic from "next/dynamic";
-import { ModalOpen } from "../ModalOpen/ModalOpen";
+
 
 const AppointmentModal = dynamic(
   () => import("@/components/Modals/AppointmentModal"),
-  { ssr: false },
+  { ssr: false }
 );
 
 const CookieBanner = dynamic(
   () => import("@/components/CookieBanner/CookieBanner"),
-  { ssr: false },
+  { ssr: false }
+);
+
+const ModalOpen = dynamic(
+  () => import("../ModalOpen/ModalOpen").then((mod) => mod.ModalOpen),
+  { ssr: false }
 );
 
 interface ModalContextType {
@@ -25,12 +30,11 @@ const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const [successText, setSuccessText] = useState("");
 
   const openAppointment = () => setIsAppointmentOpen(true);
   const closeAppointment = () => setIsAppointmentOpen(false);
-
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
-  const [successText, setSuccessText] = useState("");
 
   const triggerSuccess = (text: string) => {
     setIsAppointmentOpen(false); // Закрываем форму ввода
@@ -53,7 +57,8 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       {children}
-      {isAppointmentOpen && <AppointmentModal />}
+
+    <AppointmentModal />
 
       <ModalOpen
         isOpen={isSuccessOpen}
@@ -72,4 +77,3 @@ export const useModals = () => {
     throw new Error("useModals must be used within a ModalProvider");
   return context;
 };
-
