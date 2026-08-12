@@ -8,10 +8,8 @@ import Contact from "@/components/HomePage/Contact/Contact";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 
-const Blog = dynamic(
-  () => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog),
-  { ssr: false } // Вырежет JS блога из первой загрузки, сэкономив драгоценный трафик для Lighthouse!
-);
+const Blog = dynamic(() => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog));
+
 
 export const metadata: Metadata = {
   title: "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
