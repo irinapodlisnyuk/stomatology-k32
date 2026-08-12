@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
 import styles from "./Blog.module.scss";
 import Icon from "@/components/Icon/Icon";
@@ -13,17 +13,6 @@ interface BlogSliderProps {
 
 export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Железное определение мобилки/тачскрина через брейкпоинт CSS (767px из вашего миксина)
-  useEffect(() => {
-    const checkDevice = () => {
-      setIsMobile(window.innerWidth <= 767);
-    };
-    checkDevice();
-    window.addEventListener("resize", checkDevice);
-    return () => window.removeEventListener("resize", checkDevice);
-  }, []);
 
   const handlePrev = () =>
     setActiveIndex((p) => (p > 0 ? p - 1 : posts.length - 1));
@@ -44,25 +33,22 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
           const isVisible = diff >= -1 && diff <= 1;
           const translateX = diff * 85;
 
-          // Формируем инлайн-стили ТОЛЬКО для десктопа.
-          // На мобилках отдаем управление чистому SCSS файлу.
-          const inlineStyle = !isMobile
-            ? ({
-                transform: isCenter
-                  ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
-                  : `translateX(${translateX}%) scale(0.85)`,
-                opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
-                pointerEvents: isVisible ? "auto" : "none",
-              } as React.CSSProperties)
-            : undefined;
+          // Динамический расчет стилей работает реактивно на любых устройствах
+          const inlineStyle = {
+            transform: isCenter
+              ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
+              : `translateX(${translateX}%) scale(0.85)`,
+            opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
+            pointerEvents: isVisible ? "auto" : "none",
+          } as React.CSSProperties;
 
           return (
             <li
               key={id}
               style={inlineStyle}
-              className={`${styles["blog__item"]} ${!isMobile && isCenter ? styles["blog__item--center"] : ""}`}
+              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
               onClick={() => {
-                if (!isMobile && !isCenter) {
+                if (!isCenter) {
                   setActiveIndex(index);
                 }
               }}
@@ -71,8 +57,6 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
                 href={`/blog/${slug || id}`}
                 className={styles["blog__item-link"]}
                 onClick={(e) => {
-                  if (isMobile) return;
-
                   if (!isCenter) {
                     e.preventDefault();
                   }
@@ -83,7 +67,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
                   baseName={imgName}
                   alt={altText}
                   className={styles["blog__picture-img"]}
-                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 40px), 500px"
+                  sizes="(max-width: 767px) 360px, (max-width: 1023px) 500px, 400px"
                 />
                 <div className={styles["blog__item-content"]}>
                   <span className={styles["blog__item-name"]}>{name}</span>

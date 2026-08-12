@@ -10,8 +10,6 @@ interface BlogProps {
   isFullPage?: boolean;
 }
 
-
-
 export const Blog: FC<BlogProps> = ({ isFullPage = false }) => {
   return (
     <section className={`${styles.blog} ${isFullPage ? styles["blog--full-page"] : ""}`}>

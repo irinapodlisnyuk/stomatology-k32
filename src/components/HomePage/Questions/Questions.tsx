@@ -1,22 +1,22 @@
 "use client";
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useMemo, useState } from "react";
 import styles from "./Questions.module.scss";
 import { QUESTIONS_DATA, QuestionsItem } from "@/data/Questions_data";
 import Icon from "@/components/Icon/Icon";
-import LoaderPage from "../../LoaderPage/LoaderPage";
 
-const shuffleArray = (array: QuestionsItem[]): QuestionsItem[] => {
+const getStableShuffledQuestions = (array: QuestionsItem[]): QuestionsItem[] => {
+  if (array.length <= 4) return array;
+  
+
   const shuffled = [...array];
+  const step = 3; // Шаг сдвига для эффекта "случайности"
+  
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = (i * step) % (i + 1);
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled;
 };
-
-const emptySubscribe = () => () => {};
-const getClientSnapshot = () => true;
-const getServerSnapshot = () => false;
 
 // Функция-хелпер для рендеринга карточки
 const renderQuestionItem = (
@@ -41,7 +41,6 @@ const renderQuestionItem = (
         <span className={styles["questions__item-title"]}>
           {question.title}
         </span>
-        
       </button>
 
       <div className={styles["questions__item-body"]}>
@@ -60,14 +59,8 @@ const renderQuestionItem = (
 export default function Questions() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  const isMounted = useSyncExternalStore(
-    emptySubscribe,
-    getClientSnapshot,
-    getServerSnapshot,
-  );
-
   const shuffledQuestions = useMemo(() => {
-    return shuffleArray(QUESTIONS_DATA).slice(0, 4);
+    return getStableShuffledQuestions(QUESTIONS_DATA).slice(0, 4);
   }, []);
 
   const leftColumnQuestions = useMemo(() => {
@@ -81,21 +74,6 @@ export default function Questions() {
   const toggleQuestion = (id: string) => {
     setActiveId(activeId === id ? null : id);
   };
-
-  if (!isMounted) {
-    return (
-      <section className={styles.questions}>
-        <div className="container">
-          <div className={styles.questions__wrapper}>
-            <h2 className={styles["questions__wrapper-title"]}>
-              Часто задаваемые вопросы
-            </h2>
-            <LoaderPage local={true} />
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className={styles.questions}>
