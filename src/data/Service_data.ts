@@ -14,7 +14,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "терапия",
     imgName: "preventivecare",
     altText: "Терапевтическое лечение зубов в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "orthopedics",
@@ -22,7 +22,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "ортопедия",
     imgName: "orthopedics",
     altText: "Ортопедическая стоматология в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "whitening",
@@ -30,7 +30,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "отбеливание",
     imgName: "whitening",
     altText: "Отбеливание зубов в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "implantation",
@@ -38,7 +38,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "имплантация",
     imgName: "implantation",
     altText: "Имплантация зубов в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "surgery",
@@ -46,7 +46,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "хирургия",
     imgName: "surgery",
     altText: "Хирургическая стоматология в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "orthodontics",
@@ -54,7 +54,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "ортодонтия",
     imgName: "orthodontics",
     altText: "Ортодонтическая стоматология в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "planmeca",
@@ -62,7 +62,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "3D",
     imgName: "planmeca",
     altText: "ТРЕХМЕРНЫЙ ТОМОГРАФ PLANMECA PROMAX 3D CLASSIC в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "endodontics",
@@ -70,7 +70,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "эндодонтия",
     imgName: "endodontics",
     altText: "Эндодонтическая стоматология в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
   {
     id: "hygiene",
@@ -78,6 +78,6 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "профессиональная гигиена",
     imgName: "hygiene",
     altText: "Профессиональная гигиена в клинике К+32",
-    fullText: "",
+      fullText: "<p>Керамические виниры — это тонкие пластинки, которые позволяют исправить форму и цвет зубов...</p>" 
   },
 ];

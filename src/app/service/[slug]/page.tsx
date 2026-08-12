@@ -55,8 +55,7 @@ export default async function Page({ params }: PageProps) {
       <div className="container">
         <div className={styles.serviceLayout}>
           <article className={styles.serviceContent}>
-            {/* Если у вас в SERVICES_DATA появится детальное описание fullText, замените service.altText на service.fullText */}
-            <div dangerouslySetInnerHTML={{ __html: service.altText }} /> 
+            <div dangerouslySetInnerHTML={{ __html: service.fullText || "<p>Описание услуги временно наполняется...</p>" }} /> 
           </article>
 
           {/* ВЫВОД ПРАЙСА ИЗ ОТДЕЛЬНОГО МАССИВА */}
