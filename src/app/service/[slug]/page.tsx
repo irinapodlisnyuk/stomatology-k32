@@ -9,10 +9,13 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+// 1. ИСПРАВЛЕНО ДЛЯ ДЕПЛОЯ: Разрешаем динамическую генерацию страниц на сервере, если их нет в статической сборке
+export const dynamicParams = true;
+
 // ГЕНЕРАЦИЯ МЕТАДАННЫХ
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = SERVICES_DATA.find((s) => s.slug === slug || s.id === slug);
+  const service = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
   if (!service) return {};
 
   return {
@@ -22,9 +25,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // СТАТИЧЕСКИЕ ПАРАМЕТРЫ
+// 2. ИСПРАВЛЕНО ДЛЯ ДЕПЛОЯ: Принудительно превращаем slug и id в строковый тип (string)
 export async function generateStaticParams() {
   return SERVICES_DATA.map((service) => ({ 
-    slug: service.slug || service.id 
+    slug: String(service.slug || service.id) 
   }));
 }
 
@@ -32,8 +36,8 @@ export async function generateStaticParams() {
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   
-  // Находим данные о самой услуге
-  const service = SERVICES_DATA.find((s) => s.slug === slug || s.id === slug);
+  // Находим данные о самой услуге (проверяем и по slug, и по текстовому id)
+  const service = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
   if (!service) {
     notFound();
   }
