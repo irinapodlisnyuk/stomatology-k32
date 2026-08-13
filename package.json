@@ -2,9 +2,9 @@
   "name": "stomach-k32",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+   "scripts": {
     "dev": "start http://localhost:3000 && next dev",
-    "build": "next build",
+   "build": "next clean && next build",
     "start": "next start",
     "lint": "eslint",
     "clean": "next clean"

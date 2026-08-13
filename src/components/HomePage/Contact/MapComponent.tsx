@@ -12,6 +12,7 @@ export default function MapComponent() {
       allowFullScreen={true}
       loading="lazy"
       title="Стоматологическая клиника К+32 в Кабардинке на карте"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
       referrerPolicy="no-referrer-when-downgrade"
     ></iframe>
   );

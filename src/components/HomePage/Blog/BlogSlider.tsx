@@ -1,5 +1,4 @@
 "use client";
-
 import { FC, useState } from "react";
 import Link from "next/link";
 import styles from "./Blog.module.scss";
@@ -21,7 +20,6 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
 
   return (
     <div className={styles["blog__slider-container"]}>
-      {/* 1. Список карточек на первом месте */}
       <ul className={styles["blog__list"]}>
         {posts.map(({ id, slug, name, title, imgName, altText }, index) => {
           const isCenter = index === activeIndex;
@@ -39,8 +37,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
               ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
               : `translateX(${translateX}%) scale(0.85)`,
             opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
-            pointerEvents: isVisible ? "auto" : "none",
-            zIndex: isCenter ? 5 : 2, 
+            zIndex: isCenter ? 5 : 2,
           } as React.CSSProperties;
 
           const CardInner = (
@@ -63,10 +60,8 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
             <li
               key={id}
               style={inlineStyle}
-              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
-              onClick={() => {
-                if (!isCenter) setActiveIndex(index);
-              }}
+              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""} ${isVisible ? styles["blog__item--visible"] : ""}`}
+              onClick={() => !isCenter && setActiveIndex(index)}
             >
               {isCenter ? (
                 <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
@@ -82,24 +77,13 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
         })}
       </ul>
 
-  
+      {/* Навигация строго внизу, защищенная слоем z-index: 20 в CSS */}
       <div className={styles["blog__nav"]}>
-        <button
-          className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`}
-          onClick={handlePrev}
-          aria-label="Назад"
-        >
+        <button className={styles["blog__btn"]} onClick={handlePrev} aria-label="Назад">
           <Icon className={styles["blog__btn-icon"]} name={"arrow"} />
         </button>
-        <button
-          className={`${styles["blog__btn"]} ${styles["blog__btn--next"]}`}
-          onClick={handleNext}
-          aria-label="Вперед"
-        >
-          <Icon
-            className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`}
-            name={"arrow"}
-          />
+        <button className={styles["blog__btn"]} onClick={handleNext} aria-label="Вперед">
+          <Icon className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`} name={"arrow"} />
         </button>
       </div>
     </div>
