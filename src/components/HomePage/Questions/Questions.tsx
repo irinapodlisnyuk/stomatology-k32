@@ -6,11 +6,8 @@ import Icon from "@/components/Icon/Icon";
 
 const getStableShuffledQuestions = (array: QuestionsItem[]): QuestionsItem[] => {
   if (array.length <= 4) return array;
-  
-
   const shuffled = [...array];
-  const step = 3; // Шаг сдвига для эффекта "случайности"
-  
+  const step = 3;
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = (i * step) % (i + 1);
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -18,7 +15,6 @@ const getStableShuffledQuestions = (array: QuestionsItem[]): QuestionsItem[] => 
   return shuffled;
 };
 
-// Функция-хелпер для рендеринга карточки
 const renderQuestionItem = (
   question: QuestionsItem,
   index: number,
@@ -27,6 +23,7 @@ const renderQuestionItem = (
 ) => {
   const isOpen = activeId === question.id;
   return (
+    /* ⚡ Возвращаем класс на родительский li */
     <li
       key={question.id}
       className={`${styles["questions__item"]} ${isOpen ? styles["questions__item--open"] : ""}`}
