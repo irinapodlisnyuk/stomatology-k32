@@ -1,4 +1,5 @@
 "use client";
+
 import { FC, useState } from "react";
 import Link from "next/link";
 import styles from "./Blog.module.scss";
@@ -37,53 +38,56 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
               ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
               : `translateX(${translateX}%) scale(0.85)`,
             opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
-            zIndex: isCenter ? 5 : 2,
+            pointerEvents: isVisible ? "auto" : "none",
+            zIndex: isCenter ? 10 : 2, 
           } as React.CSSProperties;
-
-          const CardInner = (
-            <>
-              <ResponsivePicture
-                folder="/image/blog"
-                baseName={imgName}
-                alt={altText}
-                className={styles["blog__picture-img"]}
-                sizes="(max-width: 767px) 360px, (max-width: 1023px) 500px, 400px"
-              />
-              <div className={styles["blog__item-content"]}>
-                <span className={styles["blog__item-name"]}>{name}</span>
-                <h3 className={styles["blog__item-text"]}>{title}</h3>
-              </div>
-            </>
-          );
 
           return (
             <li
               key={id}
               style={inlineStyle}
-              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""} ${isVisible ? styles["blog__item--visible"] : ""}`}
-              onClick={() => !isCenter && setActiveIndex(index)}
+              className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
+              onClick={() => {
+                if (!isCenter) {
+                  setActiveIndex(index);
+                }
+              }}
             >
-              {isCenter ? (
-                <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
-                  {CardInner}
-                </Link>
-              ) : (
-                <div className={styles["blog__item-link"]} style={{ cursor: "pointer" }}>
-                  {CardInner}
+           <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
+                <ResponsivePicture
+                  folder="/image/blog"
+                  baseName={imgName}
+                  alt={altText}
+                  className={styles["blog__picture-img"]}
+                  sizes="(max-width: 767px) 360px, (max-width: 1023px) 500px, 400px"
+                />
+                <div className={styles["blog__item-content"]}>
+                  <span className={styles["blog__item-name"]}>{name}</span>
+                  <h3 className={styles["blog__item-text"]}>{title}</h3>
                 </div>
-              )}
+              </Link>
             </li>
           );
         })}
       </ul>
 
-      {/* Навигация строго внизу, защищенная слоем z-index: 20 в CSS */}
       <div className={styles["blog__nav"]}>
-        <button className={styles["blog__btn"]} onClick={handlePrev} aria-label="Назад">
+        <button
+          className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`}
+          onClick={handlePrev}
+          aria-label="Назад"
+        >
           <Icon className={styles["blog__btn-icon"]} name={"arrow"} />
         </button>
-        <button className={styles["blog__btn"]} onClick={handleNext} aria-label="Вперед">
-          <Icon className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`} name={"arrow"} />
+        <button
+          className={`${styles["blog__btn"]} ${styles["blog__btn--next"]}`}
+          onClick={handleNext}
+          aria-label="Вперед"
+        >
+          <Icon
+            className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`}
+            name={"arrow"}
+          />
         </button>
       </div>
     </div>
