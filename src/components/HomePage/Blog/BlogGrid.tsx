@@ -1,38 +1,43 @@
+"use client";
+
+import { FC, useState, useRef, useCallback } from "react";
 import Link from "next/link";
-import styles from "./Blog.module.scss";
+import styles from "./Blog_grid.module.scss";
 import { BlogItem } from "@/data/Blog_data";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
-import { FC, useEffect, useRef, useState } from "react";
 
 interface BlogGridProps {
   posts: BlogItem[];
 }
 
-export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
+export const BlogGrid: FC<BlogGridProps> = ({ posts = [] }) => {
   const CARDS_PER_PAGE = 6;
   const [visibleCount, setVisibleCount] = useState(CARDS_PER_PAGE);
-  const observerRef = useRef<HTMLDivElement | null>(null);
+  
+  // Храним ссылку на observer, чтобы не пересоздавать его при каждом рендере
+  const observer = useRef<IntersectionObserver | null>(null);
 
-  const displayedPosts = posts.slice(0, visibleCount);
+  const safePosts = Array.isArray(posts) ? posts : [];
+  const displayedPosts = safePosts.slice(0, visibleCount);
 
-  useEffect(() => {
-    if (visibleCount >= posts.length) return;
+  //  Используем useCallback для отслеживания триггера.
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setTimeout(
-            () => setVisibleCount((prev) => prev + CARDS_PER_PAGE),
-            200,
-          );
-        }
-      },
-      { threshold: 0.1 },
-    );
+  const lastElementRef = useCallback((node: HTMLDivElement | null) => {
+    if (!node) return;
+    if (visibleCount >= safePosts.length) return;
 
-    if (observerRef.current) observer.observe(observerRef.current);
-    return () => observer.disconnect();
-  }, [visibleCount, posts.length]);
+    // Отключаем предыдущий наблюдатель перед созданием нового
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        // Добавляем карточки плавно, предотвращая гонку потоков
+        setVisibleCount((prev) => Math.min(prev + CARDS_PER_PAGE, safePosts.length));
+      }
+    }, { threshold: 0.1, rootMargin: "100px" });
+    
+    observer.current.observe(node);
+  }, [visibleCount, safePosts.length]);
 
   return (
     <div className={styles["blog__grid-container"]}>
@@ -52,7 +57,7 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
                   baseName={imgName}
                   alt={altText}
                   className={`${styles["blog__picture-img"]} ${styles["blog__picture-img--rotate"]}`}
-                  sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) calc(50vw - 30px), 500px"
+                  sizes="(max-width: 767px) 360px, (max-width: 1023px) 500px, 400px"
                 />
                 <div
                   className={`${styles["blog__item-content"]} ${styles["blog__item-content--color"]}`}
@@ -62,7 +67,9 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
                   >
                     {title}
                   </h3>
-                  <p className={styles["blog__item-preview"]}>{textPreview}</p>
+                  {textPreview && (
+                    <p className={styles["blog__item-preview"]}>{textPreview}</p>
+                  )}
                   <span className="btn btn--blog">Читать далее</span>
                 </div>
               </Link>
@@ -71,8 +78,8 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts }) => {
         )}
       </ul>
 
-      {visibleCount < posts.length && (
-        <div ref={observerRef} className={styles.blog__loaderTrigger}>
+      {visibleCount < safePosts.length && (
+        <div ref={lastElementRef} className={styles.blog__loaderTrigger}>
           <div className={styles.blog__spinner} />
         </div>
       )}
