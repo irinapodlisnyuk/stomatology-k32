@@ -5,11 +5,8 @@ import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
 import Questions from "@/components/HomePage/Questions/Questions";
 import Contact from "@/components/HomePage/Contact/Contact";
+import { Blog } from "@/components/HomePage/Blog/Blog"; // ⚡ ИСПРАВЛЕНО: Чистый прямой импорт без ломающего dynamic
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
-
-const Blog = dynamic(() => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog));
-
 
 export const metadata: Metadata = {
   title: "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
@@ -18,7 +15,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
   
-  // Внедряем нашу проверенную предзагрузку мобильного и десктопного баннеров Hero (убирает задержку LCP)
+  
   other: {
     "link:rel:preload:0": "",
     "link:href:0": "/image/hero/hero-mob.webp",
