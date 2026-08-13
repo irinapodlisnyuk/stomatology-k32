@@ -289,20 +289,29 @@
 
     &-link {
       cursor: pointer;
-      transition: transform v.$transition-500;
+      transition:
+        transform v.$transition-500;
       &:hover {
         transform: translateY(-5px);
 
         .callback__bottom-icon {
-           background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          background-image: radial-gradient(
+            circle at 30% 107%,
+            #fdf497 0%,
+            #fdf497 5%,
+            #fd5949 45%,
+            #d6249f 60%,
+            #285aeb 90%
+          );
         }
       }
     }
 
     &-icon {
+      padding: 5px;
       width: 40px;
       height: 40px;
-      transition: color v.$transition-500;
+      transition: background-image v.$transition-500;
       border-radius: 12px;
 
       @include m.vp-1023 {

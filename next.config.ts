@@ -5,11 +5,6 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.0.138"],
   transpilePackages: ["@typescript-eslint"],
 
-  experimental: {
-    inlineCss: true,
-    cssChunking: true,
-  },
-
   sassOptions: {
     silenceDeprecations: ["import", "legacy-js-api"],
   },
