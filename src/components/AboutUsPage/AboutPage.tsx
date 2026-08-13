@@ -1,7 +1,7 @@
-import Hero from "../Hero/Hero";
-import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
-import Teams from "../HomePage/Teams/Teams";
-import Advantages from "./Advantages/Advantages";
+import Hero from "@/components/Hero/Hero";
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
+import Teams from "@/components/HomePage/Teams/Teams"; 
+import Advantages from "./Advantages/Advantages"; 
 import Licenses from "./Licenses/Licenses";
 import Photogallery from "./PhotoGallery/PhotoGallery";
 

@@ -2,19 +2,19 @@
 import { useEffect, useState } from "react";
 import styles from "./PhotoGallery.module.scss";
 import { Gallery_DATA } from "./PhotoGallery_data";
-
+import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 
 export default function Photogallery() {
   const gallery = Gallery_DATA;
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
+    useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % gallery.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [activeIndex, gallery.length]);
+  }, [gallery.length]);
 
   return (
     <section className={styles.gallery}>
@@ -49,27 +49,15 @@ export default function Photogallery() {
                     onClick={() => !isCenter && setActiveIndex(index)}
                     style={{ "--offset": diff } as React.CSSProperties}
                   >
-                    <div className={styles["gallery__item-link"]}>
-                    
-                      <picture className={styles["gallery__picture"]}>
-                        <source
-                          srcSet={`/image/gallery/${imgName}.webp 1x, /image/gallery/${imgName}@2x.webp 2x`}
-                          type="image/webp"
-                          sizes="(max-width: 767px) 280px, (max-width: 1023px) 380px, 520px"
-                        />
-                        <source
-                          srcSet={`/image/gallery/${imgName}.jpg 1x, /image/gallery/${imgName}@2x.jpg 2x`}
-                          type="image/jpeg"
-                          sizes="(max-width: 767px) 280px, (max-width: 1023px) 380px, 520px"
-                        />
-                        <img
-                          src={`/image/gallery/${imgName}.jpg`}
-                          alt={altText}
-                          className={styles["gallery__picture-img"]}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </picture>
+                  <div className={styles["gallery__item-link"]}>
+                     <ResponsivePicture
+                        folder="/image/gallery"
+                        baseName={imgName}
+                        alt={altText}
+                        className={styles["gallery__picture-img"]}
+                        sizes="(max-width: 767px) 360px, (max-width: 1023px) 380px, 520px"
+                        isHero={false} 
+                      />
                     </div>
                   </li>
                 );
@@ -81,3 +69,6 @@ export default function Photogallery() {
     </section>
   );
 }
+
+
+

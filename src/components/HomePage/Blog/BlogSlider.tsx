@@ -21,26 +21,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
 
   return (
     <div className={styles["blog__slider-container"]}>
-      <div className={styles["blog__nav"]} style={{ zIndex: 10, position: "relative" }}>
-        <button
-          className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`}
-          onClick={handlePrev}
-          aria-label="Назад"
-        >
-          <Icon className={styles["blog__btn-icon"]} name={"arrow"} />
-        </button>
-        <button
-          className={`${styles["blog__btn"]} ${styles["blog__btn--next"]}`}
-          onClick={handleNext}
-          aria-label="Вперед"
-        >
-          <Icon
-            className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`}
-            name={"arrow"}
-          />
-        </button>
-      </div>
-
+      {/* 1. Список карточек на первом месте */}
       <ul className={styles["blog__list"]}>
         {posts.map(({ id, slug, name, title, imgName, altText }, index) => {
           const isCenter = index === activeIndex;
@@ -53,7 +34,6 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
           const isVisible = diff >= -1 && diff <= 1;
           const translateX = diff * 85;
 
-  
           const inlineStyle = {
             transform: isCenter
               ? `translateX(${translateX}%) scale(1.05) translateY(-15px)`
@@ -63,7 +43,6 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
             zIndex: isCenter ? 5 : 2, 
           } as React.CSSProperties;
 
-       
           const CardInner = (
             <>
               <ResponsivePicture
@@ -86,12 +65,10 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
               style={inlineStyle}
               className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
               onClick={() => {
-                if (!isCenter) {
-                  setActiveIndex(index);
-                }
+                if (!isCenter) setActiveIndex(index);
               }}
             >
-            {isCenter ? (
+              {isCenter ? (
                 <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
                   {CardInner}
                 </Link>
@@ -104,6 +81,27 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
           );
         })}
       </ul>
+
+  
+      <div className={styles["blog__nav"]}>
+        <button
+          className={`${styles["blog__btn"]} ${styles["blog__btn--prev"]}`}
+          onClick={handlePrev}
+          aria-label="Назад"
+        >
+          <Icon className={styles["blog__btn-icon"]} name={"arrow"} />
+        </button>
+        <button
+          className={`${styles["blog__btn"]} ${styles["blog__btn--next"]}`}
+          onClick={handleNext}
+          aria-label="Вперед"
+        >
+          <Icon
+            className={`${styles["blog__btn-icon"]} ${styles["blog__btn-icon--next"]}`}
+            name={"arrow"}
+          />
+        </button>
+      </div>
     </div>
   );
 };

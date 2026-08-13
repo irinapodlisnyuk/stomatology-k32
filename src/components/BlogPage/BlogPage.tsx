@@ -1,4 +1,4 @@
-import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import { Blog } from "@/components/HomePage/Blog/Blog";
 import Hero from "@/components/Hero/Hero"; 
 
