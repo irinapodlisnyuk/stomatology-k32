@@ -4,6 +4,7 @@ import styles from "./Contact.module.scss";
 import Link from "next/link";
 import LoaderPage from "@/components/LoaderPage/LoaderPage";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 const LazyMap = dynamic(() => import("./MapComponent"), {
   ssr: false,
@@ -20,7 +21,9 @@ export default function Contact() {
       <div className="container">
         <div className={styles.contact__wrapper}>
           <div className={styles.contact__container}>
-            <LazyMap />
+            <Suspense>
+              <LazyMap />
+            </Suspense>
           </div>
 
           <div className={styles.contact__info}>

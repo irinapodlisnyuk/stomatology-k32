@@ -1,22 +1,27 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  Suspense,
+} from "react";
 import dynamic from "next/dynamic";
-
 
 const AppointmentModal = dynamic(
   () => import("@/components/Modals/AppointmentModal"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const CookieBanner = dynamic(
   () => import("@/components/CookieBanner/CookieBanner"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const ModalOpen = dynamic(
   () => import("../ModalOpen/ModalOpen").then((mod) => mod.ModalOpen),
-  { ssr: false }
+  { ssr: false },
 );
 
 interface ModalContextType {
@@ -57,16 +62,17 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       {children}
+      <Suspense fallback={null}>
+        <AppointmentModal />
 
-    <AppointmentModal />
+        <ModalOpen
+          isOpen={isSuccessOpen}
+          onClose={handleCloseAll}
+          text={successText}
+        />
 
-      <ModalOpen
-        isOpen={isSuccessOpen}
-        onClose={handleCloseAll}
-        text={successText}
-      />
-
-      <CookieBanner />
+        <CookieBanner />
+      </Suspense>
     </ModalContext.Provider>
   );
 };
