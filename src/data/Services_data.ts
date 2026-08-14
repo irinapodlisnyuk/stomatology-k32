@@ -11,7 +11,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "therapy",
     slug: "therapy",
-    title: "терапия",
+    title: "Терапия",
     imgName: "preventivecare",
     altText: "Терапевтическое лечение зубов в клинике К+32",
     fullText:
@@ -20,7 +20,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "orthopedics",
     slug: "orthopedics",
-    title: "ортопедия",
+    title: "Ортопедия",
     imgName: "orthopedics",
     altText: "Ортопедическая стоматология в клинике К+32",
     fullText:
@@ -29,7 +29,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "whitening",
     slug: "whitening",
-    title: "отбеливание",
+    title: "Отбеливание",
     imgName: "whitening",
     altText: "Отбеливание зубов в клинике К+32",
     fullText:
@@ -38,7 +38,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "implantation",
     slug: "implantation",
-    title: "имплантация",
+    title: "Имплантация",
     imgName: "implantation",
     altText: "Имплантация зубов в клинике К+32",
     fullText:
@@ -47,7 +47,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "surgery",
     slug: "surgery",
-    title: "хирургия",
+    title: "Хирургия",
     imgName: "surgery",
     altText: "Хирургическая стоматология в клинике К+32",
     fullText:
@@ -56,7 +56,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "orthodontics",
     slug: "orthodontics",
-    title: "ортодонтия",
+    title: "Ортодонтия",
     imgName: "orthodontics",
     altText: "Ортодонтическая стоматология в клинике К+32",
     fullText:
@@ -74,7 +74,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "endodontics",
     slug: "endodontics",
-    title: "эндодонтия",
+    title: "Эндодонтия",
     imgName: "endodontics",
     altText: "Эндодонтическая стоматология в клинике К+32",
     fullText:
@@ -83,7 +83,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "hygiene",
     slug: "hygiene",
-    title: "профессиональная гигиена",
+    title: "Профессиональная гигиена",
     imgName: "hygiene",
     altText: "Профессиональная гигиена в клинике К+32",
     fullText:

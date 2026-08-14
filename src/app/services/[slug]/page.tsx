@@ -1,10 +1,9 @@
-import Hero from "@/components/Hero/Hero";
-import { PRICES_SERVICE } from "@/data/Price_data";
-import { SERVICES_DATA } from "@/data/Services_data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import styles from "./ServicePage.module.scss";
-import { AppointmentButton } from "@/components/Form/Button/AppointmentButton"; // Импортируем нашу кнопку
+import { SERVICES_DATA } from "@/data/Services_data";
+import { PRICES_SERVICE } from "@/data/Price_data";
+import { ServiceContent } from "@/components/ServicePage/ServiceContent";
+
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,7 +11,7 @@ interface PageProps {
 
 export const dynamicParams = true;
 
-// ГЕНЕРАЦИЯ МЕТАДАННЫХ
+// ГЕНЕРАЦИЯ МЕТАДАННЫХ ДЛЯ SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const services = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
@@ -24,14 +23,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// СТАТИЧЕСКИЕ ПАРАМЕТРЫ
+// СТАТИЧЕСКАЯ ГЕНЕРАЦИЯ СТРАНИЦ ПРИ СБОРКЕ (SSG)
 export async function generateStaticParams() {
   return SERVICES_DATA.map((service) => ({ 
     slug: String(service.slug || service.id) 
   }));
 }
 
-// ГЛАВНЫЙ КОМПОНЕНТ СТРАНИЦЫ (Остается чистым и быстрым серверным компонентом)
+// СЕРВЕРНЫЙ КОМПОНЕНТ РОУТА
 export default async function PageService({ params }: PageProps) {
   const { slug } = await params;
   
@@ -43,49 +42,9 @@ export default async function PageService({ params }: PageProps) {
   const currentServicePrices = PRICES_SERVICE[services.slug || ""] || [];
 
   return (
-    <>
-      <Hero
-        title={services.title}
-        subtitle="Стоматология экспертного уровня в Кабардинке"
-        imageFolder="/image/services"
-        imageName={services.imgName}
-        altText={services.altText}
-        pageType="services"
-      />
-
-      <div className="container">
-        <div className={styles.serviceLayout}>
-          
-          {/* Безопасный контейнер описания услуги */}
-          <article className={styles.serviceContent}>
-            <div 
-              suppressHydrationWarning // Защищает ядро React от зависания, если в fullText встретятся спецсимволы HTML
-              dangerouslySetInnerHTML={{ __html: services.fullText || "<p>Описание услуги временно наполняется...</p>" }} 
-            /> 
-          </article>
-
-          {/* ВЫВОД ПРАЙСА */}
-          {currentServicePrices.length > 0 && (
-            <section className={styles.priceSection}>
-              <h2 className={styles.priceTitle}>Стоимость услуги</h2>
-              <div className={styles.priceTable}>
-                {currentServicePrices.map((item, idx) => (
-                  <div key={idx} className={styles.priceRow}>
-                    <span className={styles.priceName}>{item.name}</span>
-                    <span className={styles.priceValue}>{item.price}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <div className={styles.priceActions}>
-            
-                <AppointmentButton />
-              </div>
-            </section>
-          )}
-          
-        </div>
-      </div>
-    </>
+    <ServiceContent 
+      service={services} 
+      prices={currentServicePrices} 
+    />
   );
 }
