@@ -2,6 +2,7 @@
 import styles from "./hero.module.scss";
 import { useModals } from "@/components/context/ModalContext";
 import ResponsivePicture from "../ResponsivePicture/ResponsivePicture";
+import { AppointmentButton } from "../Form/Button/AppointmentButton";
 
 interface HeroProps {
   title?: string;
@@ -68,12 +69,14 @@ export default function Hero({
 
           {showButton && (
             <div className={styles.hero__actions}>
-              <button
+              {/* <button
                 className="btn btn--appointment"
                 onClick={openAppointment}
               >
                 Записаться на прием
-              </button>
+              </button> */}
+
+               <AppointmentButton className="btn btn--appointment" />
             </div>
           )}
         </div>

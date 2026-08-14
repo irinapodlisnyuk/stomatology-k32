@@ -2,12 +2,16 @@
 
 import { useModals } from "@/components/context/ModalContext";
 
-export function AppointmentButton() {
+ export interface AppointmentButtonProps {
+  className?: string; 
+}
+
+export function AppointmentButton({ className = "btn btn--appointment" }: AppointmentButtonProps) {
   const { openAppointment } = useModals();
 
   return (
     <button 
-      className="btn btn--appointment" 
+      className={className} 
       style={{ marginTop: "30px" }}
       onClick={openAppointment} 
     >

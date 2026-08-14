@@ -50,7 +50,7 @@ export default async function PageService({ params }: PageProps) {
         imageFolder="/image/services"
         imageName={services.imgName}
         altText={services.altText}
-        pageType="service"
+        pageType="services"
       />
 
       <div className="container">

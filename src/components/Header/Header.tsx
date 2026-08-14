@@ -9,11 +9,11 @@ import {
   navigationItems,
   MenuItem,
 } from "@/data/navigation";
-import { useModals } from "@/components/context/ModalContext";
+
+import { AppointmentButton} from "../Form/Button/AppointmentButton";
 
 export default function HeaderComponent() {
   const pathname = usePathname();
-  const { openAppointment } = useModals();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,9 +57,11 @@ export default function HeaderComponent() {
           </div>
 
           <div className={styles["header__actions"]}>
-            <button className="btn" onClick={openAppointment}>
+            {/* <button className="btn" onClick={openAppointment}>
               Записаться на прием
-            </button>
+            </button> */}
+
+               <AppointmentButton className="btn" />
           </div>
           <div className={styles["header__actions-burger"]}>
             <button
