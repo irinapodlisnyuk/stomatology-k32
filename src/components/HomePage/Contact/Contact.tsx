@@ -21,9 +21,7 @@ export default function Contact() {
       <div className="container">
         <div className={styles.contact__wrapper}>
           <div className={styles.contact__container}>
-            <Suspense>
-              <LazyMap />
-            </Suspense>
+            <LazyMap />
           </div>
 
           <div className={styles.contact__info}>
