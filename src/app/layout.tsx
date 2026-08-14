@@ -3,22 +3,21 @@ import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-import { Providers } from "@/components/context/Providers"; // Импортируем новую обертку
+import CookieBanner from "@/components/CookieBanner/CookieBanner"; // 1. Импортируем исправленный баннер
+import { Providers } from "@/components/context/Providers"; 
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
   display: "swap",
-  preload: false,
 });
 
 const manrope = Manrope({
-  subsets: ["cyrillic"],
+  subsets: ["cyrillic"], 
   weight: ["400", "500", "600", "700"],
   variable: "--font-text",
   display: "swap",
-  preload: false,
 });
 
 const montserrat = Montserrat({
@@ -47,6 +46,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <ScrollToTop />
+          <CookieBanner />
         </Providers>
       </body>
     </html>
