@@ -24,7 +24,7 @@ export default function Licenses() {
   }, [isAutoPlaying]);
 
   const handleCardClick = (): void => {
-    setIsAutoPlaying(false); // Останавливаем таймер
+    setIsAutoPlaying(false); 
     nextSlide();
   };
 

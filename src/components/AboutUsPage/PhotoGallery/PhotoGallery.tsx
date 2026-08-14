@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import styles from "./PhotoGallery.module.scss";
 import { Gallery_DATA } from "./PhotoGallery_data";
@@ -8,7 +9,8 @@ export default function Photogallery() {
   const gallery = Gallery_DATA;
   const [activeIndex, setActiveIndex] = useState(0);
 
-    useEffect(() => {
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % gallery.length);
     }, 4000);
@@ -34,7 +36,6 @@ export default function Photogallery() {
               {gallery.map(({ id, imgName, altText }, index) => {
                 const isCenter = index === activeIndex;
 
-                // Оставляем только базовый расчет для классов
                 let diff = index - activeIndex;
                 const half = gallery.length / 2;
                 if (diff <= -half) diff += gallery.length;
@@ -45,12 +46,17 @@ export default function Photogallery() {
                 return (
                   <li
                     key={id}
-                    className={`${styles["gallery__item"]} ${isCenter ? styles["gallery__item--center"] : ""} ${isVisible ? styles["gallery__item--visible"] : ""}`}
+                    className={`${styles["gallery__item"]} ${
+                      isCenter ? styles["gallery__item--center"] : ""
+                    } ${isVisible ? styles["gallery__item--visible"] : ""}`}
                     onClick={() => !isCenter && setActiveIndex(index)}
-                    style={{ "--offset": diff } as React.CSSProperties}
+                    style={{ 
+                      "--offset": diff,
+                      "--abs-offset": Math.abs(diff) 
+                    } as React.CSSProperties}
                   >
-                  <div className={styles["gallery__item-link"]}>
-                     <ResponsivePicture
+                    <div className={styles["gallery__item-link"]}>
+                      <ResponsivePicture
                         folder="/image/gallery"
                         baseName={imgName}
                         alt={altText}
@@ -69,6 +75,7 @@ export default function Photogallery() {
     </section>
   );
 }
+
 
 
 
