@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // СТАТИЧЕСКИЕ ПАРАМЕТРЫ
-// 2. ИСПРАВЛЕНО ДЛЯ ДЕПЛОЯ: Принудительно превращаем slug и id в строковый тип (string)
 export async function generateStaticParams() {
   return SERVICES_DATA.map((service) => ({ 
     slug: String(service.slug || service.id) 
@@ -33,7 +32,7 @@ export async function generateStaticParams() {
 }
 
 // ГЛАВНЫЙ КОМПОНЕНТ СТРАНИЦЫ
-export default async function Page({ params }: PageProps) {
+export default async function PageService({ params }: PageProps) {
   const { slug } = await params;
   
   // Находим данные о самой услуге (проверяем и по slug, и по текстовому id)

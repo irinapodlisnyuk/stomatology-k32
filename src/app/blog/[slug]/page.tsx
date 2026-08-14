@@ -1,7 +1,7 @@
 import { BLOG_DATA } from "@/data/Blog_data";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import PostContentWrapper from "@/components/PostPage/PostPage"; 
+import  PostPage from "@/components/PostPage/PostPage"; 
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 //  Это главный серверный компонент страницы Next.js, он принимает только params
-export default async function Page({ params }: Props) {
+export default async function PagePost({ params }: Props) {
   const { slug } = await params;
   const post = BLOG_DATA.find((p) => p.slug === slug || p.id === slug);
 
@@ -31,5 +31,5 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  return <PostContentWrapper post={post} allPosts={BLOG_DATA} />;
+  return < PostPage post={post} allPosts={BLOG_DATA} />;
 }

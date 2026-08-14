@@ -3,7 +3,7 @@ import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-import { ModalProvider } from "@/components/context/ModalContext";
+import { Providers } from "@/components/context/Providers"; // Импортируем новую обертку
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,14 +38,14 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        <ModalProvider>
+        <Providers>
           <div className="root-wrapper">
             <HeaderComponent />
             <main>{children}</main>
-            <Footer /> 
+            <Footer />
           </div>
-          <ScrollToTop /> 
-        </ModalProvider>
+          <ScrollToTop />
+        </Providers>
       </body>
     </html>
   );

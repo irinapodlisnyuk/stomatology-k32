@@ -42,9 +42,8 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const closeAppointment = () => setIsAppointmentOpen(false);
 
   const triggerSuccess = (text: string) => {
-    setIsAppointmentOpen(false); // Закрываем форму ввода
     setSuccessText(text);
-    setIsSuccessOpen(true); // Открываем окно успеха
+    setIsSuccessOpen(true);
   };
 
   const handleCloseAll = () => {

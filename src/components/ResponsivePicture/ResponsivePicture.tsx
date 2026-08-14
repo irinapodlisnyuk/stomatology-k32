@@ -21,13 +21,12 @@ export default function ResponsivePicture({
 }: ResponsivePictureProps) {
   const cleanFolder = folder.endsWith("/") ? folder.slice(0, -1) : folder;
 
-
-   const mob = isHero ? 768 : 360;
+  const mob = isHero ? 768 : 360;
   const mob2x = isHero ? 1536 : 720;
-  
+
   const tab = isHero ? 1200 : 500;
   const tab2x = isHero ? 2400 : 800;
-  
+
   const desk = isHero ? 1920 : 600;
   const desk2x = isHero ? 3840 : 1000;
 
@@ -80,6 +79,8 @@ export default function ResponsivePicture({
         src={`${cleanFolder}/${baseName}.jpg`}
         alt={alt}
         className={className}
+        width={desk}
+        height={isHero ? 800 : 400} //
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
         decoding={priority ? "sync" : "async"}

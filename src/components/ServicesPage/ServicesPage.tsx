@@ -1,5 +1,5 @@
 import Hero from "../Hero/Hero";
-import  ServicesAll  from "./ServicesAll/ServicesAll";
+import ServicesAll from "./ServicesAll/ServicesAll";
 
 export default function ServicesPage() {
   return (
@@ -9,7 +9,7 @@ export default function ServicesPage() {
         subtitle="Комплексный уход за&nbsp;вашей прекрасной улыбкой"
         imageFolder="/image/servicePage"
         imageName="service"
-        altText= "Стоматологические услуги К+32"
+        altText="Стоматологические услуги К+32"
         pageType="service"
       />
 

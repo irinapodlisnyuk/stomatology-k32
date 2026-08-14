@@ -18,13 +18,13 @@ export default function Services() {
             </h2>
             <h3
               className={`${styles["services__header-subtitle"]} ${styles["animate-fade-up"]}`}
-              style={{ animationDelay: "0.35s" }}
+              style={{ animationDelay: "0.30s" }}
             >
               Забота о&nbsp;каждом аспекте вашей улыбки
             </h3>
             <p
               className={`${styles["services__header-text"]} ${styles["animate-fade-up"]}`}
-              style={{ animationDelay: "0.5s" }}
+              style={{ animationDelay: "0.4s" }}
             >
               Здоровье зубов определяет качество жизни, поэтому мы&nbsp;создали
               пространство, где лечение проходит абсолютно безболезненно
@@ -39,7 +39,7 @@ export default function Services() {
 
           <div
             className={`${styles["services__actions"]} ${styles["animate-fade-up"]}`}
-            style={{ animationDelay: "2.0s" }}
+            style={{ animationDelay: "1.8s" }}
           >
             <Link href="/services" className="btn btn--services">
               Изучите все услуги

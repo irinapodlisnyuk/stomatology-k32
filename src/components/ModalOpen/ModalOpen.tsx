@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Icon from "../Icon/Icon";
 import styles from "./ModalOpen.module.scss";
 
@@ -8,12 +8,23 @@ interface ModalOpenProps {
   text?: string;         
 }
 
-export  const ModalOpen: FC<ModalOpenProps> = ({ 
+export const ModalOpen: FC<ModalOpenProps> = ({ 
   isOpen, 
   onClose, 
   text = "Ваше сообщение отправлено." 
 }) => {
   
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null; 
 
   return (
@@ -27,7 +38,9 @@ export  const ModalOpen: FC<ModalOpenProps> = ({
           type="button" 
           className={styles["modal-btn"]} 
           onClick={onClose}
-        ><Icon name="close" className={styles["modal-btn__icon"]} />
+          aria-label="Закрыть уведомление"
+        >
+          <Icon name="close" className={styles["modal-btn__icon"]} />
         </button>
       </div>
     </div>

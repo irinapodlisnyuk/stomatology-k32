@@ -8,7 +8,7 @@ export default function ContactPage() {
     <>
       <Hero
         title="Связаться с нами"
-        subtitle="Давайте общаться легко и непринужденно"
+        subtitle="Давайте общаться легко и&nbsp;непринужденно"
         imageFolder="/image/call"
         imageName="call"
         altText="Современная стоматология Клиника +32"
