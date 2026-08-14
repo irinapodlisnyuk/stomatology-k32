@@ -1,41 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Licenses.module.scss";
 import { licenseList } from "./Licenses-data";
-
-// Простейшие функции-заглушки для определения окружения (клиент/сервер)
-const subscribeEmpty = () => () => {};
-const getClientSnapshot = () => true;
-const getServerSnapshot = () => false;
 
 export default function Licenses() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Официальный способ Next.js узнать, что мы в браузере, БЕЗ вызова каскадных рендеров
-  const isMounted = useSyncExternalStore(subscribeEmpty, getClientSnapshot, getServerSnapshot);
-
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % licenseList.length);
   };
 
   useEffect(() => {
-    if (!isMounted || !isAutoPlaying) return;
+    if (typeof window === "undefined" || !isAutoPlaying) return;
 
     timerRef.current = setInterval(nextSlide, 4000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isAutoPlaying, isMounted]);
-
-
-  if (!isMounted) return <section className={styles.licenses}></section>;
+  }, [isAutoPlaying]);
 
   const handleCardClick = (): void => {
-    setIsAutoPlaying(false);
+    setIsAutoPlaying(false); // Останавливаем таймер при клике пациента
     nextSlide();
   };
 

@@ -4,12 +4,12 @@ import { SERVICES_DATA } from "@/data/Services_data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import styles from "./ServicePage.module.scss";
+import { AppointmentButton } from "@/components/Form/Button/AppointmentButton"; // Импортируем нашу кнопку
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// 1. ИСПРАВЛЕНО ДЛЯ ДЕПЛОЯ: Разрешаем динамическую генерацию страниц на сервере, если их нет в статической сборке
 export const dynamicParams = true;
 
 // ГЕНЕРАЦИЯ МЕТАДАННЫХ
@@ -31,17 +31,15 @@ export async function generateStaticParams() {
   }));
 }
 
-// ГЛАВНЫЙ КОМПОНЕНТ СТРАНИЦЫ
+// ГЛАВНЫЙ КОМПОНЕНТ СТРАНИЦЫ (Остается чистым и быстрым серверным компонентом)
 export default async function PageService({ params }: PageProps) {
   const { slug } = await params;
   
-  // Находим данные о самой услуге (проверяем и по slug, и по текстовому id)
   const services = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
   if (!services) {
     notFound();
   }
 
-  // МАТЧИНГ ЦЕН: Берем массив цен по slug
   const currentServicePrices = PRICES_SERVICE[services.slug || ""] || [];
 
   return (
@@ -57,11 +55,16 @@ export default async function PageService({ params }: PageProps) {
 
       <div className="container">
         <div className={styles.serviceLayout}>
+          
+          {/* Безопасный контейнер описания услуги */}
           <article className={styles.serviceContent}>
-            <div dangerouslySetInnerHTML={{ __html: services.fullText || "<p>Описание услуги временно наполняется...</p>" }} /> 
+            <div 
+              suppressHydrationWarning // Защищает ядро React от зависания, если в fullText встретятся спецсимволы HTML
+              dangerouslySetInnerHTML={{ __html: services.fullText || "<p>Описание услуги временно наполняется...</p>" }} 
+            /> 
           </article>
 
-          {/* ВЫВОД ПРАЙСА ИЗ ОТДЕЛЬНОГО МАССИВА */}
+          {/* ВЫВОД ПРАЙСА */}
           {currentServicePrices.length > 0 && (
             <section className={styles.priceSection}>
               <h2 className={styles.priceTitle}>Стоимость услуги</h2>
@@ -75,12 +78,12 @@ export default async function PageService({ params }: PageProps) {
               </div>
               
               <div className={styles.priceActions}>
-                <button className="btn btn--appointment" style={{ marginTop: "30px" }}>
-                  Записаться на консультацию
-                </button>
+                {/* Исправлено: Клиентская кнопка теперь безопасно триггерит контекст */}
+                <AppointmentButton />
               </div>
             </section>
           )}
+          
         </div>
       </div>
     </>
