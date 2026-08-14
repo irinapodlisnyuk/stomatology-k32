@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import { Blog } from "@/components/HomePage/Blog/Blog";
-import Hero from "@/components/Hero/Hero"; 
+import Hero from "@/components/Hero/Hero";
 
 export default function BlogPage() {
   return (
@@ -11,7 +11,7 @@ export default function BlogPage() {
         imageFolder="/image/heroBlog"
         imageName="blog"
         altText="Блог стоматологической клиники К+32"
-         pageType="blog" 
+        pageType="blog"
       />
 
       <ScrollReveal>

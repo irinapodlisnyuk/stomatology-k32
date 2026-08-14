@@ -78,7 +78,7 @@ export default async function PageService({ params }: PageProps) {
               </div>
               
               <div className={styles.priceActions}>
-                {/* Исправлено: Клиентская кнопка теперь безопасно триггерит контекст */}
+            
                 <AppointmentButton />
               </div>
             </section>

@@ -67,7 +67,7 @@
     pointer-events: none;
 
     @include vp-767 {
-      display: none;
+      display: none; 
     }
   }
 
@@ -116,8 +116,10 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+
     @include vp-767 {
-      height: 100%;
+      height: auto; 
+      justify-content: flex-start;
     }
   }
 
@@ -134,14 +136,18 @@
 
     @include vp-767 {
       justify-content: flex-start;
+      align-items: stretch; 
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 20px;
-      gap: 15px;
+      padding: 10px 20px 25px; 
+      gap: 16px; 
+      height: auto;
+
       &::-webkit-scrollbar {
         display: none;
       }
       scrollbar-width: none;
+      -ms-overflow-style: none;
     }
   }
 
@@ -159,6 +165,14 @@
       opacity 0.5s ease,
       box-shadow 0.5s ease;
     will-change: transform, opacity;
+
+    
+    .blog__picture {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      display: block;
+    }
 
     .blog__item-link {
       pointer-events: none;
@@ -179,18 +193,23 @@
     @include vp-767 {
       position: relative;
       left: auto;
-      width: 80%;
-      height: 380px;
+      top: auto;
+      width: 280px; 
+      min-width: 280px;
       flex-shrink: 0;
-      scroll-snap-align: center;
-      transform: none;
-      opacity: 1;
+      scroll-snap-align: center; 
+      transform: none !important; 
+      opacity: 1 !important;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 8px 20px rgba($black, 0.08);
 
       .blog__item-link {
-        pointer-events: auto;
+        pointer-events: auto !important;
+        display: flex;
+        flex-direction: column;
         height: 100%;
+        width: 100%;
       }
     }
   }
@@ -205,13 +224,13 @@
 
   &__picture-img {
     width: 100%;
-    height: auto;
+    height: 100% !important; 
     aspect-ratio: 16 / 10;
     object-fit: cover;
     display: block;
 
     @include vp-767 {
-      height: 180px;
+      height: 160px !important;
     }
   }
 
@@ -232,9 +251,8 @@
     }
 
     @include vp-767 {
-      padding: 15px 20px;
-      gap: 12px;
-      height: calc(100% - 180px) !important;
+      padding: 20px 15px;
+      gap: 10px;
     }
   }
 
@@ -246,7 +264,7 @@
 
   &__item-text {
     width: 90%;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1.4;
     color: $white;
     margin: 0;
@@ -261,6 +279,7 @@
     }
     @include vp-767 {
       font-size: 16px;
+      width: 100%;
     }
   }
 }

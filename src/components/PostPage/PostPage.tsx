@@ -1,7 +1,5 @@
-import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
 import Hero from "@/components/Hero/Hero";
 import Post from "./Post/Post";
-
 
 export interface BlogPost {
   id: string | number;
@@ -34,10 +32,8 @@ export default function PostPage({ post, allPosts }: PostContentWrapperProps) {
         pageType="post"
         isHero={true}
       />
-  
-      <ScrollReveal>
-        <Post post={post} relatedPosts={relatedPosts} />
-      </ScrollReveal>
+
+      <Post post={post} relatedPosts={relatedPosts} />
     </>
   );
 }
