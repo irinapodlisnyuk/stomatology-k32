@@ -12,10 +12,9 @@ export function AppointmentButton({ className = "btn btn--appointment" }: Appoin
   return (
     <button 
       className={className} 
-      style={{ marginTop: "30px" }}
       onClick={openAppointment} 
     >
-      Записаться на консультацию
+      Записаться на приём
     </button>
   );
 }
