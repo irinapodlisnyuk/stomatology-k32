@@ -1,35 +1,46 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "./Licenses.module.scss";
 import { licenseList } from "./Licenses-data";
 
+// Простейшие функции-заглушки для определения окружения (клиент/сервер)
+const subscribeEmpty = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 export default function Licenses() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Официальный способ Next.js узнать, что мы в браузере, БЕЗ вызова каскадных рендеров
+  const isMounted = useSyncExternalStore(subscribeEmpty, getClientSnapshot, getServerSnapshot);
+
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % licenseList.length);
   };
 
   useEffect(() => {
-    if (isAutoPlaying) {
-      timerRef.current = setInterval(nextSlide, 4000);
-    }
+    if (!isMounted || !isAutoPlaying) return;
+
+    timerRef.current = setInterval(nextSlide, 4000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, isMounted]);
+
+
+  if (!isMounted) return <section className={styles.licenses}></section>;
 
   const handleCardClick = (): void => {
-    setIsAutoPlaying(false); 
+    setIsAutoPlaying(false);
     nextSlide();
   };
 
   const handleDotClick = (index: number): void => {
-    setIsAutoPlaying(false); // Останавливаем таймер
+    setIsAutoPlaying(false);
     setCurrentIndex(index);
   };
 
@@ -53,39 +64,39 @@ export default function Licenses() {
               Деятельность клиники К+32 полностью лицензирована. Мы работаем
               строго по медицинским протоколам Министерства здравоохранения РФ.
             </p>
-
           </div>
 
           {/* 1. ДЕСКТОПНАЯ ВЕРСИЯ */}
           <div className={styles.licenses__desktop}>
             <div className={styles.licenses__bookScene}>
-              <div
-                className={styles.licenses__card}
-                onClick={handleCardClick}
-                key={activeItem.id}
-              >
-                <div className={styles.licenses__imgWrapper}>
-                  <picture>
-                    <source
-                      srcSet={`${path}/${activeItem.baseName}.webp 1x, ${path}/${activeItem.baseName}-@2x.webp 2x`}
-                      type="image/webp"
-                    />
-                    <source
-                      srcSet={`${path}/${activeItem.baseName}.jpg 1x, ${path}/${activeItem.baseName}-@2x.jpg 2x`}
-                      type="image/jpeg"
-                    />
-                    <img
-                      src={`${path}/${activeItem.baseName}.jpg`}
-                      alt={activeItem.title}
-                      className={styles.licenses__img}
-                      loading="lazy"
-                    />
-                  </picture>
+              {activeItem && (
+                <div
+                  className={styles.licenses__card}
+                  onClick={handleCardClick}
+                  key={activeItem.id}
+                >
+                  <div className={styles.licenses__imgWrapper}>
+                    <picture>
+                      <source
+                        srcSet={`${path}/${activeItem.baseName}.webp 1x, ${path}/${activeItem.baseName}@2x.webp 2x`}
+                        type="image/webp"
+                      />
+                      <source
+                        srcSet={`${path}/${activeItem.baseName}.jpg 1x, ${path}/${activeItem.baseName}@2x.jpg 2x`}
+                        type="image/jpeg"
+                      />
+                      <img
+                        src={`${path}/${activeItem.baseName}.jpg`}
+                        alt={activeItem.title}
+                        className={styles.licenses__img}
+                        loading="lazy"
+                      />
+                    </picture>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
-            {/*  ЦИФРОВУЮ ПАГИНАЦИЮ  */}
             <div className={styles.licenses__counter}>
               <span className={styles.licenses__current}>
                 {currentIndex + 1}
@@ -95,7 +106,6 @@ export default function Licenses() {
                 {licenseList.length}
               </span>
             </div>
-
           </div>
 
           {/* 2. МОБИЛЬНАЯ ВЕРСИЯ */}
@@ -126,20 +136,18 @@ export default function Licenses() {
             ))}
           </div>
 
-              <div className={styles.licenses__dots}>
-              {licenseList.map((_, index) => (
-                <button
-                  key={index}
-                  className={`${styles.licenses__dot} ${
-                    index === currentIndex
-                      ? styles["licenses__dot--active"]
-                      : ""
-                  }`}
-                  onClick={() => handleDotClick(index)}
-                  aria-label={`Перейти к странице ${index + 1}`}
-                />
-              ))}
-            </div>
+          <div className={styles.licenses__dots}>
+            {licenseList.map((_, index) => (
+              <button
+                key={index}
+                className={`${styles.licenses__dot} ${
+                  index === currentIndex ? styles["licenses__dot--active"] : ""
+                }`}
+                onClick={() => handleDotClick(index)}
+                aria-label={`Перейти к странице ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import styles from "./Contact.module.scss";
 import Link from "next/link";
 import LoaderPage from "@/components/LoaderPage/LoaderPage";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
+
 
 const LazyMap = dynamic(() => import("./MapComponent"), {
   ssr: false,

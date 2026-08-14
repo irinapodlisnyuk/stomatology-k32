@@ -2,15 +2,8 @@ import Hero from "@/components/Hero/Hero";
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import Teams from "@/components/HomePage/Teams/Teams"; 
 import Advantages from "./Advantages/Advantages"; 
-import dynamic from "next/dynamic"; 
-
-const Licenses = dynamic(() => import("./Licenses/Licenses"), {
-  ssr: false,
-});
-
-const Photogallery = dynamic(() => import("./PhotoGallery/PhotoGallery"), {
-  ssr: false,
-});
+import Licenses from "./Licenses/Licenses";
+import Photogallery from "./PhotoGallery/PhotoGallery";
 
 export default function AboutPage() {
   return (
