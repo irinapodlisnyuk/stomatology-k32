@@ -1,37 +1,36 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
+import { useRef, useState } from "react";
 import styles from "./CookieBanner.module.scss";
-import Icon from "../Icon/Icon";
-import CookieOption from "./CookieOption";
-import { activateAdvertising, activateAnalytics } from "@/utils/cookieManager";
-import { initAppConsent } from "@/utils/cookieManager";
+import Icon from "@/components/Icon/Icon";
+import CookieOption from "./CookieOption"; // Ваша строка с чекбоксом
 
 export default function CookieBanner() {
   const bannerRef = useRef<HTMLDivElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    const animationFrame = requestAnimationFrame(() => {
-      setIsMounted(true);
-      initAppConsent(); // Проверяет localStorage и пишет логи при первом заходе на сайт
-    });
+  const [bannerState, setBannerState] = useState(() => {
+    if (typeof window === "undefined") {
+      return {
+        isMounted: false,
+        analytics: false,
+        advertising: false,
+        isVisible: false,
+      };
+    }
 
-    return () => cancelAnimationFrame(animationFrame);
-  }, []);
+    const consentAccepted =
+      localStorage.getItem("cookieConsentAccepted") === "true";
+    const analyticsAccepted =
+      localStorage.getItem("cookieAnalyticsAccepted") === "true";
+    const advertisingAccepted =
+      localStorage.getItem("cookieAdvertisingAccepted") === "true";
 
-  // Инициализация состояний (безопасная для SSR)
-  const [analytics, setAnalytics] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return localStorage.getItem("cookieAnalyticsAccepted") === "true";
-  });
-  const [advertising, setAdvertising] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return localStorage.getItem("cookieAdvertisingAccepted") === "true";
-  });
-
-  const [isVisible, setIsVisible] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return !localStorage.getItem("cookieConsentAccepted");
+    return {
+      analytics: analyticsAccepted,
+      advertising: advertisingAccepted,
+      isVisible: !consentAccepted,
+      isMounted: true,
+    };
   });
 
   const [showSettings, setShowSettings] = useState(false);
@@ -45,52 +44,45 @@ export default function CookieBanner() {
     setExpandedSection((prev) => (prev === section ? null : section));
   };
 
-  // Клик вне баннера закрывает только панель настроек (чтобы не прятать сам баннер)
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        bannerRef.current &&
-        !bannerRef.current.contains(event.target as Node)
-      ) {
-        setShowSettings(false);
-        setExpandedSection(null);
-      }
-    };
-    if (isVisible && isMounted) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isVisible, isMounted]);
-
   const handleAcceptAll = () => {
     try {
       localStorage.setItem("cookieConsentAccepted", "true");
       localStorage.setItem("cookieAnalyticsAccepted", "true");
       localStorage.setItem("cookieAdvertisingAccepted", "true");
-      setAnalytics(true);
-      setAdvertising(true);
 
-      activateAnalytics();
-      activateAdvertising();
+      setBannerState({
+        isMounted: true,
+        analytics: true,
+        advertising: true,
+        isVisible: false,
+      });
     } catch {
       console.warn("localStorage недоступен");
     }
-    setIsVisible(false);
   };
 
   const handleSaveSettings = () => {
     try {
       localStorage.setItem("cookieConsentAccepted", "true");
-      localStorage.setItem("cookieAnalyticsAccepted", analytics.toString());
-      localStorage.setItem("cookieAdvertisingAccepted", advertising.toString());
+      localStorage.setItem(
+        "cookieAnalyticsAccepted",
+        bannerState.analytics.toString(),
+      );
+      localStorage.setItem(
+        "cookieAdvertisingAccepted",
+        bannerState.advertising.toString(),
+      );
 
-      activateAnalytics();
-      activateAdvertising();
+      setBannerState((prev) => ({
+        ...prev,
+        isVisible: false,
+      }));
     } catch {
       console.warn("localStorage недоступен");
     }
-    setIsVisible(false);
   };
+
+  const { isMounted, isVisible, analytics, advertising } = bannerState;
 
   if (!isMounted || !isVisible) return null;
 
@@ -165,7 +157,9 @@ export default function CookieBanner() {
               title="Аналитические файлы cookie"
               description="Целью этих файлов cookie является предоставление количественных данных о&nbsp;взаимодействии пользователей с&nbsp;нашим веб -сайтом. Кроме того, эти файлы cookie собирают информацию, которая используется для отслеживания производительности веб -сайта. Обычно они не&nbsp;собирают конфиденциальную информацию и&nbsp;предоставляют нам только общую статистику, например, количество посетителей разных страниц, источников трафика и&nbsp;коэффициента конверсии, чтобы помочь нам повысить производительность веб -сайта. Отключив эти файлы cookie, мы&nbsp;не&nbsp;сможем идентифицировать вас как посетителя."
               checked={analytics}
-              onChange={setAnalytics}
+              onChange={(val) =>
+                setBannerState((prev) => ({ ...prev, analytics: val }))
+              }
               isExpanded={expandedSection === "analytics"}
               onToggle={() => toggleSection("analytics")}
             />
@@ -176,7 +170,9 @@ export default function CookieBanner() {
               title="Рекламные файлы cookie"
               description="Эти файлы cookie устанавливаются нашими рекламными партнерами, чтобы обеспечить поведенческую рекламу и&nbsp;аналитику ремаркетинга. Они собирают информацию о&nbsp;просмотре для создания профилей пользователей и&nbsp;запускают персонализированную рекламу. Когда вы&nbsp;посещаете другие веб -сайты, вы&nbsp;увидите индивидуальные объявления на&nbsp;основе вашего профиля, созданного в&nbsp;соответствии с&nbsp;вашими интересами и&nbsp;поведением."
               checked={advertising}
-              onChange={setAdvertising}
+              onChange={(val) =>
+                setBannerState((prev) => ({ ...prev, advertising: val }))
+              }
               isExpanded={expandedSection === "advertising"}
               onToggle={() => toggleSection("advertising")}
             />
