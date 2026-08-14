@@ -3,7 +3,7 @@
 import React from "react";
 import Hero from "@/components/Hero/Hero";
 import { AppointmentButton } from "@/components/Form/Button/AppointmentButton";
-import styles from "./ServicePage.module.scss"; // Импортируем ваши стили страницы
+import styles from "./ServicePage.module.scss";
 
 interface PriceItem {
   name: string;
