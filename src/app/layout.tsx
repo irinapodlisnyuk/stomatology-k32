@@ -1,31 +1,9 @@
-import { Poppins, Manrope, Montserrat } from "next/font/google";
 import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-import CookieBanner from "@/components/CookieBanner/CookieBanner"; // 1. Импортируем исправленный баннер
-import { Providers } from "@/components/context/Providers"; 
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["cyrillic"], 
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-text",
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  subsets: ["cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heading",
-  display: "swap",
-});
+import CookieBanner from "@/components/CookieBanner/CookieBanner";
+import { Providers } from "@/components/context/Providers";
 
 export default function RootLayout({
   children,
@@ -33,11 +11,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ru"
-      className={`${poppins.variable} ${manrope.variable} ${montserrat.variable}`}
-      data-scroll-behavior="smooth"
-    >
+    <html lang="ru" data-scroll-behavior="smooth">
+      <head>
+        <link rel="preconnect" href="https://googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Providers>
           <div className="root-wrapper">
