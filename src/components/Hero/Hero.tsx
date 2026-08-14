@@ -1,7 +1,6 @@
 "use client";
 import styles from "./hero.module.scss";
 import { useModals } from "@/components/context/ModalContext";
-import Image from "next/image";
 import ResponsivePicture from "../ResponsivePicture/ResponsivePicture";
 
 interface HeroProps {
@@ -13,7 +12,14 @@ interface HeroProps {
   altText?: string;
   showButton?: boolean;
   isHero?: boolean;
-  pageType?: "home" | "blog" | "about" | "contacts" | "post" | "call" | "service";
+  pageType?:
+    | "home"
+    | "blog"
+    | "about"
+    | "contacts"
+    | "post"
+    | "call"
+    | "services";
 }
 
 export default function Hero({
@@ -34,17 +40,15 @@ export default function Hero({
   return (
     <section className={`${styles.hero} ${modifierClass}`}>
       <div className="container">
-        <div className={styles.hero__picture}>
-          <ResponsivePicture
-            folder={imageFolder}
-            baseName={imageName}
-            alt={altText.replace(/&nbsp;/g, " ")}
-            className={`${styles.hero__img || ""} ${styles.hero__bg || ""}`}
-            sizes="100vw" 
-            priority={true}
-            isHero={isHero}
-          />
-        </div>
+        <ResponsivePicture
+          folder={imageFolder}
+          baseName={imageName}
+          alt={altText.replace(/&nbsp;/g, " ")}
+          className={`${styles.hero__picture || ""} ${styles.hero__img || ""} ${styles.hero__bg || ""}`.trim()}
+          sizes="100vw"
+          priority={true}
+          isHero={isHero}
+        />
 
         <div className={styles.hero__wrapper}>
           <h2

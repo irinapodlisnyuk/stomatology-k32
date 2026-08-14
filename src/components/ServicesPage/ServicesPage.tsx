@@ -10,7 +10,7 @@ export default function ServicesPage() {
         imageFolder="/image/servicePage"
         imageName="service"
         altText="Стоматологические услуги К+32"
-        pageType="service"
+        pageType="services"
       />
 
       <ServicesAll />

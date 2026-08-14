@@ -31,7 +31,7 @@ export default function ResponsivePicture({
   const desk2x = isHero ? 3840 : 1000;
 
   return (
-    <picture >
+    <picture className={className}>
       {/* 1. МОБИЛЬНЫЕ (до 767px) */}
       <source
         media="(max-width: 767px)"

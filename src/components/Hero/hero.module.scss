@@ -157,7 +157,7 @@
   &--about,
   &--post,
   &--call,
-  &--service {
+  &--services {
     min-height: 370px;
     padding: 60px 0;
 
@@ -238,9 +238,6 @@
     .hero__wrapper {
       gap: 20px;
     }
-  }
-
-  &--about {
   }
 
   &--contacts {
