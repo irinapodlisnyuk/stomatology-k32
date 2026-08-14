@@ -18,7 +18,7 @@ export default function Services() {
             </h2>
             <h3
               className={`${styles["services__header-subtitle"]} ${styles["animate-fade-up"]}`}
-              style={{ animationDelay: "0.30s" }}
+              style={{ animationDelay: "0.3s" }}
             >
               Забота о&nbsp;каждом аспекте вашей улыбки
             </h3>

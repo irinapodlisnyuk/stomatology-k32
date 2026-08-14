@@ -1,7 +1,7 @@
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./List-service.module.scss";
 import { SERVICES_DATA } from "@/data/Services_data";
-import { FC } from "react";
+import { FC, CSSProperties } from "react"; 
 import Link from "next/link";
 
 interface ServicesListProps {
@@ -15,14 +15,14 @@ export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
   return (
     <ul className={styles["services__list"]}>
       {displayedServices.map(({ id, slug, title, imgName, altText }, index) => {
-        const CardContent = (
+        
+        const cardContent = (
           <>
             <ResponsivePicture
               folder="/image/services"
               baseName={imgName}
               alt={altText}
               className={styles["services__picture-img"]}
-          
               sizes={
                 isFullPage
                   ? "(max-width: 767px) 360px, (max-width: 1023px) 768px, 500px"
@@ -30,34 +30,100 @@ export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
               }
             />
             <span
-              className={`${styles["services__item-text"]} ${isFullPage ? styles["services__item-text--color"] : ""}`}
+              className={`${styles["services__item-text"]} ${
+                isFullPage ? styles["services__item-text--color"] : ""
+              }`}
             >
               {title}
             </span>
           </>
         );
 
+        const itemStyles: CSSProperties = {
+          "--index": index,
+        } as CSSProperties;
+
         return (
           <li
             key={id}
-            className={`${styles["services__item"]} ${isFullPage ? styles["services__item--static"] : ""}`}
-            style={{ "--index": index } as React.CSSProperties}
+            className={`${styles["services__item"]} ${
+              isFullPage ? styles["services__item--static"] : ""
+            }`}
+            style={itemStyles}
           >
-            {isFullPage ? (
-              <Link
-                href={`/services/${slug || id}`}
-                className={styles["services__item-link"]}
-              >
-                {CardContent}
-              </Link>
-            ) : (
-              <div className={styles["services__item-content"]}>
-                {CardContent}
-              </div>
-            )}
+            <Link
+              href={`/services/${slug || id}`}
+              className={styles["services__item-link"]}
+            >
+              {cardContent}
+            </Link>
           </li>
         );
       })}
     </ul>
   );
-}
+};
+
+// import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
+// import styles from "./List-service.module.scss";
+// import { SERVICES_DATA } from "@/data/Services_data";
+// import { FC } from "react";
+// import Link from "next/link";
+
+// interface ServicesListProps {
+//   isFullPage?: boolean;
+// }
+
+// export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
+
+//   const displayedServices = isFullPage ? SERVICES_DATA : SERVICES_DATA.slice(0, 4);
+
+//   return (
+//     <ul className={styles["services__list"]}>
+//       {displayedServices.map(({ id, slug, title, imgName, altText }, index) => {
+//         const CardContent = (
+//           <>
+//             <ResponsivePicture
+//               folder="/image/services"
+//               baseName={imgName}
+//               alt={altText}
+//               className={styles["services__picture-img"]}
+          
+//               sizes={
+//                 isFullPage
+//                   ? "(max-width: 767px) 360px, (max-width: 1023px) 768px, 500px"
+//                   : "(max-width: 767px) 360px, (max-width: 1023px) 500px, 285px"
+//               }
+//             />
+//             <span
+//               className={`${styles["services__item-text"]} ${isFullPage ? styles["services__item-text--color"] : ""}`}
+//             >
+//               {title}
+//             </span>
+//           </>
+//         );
+
+//         return (
+//           <li
+//             key={id}
+//             className={`${styles["services__item"]} ${isFullPage ? styles["services__item--static"] : ""}`}
+//             style={{ "--index": index } as React.CSSProperties}
+//           >
+//             {isFullPage ? (
+//               <Link
+//                 href={`/services/${slug || id}`}
+//                 className={styles["services__item-link"]}
+//               >
+//                 {CardContent}
+//               </Link>
+//             ) : (
+//               <div className={styles["services__item-content"]}>
+//                 {CardContent}
+//               </div>
+//             )}
+//           </li>
+//         );
+//       })}
+//     </ul>
+//   );
+// }

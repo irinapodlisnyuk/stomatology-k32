@@ -31,17 +31,17 @@ export default function ResponsivePicture({
   const desk2x = isHero ? 3840 : 1000;
 
   return (
-    <picture className={className}>
+    <picture style={{ display: "contents" }}>
       {/* 1. МОБИЛЬНЫЕ (до 767px) */}
       <source
         media="(max-width: 767px)"
-        srcSet={`${cleanFolder}/${baseName}-mob.webp  ${mob}w, ${cleanFolder}/${baseName}-mob@2x.webp  ${mob2x}w`}
+        srcSet={`${cleanFolder}/${baseName}-mob.webp ${mob}w, ${cleanFolder}/${baseName}-mob@2x.webp ${mob2x}w`}
         sizes={sizes}
         type="image/webp"
       />
       <source
         media="(max-width: 767px)"
-        srcSet={`${cleanFolder}/${baseName}-mob.jpg  ${mob}w, ${cleanFolder}/${baseName}-mob@2x.jpg  ${mob2x}w`}
+        srcSet={`${cleanFolder}/${baseName}-mob.jpg ${mob}w, ${cleanFolder}/${baseName}-mob@2x.jpg ${mob2x}w`}
         sizes={sizes}
         type="image/jpeg"
       />
@@ -63,26 +63,26 @@ export default function ResponsivePicture({
       {/* 3. ДЕСКТОП (от 1024px и выше) */}
       <source
         media="(min-width: 1024px)"
-        srcSet={`${cleanFolder}/${baseName}.webp ${desk}w, ${cleanFolder}/${baseName}@2x.webp  ${desk2x}w`}
+        srcSet={`${cleanFolder}/${baseName}.webp ${desk}w, ${cleanFolder}/${baseName}@2x.webp ${desk2x}w`}
         sizes={sizes}
         type="image/webp"
       />
       <source
         media="(min-width: 1024px)"
-        srcSet={`${cleanFolder}/${baseName}.jpg ${desk}w, ${cleanFolder}/${baseName}@2x.jpg  ${desk2x}w`}
+        srcSet={`${cleanFolder}/${baseName}.jpg ${desk}w, ${cleanFolder}/${baseName}@2x.jpg ${desk2x}w`}
         sizes={sizes}
         type="image/jpeg"
       />
 
-      {/* Базовый тег-фоллбек */}
+   
       <img
         src={`${cleanFolder}/${baseName}.jpg`}
         alt={alt}
         className={className}
         width={desk}
-        height={isHero ? 800 : 400} //
+        height={isHero ? 800 : 400}
         loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
+        fetchPriority={priority ? "high" : "auto"} 
         decoding={priority ? "sync" : "async"}
       />
     </picture>

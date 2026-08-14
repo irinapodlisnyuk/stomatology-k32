@@ -3,10 +3,15 @@ import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
-import Questions from "@/components/HomePage/Questions/Questions";
 import Contact from "@/components/HomePage/Contact/Contact";
-import { Blog } from "@/components/HomePage/Blog/Blog"; // ⚡ ИСПРАВЛЕНО: Чистый прямой импорт без ломающего dynamic
+import { Blog } from "@/components/HomePage/Blog/Blog"; 
 import { Metadata } from "next";
+import dynamic from "next/dynamic"; 
+
+
+const Questions = dynamic(() => import("@/components/HomePage/Questions/Questions"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
@@ -15,16 +20,16 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
   
-  
+
   other: {
-    "link:rel:preload:0": "",
+    "link:rel:preload:0": "preload",
     "link:href:0": "/image/hero/hero-mob.webp",
     "link:as:0": "image",
     "link:media:0": "(max-width: 767px)",
     "link:type:0": "image/webp",
     "link:fetchpriority:0": "high",
 
-    "link:rel:preload:1": "",
+    "link:rel:preload:1": "preload",
     "link:href:1": "/image/hero/hero@2x.webp",
     "link:as:1": "image",
     "link:media:1": "(min-width: 768px)",
@@ -56,6 +61,7 @@ export default function HomePage() {
         <Teams />
       </div>
   
+    
       <ScrollReveal>
         <Questions />
       </ScrollReveal>
