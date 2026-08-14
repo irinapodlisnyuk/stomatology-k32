@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 interface AnimatedNumberProps {
@@ -8,17 +10,13 @@ interface AnimatedNumberProps {
 export default function AnimatedNumber({ value, duration = 1700 }: AnimatedNumberProps) {
   const safeValue = value || "";
 
-  // Вытаскиваем только чистые цифры и точки/запятые для подсчета
   const targetNumber = parseFloat(safeValue.replace(/[^0-9.]/g, "")) || 0;
-  // Вытаскиваем все нечисловые символы (например, "+", "%"), чтобы вернуть их в конце
   const suffix = safeValue.replace(/[0-9.]/g, "");
   
   const [currentNumber, setCurrentNumber] = useState(0);
 
   useEffect(() => {
-    if (targetNumber === 0) {
-      return;
-    }
+    if (targetNumber === 0) return;
 
     let startTimestamp: number | null = null;
 
@@ -35,15 +33,12 @@ export default function AnimatedNumber({ value, duration = 1700 }: AnimatedNumbe
     };
 
     const animationFrameId = window.requestAnimationFrame(step);
-    
-    // Возвращаем функцию очистки, чтобы отменить анимацию, если компонент размонтируется раньше времени
     return () => window.cancelAnimationFrame(animationFrameId);
   }, [targetNumber, duration]);
 
-  // Проверяем, было ли исходное число дробным
-  const isFloat = safeValue.includes(".");
-
   if (!value) return null;
+
+  const isFloat = safeValue.includes(".");
 
   return (
     <>

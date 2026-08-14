@@ -1,8 +1,12 @@
-"use client"
+"use client";
 import Icon from "@/components/Icon/Icon";
 import { advantagesList } from "./AdvantageItem";
-import AnimatedNumber from "./AnimatedNumber";
+import dynamic from "next/dynamic";
 import styles from "./Advantages.module.scss";
+
+const AnimatedNumber = dynamic(() => import("./AnimatedNumber"), {
+  ssr: false,
+});
 
 export default function Advantages() {
   return (
@@ -23,8 +27,13 @@ export default function Advantages() {
                   item.hasBorder ? styles["advantages__card--bordered"] : ""
                 }`}
               >
-                <Icon className={styles["advantages__card-icon"]} name={item.icon} />
-                <span className={styles["advantages__card-number"]}>  <AnimatedNumber value={item.number} /></span>
+                <Icon
+                  className={styles["advantages__card-icon"]}
+                  name={item.icon}
+                />
+                <span className={styles["advantages__card-number"]}>
+                  <AnimatedNumber value={item.number} />
+                </span>
                 <p className={styles["advantages__card-text"]}>{item.text}</p>
               </div>
             ))}
