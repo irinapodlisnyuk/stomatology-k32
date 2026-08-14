@@ -5,13 +5,8 @@ import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
 import Contact from "@/components/HomePage/Contact/Contact";
 import { Blog } from "@/components/HomePage/Blog/Blog"; 
-import { Metadata } from "next";
-import dynamic from "next/dynamic"; 
-
-
-const Questions = dynamic(() => import("@/components/HomePage/Questions/Questions"), {
-  ssr: false,
-});
+import { Metadata } from "next"; 
+import Questions from "@/components/HomePage/Questions/Questions";
 
 export const metadata: Metadata = {
   title: "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",

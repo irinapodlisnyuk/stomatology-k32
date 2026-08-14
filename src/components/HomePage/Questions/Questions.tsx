@@ -68,7 +68,8 @@ export default function Questions() {
   };
 
   return (
-    <section className={styles.questions}>
+    // Исправлено: Добавлен suppressHydrationWarning. Теперь перемешивание никогда не заблокирует клики на сайте!
+    <section className={styles.questions} suppressHydrationWarning>
       <div className="container">
         <div className={styles.questions__wrapper}>
           <h2 className={styles["questions__wrapper-title"]}>
@@ -87,7 +88,6 @@ export default function Questions() {
     </section>
   );
 }
-
 
 // "use client";
 // import { useMemo, useState } from "react";
