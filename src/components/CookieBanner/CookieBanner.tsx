@@ -1,13 +1,14 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./CookieBanner.module.scss";
 import Icon from "@/components/Icon/Icon";
-import CookieOption from "./CookieOption"; // Ваша строка с чекбоксом
+import CookieOption from "./CookieOption";
 
 export default function CookieBanner() {
   const bannerRef = useRef<HTMLDivElement>(null);
 
+  // Ленивая инициализация стейта (на сервере возвращает false, в браузере сразу читает localStorage)
   const [bannerState, setBannerState] = useState(() => {
     if (typeof window === "undefined") {
       return {
@@ -18,12 +19,9 @@ export default function CookieBanner() {
       };
     }
 
-    const consentAccepted =
-      localStorage.getItem("cookieConsentAccepted") === "true";
-    const analyticsAccepted =
-      localStorage.getItem("cookieAnalyticsAccepted") === "true";
-    const advertisingAccepted =
-      localStorage.getItem("cookieAdvertisingAccepted") === "true";
+    const consentAccepted = localStorage.getItem("cookieConsentAccepted") === "true";
+    const analyticsAccepted = localStorage.getItem("cookieAnalyticsAccepted") === "true";
+    const advertisingAccepted = localStorage.getItem("cookieAdvertisingAccepted") === "true";
 
     return {
       analytics: analyticsAccepted,
@@ -34,13 +32,9 @@ export default function CookieBanner() {
   });
 
   const [showSettings, setShowSettings] = useState(false);
-  const [expandedSection, setExpandedSection] = useState<
-    "necessary" | "analytics" | "advertising" | null
-  >(null);
+  const [expandedSection, setExpandedSection] = useState<"necessary" | "analytics" | "advertising" | null>(null);
 
-  const toggleSection = (
-    section: "necessary" | "analytics" | "advertising",
-  ) => {
+  const toggleSection = (section: "necessary" | "analytics" | "advertising") => {
     setExpandedSection((prev) => (prev === section ? null : section));
   };
 
@@ -64,14 +58,8 @@ export default function CookieBanner() {
   const handleSaveSettings = () => {
     try {
       localStorage.setItem("cookieConsentAccepted", "true");
-      localStorage.setItem(
-        "cookieAnalyticsAccepted",
-        bannerState.analytics.toString(),
-      );
-      localStorage.setItem(
-        "cookieAdvertisingAccepted",
-        bannerState.advertising.toString(),
-      );
+      localStorage.setItem("cookieAnalyticsAccepted", bannerState.analytics.toString());
+      localStorage.setItem("cookieAdvertisingAccepted", bannerState.advertising.toString());
 
       setBannerState((prev) => ({
         ...prev,
@@ -84,15 +72,35 @@ export default function CookieBanner() {
 
   const { isMounted, isVisible, analytics, advertising } = bannerState;
 
+  // Эффект клика вне баннера (Управляет только локальным UI, поэтому безопасен для линтера)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (bannerRef.current && !bannerRef.current.contains(event.target as Node)) {
+        setShowSettings(false);
+        setExpandedSection(null);
+      }
+    };
+    if (isVisible && isMounted) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isVisible, isMounted]);
+
   if (!isMounted || !isVisible) return null;
 
   return (
     <div
       className={`${styles.cookie} ${showSettings ? styles["cookie--settings-open"] : ""}`}
       ref={bannerRef}
+      role="dialog"
+      aria-live="polite"
     >
       {!showSettings ? (
-        /* Главное окно */
+        /* ЭКРАН 1: Главное (исходное) сообщение баннера куки */
+  /* Главное окно */
         <div className={styles.cookie__container}>
           <div className={styles.cookie__wrapper}>
             <div className={styles.cookie__header}>
