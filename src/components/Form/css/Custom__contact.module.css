@@ -1,0 +1,49 @@
+.custom__contact,
+.custom__textarea {
+  display: flex;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px;
+  color: var(--text-primary);
+  border: 1px solid var(--border, #00A8CC);
+  outline: none;
+  cursor: pointer;
+  transition: border-color ease 0.5s;
+}
+.custom__contact::-moz-placeholder, .custom__textarea::-moz-placeholder {
+  color: rgba(102, 102, 102, 0.6);
+  -moz-transition: color ease 0.5s;
+  transition: color ease 0.5s;
+}
+.custom__contact::placeholder,
+.custom__textarea::placeholder {
+  color: rgba(102, 102, 102, 0.6);
+  transition: color ease 0.5s;
+}
+.custom__contact:hover, .custom__contact:focus,
+.custom__textarea:hover,
+.custom__textarea:focus {
+  border: 1px solid var(--primary, #62e5fb);
+}
+.custom__contact:hover::-moz-placeholder, .custom__contact:focus::-moz-placeholder, .custom__textarea:hover::-moz-placeholder, .custom__textarea:focus::-moz-placeholder {
+  color: rgba(102, 102, 102, 0.8);
+}
+.custom__contact:hover::placeholder, .custom__contact:focus::placeholder,
+.custom__textarea:hover::placeholder,
+.custom__textarea:focus::placeholder {
+  color: rgba(102, 102, 102, 0.8);
+}
+
+.form-post__textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+.form-post__textarea-wrapper .form-post__textarea-counter {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 12px;
+  color: rgba(0, 137, 161, 0.6);
+  pointer-events: none;
+}/*# sourceMappingURL=Custom__contact.module.css.map */

@@ -1,0 +1,40 @@
+.form__btn {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 13px;
+  color: #ffffff;
+  background-color: #0089a1;
+  border-radius: 10px;
+  padding: 20px 15px;
+  cursor: pointer;
+  transition: background-color ease 0.5s, color ease 0.5s, transform ease 0.5s;
+}
+@media (max-width: 767px) {
+  .form__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 767px) {
+  .form__btn {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+.form__btn:hover {
+  background-color: rgba(0, 137, 161, 0.8);
+  color: rgba(0, 0, 0, 0.85);
+  transform: translateY(-5px);
+}
+.form__btn:disabled {
+  cursor: not-allowed;
+}
+
+.form__btn:disabled {
+  opacity: 0.5;
+}
+
+.form__btn .loader-item {
+  background-color: #ffffff;
+}/*# sourceMappingURL=Form__btn.css.map */

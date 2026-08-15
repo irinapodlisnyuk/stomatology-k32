@@ -1,0 +1,114 @@
+@charset "UTF-8";
+.menu-nav {
+  display: flex;
+  position: relative;
+  z-index: 5;
+}
+@media (max-width: 1023px) {
+  .menu-nav {
+    position: fixed;
+    top: 71px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    padding: 30px 0;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1;
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, visibility 0.4s ease;
+  }
+  .menu-nav--open {
+    background-color: #004F6E;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+  .menu-nav--open .menu-nav__item {
+    animation: fadeLeftToRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+}
+@media (max-width: 767px) {
+  .menu-nav {
+    top: 61px;
+    height: calc(100vh - 60px);
+  }
+}
+.menu-nav__list {
+  display: flex;
+  gap: 40px;
+}
+@media (max-width: 1200) {
+  .menu-nav__list {
+    gap: 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .menu-nav__list {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .menu-nav__list {
+    gap: 20px;
+  }
+}
+.menu-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  transition: color ease 0.5s;
+}
+.menu-nav__item:hover {
+  color: #136190;
+}
+@media (max-width: 1023px) {
+  .menu-nav__item {
+    color: #ffffff;
+    font-size: 14px;
+  }
+}
+.menu-nav__item--active a {
+  color: var(--color-primary, #0d9488) !important;
+  font-weight: 600;
+}
+.menu-nav__item--active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary, #0d9488);
+  border-radius: 2px;
+}
+@media (max-width: 1023px) {
+  .menu-nav__item--active a {
+    color: var(--color-primary, #62e5fb) !important;
+  }
+  .menu-nav__item--active::after {
+    background-color: var(--color-primary, #62e5fb);
+  }
+}
+
+/* АНИМАЦИЯ: появление и движение слева направо */
+@keyframes fadeLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}/*# sourceMappingURL=menu-nav.module.css.map */

@@ -40,7 +40,7 @@ export default function RootLayout({
           <div className="root-wrapper">
             <HeaderComponent />
             <main>{children}</main>
-            {/* <Footer /> */}
+            <Footer />
           </div>
           <ScrollToTop />
         </Providers>

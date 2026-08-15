@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navigationItems, MenuItem } from "@/data/navigation";
-
 import { AppointmentButton } from "../Form/Button/AppointmentButton";
 
 export default function HeaderComponent() {
