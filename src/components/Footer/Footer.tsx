@@ -10,7 +10,12 @@ export default function Footer() {
       <div className="container">
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
-            <Link className={styles["footer__logo"]} href="/" scroll={true}>
+            <Link
+              className={styles["footer__logo"]}
+              href="/"
+              scroll={true}
+              prefetch={false}
+            >
               <Image
                 src="/image/logo-icon.png"
                 alt="Логотип Клиника +32"
@@ -19,11 +24,10 @@ export default function Footer() {
                 height={67}
               />
             </Link>
-            {/* Исправлено: заменяем HTML-сущности на валидный текст */}
             <p className={styles["footer__right-text"]}>
-              «Ваша улыбка{"\u00A0"}\u2014 наш главный приоритет.
-              Профессиональная забота о{"\u00A0"}зубах: от{"\u00A0"}профилактики
-              до{"\u00A0"}сложного протезирования.»
+              «Ваша улыбка{"\u00A0"} наш главный приоритет. Профессиональная
+              забота о{"\u00A0"}зубах: от{"\u00A0"}профилактики до{"\u00A0"}
+              сложного протезирования.»
             </p>
           </div>
 
@@ -52,7 +56,7 @@ export default function Footer() {
                   className={styles["footer__left-icon"]}
                   name={"location"}
                 />
-                {/* Исправлено: заменяем HTML-сущности на валидный текст */}
+
                 <span className={styles["footer__left-text"]}>
                   г. Геленджик, с. Кабардинка, улица Мира, дом{"\u00A0"}15.
                 </span>

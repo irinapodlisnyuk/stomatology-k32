@@ -42,7 +42,7 @@ export default function HomePage() {
         showButton={true}
         pageType="home"
       />
-
+{/* 
       <ScrollReveal>
         <About />
       </ScrollReveal>
@@ -65,7 +65,7 @@ export default function HomePage() {
 
       <ScrollReveal>
         <Blog />
-      </ScrollReveal>
+      </ScrollReveal> */}
     </>
   );
 }
