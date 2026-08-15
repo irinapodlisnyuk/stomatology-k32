@@ -33,6 +33,9 @@ export default function RootLayout({
             <Footer />
           </div>
           <ScrollToTop />
+          <Suspense fallback={null}>
+            <CookieBanner />
+          </Suspense>
         </Providers>
       </body>
     </html>

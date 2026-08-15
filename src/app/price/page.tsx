@@ -1,9 +1,8 @@
-// src/app/price/page.tsx
 import { Metadata } from "next";
 import Hero from "@/components/Hero/Hero";
-import styles from "./PricePage.module.scss"; // Сейчас создадим этот файл стилей
+import styles from "./PricePage.module.scss"; 
+import { PRICES_SERVICE } from "@/data/Price_data";
 
-// Добавляем SEO-метаданные для поисковых роботов (Яндекс / Google)
 export const metadata: Metadata = {
   title: "Цены на стоматологические услуги «Клиника +32» в Кабардинке | Прайс-лист",
   description:
@@ -17,44 +16,28 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-// Временный массив с базовыми ценами (замените на ваши реальные услуги клиники)
 const PRICE_CATEGORIES = [
-  {
-    category: "Терапевтическое лечение",
-    items: [
-      { name: "Консультация врача-стоматолога", price: "Бесплатно" },
-      { name: "Лечение поверхностного кариеса", price: "от 3 500 ₽" },
-      { name: "Лечение глубокого кариеса", price: "от 5 000 ₽" },
-    ],
-  },
-  {
-    category: "Хирургия и Имплантация",
-    items: [
-      { name: "Удаление зуба (простое)", price: "от 2 500 ₽" },
-      { name: "Удаление зуба мудрости", price: "от 5 500 ₽" },
-      { name: "Установка имплантата (премиум-класс)", price: "от 35 000 ₽" },
-    ],
-  },
-  {
-    category: "Профгигиена и Отбеливание",
-    items: [
-      { name: "Комплексная чистка Air-Flow + ультразвук", price: "4 500 ₽" },
-      { name: "Профессиональное отбеливание зубов", price: "от 15 000 ₽" },
-    ],
-  },
+  { key: "therapy", title: "Терапевтическое лечение" },
+  { key: "endodontics", title: "Лечение каналов (Эндодонтия)" },
+  { key: "surgery", title: "Хирургическая стоматология" },
+  { key: "implantation", title: "Имплантация зубов" },
+  { key: "orthopedics", title: "Ортопедия и Протезирование" },
+  { key: "orthodontics", title: "Ортодонтия (Исправление прикуса)" },
+  { key: "hygiene", title: "Профессиональная гигиена" },
+  { key: "whitening", title: "Эстетическое отбеливание" },
+  { key: "planmeca", title: "Диагностика и Снимки (Planmeca)" },
 ];
 
 export default function PricePage() {
   return (
     <>
-      {/* Верхний баннер страницы */}
       <Hero
         title="Прайс-лист услуг"
         subtitle="Прозрачная стоимость и честный подход к лечению без скрытых платежей"
-        imageFolder="/image/servicePage" // Используем существующую папку с картинками
-        imageName="service" // Используем оптимизированный баннер, который мы настроили
+        imageFolder="/image/servicePage" 
+        imageName="service" 
         altText="Стоимость лечения зубов в Клинике +32"
-        pageType="call" // Активирует размеры 360px для идеального прохождения Lighthouse
+        pageType="call" 
       />
 
       <div className="container">
@@ -66,21 +49,25 @@ export default function PricePage() {
             </p>
           </div>
 
-          {/* Вывод категорий и таблиц цен */}
           <div className={styles.priceWrapper}>
-            {PRICE_CATEGORIES.map((cat, idx) => (
-              <div key={idx} className={styles.priceCategory}>
-                <h3 className={styles.categoryTitle}>{cat.category}</h3>
-                <div className={styles.priceTable}>
-                  {cat.items.map((item, itemIdx) => (
-                    <div key={itemIdx} className={styles.priceRow}>
-                      <span className={styles.priceName}>{item.name}</span>
-                      <span className={styles.priceValue}>{item.price}</span>
-                    </div>
-                  ))}
+          {PRICE_CATEGORIES.map((categoryObj) => {
+              const items = PRICES_SERVICE[categoryObj.key] || [];
+              if (items.length === 0) return null; // Если категория пустая, не выводим её
+
+              return (
+                <div key={categoryObj.key} className={styles.priceCategory}>
+                  <h3 className={styles.categoryTitle}>{categoryObj.title}</h3>
+                  <div className={styles.priceTable}>
+                    {items.map((item, itemIdx) => (
+                      <div key={`${categoryObj.key}-${itemIdx}`} className={styles.priceRow}>
+                        <span className={styles.priceName}>{item.name}</span>
+                        <span className={styles.priceValue}>{item.price}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className={styles.priceActions}>

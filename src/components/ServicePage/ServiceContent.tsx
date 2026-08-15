@@ -51,7 +51,7 @@ export function ServiceContent({ service, prices }: ServiceContentProps) {
               <h2 className={styles.priceTitle}>Стоимость услуги</h2>
               <div className={styles.priceTable}>
                 {prices.map((item, idx) => (
-                  <div key={idx} className={styles.priceRow}>
+                  <div key={`${item.name}-${idx}`} className={styles.priceRow}>
                     <span className={styles.priceName}>{item.name}</span>
                     <span className={styles.priceValue}>{item.price}</span>
                   </div>

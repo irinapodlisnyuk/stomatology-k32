@@ -70,7 +70,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
           text={successText}
         />
 
-        <CookieBanner />
+        {/* <CookieBanner /> */}
       </Suspense>
     </ModalContext.Provider>
   );
