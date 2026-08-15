@@ -1,5 +1,5 @@
 import "@/assets/styles/main.scss";
-import HeaderComponent from "../components/Header/Header";
+import HeaderComponent from "@/components/Header/Header";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { Providers } from "@/components/context/Providers";
 import { Manrope, Montserrat, Poppins } from "next/font/google";
@@ -40,7 +40,7 @@ export default function RootLayout({
           <div className="root-wrapper">
             <HeaderComponent />
             <main>{children}</main>
-            <Footer />
+            {/* <Footer /> */}
           </div>
           <ScrollToTop />
         </Providers>
