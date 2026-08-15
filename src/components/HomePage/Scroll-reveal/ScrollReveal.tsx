@@ -1,70 +1,54 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
 
-export default function ScrollReveal({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [isRendered, setIsRendered] = useState(false);
-  const [isMounted, setIsMounted] = useState(false); 
+import React, { useRef, useState, useEffect, useSyncExternalStore } from "react";
+
+
+const subscribeEmpty = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
+export default function ScrollReveal({ children }: { children: React.ReactNode }) {
   const elementRef = useRef<HTMLDivElement>(null);
+  const [isRendered, setIsRendered] = useState(false);
 
-  // 1. ИСПРАВЛЕНО ДЛЯ ЛИНТЕРА: Асинхронно фиксируем монтирование на клиенте
-  useEffect(() => {
-    const rafId = requestAnimationFrame(() => {
-      setIsMounted(true);
-    });
-    return () => cancelAnimationFrame(rafId);
-  }, []);
+ 
+  const isMounted = useSyncExternalStore(subscribeEmpty, getClientSnapshot, getServerSnapshot);
 
-  // 2. Основной эффект для отслеживания скролла
+  // 2. Эффект отслеживания скролла (срабатывает только на клиенте)
   useEffect(() => {
-    if (!isMounted) return; 
+    if (!isMounted || isRendered) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          const idleCallback = window.requestIdleCallback
-            ? window.requestIdleCallback(() => {
-                setIsRendered(true);
-              })
-            : window.setTimeout(() => {
-                setIsRendered(true);
-              }, 50);
 
+          setIsRendered(true);
           if (elementRef.current) observer.unobserve(elementRef.current);
-
-          return () => {
-            if (window.cancelIdleCallback && typeof idleCallback === "number") {
-              window.cancelIdleCallback(idleCallback);
-            } else {
-              clearTimeout(idleCallback);
-            }
-          };
         }
       },
       {
         root: null,
-        threshold: 0.18,
-        rootMargin: "0px 0px 250px 0px",
-      },
+        threshold: 0.05, // Уменьшили порог, чтобы секции подгружались чуть раньше и карта не залипала
+        rootMargin: "0px 0px 300px 0px",
+      }
     );
 
     if (elementRef.current) observer.observe(elementRef.current);
     return () => observer.disconnect();
-  }, [isMounted]); 
+  }, [isMounted, isRendered]);
 
   return (
     <div
       ref={elementRef}
       style={{
-        contentVisibility: !isMounted || isRendered ? "visible" : "auto",
-        containIntrinsicSize: "400px",
-        minHeight: isRendered ? "auto" : "400px",
+        opacity: !isMounted || isRendered ? 1 : 0,
+        transform: !isMounted || isRendered ? "translateY(0)" : "translateY(20px)",
+        transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease",
+        width: "100%",
       }}
     >
-      {!isMounted || isRendered ? children : <div style={{ height: "400px" }} />}
+   
+      {children}
     </div>
   );
 }

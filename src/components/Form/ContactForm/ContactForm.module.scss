@@ -17,4 +17,9 @@
       grid-column: span 1; 
     }
   }
+
+  &__btn {
+    grid-column: 1/2;
+    margin-top: 25px;
+  }
 }
