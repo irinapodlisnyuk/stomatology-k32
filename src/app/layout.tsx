@@ -1,9 +1,10 @@
 import "@/assets/styles/main.scss";
+import Footer from "@/components/Footer/Footer";
 import HeaderComponent from "@/components/Header/Header";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { Providers } from "@/components/context/Providers";
 import { Manrope, Montserrat, Poppins } from "next/font/google";
-import Footer from "@/components/Footer/Footer";
+
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],

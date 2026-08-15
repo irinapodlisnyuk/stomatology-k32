@@ -1,0 +1,299 @@
+.footer {
+  padding: 60px 0 0;
+  color: #ffffff;
+  background-color: #004F6E;
+}
+.footer__wrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 auto 50px;
+}
+@media (max-width: 1023px) {
+  .footer__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto 30px;
+    width: 90%;
+    justify-items: center;
+    gap: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .footer__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+}
+.footer__center-title, .footer__left-title, .footer__police-title {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.footer__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 22%;
+}
+@media (max-width: 1023px) {
+  .footer__right {
+    grid-column: 1/4;
+    width: 100%;
+  }
+}
+.footer__right-text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 767px) {
+  .footer__right-text {
+    display: none;
+  }
+}
+.footer__logo {
+  display: inline-flex;
+}
+.footer__logo-icon {
+  width: 120px;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media (max-width: 1023px) {
+  .footer__logo-icon {
+    width: 90px;
+  }
+}
+@media (max-width: 767px) {
+  .footer__logo-icon {
+    width: 80px;
+  }
+}
+.footer__center, .footer__left, .footer__police {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 767px) {
+  .footer__center, .footer__left {
+    width: 85%;
+    margin: 0 auto;
+    gap: 10px;
+  }
+}
+.footer__menu-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 15px;
+}
+@media (max-width: 767px) {
+  .footer__menu-list {
+    gap: 10px;
+  }
+}
+.footer__menu-item {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  gap: 5px;
+}
+.footer__menu-item a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color ease 0.5s, padding-left ease 0.5s, text-shadow ease 0.5s;
+}
+.footer__menu-item a:hover {
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  padding-left: 5px;
+}
+.footer__menu-item:hover .footer__menu-icon {
+  opacity: 1;
+  transform: rotate(180deg) translateX(0px);
+}
+.footer__menu-icon {
+  opacity: 0;
+  transform: rotate(180deg) translateX(25px);
+  width: 20px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: opacity ease 0.5s, transform ease 0.5s;
+}
+@media (max-width: 767px) {
+  .footer__left {
+    align-items: flex-end;
+  }
+}
+.footer__left-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 15px;
+}
+@media (max-width: 767px) {
+  .footer__left-list {
+    align-items: flex-end;
+    gap: 10px;
+  }
+}
+.footer__left-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateX(5px);
+  transition: color ease 0.5s, transform ease 0.5s, text-shadow ease 0.5s;
+}
+@media (max-width: 767px) {
+  .footer__left-item {
+    flex-direction: row-reverse;
+  }
+}
+.footer__left-item:hover {
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  transform: translateX(10px);
+}
+@media (max-width: 767px) {
+  .footer__left-item:hover {
+    transform: translateX(-5px);
+  }
+}
+.footer__left-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .footer__left-link {
+    flex-direction: row-reverse;
+  }
+}
+.footer__left-text {
+  font-size: 15px;
+  line-height: 1.4;
+  max-width: 260px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 767px) {
+  .footer__left-text {
+    text-align: end;
+  }
+}
+.footer__left-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: currentColor;
+  color: inherit;
+}
+@media (max-width: 1023px) {
+  .footer__police {
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+.footer__police-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: color ease 0.5s, transform ease 0.5s;
+}
+@media (max-width: 767px) {
+  .footer__police-item {
+    flex-direction: row-reverse;
+  }
+}
+.footer__police-item a, .footer__police-item-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color ease 0.5s, text-shadow ease 0.5s;
+}
+.footer__police-item a:hover, .footer__police-item-link:hover {
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+.footer__police-item:hover {
+  transform: translateX(10px);
+}
+@media (max-width: 767px) {
+  .footer__police-item:hover {
+    transform: translateX(10px);
+  }
+}
+.footer__inner {
+  padding: 25px 0;
+  background-color: #004F6E;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 767px) {
+  .footer__inner {
+    padding: 15px 0;
+  }
+}
+.footer__inner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  align-items: center;
+}
+.footer__inner-text {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+@media (max-width: 1023px) {
+  .footer__inner-text {
+    justify-content: center;
+  }
+}
+@media (max-width: 767px) {
+  .footer__inner-text {
+    justify-content: center;
+    font-size: 10px;
+    width: 100%;
+    max-width: 335px;
+  }
+}
+.footer__inner-police {
+  width: 100%;
+  max-width: 700px;
+  font-size: 10px;
+  line-height: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+@media (max-width: 1023px) {
+  .footer__inner-police {
+    width: 100%;
+    text-align: center;
+  }
+}/*# sourceMappingURL=Footer.module.css.map */
