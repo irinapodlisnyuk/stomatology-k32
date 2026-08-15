@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   keywords: ["стоматология Геленджик", "стоматология Кабардинка", "лечение зубов"],
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
-  
 
   other: {
     "link:rel:preload:0": "preload",
@@ -52,10 +51,9 @@ export default function HomePage() {
         <Services />
       </ScrollReveal>
 
-      <div style={{ contentVisibility: "auto", containIntrinsicSize: "0 600px" }}>
+      <ScrollReveal>
         <Teams />
-      </div>
-  
+      </ScrollReveal>
     
       <ScrollReveal>
         <Questions />
