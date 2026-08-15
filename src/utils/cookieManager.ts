@@ -1,20 +1,16 @@
-// src/utils/cookieConsent.ts
-
-/**
- * Функция для активации аналитических систем (Яндекс.Метрика, Google Analytics и т.д.)
- */
 export const activateAnalytics = () => {
   if (typeof window === "undefined") return;
 
-  const isAccepted = localStorage.getItem("cookieAnalyticsAccepted") === "true";
+  try {
+    const isAccepted = localStorage.getItem("cookieAnalyticsAccepted") === "true";
 
-  if (isAccepted) {
-    console.log("--- [Cookie Consent] АКТИВАЦИЯ АНАЛИТИКИ ---");
-    // ТУТ БУДЕТ КОД МЕТРИК В БУДУЩЕМ:
-    // window.ym(123456, 'init', { ... });
-    // window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
-  } else {
-    console.log("--- [Cookie Consent] Аналитика отключена пользователем ---");
+    if (isAccepted) {
+      // ТУТ БУДЕТ КОД МЕТРИК В БУДУЩЕМ (БЕЗ ОПАСНЫХ CONSOLE.LOG):
+      // window.ym(123456, 'init', { ... });
+    }
+  } catch (e) {
+    // Безопасный отлов ошибок, который не уронит сайт
+    void e; 
   }
 };
 
@@ -24,13 +20,14 @@ export const activateAnalytics = () => {
 export const activateAdvertising = () => {
   if (typeof window === "undefined") return;
 
-  const isAccepted = localStorage.getItem("cookieAdvertisingAccepted") === "true";
+  try {
+    const isAccepted = localStorage.getItem("cookieAdvertisingAccepted") === "true";
 
-  if (isAccepted) {
-    console.log("--- [Cookie Consent] АКТИВАЦИЯ РЕКЛАМНЫХ ПИКСЕЛЕЙ ---");
-    // ТУТ БУДЕТ КОД РЕКЛАМНЫХ СКРИПТОВ В БУДУЩЕМ
-  } else {
-    console.log("--- [Cookie Consent] Рекламные куки отключены пользователем ---");
+    if (isAccepted) {
+      // ТУТ БУДЕТ КОД РЕКЛАМНЫХ СКРИПТОВ В БУДУЩЕМ
+    }
+  } catch (e) {
+    void e;
   }
 };
 
