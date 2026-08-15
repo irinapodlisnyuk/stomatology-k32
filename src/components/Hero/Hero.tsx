@@ -47,7 +47,7 @@ export default function Hero({
           alt={altText.replace(/&nbsp;/g, " ")}
           className={`${styles.hero__picture || ""} ${styles.hero__img || ""} ${styles.hero__bg || ""}`.trim()}
           sizes="100vw"
-          priority={true}
+           priority={false}
           isHero={isHero}
         />
 
@@ -69,14 +69,13 @@ export default function Hero({
 
           {showButton && (
             <div className={styles.hero__actions}>
-              {/* <button
+              <button
                 className="btn btn--appointment"
                 onClick={openAppointment}
               >
                 Записаться на прием
-              </button> */}
+              </button>
 
-               <AppointmentButton className="btn btn--appointment" />
             </div>
           )}
         </div>

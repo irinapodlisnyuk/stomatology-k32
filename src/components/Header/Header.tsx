@@ -5,12 +5,9 @@ import stylesBurger from "./Burger.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import {
-  navigationItems,
-  MenuItem,
-} from "@/data/navigation";
+import { navigationItems, MenuItem } from "@/data/navigation";
 
-import { AppointmentButton} from "../Form/Button/AppointmentButton";
+import { AppointmentButton } from "../Form/Button/AppointmentButton";
 
 export default function HeaderComponent() {
   const pathname = usePathname();
@@ -57,11 +54,7 @@ export default function HeaderComponent() {
           </div>
 
           <div className={styles["header__actions"]}>
-            {/* <button className="btn" onClick={openAppointment}>
-              Записаться на прием
-            </button> */}
-
-               <AppointmentButton className="btn" />
+            <AppointmentButton className="btn" />
           </div>
           <div className={styles["header__actions-burger"]}>
             <button

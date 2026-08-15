@@ -14,22 +14,6 @@ export const metadata: Metadata = {
   keywords: ["стоматология Геленджик", "стоматология Кабардинка", "лечение зубов"],
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
-
-  other: {
-    "link:rel:preload:0": "preload",
-    "link:href:0": "/image/hero/hero-mob.webp",
-    "link:as:0": "image",
-    "link:media:0": "(max-width: 767px)",
-    "link:type:0": "image/webp",
-    "link:fetchpriority:0": "high",
-
-    "link:rel:preload:1": "preload",
-    "link:href:1": "/image/hero/hero@2x.webp",
-    "link:as:1": "image",
-    "link:media:1": "(min-width: 768px)",
-    "link:type:1": "image/webp",
-    "link:fetchpriority:1": "high",
-  }
 };
 
 export default function HomePage() {
@@ -42,7 +26,7 @@ export default function HomePage() {
         showButton={true}
         pageType="home"
       />
-{/* 
+
       <ScrollReveal>
         <About />
       </ScrollReveal>
@@ -65,7 +49,7 @@ export default function HomePage() {
 
       <ScrollReveal>
         <Blog />
-      </ScrollReveal> */}
+      </ScrollReveal>
     </>
   );
 }

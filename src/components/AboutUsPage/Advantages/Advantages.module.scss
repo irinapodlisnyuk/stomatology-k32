@@ -4,7 +4,7 @@
 .advantages {
   padding: 80px 0;
   background-color: v.$white;
-  overflow: hidden; // Защита от бокового скролла при разлете карточек
+  overflow: hidden; 
 
   @include m.vp-1023 {
     padding: 60px 0;

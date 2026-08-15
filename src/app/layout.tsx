@@ -1,9 +1,9 @@
 import "@/assets/styles/main.scss";
 import HeaderComponent from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { Providers } from "@/components/context/Providers";
 import { Manrope, Montserrat, Poppins } from "next/font/google";
+import Footer from "@/components/Footer/Footer";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -43,8 +43,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <ScrollToTop />
-          
-       </Providers>
+        </Providers>
       </body>
     </html>
   );

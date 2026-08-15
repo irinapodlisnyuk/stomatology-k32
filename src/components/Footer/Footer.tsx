@@ -1,12 +1,26 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import Icon from "@/components/Icon/Icon";
-import { navigationItems, MenuItem } from "@/data/navigation";
 import Image from "next/image";
+
+interface MenuItem {
+  key: number;
+  path: string;
+  label: string;
+}
+
+const footerNavigationItems: MenuItem[] = [
+  { key: 0, path: "/", label: "Главная" },
+  { key: 1, path: "/about-us", label: "О нас" },
+  { key: 2, path: "/services", label: "Услуги" },
+  { key: 3, path: "/price", label: "Наш прайс" },
+  { key: 4, path: "/blog", label: "Блог" },
+  { key: 5, path: "/contact", label: "Связаться с нами" },
+];
 
 export default function Footer() {
   return (
-    <section className={styles.footer}>
+    <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
@@ -34,7 +48,7 @@ export default function Footer() {
           <div className={styles["footer__center"]}>
             <h3 className={styles["footer__center-title"]}>Быстрые ссылки</h3>
             <ul className={styles["footer__menu-list"]}>
-              {navigationItems.map((item: MenuItem) => (
+              {footerNavigationItems.map((item: MenuItem) => (
                 <li key={item.key} className={styles["footer__menu-item"]}>
                   <Icon
                     className={styles["footer__menu-icon"]}
@@ -130,9 +144,10 @@ export default function Footer() {
       <div className={styles.footer__inner}>
         <div className={styles["footer__inner-info"]}>
           <p className={styles["footer__inner-text"]}>
-            Copyright © “Клиника+32” 2026 Все права защищены
+            Copyright {"\u00A9"} {"\u201C"}Клиника+32{"\u201D"} 2026 Все права
+            защищены
           </p>
-          <span className={styles["footer__inner-pocile"]}>
+          <span className={styles["footer__inner-police"]}>
             * На{"\u00A0"}сайте есть ссылки на{"\u00A0"}социальные сети:
             Инстаграм, принадлежащие Meta Platforms Inc., деятельность которой
             запрещена на{"\u00A0"}территории{"\u00A0"}РФ в части реализации
@@ -141,6 +156,6 @@ export default function Footer() {
           </span>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
