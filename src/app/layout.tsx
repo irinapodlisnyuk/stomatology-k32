@@ -4,6 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner/CookieBanner";
 import { Providers } from "@/components/context/Providers";
+import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -32,7 +33,6 @@ export default function RootLayout({
             <Footer />
           </div>
           <ScrollToTop />
-          <CookieBanner />
         </Providers>
       </body>
     </html>
