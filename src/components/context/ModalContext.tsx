@@ -1,34 +1,15 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  Suspense,
-} from "react";
-import dynamic from "next/dynamic";
-
-const AppointmentModal = dynamic(
-  () => import("@/components/Modals/AppointmentModal"),
-  { ssr: false },
-);
-
-const CookieBanner = dynamic(
-  () => import("@/components/CookieBanner/CookieBanner"),
-  { ssr: false },
-);
-
-const ModalOpen = dynamic(
-  () => import("../ModalOpen/ModalOpen").then((mod) => mod.ModalOpen),
-  { ssr: false },
-);
+import { createContext, useContext, useState, ReactNode } from "react";
 
 interface ModalContextType {
   isAppointmentOpen: boolean;
   openAppointment: () => void;
   closeAppointment: () => void;
+  isSuccessOpen: boolean;
+  successText: string;
   triggerSuccess: (text: string) => void;
+  closeSuccess: () => void;
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
@@ -46,8 +27,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
     setIsSuccessOpen(true);
   };
 
-  const handleCloseAll = () => {
-    setIsAppointmentOpen(false);
+  const closeSuccess = () => {
     setIsSuccessOpen(false);
   };
 
@@ -57,21 +37,13 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
         isAppointmentOpen,
         openAppointment,
         closeAppointment,
+        isSuccessOpen,
+        successText,
         triggerSuccess,
+        closeSuccess,
       }}
     >
       {children}
-      <Suspense fallback={null}>
-        <AppointmentModal />
-
-        <ModalOpen
-          isOpen={isSuccessOpen}
-          onClose={handleCloseAll}
-          text={successText}
-        />
-
-        <CookieBanner />
-      </Suspense>
     </ModalContext.Provider>
   );
 };

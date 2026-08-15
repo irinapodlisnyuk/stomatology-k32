@@ -8,7 +8,7 @@ import { Manrope, Montserrat, Poppins } from "next/font/google";
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-text", // Переменная, которая подставится в CSS
+  variable: "--font-text",
 });
 
 const montserrat = Montserrat({
@@ -18,7 +18,7 @@ const montserrat = Montserrat({
 });
 
 const poppins = Poppins({
-  subsets: ["latin"], // Poppins не поддерживает кириллицу
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
 });
@@ -43,7 +43,8 @@ export default function RootLayout({
             <Footer />
           </div>
           <ScrollToTop />
-        </Providers>
+          
+       </Providers>
       </body>
     </html>
   );
