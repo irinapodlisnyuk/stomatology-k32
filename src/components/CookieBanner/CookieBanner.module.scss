@@ -142,9 +142,9 @@
     scrollbar-width: thin;
     scrollbar-color: rgba($bondi-blue, 0.4) transparent; /* Цвет ползунка и фона прокрутки */
 
-    /* Стилизация для Webkit-браузеров (Chrome, Safari, Edge, Opera) */
+  
     &::-webkit-scrollbar {
-      width: 6px; /* Ширина вертикального скролла */
+      width: 6px; 
     }
 
     /* Фон самой дорожки, по которой двигается ползунок */

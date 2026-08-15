@@ -22,9 +22,9 @@ html {
 }
 
 :root {
-  --font-poppins: "Poppins", sans-serif;
-  --font-text: "Manrope", sans-serif;
-  --font-heading: "Montserrat", sans-serif;
+  --font-poppins: var(--font-poppins);
+  --font-text: var(--font-text);
+  --font-heading: var(--font-heading);
 }
 
 body {

@@ -2,9 +2,26 @@ import "@/assets/styles/main.scss";
 import HeaderComponent from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
-import CookieBanner from "@/components/CookieBanner/CookieBanner";
 import { Providers } from "@/components/context/Providers";
-import { Suspense } from "react";
+import { Manrope, Montserrat, Poppins } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-text", // Переменная, которая подставится в CSS
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-heading",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"], // Poppins не поддерживает кириллицу
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export default function RootLayout({
   children,
@@ -12,19 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" data-scroll-behavior="smooth">
-      <head>
-        <link rel="preconnect" href="https://googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="ru"
+      data-scroll-behavior="smooth"
+      className={`${manrope.variable} ${montserrat.variable} ${poppins.variable}`}
+    >
+      <head />
       <body>
         <Providers>
           <div className="root-wrapper">
@@ -33,9 +43,6 @@ export default function RootLayout({
             <Footer />
           </div>
           <ScrollToTop />
-          <Suspense fallback={null}>
-            <CookieBanner />
-          </Suspense>
         </Providers>
       </body>
     </html>
