@@ -3,8 +3,8 @@
 import { FC } from "react";
 import styles from "./Blog.module.scss";
 import { BLOG_DATA } from "@/data/Blog_data";
-import { BlogSlider } from "./BlogSlider";
 import { BlogGrid } from "./BlogGrid";
+import { BlogSlider } from "./BlogSlider";
 
 interface BlogProps {
   isFullPage?: boolean;

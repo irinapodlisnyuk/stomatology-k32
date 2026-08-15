@@ -19,6 +19,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServiceRoute() {
+export default function ServicesRoute() {
   return <ServicesPage />;
 }

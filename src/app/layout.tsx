@@ -1,9 +1,11 @@
 import "@/assets/styles/main.scss";
 import Footer from "@/components/Footer/Footer";
 import HeaderComponent from "@/components/Header/Header";
+import LoaderPage from "@/components/LoaderPage/LoaderPage";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { Providers } from "@/components/context/Providers";
 import { Manrope, Montserrat, Poppins } from "next/font/google";
+import { Suspense } from "react";
 
 
 const manrope = Manrope({
@@ -40,7 +42,10 @@ export default function RootLayout({
         <Providers>
           <div className="root-wrapper">
             <HeaderComponent />
-            <main>{children}</main>
+               <Suspense fallback={<LoaderPage />}>
+              <main>{children}</main>
+            </Suspense>
+            
             <Footer />
           </div>
           <ScrollToTop />

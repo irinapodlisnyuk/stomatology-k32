@@ -1,14 +1,17 @@
 import z from "zod";
 
 const phoneRegex =
-  /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+  /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 
- export const ContactSchema = z.object({
-  name: z.string().min(2, "Введите не менее 2 символов"),
+export const ContactSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Введите не менее 2 символов")
+    .max(50, "Максимум 50 символов"),
   email: z.string().min(1, "Введите Email").email("Некорректный формат Email"),
   phone: z
     .string()
-    .min(11, "Введите номер телефона")
+    .min(1, "Введите номер телефона")
     .regex(phoneRegex, "Некорректный формат номера"),
   message: z
     .string()

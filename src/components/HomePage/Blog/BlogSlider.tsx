@@ -39,7 +39,7 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
               : `translateX(${translateX}%) scale(0.85)`,
             opacity: isVisible ? (isCenter ? 1 : 0.6) : 0,
             pointerEvents: isVisible ? "auto" : "none",
-            zIndex: isCenter ? 10 : 2, 
+            zIndex: isCenter ? 10 : 2,
           } as React.CSSProperties;
 
           return (
@@ -47,13 +47,17 @@ export const BlogSlider: FC<BlogSliderProps> = ({ posts }) => {
               key={id}
               style={inlineStyle}
               className={`${styles["blog__item"]} ${isCenter ? styles["blog__item--center"] : ""}`}
-              onClick={() => {
+              onClick={(e) => {
                 if (!isCenter) {
+                  e.preventDefault();
                   setActiveIndex(index);
                 }
               }}
             >
-           <Link href={`/blog/${slug || id}`} className={styles["blog__item-link"]}>
+              <Link
+                href={`/blog/${slug || id}`}
+                className={styles["blog__item-link"]}
+              >
                 <ResponsivePicture
                   folder="/image/blog"
                   baseName={imgName}

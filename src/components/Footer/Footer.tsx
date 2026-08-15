@@ -36,12 +36,12 @@ export default function Footer() {
                 className={styles["footer__logo-icon"]}
                 width={100}
                 height={67}
+                priority
               />
             </Link>
             <p className={styles["footer__right-text"]}>
-              «Ваша улыбка{"\u00A0"} наш главный приоритет. Профессиональная
-              забота о{"\u00A0"}зубах: от{"\u00A0"}профилактики до{"\u00A0"}
-              сложного протезирования.»
+              «Ваша улыбка наш главный приоритет. Профессиональная забота о
+              зубах: от профилактики до сложного протезирования.»
             </p>
           </div>
 
@@ -67,17 +67,23 @@ export default function Footer() {
               Контактная информация
             </h3>
             <ul className={styles["footer__left-list"]}>
-              <li className={styles["footer__left-item"]}>
+              <li
+                className={styles["footer__left-item"]}
+                suppressHydrationWarning
+              >
                 <Icon
                   className={styles["footer__left-icon"]}
                   name={"location"}
                 />
 
                 <span className={styles["footer__left-text"]}>
-                  г. Геленджик, с. Кабардинка, улица Мира, дом{"\u00A0"}15.
+                  г. Геленджик, с. Кабардинка, улица Мира, дом 15.
                 </span>
               </li>
-              <li className={styles["footer__left-item"]}>
+              <li
+                className={styles["footer__left-item"]}
+                suppressHydrationWarning
+              >
                 <a
                   href="tel:+78619913215"
                   className={styles["footer__left-link"]}
@@ -92,7 +98,10 @@ export default function Footer() {
                 </a>
               </li>
 
-              <li className={styles["footer__left-item"]}>
+              <li
+                className={styles["footer__left-item"]}
+                suppressHydrationWarning
+              >
                 <a
                   href="mailto:clinic.k32@gmail.com"
                   className={styles["footer__left-link"]}
@@ -106,7 +115,10 @@ export default function Footer() {
                   </span>
                 </a>
               </li>
-              <li className={styles["footer__left-item"]}>
+              <li
+                className={styles["footer__left-item"]}
+                suppressHydrationWarning
+              >
                 <a
                   href="https://instagram.com"
                   target="_blank"
@@ -143,16 +155,15 @@ export default function Footer() {
       </div>
       <div className={styles.footer__inner}>
         <div className={styles["footer__inner-info"]}>
+          {/* Убираем JS-символы \u00A0, заменяя их на обычный текст */}
           <p className={styles["footer__inner-text"]}>
-            Copyright {"\u00A9"} {"\u201C"}Клиника+32{"\u201D"} 2026 Все права
-            защищены
+            Copyright © «Клиника+32» 2026. Все права защищены.
           </p>
           <span className={styles["footer__inner-police"]}>
-            * На{"\u00A0"}сайте есть ссылки на{"\u00A0"}социальные сети:
-            Инстаграм, принадлежащие Meta Platforms Inc., деятельность которой
-            запрещена на{"\u00A0"}территории{"\u00A0"}РФ в части реализации
-            данных социальных сетей на{"\u00A0"}основании осуществления ею
-            экстремистской деятельности
+            * На сайте есть ссылки на социальные сети: Инстаграм, принадлежащие
+            Meta Platforms Inc., деятельность которой запрещена на территории РФ
+            в части реализации данных социальных сетей на основании
+            осуществления ею экстремистской деятельности
           </span>
         </div>
       </div>

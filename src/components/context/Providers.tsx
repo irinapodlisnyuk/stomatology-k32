@@ -1,9 +1,10 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ModalProvider, useModals } from "@/components/context/ModalContext";
 import dynamic from "next/dynamic";
+
 
 const AppointmentModal = dynamic(
   () => import("@/components/Modals/AppointmentModal"),
@@ -46,21 +47,37 @@ function ProvidersContent({ children }: { children: ReactNode }) {
   );
 }
 
+
+let browserQueryClient: QueryClient | undefined = undefined;
+
+// 2. Функция-генератор стабильного клиента
+function makeQueryClient() {
+  return new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000,       
+        refetchOnWindowFocus: false, 
+      },
+    },
+  });
+}
+
+// 3. Паттерн синглтон: разделяем серверный и клиентский контекст
+function getQueryClient() {
+  if (typeof window === "undefined") {
+    return makeQueryClient();
+  } else {
+  
+    if (!browserQueryClient) browserQueryClient = makeQueryClient();
+    return browserQueryClient;
+  }
+}
+
 export function Providers({ children }: ProvidersProps) {
-  const [queryClientInstance] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-            refetchOnWindowFocus: false,
-          },
-        },
-      }),
-  );
+  const queryClient = getQueryClient();
 
   return (
-    <QueryClientProvider client={queryClientInstance}>
+    <QueryClientProvider client={queryClient}>
       <ModalProvider>
         <ProvidersContent>{children}</ProvidersContent>
       </ModalProvider>

@@ -40,7 +40,7 @@ export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
         );
 
         const itemStyles: CSSProperties = {
-          "--index": index,
+         "--service-index": index,
         } as CSSProperties;
 
         return (

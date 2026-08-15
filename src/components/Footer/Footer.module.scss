@@ -1,5 +1,5 @@
-@use "../../assets/styles/global/variables" as v;
-@use "../../assets/styles/global/mixins" as m;
+@use "@/assets/styles/global/variables" as v;
+@use "@/assets/styles/global/mixins" as m;
 
 .footer {
   padding: 60px 0 0;
@@ -106,7 +106,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 15px;
+    gap: 10px;
 
     @include m.vp-767 {
       gap: 10px;
@@ -117,6 +117,7 @@
     display: flex;
     align-items: center;
     font-size: 15px;
+    line-height: 1.2;
     gap: 5px;
 
     a {

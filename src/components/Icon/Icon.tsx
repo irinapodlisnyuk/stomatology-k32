@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
@@ -6,8 +6,11 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 
 export default function Icon({ name, className, ...props }: IconProps) {
   return (
-    <svg className={className} {...props}>
-      <use href={`/image/sprite.svg#${name}`} />
+    <svg className={className} {...props} key={name}>
+      <use
+        href={`/image/sprite.svg#${name}`}
+        xlinkHref={`/image/sprite.svg#${name}`}
+      />
     </svg>
   );
 }

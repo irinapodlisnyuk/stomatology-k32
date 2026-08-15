@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SERVICES_DATA } from "@/data/Services_data";
 import { PRICES_SERVICE } from "@/data/Price_data";
-import { ServiceContent } from "@/components/ServicePage/ServiceContent";
-
+import { ServicePage } from "@/components/ServicePage/ServicePage";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -11,7 +10,6 @@ interface PageProps {
 
 export const dynamicParams = true;
 
-// ГЕНЕРАЦИЯ МЕТАДАННЫХ ДЛЯ SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const services = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
@@ -23,15 +21,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// СТАТИЧЕСКАЯ ГЕНЕРАЦИЯ СТРАНИЦ ПРИ СБОРКЕ (SSG)
 export async function generateStaticParams() {
   return SERVICES_DATA.map((service) => ({ 
     slug: String(service.slug || service.id) 
   }));
 }
 
-// СЕРВЕРНЫЙ КОМПОНЕНТ РОУТА
-export default async function PageService({ params }: PageProps) {
+// Корневой серверный компонент страницы ОБЯЗАН быть асинхронным
+export default async function ServiceRoute({ params }: PageProps) {
   const { slug } = await params;
   
   const services = SERVICES_DATA.find((s) => s.slug === slug || String(s.id) === slug);
@@ -42,7 +39,7 @@ export default async function PageService({ params }: PageProps) {
   const currentServicePrices = PRICES_SERVICE[services.slug || ""] || [];
 
   return (
-    <ServiceContent 
+    <ServicePage
       service={services} 
       prices={currentServicePrices} 
     />

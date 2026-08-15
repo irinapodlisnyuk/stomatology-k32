@@ -46,7 +46,7 @@
     opacity: 0;
     transform: translateY(60px) scale(0.92);
     animation: elegantFadeUp 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    animation-delay: calc(0.8s + (var(--index) * 180ms));
+    animation-delay: calc(0.8s + (var(--service-index) * 180ms));
 
     @include m.vp-1023 {
       aspect-ratio: 4 / 3;
