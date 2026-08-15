@@ -40,7 +40,9 @@ export default function Footer() {
                     className={styles["footer__menu-icon"]}
                     name={"arrow"}
                   />
-                  <Link href={item.path}>{item.label}</Link>
+                  <Link href={item.path} prefetch={false}>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -116,6 +118,7 @@ export default function Footer() {
                 <Link
                   href="/privacy-policy"
                   className={styles["footer__police-item-link"]}
+                  prefetch={false}
                 >
                   Политика конфиденциальности
                 </Link>
