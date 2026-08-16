@@ -2,7 +2,6 @@
 import styles from "./hero.module.scss";
 import { useModals } from "@/components/context/ModalContext";
 import ResponsivePicture from "../ResponsivePicture/ResponsivePicture";
-import { AppointmentButton } from "../Form/Button/AppointmentButton";
 
 interface HeroProps {
   title?: string;
@@ -20,7 +19,8 @@ interface HeroProps {
     | "contacts"
     | "post"
     | "call"
-    | "services";
+    | "services"
+    | "service";
 }
 
 export default function Hero({

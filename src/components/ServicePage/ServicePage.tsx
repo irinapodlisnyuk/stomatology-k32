@@ -3,6 +3,7 @@
 import React from "react";
 import Hero from "@/components/Hero/Hero";
 import { ServiceContent } from "./ServiceContent";
+import { HeroService } from "./HeroService";
 
 interface PriceItem {
   name: string;
@@ -23,15 +24,7 @@ interface ServicePageProps {
 export function ServicePage({ service, prices }: ServicePageProps) {
   return (
     <>
-      <Hero
-        title={service.title}
-        subtitle=""
-        imageFolder="/image/servicePage"
-        imageName="service"
-        altText={service.altText}
-        pageType="services"
-      />
-
+      <HeroService title={service.title} />
       <ServiceContent service={service} prices={prices} />
     </>
   );

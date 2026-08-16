@@ -105,7 +105,7 @@
     display: flex;
     align-items: center;
     color: v.$blue-lagoon;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 6px rgba(v.$black, 0.3);
 
     &::before {
       content: "\2014";
