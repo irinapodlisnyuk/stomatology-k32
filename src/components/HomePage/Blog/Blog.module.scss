@@ -51,6 +51,12 @@
         text-align: center;
       }
     }
+
+    opacity: 0;
+    transform: translateY(-20px);
+    transition:
+      transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
   }
 
   &__nav {
@@ -67,7 +73,7 @@
     pointer-events: none;
 
     @include vp-767 {
-      display: none; 
+      display: none;
     }
   }
 
@@ -117,9 +123,28 @@
     justify-content: center;
     margin: 0 auto;
 
+    opacity: 0;
+    transform: translateY(50px) scale(0.97);
+    transition:
+      transform 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
+    transition-delay: 200ms;
+
     @include vp-767 {
-      height: auto; 
+      height: auto;
       justify-content: flex-start;
+    }
+  }
+
+  :global(.reveal--visible) & {
+    &__header {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &__slider-container {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
@@ -136,11 +161,11 @@
 
     @include vp-767 {
       justify-content: flex-start;
-      align-items: stretch; 
+      align-items: stretch;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 10px 20px 25px; 
-      gap: 16px; 
+      padding: 10px 20px 25px;
+      gap: 16px;
       height: auto;
 
       &::-webkit-scrollbar {
@@ -166,7 +191,6 @@
       box-shadow 0.5s ease;
     will-change: transform, opacity;
 
-    
     .blog__picture {
       width: 100%;
       aspect-ratio: 16 / 10;
@@ -194,11 +218,11 @@
       position: relative;
       left: auto;
       top: auto;
-      width: 280px; 
+      width: 280px;
       min-width: 280px;
       flex-shrink: 0;
-      scroll-snap-align: center; 
-      transform: none !important; 
+      scroll-snap-align: center;
+      transform: none !important;
       opacity: 1 !important;
       display: flex;
       flex-direction: column;
@@ -224,7 +248,7 @@
 
   &__picture-img {
     width: 100%;
-    height: 100% !important; 
+    height: 100% !important;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     display: block;

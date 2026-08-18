@@ -25,14 +25,13 @@ export default function Footer() {
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
             <Link className={styles["footer__logo"]} href="/" prefetch={false}>
-              <Image
-                src="/image/logo-icon.png"
-                alt="Логотип Клиника +32"
-                className={styles["footer__logo-icon"]}
-                width={100}
-                height={67}
-                priority
-              />
+              <picture>
+                <img
+                  src="/image/logo-icon.png"
+                  alt="Логотип Клиника +32"
+                  className={styles["footer__logo-icon"]}
+                />
+              </picture>
             </Link>
             <p className={styles["footer__right-text"]}>
               «Ваша улыбка наш главный приоритет. Профессиональная забота о
@@ -150,7 +149,6 @@ export default function Footer() {
       </div>
       <div className={styles.footer__inner}>
         <div className={styles["footer__inner-info"]}>
-          {/* Убираем JS-символы \u00A0, заменяя их на обычный текст */}
           <p className={styles["footer__inner-text"]}>
             Copyright © «Клиника+32» 2026. Все права защищены.
           </p>

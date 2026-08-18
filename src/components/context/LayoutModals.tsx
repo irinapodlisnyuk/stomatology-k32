@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { useModals } from "@/components/context/ModalContext";
 
-// Лениво импортируем модалки и куки строго на клиенте
 const AppointmentModal = dynamic(
   () => import("@/components/Modals/AppointmentModal"),
   { ssr: false },
@@ -20,7 +19,11 @@ const CookieBanner = dynamic(
 );
 
 export function LayoutModals() {
-  const { isAppointmentOpen, isSuccessOpen, successText, closeSuccess } = useModals();
+  const context = useModals();
+
+ if (!context) return null;
+
+  const { isAppointmentOpen, isSuccessOpen, successText, closeSuccess } = context;
 
   return (
     <>

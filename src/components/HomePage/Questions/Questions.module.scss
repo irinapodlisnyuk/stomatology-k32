@@ -53,30 +53,33 @@
     flex-direction: column;
     width: 50%;
 
-    transition:
-      transform 0.8s ease,
-      opacity 0.8s ease;
-    transition-behavior: allow-discrete;
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 0;
 
-    // Стили для левой колонки перед вставкой в DOM
-    &:first-child {
-      @starting-style {
-        opacity: 0;
-        transform: translateX(-100px);
-      }
+    transition:
+      transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
+
+   &:first-child {
+      transform: translateX(-100px);
     }
 
     // Стили для правой колонки перед вставкой в DOM
     &:last-child {
-      @starting-style {
-        opacity: 0;
-        transform: translateX(100px); // Вылетает справа
-      }
+      transform: translateX(100px);
     }
     @include m.vp-1023 {
       width: 100%;
+      &:first-child,
+      &:last-child {
+        transform: translateY(30px);
+      }
+    }
+  }
+
+  :global(.reveal--visible) & {
+    &__column {
+      opacity: 1;
+      transform: translate(0, 0) !important;
     }
   }
 

@@ -1,4 +1,6 @@
+import "@/assets/styles/main.css";
 import "@/assets/styles/main.scss";
+
 import Footer from "@/components/Footer/Footer";
 import HeaderComponent from "@/components/Header/Header";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
@@ -41,11 +43,9 @@ export default function RootLayout({
         <Providers>
           <div className="root-wrapper">
             <HeaderComponent />
-
-            {/* Нативный безопасный вывод серверного контента */}
             <main>{children}</main>
 
-            {/* <Footer /> */}
+            <Footer />
           </div>
           <ScrollToTop />
           <LayoutModals />

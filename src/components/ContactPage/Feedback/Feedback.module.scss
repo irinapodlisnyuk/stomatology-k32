@@ -48,10 +48,10 @@
       opacity 1.5s ease-out,
       transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 
-    @starting-style {
-      opacity: 0;
-      transform: translateX(-50%) scale(1) translateY(0);
-    }
+    // @starting-style {
+    //   opacity: 0;
+    //   transform: translateX(-50%) scale(1) translateY(0);
+    // }
 
     &:hover {
       box-shadow: 0 20px 35px rgba(15, 23, 42, 0.12);
@@ -82,10 +82,10 @@
       transform 1.5s cubic-bezier(0.25, 1, 0.5, 1),
       opacity 1.5s ease-out;
 
-    @starting-style {
-      opacity: 0;
-      transform: translateX(50%);
-    }
+    // @starting-style {
+    //   opacity: 0;
+    //   transform: translateX(50%);
+    // }
 
     @include m.vp-1023 {
       display: flex;

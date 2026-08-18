@@ -129,34 +129,34 @@
     }
 
     @media (min-width: 768px) {
-      &:nth-child(1) {
-        @starting-style {
-          opacity: 0;
-          transform: translateX(-100px);
-        }
-      }
+    //   &:nth-child(1) {
+    //     @starting-style {
+    //       opacity: 0;
+    //       transform: translateX(-100px);
+    //     }
+    //   }
 
-      &:nth-child(2) {
-        @starting-style {
-          opacity: 0;
-          transform: translateX(100px);
-        }
-      }
+    //   &:nth-child(2) {
+    //     @starting-style {
+    //       opacity: 0;
+    //       transform: translateX(100px);
+    //     }
+    //   }
 
       &:nth-child(3) {
         transition-delay: 0.4s;
-        @starting-style {
-          opacity: 0;
-          transform: translateY(80px);
-        }
+        // @starting-style {
+        //   opacity: 0;
+        //   transform: translateY(80px);
+        // }
       }
 
       &:nth-child(4) {
         transition-delay: 0.4s;
-        @starting-style {
-          opacity: 0;
-          transform: translateY(80px);
-        }
+        // @starting-style {
+        //   opacity: 0;
+        //   transform: translateY(80px);
+        // }
       }
     }
 
@@ -180,10 +180,10 @@
         transition-delay: 0.6s;
       }
 
-      @starting-style {
-        opacity: 0;
-        transform: translateY(40px); // На телефонах все плавно идут снизу вверх
-      }
+      // @starting-style {
+      //   opacity: 0;
+      //   transform: translateY(40px); 
+      // }
     }
 
     &--bordered {

@@ -4,23 +4,18 @@
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
   will-change: transform, opacity;
 
- 
-  
   // 1.  Выплывание снизу вверх (по умолчанию)
   &--fade-up {
     transform: translateY(50px);
   }
-
   // 2. Выплывание слева направо
   &--fade-left {
     transform: translateX(-60px);
   }
-
   // 3. Выплывание справа налево
   &--fade-right {
     transform: translateX(60px);
   }
-
 
 
   &--visible {

@@ -15,7 +15,7 @@ const LazyMap = dynamic(() => import("./MapComponent"), {
   ),
 });
 
-export default function Contact() {
+export default function ContactComponent() {
   return (
     <section className={styles.contact}>
       <div className="container">

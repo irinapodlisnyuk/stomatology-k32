@@ -32,7 +32,8 @@ export default function Teams() {
                 <li
                   key={id}
                   className={styles["teams__item"]}
-                  style={itemStyles} 
+                  style={{ "--team-index": index } as React.CSSProperties}
+                 // style={itemStyles} 
                 >
                   <div className={styles.teams__picture}>
                     <ResponsivePicture

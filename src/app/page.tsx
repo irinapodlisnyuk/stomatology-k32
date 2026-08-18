@@ -3,10 +3,10 @@ import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
-import Contact from "@/components/HomePage/Contact/Contact";
 import { Blog } from "@/components/HomePage/Blog/Blog";
 import { Metadata } from "next";
 import Questions from "@/components/HomePage/Questions/Questions";
+import ContactComponent from "@/components/HomePage/Contact/ContactComponent";
 
 export const metadata: Metadata = {
   title:
@@ -32,30 +32,30 @@ export default function HomePage() {
         showButton={true}
         pageType="home"
       />
-
-      <ScrollReveal>
+      <ScrollReveal variant="fade-up">
         <About />
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal variant="fade-left">
         <Services />
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal variant="fade-right">
         <Teams />
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal variant="fade-up">
         <Questions />
       </ScrollReveal>
 
-      <ScrollReveal>
-        <Contact />
+      <ScrollReveal variant="fade-left">
+        <ContactComponent />
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal variant="fade-right">
         <Blog />
       </ScrollReveal>
+
     </>
   );
 }
