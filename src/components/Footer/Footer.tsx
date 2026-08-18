@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import Icon from "@/components/Icon/Icon";
@@ -50,10 +51,10 @@ export default function Footer() {
             <ul className={styles["footer__menu-list"]}>
               {footerNavigationItems.map((item: MenuItem) => (
                 <li key={item.key} className={styles["footer__menu-item"]}>
-                  {/* <Icon
+                  <Icon
                     className={styles["footer__menu-icon"]}
                     name={"arrow"}
-                  /> */}
+                  />
                   <Link href={item.path} prefetch={false}>
                     {item.label}
                   </Link>

@@ -152,6 +152,10 @@
     transition:
       opacity v.$transition-500,
       transform v.$transition-500;
+
+       @include m.vp-767 { 
+        display: none;
+       }
   }
 
   &__left {
