@@ -17,21 +17,21 @@ export default function AboutPage() {
         pageType="about"
       />
 
-      <ScrollReveal>
+    
         <Licenses />
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <Advantages />
-      </ScrollReveal>
       
-      <ScrollReveal>
-        <Teams />
-      </ScrollReveal>
 
-      <ScrollReveal>
+     
+        <Advantages />
+     
+      
+     
+        <Teams />
+     
+
+      
         <Photogallery />
-      </ScrollReveal>
+      
     </>
   );
 }

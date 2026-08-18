@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ContactPage from "@/components/ContactPage/ContactPage";
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Контакты «Клиника +32» в Кабардинке | Адрес, телефон, режим работы",
@@ -32,5 +33,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactRoute() {
-  return <ContactPage />;
+  return;
+
+  <ContactPage />;
 }

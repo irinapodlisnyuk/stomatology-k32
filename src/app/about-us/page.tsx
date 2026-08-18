@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AboutPage from "@/components/AboutUsPage/AboutPage";
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "О клинике «Клиника +32» в Кабардинке | Наша история и стандарты",

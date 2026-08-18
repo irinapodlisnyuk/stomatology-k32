@@ -14,6 +14,19 @@ const nextConfig: NextConfig = {
     },
   },
 
+webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      if (config.optimization) {
+        config.optimization.splitChunks = {
+          cacheGroups: {
+            default: false,
+          },
+        };
+      }
+    }
+    return config;
+  },
+
   turbopack: {},
 };
 

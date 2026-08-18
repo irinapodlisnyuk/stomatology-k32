@@ -14,9 +14,7 @@ export default function BlogPage() {
         pageType="blog"
       />
 
-      <ScrollReveal>
-        <Blog isFullPage={true} />
-      </ScrollReveal>
+      <Blog isFullPage={true} />
     </>
   );
 }

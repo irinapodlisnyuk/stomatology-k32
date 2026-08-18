@@ -1,7 +1,8 @@
 import { BLOG_DATA } from "@/data/Blog_data";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import  PostPage from "@/components/PostPage/PostPage"; 
+import PostPage from "@/components/PostPage/PostPage";
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -31,5 +32,5 @@ export default async function PagePost({ params }: Props) {
     notFound();
   }
 
-  return < PostPage post={post} allPosts={BLOG_DATA} />;
+  return <PostPage post={post} allPosts={BLOG_DATA} />;
 }

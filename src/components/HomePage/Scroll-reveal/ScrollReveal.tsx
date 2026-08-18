@@ -16,7 +16,7 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
   return (
     <div
       style={{
-        opacity: isClient ? 1 : 0,
+        opacity: isClient ? 1 : 0.99,
         transform: isClient ? "translateY(0)" : "translateY(15px)",
         transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out",
         width: "100%",

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SERVICES_DATA } from "@/data/Services_data";
 import { PRICES_SERVICE } from "@/data/Price_data";
 import { ServicePage } from "@/components/ServicePage/ServicePage";
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

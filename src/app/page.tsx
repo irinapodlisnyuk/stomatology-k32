@@ -4,14 +4,20 @@ import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
 import Contact from "@/components/HomePage/Contact/Contact";
-import { Blog } from "@/components/HomePage/Blog/Blog"; 
-import { Metadata } from "next"; 
+import { Blog } from "@/components/HomePage/Blog/Blog";
+import { Metadata } from "next";
 import Questions from "@/components/HomePage/Questions/Questions";
 
 export const metadata: Metadata = {
-  title: "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
-  description: "Профессиональное лечение зубов, имплантация и протезирование без боли. Прием ведут врачи со стажем от 10 лет.",
-  keywords: ["стоматология Геленджик", "стоматология Кабардинка", "лечение зубов"],
+  title:
+    "Стоматология в Кабардинке | Клиника экспертного лечения зубов «Клиника +32»",
+  description:
+    "Профессиональное лечение зубов, имплантация и протезирование без боли. Прием ведут врачи со стажем от 10 лет.",
+  keywords: [
+    "стоматология Геленджик",
+    "стоматология Кабардинка",
+    "лечение зубов",
+  ],
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
 };
@@ -30,7 +36,7 @@ export default function HomePage() {
       <ScrollReveal>
         <About />
       </ScrollReveal>
-      
+
       <ScrollReveal>
         <Services />
       </ScrollReveal>
@@ -38,7 +44,7 @@ export default function HomePage() {
       <ScrollReveal>
         <Teams />
       </ScrollReveal>
-    
+
       <ScrollReveal>
         <Questions />
       </ScrollReveal>

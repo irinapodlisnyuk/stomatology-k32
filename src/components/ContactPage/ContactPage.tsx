@@ -14,13 +14,10 @@ export default function ContactPage() {
         altText="Современная стоматология Клиника +32"
         pageType="call"
       />
-      <ScrollReveal>
-        <CallBack />
-      </ScrollReveal>
 
-      <ScrollReveal>
-        <Feedback />
-      </ScrollReveal>
+      <CallBack />
+
+      <Feedback />
     </>
   );
 }

@@ -9,30 +9,11 @@ import { initAppConsent } from "@/utils/cookieManager";
 export default function CookieBanner() {
   const bannerRef = useRef<HTMLDivElement>(null);
 
-  // Ленивая инициализация стейта (на сервере возвращает false, в браузере сразу читает localStorage)
-  const [bannerState, setBannerState] = useState(() => {
-    if (typeof window === "undefined") {
-      return {
-        isMounted: false,
-        analytics: false,
-        advertising: false,
-        isVisible: false,
-      };
-    }
-
-    const consentAccepted =
-      localStorage.getItem("cookieConsentAccepted") === "true";
-    const analyticsAccepted =
-      localStorage.getItem("cookieAnalyticsAccepted") === "true";
-    const advertisingAccepted =
-      localStorage.getItem("cookieAdvertisingAccepted") === "true";
-
-    return {
-      analytics: analyticsAccepted,
-      advertising: advertisingAccepted,
-      isVisible: !consentAccepted,
-      isMounted: true,
-    };
+  const [bannerState, setBannerState] = useState({
+    isMounted: false,
+    analytics: false,
+    advertising: false,
+    isVisible: false,
   });
 
   const [showSettings, setShowSettings] = useState(false);
@@ -42,6 +23,32 @@ export default function CookieBanner() {
 
   useEffect(() => {
     initAppConsent();
+
+    try {
+      const consentAccepted =
+        localStorage.getItem("cookieConsentAccepted") === "true";
+      const analyticsAccepted =
+        localStorage.getItem("cookieAnalyticsAccepted") === "true";
+      const advertisingAccepted =
+        localStorage.getItem("cookieAdvertisingAccepted") === "true";
+
+      const timer = setTimeout(() => {
+        setBannerState({
+          analytics: analyticsAccepted,
+          advertising: advertisingAccepted,
+          isVisible: !consentAccepted,
+          isMounted: true,
+        });
+      }, 0);
+
+      return () => clearTimeout(timer);
+    } catch {
+      console.warn("localStorage недоступен");
+      const timer = setTimeout(() => {
+        setBannerState((prev) => ({ ...prev, isMounted: true }));
+      }, 0);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const toggleSection = (
@@ -86,7 +93,7 @@ export default function CookieBanner() {
         isVisible: false,
       }));
 
-       initAppConsent();
+      initAppConsent();
     } catch {
       console.warn("localStorage недоступен");
     }
@@ -94,7 +101,7 @@ export default function CookieBanner() {
 
   const { isMounted, isVisible, analytics, advertising } = bannerState;
 
-  // Эффект клика вне баннера (Управляет только локальным UI, поэтому безопасен для линтера)
+  // Эффект клика вне баннера
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

@@ -1,3 +1,4 @@
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import PricePage from "@/components/PricePage/PricePage";
 import { Metadata } from "next";
 
@@ -16,5 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function PriceRoute() {
-  return <PricePage />;
+  return (
+      <PricePage />
+  );
 }

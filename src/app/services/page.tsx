@@ -1,3 +1,4 @@
+import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import ServicesPage from "@/components/ServicesPage/ServicesPage";
 import { Metadata } from "next";
 
