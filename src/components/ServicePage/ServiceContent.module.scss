@@ -3,15 +3,34 @@
 
 .service {
   padding: 80px 0;
+  width: 100%;
+  overflow-x: hidden;
 
   @include vp-1023 {
     padding: 50px 0;
   }
 
+  &__backBtn {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+    color: $dim-gray;
+    text-decoration: none;
+    transition:
+      color $transition-300,
+      transform $transition-300;
+
+    &:hover {
+      color: $blue-lagoon;
+      transform: translateX(-2px);
+    }
+  }
+
   &__wrapper {
     display: grid;
     width: 90%;
-    grid-template-columns: 450px 1fr;
+    grid-template-columns: minmax(300px, 450px) 1fr;
     gap: 40px;
     margin: 0 auto;
 
@@ -66,6 +85,8 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    width: 100%;
+    min-width: 0;
 
     @include vp-767 {
       gap: 20px;
@@ -144,11 +165,17 @@
 
   &__wrapper {
     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   &__table {
     width: 80%;
     margin: 0 auto;
+
+    @include vp-1023 {
+      width: 100%;
+    }
 
     @include vp-767 {
       width: 100%;
@@ -167,6 +194,12 @@
     width: 100%;
     border-bottom: 1px solid $whisper;
     transition: background-color 0.2s ease;
+
+    @include vp-767 {
+      align-items: flex-start;
+      gap: 5px;
+      padding: 10px 0;
+    }
 
     &:hover {
       background-color: rgba(76, 166, 176, 0.05);
@@ -197,12 +230,12 @@
       border-bottom: 3px dotted rgba(0, 90, 112, 0.4);
 
       @include vp-767 {
-        margin: 0 5px 1px 5px;
+        display: none;
       }
     }
 
     @include vp-767 {
-      padding: 7px 0 7px 10px;
+      padding: 0;
     }
   }
 
@@ -214,7 +247,8 @@
 
     @include vp-767 {
       font-weight: 400;
-      padding: 7px 10px 7px 0;
+      padding: 0;
+      align-self: flex-end;
     }
   }
 }

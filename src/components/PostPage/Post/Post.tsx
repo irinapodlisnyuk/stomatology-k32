@@ -5,7 +5,6 @@ import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture"
 import { BlogPost } from "../PostPage";
 import styles from "./Post.module.scss";
 import asideStyles from "./aside.module.scss";
-import { useModals } from "@/components/context/ModalContext";
 import { AppointmentButton } from "@/components/Form/Button/AppointmentButton";
 
 interface PostProps {
@@ -14,7 +13,6 @@ interface PostProps {
 }
 
 export default function Post({ post, relatedPosts }: PostProps) {
-  const { openAppointment } = useModals();
 
   return (
     <article className={styles.post}>
@@ -47,9 +45,6 @@ export default function Post({ post, relatedPosts }: PostProps) {
                 Удобное онлайн-бронирование
               </p>
               <div className={asideStyles.post__appointmentActions}>
-                {/* <button className="btn btn--post" onClick={openAppointment}>
-                  Записаться на прием
-                </button> */}
                   <AppointmentButton className="btn btn--post" />
               </div>
             </div>

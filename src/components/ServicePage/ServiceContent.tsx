@@ -4,6 +4,8 @@ import React from "react";
 import { AppointmentButton } from "@/components/Form/Button/AppointmentButton";
 import styles from "./ServiceContent.module.scss";
 import ResponsivePicture from "../ResponsivePicture/ResponsivePicture";
+import Link from "next/link";
+import { useModals } from "../context/ModalContext";
 
 interface PriceItem {
   name: string;
@@ -21,9 +23,14 @@ interface ServiceContentProps {
 }
 
 export function ServiceContent({ service, prices }: ServiceContentProps) {
+
+    const { openAppointment } = useModals();
   return (
-    <div className={styles.service}>
+    <section className={styles.service}>
       <div className="container">
+        <Link href="/services" className={styles.service__backBtn}>
+          ← Назад в услуги
+        </Link>
         <div className={styles.service__wrapper}>
           <ResponsivePicture
             folder="/image/services"
@@ -50,7 +57,6 @@ export function ServiceContent({ service, prices }: ServiceContentProps) {
               <h2 className={styles.price__title}>Стоимость услуги</h2>
               <div className={styles.price__wrapper}>
                 <table className={styles.price__table}>
-   
                   <tbody className={styles["price__table-info"]}>
                     {prices.map((item, idx) => (
                       <tr
@@ -72,6 +78,6 @@ export function ServiceContent({ service, prices }: ServiceContentProps) {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
