@@ -1,24 +1,33 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import Icon from "@/components/Icon/Icon";
 import styles from "./ScrollToTop.module.scss";
 
-const subscribeScroll = (callback: () => void) => {
-  if (typeof window === "undefined") return () => {};
-  window.addEventListener("scroll", callback);
-  return () => window.removeEventListener("scroll", callback);
-};
-
-const getScrollSnapshot = () => {
-  if (typeof window === "undefined") return false;
-  return window.scrollY > 400;
-};
-
-const getServerSnapshot = () => false; 
-
 export default function ScrollToTop() {
- const isVisible = useSyncExternalStore(subscribeScroll, getScrollSnapshot, getServerSnapshot);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+   const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 0);
+
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
@@ -28,6 +37,9 @@ export default function ScrollToTop() {
       });
     }
   };
+
+  // Пока страница рендерится на сервере — отдаем null (не ломает гидратацию)
+  if (!isMounted) return null;
 
   return (
     <button

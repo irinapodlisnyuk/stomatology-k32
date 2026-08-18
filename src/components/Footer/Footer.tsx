@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import Icon from "@/components/Icon/Icon";
@@ -21,16 +20,11 @@ const footerNavigationItems: MenuItem[] = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} role="contentinfo">
       <div className="container">
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
-            <Link
-              className={styles["footer__logo"]}
-              href="/"
-              scroll={true}
-              prefetch={false}
-            >
+            <Link className={styles["footer__logo"]} href="/" prefetch={false}>
               <Image
                 src="/image/logo-icon.png"
                 alt="Логотип Клиника +32"
