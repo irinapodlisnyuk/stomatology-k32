@@ -1,5 +1,6 @@
 @use "../../../assets/styles/global/variables" as *;
 @use "../../../assets/styles/global/mixins" as *;
+
 .blog {
   &__list--grid {
     display: grid;
@@ -38,9 +39,22 @@
       transform: none;
       background-color: $white;
       box-shadow: -2px 2px 14px 8px rgba($black, 0.15);
+      overflow: hidden;
+
+      opacity: 0;
+      transform: translateY(35px) scale(0.98);
+      will-change: transform, opacity;
+
       transition:
         box-shadow $transition-500,
-        transform $transition-500;
+        transform $transition-500,
+        opacity 0.8s ease-out;
+
+      :global(.reveal--visible) & {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition-delay: calc(var(--blog-index) * 0.12s);
+      }
 
       &:hover {
         transform: translateY(-2px);

@@ -43,11 +43,12 @@ export const BlogGrid: FC<BlogGridProps> = ({ posts = [] }) => {
     <div className={styles["blog__grid-container"]}>
       <ul className={`${styles["blog__list"]} ${styles["blog__list--grid"]}`}>
         {displayedPosts.map(
-          ({ id, slug, title, imgName, altText, textPreview }) => (
+          ({ id, slug, title, imgName, altText, textPreview }, index) => (
             <li
               key={id}
               className={`${styles["blog__item"]} ${styles["blog__item--card"]}`}
-            >
+             style={{ "--blog-index": index } as React.CSSProperties}
+          >
               <Link
                 href={`/blog/${slug || id}`}
                 className={styles["blog__item-link"]}
