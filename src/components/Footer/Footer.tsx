@@ -25,15 +25,16 @@ export default function Footer() {
         <div className={styles.footer__wrapper}>
           <div className={styles["footer__right"]}>
             <Link className={styles["footer__logo"]} href="/" prefetch={false}>
-              <picture>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/image/logo-icon.png"
                   alt="Логотип Клиника +32"
                   width={120}
                   height={80}
                   className={styles["footer__logo-icon"]}
+                  loading="lazy"
                 />
-              </picture>
+          
             </Link>
             <p className={styles["footer__right-text"]}>
               «Ваша улыбка наш главный приоритет. Профессиональная забота о
