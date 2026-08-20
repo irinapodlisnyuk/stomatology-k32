@@ -1,4 +1,5 @@
 import Hero from "../Hero/Hero";
+import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
 import CallBack from "./CallBack/CallBack";
 import Feedback from "./Feedback/Feedback";
 
@@ -14,8 +15,12 @@ export default function ContactPage() {
         pageType="call"
       />
 
-      <CallBack />
-      <Feedback />
+      <ScrollReveal>
+        <CallBack />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Feedback />
+      </ScrollReveal>
     </>
   );
 }

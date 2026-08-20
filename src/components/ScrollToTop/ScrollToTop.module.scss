@@ -17,12 +17,10 @@
   z-index: 100;
   box-shadow: 0 4px 15px rgba(v.$black, 0.6);
   
-
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none; 
   
-
   transition: 
     opacity v.$transition-500, 
     transform v.$transition-500, 
@@ -32,7 +30,6 @@
     background-color: v.$pacific-blue;
     transform: translateY(-3px); 
   }
-
 
   &--active {
     opacity: 1;

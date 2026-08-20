@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/Hero";
 import Icon from "@/components/Icon/Icon";
 import styles from "./PricePage.module.scss";
 import { PRICES_SERVICE } from "@/data/Price_data";
+import ScrollReveal from "../HomePage/Scroll-reveal/ScrollReveal";
 
 const PRICE_CATEGORIES = [
   { key: "therapy", title: "ТЕРАПЕВТИЧЕСКАЯ СТОМАТОЛОГИЯ" },
@@ -53,73 +54,73 @@ export default function PricePage() {
                 после составления индивидуального плана лечения.
               </p>
             </div>
+              <div className={styles.prices__info}>
+                {PRICE_CATEGORIES.map((categoryObj) => {
+                  const items = PRICES_SERVICE[categoryObj.key] || [];
+                  if (items.length === 0) return null;
+                  const isOpen = activeCategoryKey === categoryObj.key;
 
-            <div className={styles.prices__info}>
-              {PRICE_CATEGORIES.map((categoryObj) => {
-                const items = PRICES_SERVICE[categoryObj.key] || [];
-                if (items.length === 0) return null;
-                const isOpen = activeCategoryKey === categoryObj.key;
-
-                return (
-                  <div
-                    key={categoryObj.key}
-                    className={`${styles.prices__category} ${isOpen ? styles["prices__category--open"] : ""}`}
-                  >
-                    {/* КНОПКА-ТРИГГЕР АККОРДЕОНА */}
-                    <button
-                      type="button"
-                      className={styles["prices__category-trigger"]}
-                      onClick={() => toggleCategory(categoryObj.key)}
-                      aria-expanded={isOpen}
-                    >
-                      <h3 className={styles["prices__category-title"]}>
-                        {categoryObj.title}
-                      </h3>
-                      <Icon
-                        name="open-icon"
-                        className={`${styles["prices__category-icon"]} ${isOpen ? styles["prices__category-icon--rotated"] : ""}`}
-                      />
-                    </button>
-
-                    {/* РАСКРЫВАЮЩАЯСЯ ТАБЛИЦА С КОНТЕНТОМ */}
+                  return (
                     <div
-                      className={styles.table__collapse}
-                      style={{ display: isOpen ? "block" : "none" }}
+                      key={categoryObj.key}
+                      className={`${styles.prices__category} ${isOpen ? styles["prices__category--open"] : ""}`}
                     >
-                      <div className={styles.prices__table}>
-                        <table className={styles["prices__table-wrapper"]}>
-                          <thead>
-                            <tr className={styles["prices__table-header"]}>
-                              <th className={styles["prices__table-title"]}>
-                                Наименование услуги
-                              </th>
-                              <th className={styles["prices__table-sum"]}>
-                                Цена
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {items.map((item, itemIdx) => (
-                              <tr
-                                key={`${categoryObj.key}-${itemIdx}`}
-                                className={styles.prices__row}
-                              >
-                                <td className={styles["prices__table-name"]}>
-                                  {item.name}
-                                </td>
-                                <td className={styles["prices__table-value"]}>
-                                  {item.price}
-                                </td>
+                      {/* КНОПКА-ТРИГГЕР АККОРДЕОНА */}
+                      <button
+                        type="button"
+                        className={styles["prices__category-trigger"]}
+                        onClick={() => toggleCategory(categoryObj.key)}
+                        aria-expanded={isOpen}
+                      >
+                        <h3 className={styles["prices__category-title"]}>
+                          {categoryObj.title}
+                        </h3>
+                        <Icon
+                          name="open-icon"
+                          className={`${styles["prices__category-icon"]} ${isOpen ? styles["prices__category-icon--rotated"] : ""}`}
+                        />
+                      </button>
+
+                      {/* РАСКРЫВАЮЩАЯСЯ ТАБЛИЦА С КОНТЕНТОМ */}
+                      <div
+                        className={styles.table__collapse}
+                        style={{ display: isOpen ? "block" : "none" }}
+                      >
+                        <div className={styles.prices__table}>
+                          <table className={styles["prices__table-wrapper"]}>
+                            <thead>
+                              <tr className={styles["prices__table-header"]}>
+                                <th className={styles["prices__table-title"]}>
+                                  Наименование услуги
+                                </th>
+                                <th className={styles["prices__table-sum"]}>
+                                  Цена
+                                </th>
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                            </thead>
+                            <tbody>
+                              {items.map((item, itemIdx) => (
+                                <tr
+                                  key={`${categoryObj.key}-${itemIdx}`}
+                                  className={styles.prices__row}
+                                >
+                                  <td className={styles["prices__table-name"]}>
+                                    {item.name}
+                                  </td>
+                                  <td className={styles["prices__table-value"]}>
+                                    {item.price}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+
 
             <div className={styles.prices__actions}>
               <p className={styles.prices__notice}>

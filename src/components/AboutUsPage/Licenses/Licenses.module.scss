@@ -44,12 +44,6 @@
     align-items: center;
     gap: 30px;
 
-    opacity: 1;
-    transform: translateX(0);
-    transition:
-      transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 1.2s ease;
-
     @include m.vp-1023 {
       padding: 0;
       gap: 15px;

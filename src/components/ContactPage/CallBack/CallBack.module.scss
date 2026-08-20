@@ -13,7 +13,7 @@
   &__wrapper {
     width: 90%;
     display: grid;
-    gap: 15px;
+    gap: 30px;
     grid-template-columns: repeat(2, 1fr);
     margin: 0 auto;
     justify-content: space-between;
@@ -33,6 +33,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    opacity: 0;
+    transform: translateX(-50px);
+    transition:
+      transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
 
     @include m.vp-1023 {
       align-items: center;
@@ -134,12 +140,12 @@
       gap: 10px;
 
       &:hover {
-        .call-back__contact-icon {
+        .callback__contact-icon {
           color: v.$white;
           fill: v.$blue-lagoon;
           stroke: v.$blue-lagoon;
         }
-        .call-back__contact-text {
+        .callback__contact-text {
           color: v.$blue-lagoon;
           fill: v.$blue-lagoon;
         }
@@ -187,6 +193,13 @@
     gap: 15px;
     color: v.$white;
 
+    opacity: 0;
+    transform: translateX(50px) scale(0.97);
+    transition:
+      transform 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
+    transition-delay: 200ms;
+
     @include m.vp-1023 {
       padding: 20px;
     }
@@ -202,6 +215,18 @@
         text-align: center;
         font-size: 18px;
       }
+    }
+  }
+
+  :global(.reveal--visible) & {
+    &__header {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &__inner {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
@@ -225,7 +250,7 @@
       font-size: 24px;
 
       @include m.vp-1023 {
-        font-style: 20px;
+        font-size: 20px;
       }
 
       @include m.vp-767 {
@@ -282,7 +307,7 @@
         font-size: 18px;
       }
 
-      @include m.vp-1023 {
+      @include m.vp-767 {
         font-size: 16px;
       }
     }
@@ -290,7 +315,7 @@
     &-link {
       cursor: pointer;
       transition: transform v.$transition-800;
-      
+
       &:hover {
         transform: translateY(-5px);
 
