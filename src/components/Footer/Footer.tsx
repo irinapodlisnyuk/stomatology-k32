@@ -26,15 +26,14 @@ export default function Footer() {
           <div className={styles["footer__right"]}>
             <Link className={styles["footer__logo"]} href="/" prefetch={false}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/image/logo-icon.png"
-                  alt="Логотип Клиника +32"
-                  width={120}
-                  height="auto"
-                  className={styles["footer__logo-icon"]}
-                  loading="lazy"
-                />
-          
+              <img
+                src="/image/logo-icon.png"
+                alt="Логотип Клиника +32"
+                width={120}
+                height="auto"
+                className={styles["footer__logo-icon"]}
+                loading="lazy"
+              />
             </Link>
             <p className={styles["footer__right-text"]}>
               «Ваша улыбка наш главный приоритет. Профессиональная забота о
@@ -140,10 +139,21 @@ export default function Footer() {
               <li className={styles["footer__police-item"]}>
                 <Link
                   href="/privacy-policy"
+                   target="_blank"
                   className={styles["footer__police-item-link"]}
                   prefetch={false}
                 >
                   Политика конфиденциальности
+                </Link>
+              </li>
+              <li className={styles["footer__police-item"]}>
+                <Link
+                  href="/personal-data"
+                   target="_blank" 
+                  className={styles["footer__police-item-link"]}
+                  prefetch={false}
+                >
+                  Политика в отношении обработки персональных данных
                 </Link>
               </li>
             </ul>

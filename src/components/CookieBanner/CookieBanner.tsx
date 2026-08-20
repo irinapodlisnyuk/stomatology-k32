@@ -5,6 +5,7 @@ import styles from "./CookieBanner.module.scss";
 import Icon from "@/components/Icon/Icon";
 import CookieOption from "./CookieOption";
 import { initAppConsent } from "@/utils/cookieManager";
+import Link from "next/link";
 
 export default function CookieBanner() {
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -149,9 +150,14 @@ export default function CookieBanner() {
               Мы&nbsp;активируем все файлы cookie по&nbsp;умолчанию, чтобы
               обеспечить правильное функционирование нашего веб-сайта, рекламы
               и&nbsp;аналитики в&nbsp;соответствии с&nbsp;
-              <a href="/privacy-policy" className={styles.cookie__link}>
-                Политикой конфиденциальности
-              </a>
+              <Link
+                href="/privacy-policy"
+                className={styles.cookie__link}
+                prefetch={false}
+                target="_blank"
+              >
+                Политика конфиденциальности
+              </Link>
               .
             </p>
           </div>
