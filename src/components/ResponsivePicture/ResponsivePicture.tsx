@@ -25,10 +25,10 @@ export default function ResponsivePicture({
   const mob2x = isHero ? 1536 : 720;
 
   const tab = isHero ? 1200 : 500;
-  const tab2x = isHero ? 2400 : 800;
+  const tab2x = isHero ? 2400 : 884;
 
   const desk = isHero ? 1920 : 600;
-  const desk2x = isHero ? 3840 : 1000;
+  const desk2x = isHero ? 3840 : 980;
 
 
   return (
@@ -80,7 +80,7 @@ export default function ResponsivePicture({
         alt={alt}
         className={className}
         width={desk}
-        height={isHero ? 800 : 400}
+        height={isHero ? 800 : 650}
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
         decoding={priority ? "sync" : "async"}
