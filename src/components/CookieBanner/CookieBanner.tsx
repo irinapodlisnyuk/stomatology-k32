@@ -151,7 +151,7 @@ export default function CookieBanner() {
               обеспечить правильное функционирование нашего веб-сайта, рекламы
               и&nbsp;аналитики в&nbsp;соответствии с&nbsp;
               <Link
-                href="/privacy-policy"
+                href="/privacy"
                 className={styles.cookie__link}
                 prefetch={false}
                 target="_blank"

@@ -5,7 +5,6 @@ import { AppointmentButton } from "@/components/Form/Button/AppointmentButton";
 import styles from "./ServiceContent.module.scss";
 import ResponsivePicture from "../ResponsivePicture/ResponsivePicture";
 import Link from "next/link";
-import { useModals } from "../context/ModalContext";
 
 interface PriceItem {
   name: string;
@@ -24,7 +23,6 @@ interface ServiceContentProps {
 
 export function ServiceContent({ service, prices }: ServiceContentProps) {
 
-    const { openAppointment } = useModals();
   return (
     <section className={styles.service}>
       <div className="container">

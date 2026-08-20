@@ -138,8 +138,8 @@ export default function Footer() {
             <ul className={styles["footer__police-list"]}>
               <li className={styles["footer__police-item"]}>
                 <Link
-                  href="/privacy-policy"
-                   target="_blank"
+                  href="/privacy"
+                  target="_blank"
                   className={styles["footer__police-item-link"]}
                   prefetch={false}
                 >
@@ -149,11 +149,21 @@ export default function Footer() {
               <li className={styles["footer__police-item"]}>
                 <Link
                   href="/personal-data"
-                   target="_blank" 
+                  target="_blank"
                   className={styles["footer__police-item-link"]}
                   prefetch={false}
                 >
                   Политика в отношении обработки персональных данных
+                </Link>
+              </li>
+              <li className={styles["footer__police-item"]}>
+                <Link
+                  href="/files/price.pdf"
+                  className={styles["footer__police-item-link"]}
+                  download="Прайс-лист_Клиника_К32.pdf"
+                  prefetch={false}
+                >
+                  Прайс-лист услуг К+32
                 </Link>
               </li>
             </ul>
