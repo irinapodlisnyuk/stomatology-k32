@@ -30,6 +30,7 @@ export default function ResponsivePicture({
   const desk = isHero ? 1920 : 600;
   const desk2x = isHero ? 3840 : 1000;
 
+
   return (
     <picture className={className}>
       {/* 1. МОБИЛЬНЫЕ (до 767px) */}
@@ -74,7 +75,6 @@ export default function ResponsivePicture({
         type="image/jpeg"
       />
 
-   
       <img
         src={`${cleanFolder}/${baseName}.jpg`}
         alt={alt}
@@ -82,7 +82,7 @@ export default function ResponsivePicture({
         width={desk}
         height={isHero ? 800 : 400}
         loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"} 
+        fetchPriority={priority ? "high" : "auto"}
         decoding={priority ? "sync" : "async"}
       />
     </picture>

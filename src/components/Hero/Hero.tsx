@@ -47,7 +47,7 @@ export default function Hero({
           alt={altText.replace(/&nbsp;/g, " ")}
           className={`${styles.hero__picture || ""} ${styles.hero__img || ""} ${styles.hero__bg || ""}`.trim()}
           sizes="100vw"
-           priority={false}
+          priority={true}
           isHero={isHero}
         />
 
@@ -75,7 +75,6 @@ export default function Hero({
               >
                 Записаться на прием
               </button>
-
             </div>
           )}
         </div>
