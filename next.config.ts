@@ -4,12 +4,15 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.0.138"],
   transpilePackages: ["@typescript-eslint"],
   
-  // Принудительное сжатие Gzip/Brotli на стороне Next.js
   compress: true, 
+  compiler: {
+ 
+    styledComponents: true,
+  },
 
   experimental: {
     cssChunking: true, 
-    inlineCss: true,
+    inlineCss: true, 
   },
 
   sassOptions: {
