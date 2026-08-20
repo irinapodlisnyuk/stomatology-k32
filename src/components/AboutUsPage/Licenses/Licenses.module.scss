@@ -10,9 +10,9 @@
     padding: 50px 0;
   }
 
-    @include m.vp-767 {
-      color: v.$white;
-    }
+  @include m.vp-767 {
+    color: v.$white;
+  }
 
   &__wrapper {
     display: grid;
@@ -55,14 +55,11 @@
       gap: 15px;
     }
 
-    @starting-style {
-      opacity: 0;
-      transform: translateX(-80px);
-
-      @include m.vp-1023 {
-        transform: translateY(40px);
-      }
-    }
+    opacity: 0;
+    transform: translateX(-50px);
+    transition:
+      transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
   }
 
   &__title {
@@ -139,12 +136,6 @@
     justify-self: center;
     width: 85%;
 
-    opacity: 1;
-    transform: translateX(0);
-    transition:
-      transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-      opacity 1.2s ease 0.1s;
-
     @include m.vp-1023 {
       width: 85%;
     }
@@ -153,13 +144,24 @@
       display: none;
     }
 
-    @starting-style {
-      opacity: 0;
-      transform: translateX(80px);
+    opacity: 0;
+    transform: translateX(50px) scale(0.97);
+    transition:
+      transform 1.4s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
+    transition-delay: 200ms;
+  }
 
-      @include m.vp-1023 {
-        transform: translateY(40px);
-      }
+
+  :global(.reveal--visible) & {
+    &__wrapper-left {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &__desktop {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
@@ -267,12 +269,6 @@
       }
       scrollbar-width: none;
       -ms-overflow-style: none;
-
-    }
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(40px);
     }
 
     &-card {

@@ -18,6 +18,8 @@ export const metadata: Metadata = {
 
 export default function PriceRoute() {
   return (
+    <ScrollReveal>
       <PricePage />
+    </ScrollReveal>
   );
 }

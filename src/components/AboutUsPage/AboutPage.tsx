@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero/Hero";
 import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
-import Teams from "@/components/HomePage/Teams/Teams"; 
-import Advantages from "./Advantages/Advantages"; 
+import Teams from "@/components/HomePage/Teams/Teams";
+import Advantages from "./Advantages/Advantages";
 import Licenses from "./Licenses/Licenses";
 import Photogallery from "./PhotoGallery/PhotoGallery";
 
@@ -16,22 +16,19 @@ export default function AboutPage() {
         altText="Современная стоматология Клиника +32"
         pageType="about"
       />
-
-    
+      <ScrollReveal>
         <Licenses />
-      
+      </ScrollReveal>
 
-     
+      <ScrollReveal>
         <Advantages />
-     
-      
-     
+      </ScrollReveal>
+      <ScrollReveal>
         <Teams />
-     
-
-      
+      </ScrollReveal>
+      <ScrollReveal>
         <Photogallery />
-      
+      </ScrollReveal>
     </>
   );
 }

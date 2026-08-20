@@ -1,7 +1,6 @@
 @use "@/assets/styles/global/variables" as v;
 @use "@/assets/styles/global/mixins" as m;
 
-
 .gallery {
   padding: 80px 0;
   background-color: v.$white;
@@ -28,20 +27,18 @@
       max-width: 90%;
       margin: 0 auto;
 
-      opacity: 1;
-      transform: translateX(0);
+      opacity: 0;
+      transform: translateY(-50px);
       transition:
         transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
         opacity 1.2s ease;
+    }
 
-      // @starting-style {
-      //   opacity: 0;
-      //   transform: translateY(80px);
-
-        // @include m.vp-1023 {
-        //   transform: translateY(30px);
-        // }
-      //}
+    :global(.reveal--visible) & {
+      &-header {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 
@@ -81,6 +78,12 @@
     margin: 0 auto;
     height: 480px;
 
+    opacity: 0;
+    transform: translateX(-50px);
+    transition:
+      transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 1.8s ease;
+
     @include m.vp-1023 {
       max-width: 920px;
       height: 380px;
@@ -88,9 +91,16 @@
 
     @include m.vp-767 {
       height: auto;
-      display: flex; 
+      display: flex;
       align-items: center;
       justify-content: flex-start;
+    }
+  }
+
+  :global(.reveal--visible) & {
+    &__slider-container {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 

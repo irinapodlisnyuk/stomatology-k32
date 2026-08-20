@@ -20,8 +20,19 @@
     align-items: center;
 
     gap: 30px;
-  }
 
+    opacity: 0;
+    transform: translateY(-20px);
+    transition:
+      transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+      opacity 1.2s ease-out;
+  }
+  :global(.reveal--visible) & {
+    &__header {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   &__title {
     font-weight: 500;
     font-size: 28px;
