@@ -5,16 +5,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@typescript-eslint"],
   
   compress: true, 
-  compiler: {
  
-    styledComponents: true,
-  },
-
-  experimental: {
-    cssChunking: true, 
-    inlineCss: true, 
-  },
-
   sassOptions: {
     silenceDeprecations: ["import", "legacy-js-api"],
   },
