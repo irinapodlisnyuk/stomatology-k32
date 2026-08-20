@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
 
   experimental: {
     cssChunking: true, 
+    inlineCss: true,
   },
 
   sassOptions: {
