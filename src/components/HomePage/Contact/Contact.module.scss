@@ -19,6 +19,7 @@
     gap: 50px;
     margin: 0 auto;
     min-height: 370px;
+    align-items: center;
 
     @include m.vp-1023 {
       display: flex;
@@ -32,7 +33,7 @@
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    height: 100%;
+    height: 450px;
 
     opacity: 0;
     transform: translateX(-60px);
@@ -47,7 +48,7 @@
     }
 
     @include m.vp-767 {
-      height: 220px;
+      height: 250px;
     }
 
     &-map {
@@ -79,7 +80,7 @@
     }
   }
 
-   :global(.reveal--visible) & {
+  :global(.reveal--visible) & {
     &__container {
       opacity: 1;
       transform: translateX(0);
@@ -90,7 +91,6 @@
       transform: translateX(0);
     }
   }
-
 
   &__header {
     display: flex;
@@ -184,7 +184,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: #f5f9fa;
+    background-color: v.$whiteSmoke;
     display: flex;
     justify-content: center;
     align-items: center;

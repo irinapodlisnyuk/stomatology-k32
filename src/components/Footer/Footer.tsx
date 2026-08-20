@@ -30,7 +30,7 @@ export default function Footer() {
                   src="/image/logo-icon.png"
                   alt="Логотип Клиника +32"
                   width={120}
-                  height={80}
+                  height="auto"
                   className={styles["footer__logo-icon"]}
                   loading="lazy"
                 />

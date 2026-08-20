@@ -138,7 +138,10 @@ export default function CookieBanner() {
           <div className={styles.cookie__wrapper}>
             <div className={styles.cookie__header}>
               <Icon className={styles["cookie__header-icon"]} name={"cookie"} />
-              <h2 className={styles["cookie__header-title"]}>
+              <h2
+                className={styles["cookie__header-title"]}
+                id="cookie-banner-title"
+              >
                 Мы&nbsp;используем файлы cookie
               </h2>
             </div>
