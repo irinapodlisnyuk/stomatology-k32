@@ -128,7 +128,7 @@ export default function CookieBanner() {
       className={`${styles.cookie} ${showSettings ? styles["cookie--settings-open"] : ""}`}
       ref={bannerRef}
       role="dialog"
-      aria-labelledby="cookie-banner-title"
+      aria-label="Баннер согласия на использование файлов cookie"
       aria-live="polite"
     >
       {!showSettings ? (
