@@ -3,10 +3,20 @@ import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
-import { Blog } from "@/components/HomePage/Blog/Blog";
+//import { Blog } from "@/components/HomePage/Blog/Blog";
 import { Metadata } from "next";
-import Questions from "@/components/HomePage/Questions/Questions";
+//import Questions from "@/components/HomePage/Questions/Questions";
 import ContactComponent from "@/components/HomePage/Contact/ContactComponent";
+import dynamic from "next/dynamic";
+
+const Questions = dynamic(() => import("@/components/HomePage/Questions/Questions"), {
+  ssr: true, 
+});
+
+// Для Блога, так как он экспортируется как именованный компонент ({ Blog }), используем промис .then
+const Blog = dynamic(() => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog), {
+  ssr: true,
+});
 
 export const metadata: Metadata = {
   title:
