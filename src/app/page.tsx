@@ -32,30 +32,29 @@ export default function HomePage() {
         showButton={true}
         pageType="home"
       />
-      <ScrollReveal variant="fade-up">
+      <ScrollReveal>
         <About />
       </ScrollReveal>
 
-      <ScrollReveal variant="fade-left">
+      <ScrollReveal>
         <Services />
       </ScrollReveal>
 
-      <ScrollReveal variant="fade-right">
+      <ScrollReveal>
         <Teams />
       </ScrollReveal>
 
-      <ScrollReveal variant="fade-up">
+      <ScrollReveal>
         <Questions />
       </ScrollReveal>
 
-      <ScrollReveal variant="fade-left">
+      <ScrollReveal>
         <ContactComponent />
       </ScrollReveal>
 
-      <ScrollReveal variant="fade-right">
+      <ScrollReveal>
         <Blog />
       </ScrollReveal>
-
     </>
   );
 }
