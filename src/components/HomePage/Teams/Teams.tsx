@@ -23,17 +23,11 @@ export default function Teams() {
 
           <ul className={styles["teams__list"]}>
             {teams.map(({ id, name, surname, title, imgName, altText }, index) => {
-              
-              const itemStyles: CSSProperties = {
-                "--index": index,
-              } as CSSProperties;
-
               return (
                 <li
                   key={id}
                   className={styles["teams__item"]}
                   style={{ "--team-index": index } as React.CSSProperties}
-                 // style={itemStyles} 
                 >
                   <div className={styles.teams__picture}>
                     <ResponsivePicture

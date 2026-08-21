@@ -1,0 +1,113 @@
+@use "@/assets/styles/global/variables" as *;
+@use "@/assets/styles/global/mixins" as *;
+
+.policy-page {
+  padding: 80px 0;
+
+  @include vp-767 {
+    padding: 50px 0;
+  }
+
+  &__wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    @include vp-1023 {
+      width: 100%;
+    }
+  }
+
+  &__paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__text {
+    color: $smoky;
+    font-size: 18px;
+    line-height: 1.2;
+    text-indent: 25px;
+    text-align: justify;
+
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+
+    strong {
+      color: $blue-lagoon;
+    }
+
+    @include vp-767 {
+      font-family: 14px;
+      text-indent: 15px
+    }
+  }
+
+  &__protect {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: $bondi-blue;
+
+      @include vp-767 {
+        font-family: 16px;
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      list-style: square;
+      margin-left: 50px;
+
+       @include vp-767 {
+      margin-left: 30px;
+      }
+    }
+
+    &-item {
+      color: $smoky;
+      font-size: 16px;
+      line-height: 1.2;
+      text-align: justify;
+
+      strong {
+        color: $night-rider;
+      }
+
+      @include vp-767 {
+        font-family: 14px;
+      }
+    }
+  }
+
+  &__change {
+    width: 60%;
+    padding: 20px;
+    background-color: $whisper;
+    border: 1px solid $dim-gray1;
+    border-radius: 8px;
+    font-size: 14px;
+
+    @include vp-767 {
+      font-family: 12px;
+      width: 90%;
+    }
+
+    &-text {
+      text-align: center;
+      color: $smoky;
+      font-size: 12px;
+    }
+  }
+}

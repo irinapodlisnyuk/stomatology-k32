@@ -76,7 +76,7 @@
     @include m.vp-1023 {
       max-width: 100%;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 20px; 
     }
 
     @include m.vp-767 {
@@ -112,15 +112,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 30px; 
     cursor: pointer;
 
     opacity: 0;
     transform: translateY(40px) scale(0.96);
+    will-change: transform, opacity;
 
     transition:
-      transform v.$transition-800,
-      box-shadow v.$transition-800;
+      box-shadow v.$transition-800,
+      transform v.$transition-800;
 
     @include m.vp-767 {
       width: 280px;
@@ -128,12 +129,9 @@
       flex-shrink: 0;
       justify-content: flex-start;
       background-color: rgba(v.$white, 0.08);
-      backdrop-filter: blur(10px);
       box-shadow: 0 15px 20px rgba(v.$black, 0.25);
       gap: 20px;
       scroll-snap-align: center;
-
-      opacity: 0;
       transform: translateY(30px);
 
       &:hover {
@@ -142,7 +140,7 @@
     }
 
     &:hover {
-      transform: translateY(-8px);
+      transform: translateY(-3px);
       box-shadow: 0 15px 30px rgba(v.$black, 0.25);
     }
 
@@ -205,14 +203,14 @@
   }
 
   :global(.reveal--visible) & {
-    &__item {
-      animation: teamCardFadeUp 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-      animation-delay: calc(0.1s + (var(--team-index) * 150ms));
+    .teams__item {
+      animation: teamCardFadeUpPremium 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: calc(0.05s + (var(--team-index, 0) * 120ms));
     }
   }
 }
 
-@keyframes teamCardFadeUp {
+@keyframes teamCardFadeUpPremium {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);

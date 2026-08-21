@@ -243,19 +243,22 @@
     &-list {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       gap: 15px;
     }
 
     &-item {
       display: flex;
-      align-items: flex-start;
+
       gap: 12px;
       transition:
         color v.$transition-500,
         transform v.$transition-500;
 
       @include m.vp-767 {
+        width: 80%;
         flex-direction: row-reverse;
+        justify-content: flex-end;
       }
 
       a,

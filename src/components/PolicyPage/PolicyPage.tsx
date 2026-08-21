@@ -1,143 +1,108 @@
 import { HeroPersonal } from "../PersonalPage/HeroPersonal";
+import styles from "./PolicyPage.module.scss";
 
 export default function PolicyPage() {
   return (
     <>
       <HeroPersonal title={"Политика конфиденциальности"} />
-      <div className="container" style={{ padding: "0 20px" }}>
-        <section style={{ marginBottom: "25px" }}>
-          <p style={{ marginBottom: "12px" }}>
-            Настоящая Политика конфиденциальности действует в отношении всей
-            информации, которую сайт
-            <strong> https://k32clinic.ru</strong> (далее — Сайт) может получить
-            о пользователе во время использования им интерактивных сервисов и
-            форм обратной связи.
-          </p>
-          <p>
-            Использование Сайта означает безоговорочное согласие пользователя с
-            настоящей Политикой и указанными в ней условиями обработки его
-            персональной информации.
-          </p>
-        </section>
+      <section className={styles["policy-page"]}>
+        <div className="container">
+          <div className={styles["policy-page__wrapper"]}>
+            <div className={styles["policy-page__paragraphs"]}>
+              <p className={styles["policy-page__text"]}>
+                Настоящая Политика конфиденциальности действует в&nbsp;отношении
+                всей информации, которую сайт
+                <strong> https://k32clinic.ru</strong> (далее — Сайт)может
+                получить о&nbsp;пользователе во&nbsp;время использования
+                им&nbsp;интерактивных сервисов и&nbsp;форм обратной связи.
+              </p>
+              <p className={styles["policy-page__text"]}>
+                Использование Сайта означает безоговорочное согласие
+                пользователя с&nbsp;настоящей Политикой и&nbsp;указанными
+                в&nbsp;ней условиями обработки его персональной информации.
+              </p>
+            </div>
 
-        <section style={{ marginBottom: "25px" }}>
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#00a8cc",
-              marginBottom: "12px",
-            }}
-          >
-            1. Какую информацию мы защищаем
-          </h2>
-          <p style={{ marginBottom: "8px" }}>
-            Администрация Сайта обеспечивает полную конфиденциальность двух
-            типов данных:
-          </p>
-          <ul
-            style={{
-              paddingLeft: "20px",
-              listStyleType: "disc",
-              marginBottom: "12px",
-            }}
-          >
-            <li style={{ marginBottom: "4px" }}>
-              <strong>Данные, предоставляемые вами:</strong> Имя, адрес
-              электронной почты и номер мобильного телефона, вводимые в формы
-              записи на прием или обратной связи.
-            </li>
-            <li style={{ marginBottom: "4px" }}>
-              <strong>Автоматические технические данные:</strong> IP-адрес,
-              файлы cookie, информация о браузере, время доступа и адреса
-              запрашиваемых страниц (необходимы для защиты сайта от спама и
-              улучшения UX).
-            </li>
-          </ul>
-        </section>
+            <div className={styles["policy-page__protect"]}>
+              <h2 className={styles["policy-page__protect-title"]}>
+                1. Какую информацию мы&nbsp;защищаем
+              </h2>
+              <p className={styles["policy-page__text"]}>
+                Администрация Сайта обеспечивает полную конфиденциальность двух
+                типов данных:
+              </p>
+              <ul className={styles["policy-page__protect-list"]}>
+                <li className={styles["policy-page__protect-item"]}>
+                  <strong>Данные, предоставляемые вами:</strong> Имя, адрес
+                  электронной почты и&nbsp;номер мобильного телефона, вводимые в
+                  формы записи на&nbsp;прием или обратной связи.
+                </li>
+                <li className={styles["policy-page__protect-item"]}>
+                  <strong>Автоматические технические данные:</strong> IP-адрес,
+                  файлы cookie, информация о&nbsp;браузере, время доступа
+                  и&nbsp;адреса запрашиваемых страниц (необходимы для защиты
+                  сайта от&nbsp;спама и улучшения&nbsp;UX).
+                </li>
+              </ul>
+            </div>
 
-        <section style={{ marginBottom: "25px" }}>
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#00a8cc",
-              marginBottom: "12px",
-            }}
-          >
-            2. Цели использования конфиденциальных данных
-          </h2>
-          <p style={{ marginBottom: "8px" }}>
-            Мы используем вашу личную информацию исключительно в следующих
-            целях:
-          </p>
-          <ul
-            style={{
-              paddingLeft: "20px",
-              listStyleType: "square",
-              marginBottom: "12px",
-            }}
-          >
-            <li style={{ marginBottom: "4px" }}>
-              Установление двусторонней обратной связи (звонки администратора,
-              подтверждение времени приема специалистов) [1.1].
-            </li>
-            <li style={{ marginBottom: "4px" }}>
-              Предоставление пациенту эффективной клиентской и технической
-              поддержки при возникновении проблем, связанных с использованием
-              Сайта.
-            </li>
-            <li style={{ marginBottom: "4px" }}>
-              Сбор обезличенной аналитической статистики через Яндекс Метрику
-              для оптимизации скорости и удобства страниц.
-            </li>
-          </ul>
-        </section>
+            <div className={styles["policy-page__protect"]}>
+              <h2 className={styles["policy-page__protect-title"]}>
+                2. Цели использования конфиденциальных данных
+              </h2>
+              <p className={styles["policy-page__text"]}>
+                Мы&nbsp;используем вашу личную информацию исключительно
+                в&nbsp;следующих целях:
+              </p>
+              <ul className={styles["policy-page__protect-list"]}>
+                <li className={styles["policy-page__protect-item"]}>
+                  Установление двусторонней обратной связи (звонки
+                  администратора, подтверждение времени приема специалистов)
+                  [1.1].
+                </li>
+                <li className={styles["policy-page__protect-item"]}>
+                  Предоставление пациенту эффективной клиентской
+                  и&nbsp;технической поддержки при возникновении проблем,
+                  связанных с использованием Сайта.
+                </li>
+                <li className={styles["policy-page__protect-item"]}>
+                  Сбор обезличенной аналитической статистики через Яндекс
+                  Метрику для оптимизации скорости и&nbsp;удобства страниц.
+                </li>
+              </ul>
+            </div>
 
-        <section style={{ marginBottom: "30px" }}>
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#00a8cc",
-              marginBottom: "12px",
-            }}
-          >
-            3. Защита и безопасность данных
-          </h2>
-          <p style={{ marginBottom: "12px" }}>
-            Администрация Сайта принимает все необходимые организационные и
-            технические меры (включая SSL-шифрование трафика) для защиты
-            персональной информации пользователя от неправомерного или
-            случайного доступа, уничтожения, изменения или копирования третьими
-            лицами.
-          </p>
-          <p>
-            Передача данных третьим лицам возможна только по законным запросам
-            государственных органов РФ в порядке, установленном
-            законодательством Российской Федерации.
-          </p>
-        </section>
+            <div className={styles["policy-page__protect"]}>
+              <h2 className={styles["policy-page__protect-title"]}>
+                3. Защита и&nbsp;безопасность данных
+              </h2>
+              <p className={styles["policy-page__text"]}>
+                Администрация Сайта принимает все необходимые организационные и
+                технические меры (включая SSL-шифрование трафика) для защиты
+                персональной информации пользователя от&nbsp;неправомерного или
+                случайного доступа, уничтожения, изменения или копирования
+                третьими лицами.
+              </p>
+              <p className={styles["policy-page__text"]}>
+                Передача данных третьим лицам возможна только по&nbsp;законным
+                запросам государственных органов&nbsp;РФ в&nbsp;порядке,
+                установленном законодательством Российской Федерации.
+              </p>
+            </div>
 
-        {/* Обратная связь */}
-        <div
-          style={{
-            padding: "20px",
-            backgroundColor: "#f5f9fa",
-            border: "1px solid #eef2f4",
-            borderRadius: "8px",
-            fontSize: "14px",
-          }}
-        >
-          <p>
-            <strong>Изменение политики:</strong> Администрация имеет право
-            вносить изменения в настоящую Политику конфиденциальности без
-            согласия пользователя. Новая редакция вступает в силу с момента ее
-            размещения на Сайте. Все вопросы можно направлять на email:{" "}
-            <strong>clinic.k32@gmail.com</strong>.
-          </p>
+            <div className={styles["policy-page__change"]}>
+              <p className={styles["policy-page__change-text"]}>
+                <strong>Изменение политики:</strong> Администрация имеет право
+                вносить изменения в&nbsp;настоящую Политику конфиденциальности
+                без согласия пользователя. Новая редакция вступает в&nbsp;силу
+                с&nbsp;момента ее&nbsp;размещения на&nbsp;Сайте. Все вопросы
+                можно направлять на&nbsp;email:
+                <strong>clinic.k32@gmail.com</strong>.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

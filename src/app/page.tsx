@@ -3,9 +3,7 @@ import ScrollReveal from "@/components/HomePage/Scroll-reveal/ScrollReveal";
 import About from "@/components/HomePage/AboutSection/About";
 import Services from "@/components/HomePage/Service/Services";
 import Teams from "@/components/HomePage/Teams/Teams";
-//import { Blog } from "@/components/HomePage/Blog/Blog";
 import { Metadata } from "next";
-//import Questions from "@/components/HomePage/Questions/Questions";
 import ContactComponent from "@/components/HomePage/Contact/ContactComponent";
 import dynamic from "next/dynamic";
 
