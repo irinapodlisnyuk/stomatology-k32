@@ -92,7 +92,7 @@ export default function PolicyPage() {
 
             <div className={styles["policy-page__change"]}>
               <p className={styles["policy-page__change-text"]}>
-                <strong>Изменение политики:</strong> Администрация имеет право
+                <strong>Изменение политики:</strong>Администрация имеет право
                 вносить изменения в&nbsp;настоящую Политику конфиденциальности
                 без согласия пользователя. Новая редакция вступает в&nbsp;силу
                 с&nbsp;момента ее&nbsp;размещения на&nbsp;Сайте. Все вопросы
