@@ -19,6 +19,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Когда изменения проверены на локальном хосте и вы готовы выкатить их на живой сайт, введите в терминале три команды (или используйте кнопки Git в интерфейсе VS Code)
 
-:bashgit add .
-git commit -m "feat: added new blog posts to data structure"
-git push origin master
+git add .
+git commit -m "fix: total style and javascript optimization for pagespeed"
+git push
+
+
+Remove-Item -Recurse -Force .next
+npm run build
+npm run start
