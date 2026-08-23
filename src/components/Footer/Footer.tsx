@@ -27,7 +27,7 @@ export default function Footer() {
             <Link className={styles["footer__logo"]} href="/" prefetch={false}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/image/logo-icon.png"
+                src="/image/logo-icon.webp"
                 alt="Логотип Клиника +32"
                 width={120}
                 height={80}
