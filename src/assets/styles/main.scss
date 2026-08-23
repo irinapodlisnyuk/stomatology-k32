@@ -1,11 +1,11 @@
-
-@use "./global/variables" as *;
-@use "./global/mixins" as *;
+@use "./global/variables" as v;
+@use "./global/mixins" as m;
 @use "./global/container";
 @use "./global/reboot";
 @use "./global/visually-hidden";
 @use "./global/btn";
 @use "./global/normalize";
 
+@import "./tailwind.css";
 
 

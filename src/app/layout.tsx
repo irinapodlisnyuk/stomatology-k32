@@ -1,4 +1,4 @@
-import "@/assets/styles/main.css";
+import "@/assets/styles/main.scss";
 
 import Footer from "@/components/Footer/Footer";
 import HeaderComponent from "@/components/Header/Header";
