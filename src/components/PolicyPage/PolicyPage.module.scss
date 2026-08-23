@@ -38,13 +38,15 @@
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
 
+    @include no-select;
+
     strong {
       color: $blue-lagoon;
     }
 
     @include vp-767 {
       font-family: 14px;
-      text-indent: 15px
+      text-indent: 15px;
     }
   }
 
@@ -58,6 +60,8 @@
       font-weight: 600;
       color: $bondi-blue;
 
+      @include no-select;
+
       @include vp-767 {
         font-family: 16px;
       }
@@ -70,8 +74,8 @@
       list-style: square;
       margin-left: 50px;
 
-       @include vp-767 {
-      margin-left: 30px;
+      @include vp-767 {
+        margin-left: 30px;
       }
     }
 
@@ -80,6 +84,7 @@
       font-size: 16px;
       line-height: 1.2;
       text-align: justify;
+      @include no-select;
 
       strong {
         color: $night-rider;
@@ -99,6 +104,7 @@
     border: 1px solid $dim-gray1;
     border-radius: 8px;
     font-size: 14px;
+    @include no-select;
 
     @include vp-767 {
       font-family: 12px;
@@ -109,8 +115,9 @@
       text-align: center;
       color: $smoky;
       font-size: 12px;
+      @include no-select;
 
-         strong {
+      strong {
         color: $night-rider;
         margin: 0 10px 0 10px;
       }

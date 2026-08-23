@@ -1,6 +1,39 @@
 @use "@/assets/styles/global/variables" as *;
 @use "@/assets/styles/global/mixins" as *;
 
+@keyframes serviceImageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes serviceContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes servicePriceFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .service {
   padding: 80px 0;
   width: 100%;
@@ -45,26 +78,22 @@
   &__picture-img {
     width: 100%;
     border-radius: 25px;
-
-    height: 100%;
     object-fit: cover;
 
-    height: 400px;
+    height: 100%;
     cursor: pointer;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 0;
+    transform: translateX(-40px);
+    will-change: transform, opacity;
+    animation: serviceImageFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.1s;
 
     transition:
       transform 1.5s cubic-bezier(0.25, 1, 0.5, 1),
       opacity 1.5s ease-out;
-
-    @starting-style {
-      opacity: 0;
-      transform: translateX(-50%);
-    }
 
     &:hover {
       box-shadow: 0 20px 35px rgba(15, 23, 42, 0.12);
@@ -108,18 +137,16 @@
     -ms-hyphens: auto;
     flex: 1;
 
-    opacity: 1;
-    transform: translateX(0) scale(1) translateY(0);
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+    animation: servicePriceFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.35s;
 
     transition:
       box-shadow 0.4s ease,
       opacity 1.5s ease-out,
       transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-
-    @starting-style {
-      opacity: 0;
-      transform: translateX(50%) scale(1) translateY(0);
-    }
 
     @include vp-767 {
       width: 90%;
@@ -149,6 +176,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+    animation: servicePriceFadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.35s;
   }
 
   &__title {
@@ -170,7 +203,7 @@
   }
 
   &__table {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 
     @include vp-1023 {
@@ -211,6 +244,7 @@
     font-size: 22px;
     line-height: 1.2;
     color: $bahama-blue;
+    @include no-select;
 
     @include vp-767 {
       font-size: 14px;

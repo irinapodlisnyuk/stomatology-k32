@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Hero from "@/components/Hero/Hero";
 import { ServiceContent } from "./ServiceContent";
 import { HeroService } from "./HeroService";
 
