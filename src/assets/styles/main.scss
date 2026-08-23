@@ -1,11 +1,10 @@
 
-@use "./global/variables";
-@use "./global/mixins";
+@use "./global/variables" as *;
+@use "./global/mixins" as *;
 @use "./global/container";
 @use "./global/reboot";
 @use "./global/visually-hidden";
 @use "./global/btn";
 @use "./global/normalize";
-
 
 
