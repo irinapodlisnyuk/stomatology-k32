@@ -73,10 +73,12 @@
 
       @include m.vp-1023 {
         width: 90px;
+        height: auto;
       }
 
       @include m.vp-767 {
         width: 80px;
+        height: auto;
       }
     }
   }
