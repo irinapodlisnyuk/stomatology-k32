@@ -1,3 +1,5 @@
-# Говорим сборщику компилировать код только для актуальных современных браузеров
-defaults and supports es6-module
+# Указываем компилятору ориентироваться только на современные живые браузеры Baseline
+last 2 versions
 not dead
+not ie 11
+not op_mini all

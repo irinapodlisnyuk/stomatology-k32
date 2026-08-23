@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./Teams.module.scss";
 import { TEAMS_DATA } from "@/data/Teams__data";
