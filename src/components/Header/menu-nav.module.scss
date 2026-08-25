@@ -72,10 +72,11 @@
     font-size: 16px;
     line-height: 20px;
     color: v.$black;
-    transition:
-      color v.$transition-500;
+    transition: color v.$transition-500;
+    outline: none;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: v.$bahama-blue;
     }
 
