@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@typescript-eslint"],
 
   compress: true,
+  generateEtags: true,
 
   sassOptions: {
     silenceDeprecations: ["import", "legacy-js-api"],

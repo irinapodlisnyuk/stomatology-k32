@@ -31,6 +31,7 @@ export default function Footer() {
                 alt="Логотип Клиника +32"
                 width={120}
                 height={80}
+                style={{ objectFit: "contain" }}
                 className={styles["footer__logo-icon"]}
                 loading="lazy"
               />
