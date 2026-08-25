@@ -4,7 +4,7 @@ import styles from "./Header.module.scss";
 import stylesBurger from "./Burger.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navigationItems, MenuItem } from "@/data/navigation";
 import { AppointmentButton } from "@/components/Form/Button/AppointmentButton";
 
@@ -12,6 +12,18 @@ export default function HeaderComponent() {
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
+
+ useEffect(() => {
+  if (isOpen) {
+    document.documentElement.classList.add("lock-scroll");
+  } else {
+    document.documentElement.classList.remove("lock-scroll");
+  }
+
+  return () => {
+    document.documentElement.classList.remove("lock-scroll");
+  };
+}, [isOpen]);
 
   return (
     <header
