@@ -3,17 +3,7 @@ import { useMemo, useState } from "react";
 import styles from "./Questions.module.scss";
 import { QUESTIONS_DATA, QuestionsItem } from "@/data/Questions_data";
 import Icon from "@/components/Icon/Icon";
-
-const getRandomQuestions = (array: QuestionsItem[]): QuestionsItem[] => {
-  if (array.length <= 4) return array;
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
-
+import { getRandomItems } from "@/utils/shuffle";
 
 const renderQuestionItem = (
   question: QuestionsItem,
@@ -52,13 +42,11 @@ const renderQuestionItem = (
   );
 };
 
-
-
 export default function Questions() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const shuffledQuestions = useMemo(() => {
-    return getRandomQuestions(QUESTIONS_DATA).slice(0, 6);
+    return getRandomItems(QUESTIONS_DATA, 6);
   }, []);
 
   const leftColumnQuestions = useMemo(() => {

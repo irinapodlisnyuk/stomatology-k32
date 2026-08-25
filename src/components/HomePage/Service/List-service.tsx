@@ -1,19 +1,10 @@
 "use client";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./List-service.module.scss";
-import { ServiceItem, SERVICES_DATA } from "@/data/Services_data";
+import {  SERVICES_DATA } from "@/data/Services_data";
 import { FC, CSSProperties, useMemo } from "react";
 import Link from "next/link";
-
-const getRandomService = (array: ServiceItem[]): ServiceItem[] => {
-  if (array.length <= 4) return array;
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
+import { getRandomItems } from "@/utils/shuffle";
 
 interface ServicesListProps {
   isFullPage?: boolean;
@@ -23,7 +14,7 @@ export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
   const currentServices = useMemo(() => {
     return isFullPage
       ? SERVICES_DATA
-      : getRandomService(SERVICES_DATA).slice(0, 4);
+      : getRandomItems(SERVICES_DATA);
   }, [isFullPage]);
 
   return (

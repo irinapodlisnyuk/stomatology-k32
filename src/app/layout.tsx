@@ -5,28 +5,9 @@ import HeaderComponent from "@/components/Header/Header";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import { Providers } from "@/components/context/Providers";
 import { LayoutModals } from "@/components/context/LayoutModals"; // Импортируем модалки
-import { Manrope, Montserrat, Poppins } from "next/font/google";
+import {  manrope, montserrat, poppins  } from "@/assets/styles/fonts";
 
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-text",
-  display: "swap",
-});
 
-const montserrat = Montserrat({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-});
 
 export default function RootLayout({
   children,
