@@ -13,17 +13,17 @@ export default function HeaderComponent() {
 
   const [isOpen, setIsOpen] = useState(false);
 
- useEffect(() => {
-  if (isOpen) {
-    document.documentElement.classList.add("lock-scroll");
-  } else {
-    document.documentElement.classList.remove("lock-scroll");
-  }
+  useEffect(() => {
+    if (isOpen) {
+      document.documentElement.classList.add("lock-scroll");
+    } else {
+      document.documentElement.classList.remove("lock-scroll");
+    }
 
-  return () => {
-    document.documentElement.classList.remove("lock-scroll");
-  };
-}, [isOpen]);
+    return () => {
+      document.documentElement.classList.remove("lock-scroll");
+    };
+  }, [isOpen]);
 
   return (
     <header

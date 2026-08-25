@@ -22,7 +22,6 @@ export default function CallBack() {
               Наши специалисты принимают по&nbsp;предварительной записи.
             </p>
             
-            {/* Оптимизировали структуру контактов, убрав лишние промежуточные div */}
             <div className={styles["callback__contact"]}>
               <a
                 href="mailto:clinic.k32@gmail.com"
