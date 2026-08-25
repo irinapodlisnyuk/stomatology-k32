@@ -1,8 +1,12 @@
+"use client";
 import Link from "next/link";
 import styles from "./Services.module.scss";
-import { ServicesList } from "./List-service";
+import dynamic from "next/dynamic";
 
-
+const ServicesList = dynamic(
+  () => import("@/components/HomePage/Service/List-service").then((mod) => mod.ServicesList),
+  { ssr: false }
+);
 
 export default function Services() {
   return (
@@ -35,7 +39,7 @@ export default function Services() {
             </p>
           </div>
 
-          <ServicesList />
+         <ServicesList  />
 
           <div
             className={`${styles["services__actions"]} ${styles["animate-fade-up"]}`}

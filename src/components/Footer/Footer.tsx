@@ -156,7 +156,7 @@ export default function Footer() {
                   Политика в отношении обработки персональных данных
                 </Link>
               </li>
-              <li className={styles["footer__police-item"]}>
+              {/* <li className={styles["footer__police-item"]}>
                 <Link
                   href="/files/price.pdf"
                   className={styles["footer__police-item-link"]}
@@ -165,7 +165,7 @@ export default function Footer() {
                 >
                   Прайс-лист услуг К+32
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

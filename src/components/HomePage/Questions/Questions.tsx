@@ -4,16 +4,16 @@ import styles from "./Questions.module.scss";
 import { QUESTIONS_DATA, QuestionsItem } from "@/data/Questions_data";
 import Icon from "@/components/Icon/Icon";
 
-const getStableShuffledQuestions = (array: QuestionsItem[]): QuestionsItem[] => {
+const getRandomQuestions = (array: QuestionsItem[]): QuestionsItem[] => {
   if (array.length <= 4) return array;
   const shuffled = [...array];
-  const step = 3;
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = (i * step) % (i + 1);
+    const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled;
 };
+
 
 const renderQuestionItem = (
   question: QuestionsItem,
@@ -58,7 +58,7 @@ export default function Questions() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const shuffledQuestions = useMemo(() => {
-    return getStableShuffledQuestions(QUESTIONS_DATA).slice(0, 4);
+    return getRandomQuestions(QUESTIONS_DATA).slice(0, 6);
   }, []);
 
   const leftColumnQuestions = useMemo(() => {

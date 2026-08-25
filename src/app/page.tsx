@@ -6,15 +6,14 @@ import Teams from "@/components/HomePage/Teams/Teams";
 import { Metadata } from "next";
 import ContactComponent from "@/components/HomePage/Contact/ContactComponent";
 import dynamic from "next/dynamic";
+import Questions from "@/components/HomePage/Questions/QuestionsWrapper";
 
-const Questions = dynamic(() => import("@/components/HomePage/Questions/Questions"), {
-  ssr: true, 
-});
-
-// Для Блога, так как он экспортируется как именованный компонент ({ Blog }), используем промис .then
-const Blog = dynamic(() => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog), {
-  ssr: true,
-});
+const Blog = dynamic(
+  () => import("@/components/HomePage/Blog/Blog").then((mod) => mod.Blog),
+  {
+    ssr: true,
+  },
+);
 
 export const metadata: Metadata = {
   title:

@@ -1,21 +1,34 @@
+"use client";
 import ResponsivePicture from "@/components/ResponsivePicture/ResponsivePicture";
 import styles from "./List-service.module.scss";
-import { SERVICES_DATA } from "@/data/Services_data";
-import { FC, CSSProperties } from "react"; 
+import { ServiceItem, SERVICES_DATA } from "@/data/Services_data";
+import { FC, CSSProperties, useMemo } from "react";
 import Link from "next/link";
+
+const getRandomService = (array: ServiceItem[]): ServiceItem[] => {
+  if (array.length <= 4) return array;
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 interface ServicesListProps {
   isFullPage?: boolean;
 }
 
 export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
-
-  const displayedServices = isFullPage ? SERVICES_DATA : SERVICES_DATA.slice(0, 4);
+  const currentServices = useMemo(() => {
+    return isFullPage
+      ? SERVICES_DATA
+      : getRandomService(SERVICES_DATA).slice(0, 4);
+  }, [isFullPage]);
 
   return (
     <ul className={styles["services__list"]}>
-      {displayedServices.map(({ id, slug, title, imgName, altText }, index) => {
-        
+      {currentServices.map(({ id, slug, title, imgName, altText }, index) => {
         const cardContent = (
           <>
             <ResponsivePicture
@@ -40,7 +53,7 @@ export const ServicesList: FC<ServicesListProps> = ({ isFullPage = false }) => {
         );
 
         const itemStyles: CSSProperties = {
-         "--service-index": index,
+          "--service-index": index,
         } as CSSProperties;
 
         return (
