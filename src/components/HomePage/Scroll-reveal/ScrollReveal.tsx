@@ -33,7 +33,7 @@ export default function ScrollReveal({
       {
         root: null,
         /* порог до 0.15 (15% высоты секции) */
-        threshold: 0.3,
+        threshold: 0.2,
         /*  0px. Слежка идет ровно по нижней рамке экрана. */
         rootMargin: "0px 0px 0px 0px",
       },
