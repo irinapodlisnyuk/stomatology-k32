@@ -76,7 +76,7 @@
     @include m.vp-1023 {
       max-width: 100%;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px; 
+      gap: 20px;
     }
 
     @include m.vp-767 {
@@ -100,6 +100,7 @@
     width: 100%;
     height: 100% !important;
     aspect-ratio: 3 / 4;
+    object-position: center 15%;
     object-fit: cover;
     border-radius: 15px 15px 0 0;
     display: block;
@@ -112,7 +113,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; 
+    gap: 30px;
     cursor: pointer;
 
     opacity: 0;
@@ -169,6 +170,10 @@
       @include m.vp-1023 {
         font-size: 20px;
       }
+
+      @include m.vp-767 {
+        font-size: 18px;
+      }
     }
 
     &-surname {
@@ -184,6 +189,11 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
+
+      @include m.vp-767 {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
     }
 
     &-text {
@@ -199,12 +209,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @include m.vp-767 {
+        margin: 0 0 10px;
+      }
     }
   }
 
   :global(.reveal--visible) & {
     .teams__item {
-      animation: teamCardFadeUpPremium 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation: teamCardFadeUpPremium 1.4s cubic-bezier(0.25, 1, 0.5, 1)
+        forwards;
       animation-delay: calc(0.05s + (var(--team-index, 0) * 120ms));
     }
   }

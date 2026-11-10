@@ -90,10 +90,10 @@ export default function PricePage() {
                         <table className={styles["prices__table-wrapper"]}>
                           <thead>
                             <tr className={styles["prices__table-header"]}>
-                              <th className={styles["prices__table-title"]}>
+                              <th className={styles["prices__table-header-name"]}>
                                 Наименование услуги
                               </th>
-                              <th className={styles["prices__table-sum"]}>
+                              <th className={styles["prices__table-header-sum"]}>
                                 Цена
                               </th>
                             </tr>
@@ -108,6 +108,7 @@ export default function PricePage() {
                                   {item.name}
                                 </td>
                                 <td className={styles["prices__table-value"]}>
+                                  {item.prefix && <span className={styles["prices__table-prefix"]}>{item.prefix} </span>}
                                   {item.price}
                                 </td>
                               </tr>
