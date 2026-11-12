@@ -117,7 +117,7 @@ export default function Footer() {
                 suppressHydrationWarning
               >
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/k32clinic?rpxt=MThkYjRiYzhzYWN3MA=="
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles["footer__left-link"]}
@@ -127,6 +127,21 @@ export default function Footer() {
                     name={"instagram"}
                   />
                   <span className={styles["footer__left-text"]}>Instagram</span>
+                </a>
+              </li>
+              <li
+                className={styles["footer__left-item"]}
+                suppressHydrationWarning
+              >
+                <a
+                  href="https://max.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Написать нам в мессенджер MAX"
+                  className={styles["footer__left-link"]}
+                >
+                  <Icon className={styles["footer__left-icon"]} name="MAX" />
+                  <span className={styles["footer__left-text"]}>MAX</span>
                 </a>
               </li>
             </ul>

@@ -21,7 +21,7 @@ export default function CallBack() {
             <p className={styles["callback__text-info"]}>
               Наши специалисты принимают по&nbsp;предварительной записи.
             </p>
-            
+
             <div className={styles["callback__contact"]}>
               <a
                 href="mailto:clinic.k32@gmail.com"
@@ -48,11 +48,28 @@ export default function CallBack() {
                   +7 (861) 991-32-15
                 </span>
               </a>
+
+              <a
+                href="https://max.ru"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles["callback__contact-link"]} ${styles["callback__contact-link--max"]}`}
+              >
+                <Icon className={`${styles["callback__contact-icon"]} ${styles["callback__contact-icon--max"]}`} name="MAX" />
+                <span className={`${styles["callback__contact-text"]} ${styles["callback__contact-text--max"]}`}>
+                  Написать в MAX
+                </span>
+              </a>
             </div>
           </div>
-          
+
           <div className={styles["callback__inner"]}>
-            <h3 className={styles["callback__inner-title"] || styles["callback__inner-title"]}>
+            <h3
+              className={
+                styles["callback__inner-title"] ||
+                styles["callback__inner-title"]
+              }
+            >
               Ваша улыбка заслуживает внимания.
             </h3>
             <div className={styles["callback__top"]}>
@@ -79,13 +96,13 @@ export default function CallBack() {
                 </span>
               </li>
             </ul>
-            
+
             <div className={styles["callback__bottom"]}>
               <span className={styles["callback__bottom-text"]}>
                 Подписывайтесь на нас *
               </span>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/k32clinic?rpxt=MThkYjRiYzhzYWN3MA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles["callback__bottom-link"]}
@@ -96,10 +113,11 @@ export default function CallBack() {
                 />
               </a>
             </div>
-            
+
             {/* Юридическая плашка-дисклеймер для Instagram непосредственно внутри блока */}
             <span className={styles["callback__disclaimer"]}>
-              * Деятельность организации Meta Platforms Inc. и ее социальных сетей Instagram и Facebook запрещена на территории РФ.
+              * Деятельность организации Meta Platforms Inc. и ее социальных
+              сетей Instagram и Facebook запрещена на территории РФ.
             </span>
           </div>
         </div>

@@ -144,6 +144,10 @@
           color: v.$white;
           fill: v.$blue-lagoon;
           stroke: v.$blue-lagoon;
+
+          &--max {
+            color: v.$blue-lagoon;
+          }
         }
         .callback__contact-text {
           color: v.$blue-lagoon;
@@ -160,6 +164,10 @@
       fill: v.$bondi-blue;
       transition: color v.$transition-500;
 
+      &--max {
+        color: v.$bondi-blue;
+      }
+
       @include m.vp-1023 {
         width: 20px;
         height: 20px;
@@ -172,6 +180,10 @@
       line-height: 26px;
       color: v.$black;
       transition: color v.$transition-500;
+
+      &--max {
+        font-size: 20px;
+      }
 
       @include m.vp-1023 {
         font-size: 18px;
