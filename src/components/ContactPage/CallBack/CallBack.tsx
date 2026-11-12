@@ -50,7 +50,7 @@ export default function CallBack() {
               </a>
 
               <a
-                href="https://max.ru"
+                href="https://max.ru/u/f9LHodD0cOKhi2fK55_W5BOaq0m4C16ttE97lfmBdl2pyA0dtGaEaRkC9tI"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles["callback__contact-link"]} ${styles["callback__contact-link--max"]}`}
